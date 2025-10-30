@@ -25,19 +25,19 @@ function [systemmasses systempowers] = SMAD_scalings(data)
   
   
    %Scale subsystem masses accordingly
-   systemmasses.mass_payload       = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "m_total", "fraction_mass_payload")*systemmasses.m_dry_margin;;
-   systemmasses.mass_structmech    = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "m_total", "fraction_mass_structmech")*systemmasses.m_dry_margin;
-   systemmasses.mass_thermal       = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "m_total", "fraction_mass_thermal")*systemmasses.m_dry_margin;
-   systemmasses.mass_power         = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "m_total", "fraction_mass_power")*systemmasses.m_dry_margin;  
-   systemmasses.m_ttc           = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "m_total", "fraction_mass_TTC")*systemmasses.m_dry_margin;
-   systemmasses.m_adc           = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "m_total", "fraction_mass_ADC")*systemmasses.m_dry_margin;
-   systemmasses.mass_propulsion    = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "m_total", "fraction_mass_propulsion")*systemmasses.m_dry_margin;
-   systemmasses.mass_other         = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "m_total", "fraction_mass_other")*systemmasses.m_dry_margin;
+   systemmasses.mass_payload       = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_payload")*systemmasses.m_dry_margin;;
+   systemmasses.mass_structmech    = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_structmech")*systemmasses.m_dry_margin;
+   systemmasses.mass_thermal       = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_thermal")*systemmasses.m_dry_margin;
+   systemmasses.mass_power         = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_power")*systemmasses.m_dry_margin;  
+   systemmasses.mass_ttc           = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_TTC")*systemmasses.m_dry_margin;
+   systemmasses.mass_adc           = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_ADC")*systemmasses.m_dry_margin;
+   systemmasses.mass_propulsion    = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_propulsion")*systemmasses.m_dry_margin;
+   systemmasses.mass_other         = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_other")*systemmasses.m_dry_margin;
 
 %   
    %Check for remaining mass difference
    %checksum = systemmasses.mass_propellant+systemmasses.mass_payload+systemmasses.mass_structmech +systemmasses.mass_thermal+ systemmasses.mass_power+ systemmasses.m_ttc+ systemmasses.m_adc+systemmasses.mass_propulsion+ systemmasses.mass_other;
-   systemmasses.m_dry_margin = systemmasses.mass_payload+systemmasses.mass_structmech +systemmasses.mass_thermal+ systemmasses.mass_power+ systemmasses.m_ttc+ systemmasses.m_adc+systemmasses.mass_propulsion+ systemmasses.mass_other;
+   systemmasses.m_dry_margin = systemmasses.mass_payload+systemmasses.mass_structmech +systemmasses.mass_thermal+ systemmasses.mass_power+ systemmasses.mass_ttc+ systemmasses.mass_adc+systemmasses.mass_propulsion+ systemmasses.mass_other;
 
    %Add discrepancy to margin
 
@@ -57,8 +57,8 @@ function [systemmasses systempowers] = SMAD_scalings(data)
    systempowers.power_structmech    = scale_SMAD_parameter(systempowers.power_total, sc_type, "power_total", "fraction_power_structmech")*systempowers.power_total;
    systempowers.power_thermal       = scale_SMAD_parameter(systempowers.power_total, sc_type, "power_total", "fraction_power_thermal")*systempowers.power_total;
    systempowers.power_power         = scale_SMAD_parameter(systempowers.power_total, sc_type, "power_total", "fraction_power_power")*systempowers.power_total;  
-   systempowers.p_ttc           = scale_SMAD_parameter(systempowers.power_total, sc_type, "power_total", "fraction_power_TTC")*systempowers.power_total;
-   systempowers.p_adc           = scale_SMAD_parameter(systempowers.power_total, sc_type, "power_total", "fraction_power_ADC")*systempowers.power_total;
+   systempowers.power_ttc           = scale_SMAD_parameter(systempowers.power_total, sc_type, "power_total", "fraction_power_TTC")*systempowers.power_total;
+   systempowers.power_adc           = scale_SMAD_parameter(systempowers.power_total, sc_type, "power_total", "fraction_power_ADC")*systempowers.power_total;
    systempowers.propulsion_power    = scale_SMAD_parameter(systempowers.power_total, sc_type, "power_total", "fraction_propulsion_power")*systempowers.power_total;
    
 endfunction

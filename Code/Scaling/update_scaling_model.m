@@ -53,32 +53,60 @@ end
 
 function [] =  update_generic_spacecraft_scaling_model(data)
   
-    exclusion_list =    {'name', 'launch_year', 'source', 'orbit_type','TRL','name_long', 'comment'}  % list of xml field names that are not to be correlated 
+    exclusion_list =    {'name', 'launch_year', 'source', 'orbit_type','TRL','name_long', 'comment'};  % list of xml field names that are not to be correlated 
     disp('Updating spacecraft scaling models');
-    data = data.reference_data_spracecraft{1,1}.spacecraft;
-    
-    %determine different cases of orbit types
+    % Correct field name and provide fallback if reader used alternate key
+    if isfield(data, 'reference_data_spacecraft')
+      scdata = data.reference_data_spacecraft{1,1}.spacecraft;
+    elseif isfield(data, 'reference_data_spracecraft')  % fallback for legacy typo
+      scdata = data.reference_data_spracecraft{1,1}.spacecraft;
+    else
+      error('update_generic_spacecraft_scaling_model: missing field ''reference_data_spacecraft'' in input data');
+    end
+
+    % Normalize input to a cell array of structs for uniform processing
+    if iscell(scdata)
+      rawEntries = scdata(:);
+    elseif isstruct(scdata)
+      % convert struct array to cell array of single-element structs
+      rawEntries = num2cell(scdata(:));
+    else
+      error('update_generic_spacecraft_scaling_model: unexpected spacecraft data type');
+    end
+
+    % Collect union of all field names across entries
+    allFieldNames = {};
+    for i = 1:numel(rawEntries)
+      if isempty(rawEntries{i})
+        continue;
+      end
+      fn = fieldnames(rawEntries{i});
+      allFieldNames = [allFieldNames; fn];
+    end
+    allFieldNames = unique(allFieldNames);
+
+   
+
+    % determine different cases of orbit types
     distinct_orbit_cases  = {};
     for i=1:numel(data)
-      distinct_orbit_cases{i}=data{1,i}.orbit_type;
+      if isfield(data(i), 'orbit_type')
+        distinct_orbit_cases{i}=data(i).orbit_type;
+      else
+        distinct_orbit_cases{i} = '';
+      end
     end
     distinct_orbit_cases = unique(distinct_orbit_cases);
 
-    
-    %determine number of potentially corellatable fields  
+    % determine number of potentially correlatable fields  
     all_fields = {};
-    n=0;
     for i=1:numel(data)
-        case_fields = fieldnames(data{1,i});
-        for j=1:numel(case_fields)
-          n=n+1;
-          all_fields{n} =case_fields{j,1};
-        end
-          all_fields = unique(all_fields);
-          n=numel(all_fields);
+      case_fields = fieldnames(data(i));
+      all_fields = [all_fields; case_fields];
     end
-    
-    to_correlate = {'m_total','mass_payload','power_total','power_payload'}; 
+    all_fields = unique(all_fields);
+
+    to_correlate = {'m_total','m_payload','p_total','p_payload'}; 
     for i=1: numel(distinct_orbit_cases);
       for j=1:numel(to_correlate)                                                                               
        for k=1:numel(all_fields)

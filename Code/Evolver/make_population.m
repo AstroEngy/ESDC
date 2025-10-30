@@ -69,7 +69,7 @@ for i = 1:numel(input.Satellite_parameters.input_case)
       %disp(input)
       
 
-      [population_member.subsystem_masses,population_member.subsystemass_powers] = SMAD_scalings(population_member);
+      [population_member.subsystem_masses,population_member.subsystem_powers] = SMAD_scalings(population_member);
       
       
      population_member.mission_parameters = mission_parameters(population_member);
@@ -78,9 +78,9 @@ for i = 1:numel(input.Satellite_parameters.input_case)
      population_member.mass_fractions= mass_fractions(population_member);
       
       % calculate evolution relevant parameters  
-     population_member.evolution_success=1; % if first - then 1 , else compare old to new , potentially reiterate over full lineage
-     population_member.n_success =1;
-     population_member.convergence=0;
+     population_member.evolution_success = 1; % if first - then 1 , else compare old to new , potentially reiterate over full lineage
+     population_member.n_success = 1;
+     population_member.convergence = 0;
       
      population_member.system.power = analysis_power_system(population_member, input.Satellite_parameters.input_case{i},  database_data, configuration);
      population_member.orbit = input.Satellite_parameters.input_case{i}.orbit;
@@ -88,7 +88,7 @@ for i = 1:numel(input.Satellite_parameters.input_case)
      % Assign the temporary structure to the initial population array.
       initial_population(i,j) = population_member;
       
-      disp(population_member); % Debugging only
+     % disp(population_member); % Debugging only
     end
   end
 end

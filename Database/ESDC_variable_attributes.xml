@@ -243,11 +243,11 @@
 		<dcep_unit>-</dcep_unit>
 		<dcep_description>Counter for convergence of lineage. Relevant for algorithm analysis and debugging.</dcep_description>
 	</n_success>
-	<subsystemass_powers>
+	<subsystem_powers>
 		<dcep_name>Subsystem powers</dcep_name>
 		<dcep_unit>-</dcep_unit>
 		<dcep_description>Power requirement of all spacecraft subsystems</dcep_description>
-	</subsystemass_powers>
+	</subsystem_powers>
 	<power_total>
 		<dcep_name>power total</dcep_name>
 		<dcep_unit>W</dcep_unit>

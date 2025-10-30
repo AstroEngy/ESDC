@@ -6,10 +6,10 @@ if exist("Database/ESDC_Reference_Data_Spacecrafts.xml")
   spacecraft_parameters = typeset_struct(spacecraft_parameters);
 
   %This allows a singular entry to parse as a cell array with one entry instead of a struct, which causes downstream errors.
-  if isstruct(spacecraft_parameters.reference_data_spracecraft)
-    structdata = spacecraft_parameters.reference_data_spracecraft;
+  if isstruct(spacecraft_parameters.reference_data_spacecraft)
+    structdata = spacecraft_parameters.reference_data_spacecraft;
     spacecraft_parameters=struct();
-    spacecraft_parameters.reference_data_spracecraft{1} = structdata;
+    spacecraft_parameters.reference_data_spacecraft{1} = structdata;
   end
 
 

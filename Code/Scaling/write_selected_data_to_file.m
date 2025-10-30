@@ -22,30 +22,3 @@ function [] = write_selected_data_to_file(x,y,filename, padbit)   %function to w
 end
 
 
-##function [] = make_makeshift_graph(filename_old, data, data_fit)
-##
-##  filename = strrep(filename_old, '.csv', '.png');
-##  filename = strrep(filename, 'Database/Scaling/', 'Output/');
-##
-##  title =filename(8:end-4);
-## % title = erase(filename, "Output/")
-##
-##  %extract x-axis, asssign unit
-##  %extract y-axis, assign unit
-##  %extract type, add to text box
-##
-##  fig_handle = figure('Name',title);
-##    hold on;
-##    plot(data(2,:),data(1,:), '*k');
-##    plot(data_fit(2,:),data_fit(1,:), '-k','LineWidth',1.5);
-##    saveas(fig_handle,filename,'png');
-##    hold off;
-##    close;
-##
-##
-##
-##
-##end
-
-
-

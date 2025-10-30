@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <Satellite_parameters>
 	<input_case>
-		<mass_total>500</mass_total>
+		<totalmass>500</totalmass>
 		<deltav>685.97</deltav>
-		<propulsion_power>202.9</propulsion_power>
+		<P_propulsion>202.9</P_propulsion>
 	</input_case>
 	<input_case>
-		<mass_total>155</mass_total>
+		<totalmass>155</totalmass>
 		<deltav>526.25</deltav>
-		<propulsion_power>202.9</propulsion_power>	
+		<P_propulsion>202.9</P_propulsion>	
 	</input_case>
 </Satellite_parameters>
