@@ -1,0 +1,179 @@
+# ESDC YAML Data File
+# Generated: 2025-10-30 14:16:56
+# Octave 9.1.0
+
+best_solutions:
+  case_1:
+    dcep_info:
+      dcep_name: ESDC Solution
+      dcep_description: Best solution of the ESDC tool
+      best_1:
+        mass:
+          dcep_info:
+            dcep_name: total system mass
+            dcep_unit: kg
+            dcep_description: "Input: Total system mass wet including margins"
+        dv: 500
+        p_propulsion: 4000
+        propulsion_system: FEEP
+        propellant: Indium
+        c_e: 250437
+        thrust: 0.004
+        power_thruster: 4000
+        power_jet: 500.873
+        eff_PPU: 1
+        eff_thruster: 0.12522
+        subsystem_masses:
+          dcep_info:
+            dcep_name: Subsystem masses
+            dcep_unit: "-"
+            dcep_description: Masses of all spacecraft subsystems
+          m_dry_nomargin: 998.005
+          m_margin: 481.18
+          m_dry_margin: 516.826
+          m_propellant: 1.9945
+          m_payload: 204.912
+          m_structmech: 201.342
+          m_thermal: 19.8573
+          m_power: 0
+          m_ttc: 13.7108
+          m_adc: 57.8014
+          m_propulsion: 5.2632
+          m_other: 11.9444
+          propulsion:
+            dcep_info:
+              none: no attributes defined
+            m_tank: 5.2632
+            m_thruster: 0
+        subsystem_powers:
+          dcep_info:
+            dcep_name: Subsystem powers
+            dcep_unit: "-"
+            dcep_description: Power requirement of all spacecraft subsystems
+          p_total: 4468.67
+          p_payload: 216.239
+          p_structmech: 4.4047
+          p_thermal: 34.4729
+          p_power: 40.1812
+          p_ttc: 111.021
+          p_adc: 62.3565
+          p_propulsion: 4000
+        mission_parameters:
+          dcep_info:
+            dcep_name: Mission parameters
+            dcep_unit: "-"
+            dcep_description: Mission specific parameters
+          maneuver_duration: 1.24875e+08
+        mass_fractions:
+          dcep_info:
+            dcep_name: Subsystem mass fractions
+            dcep_unit: "-"
+            dcep_description: Ratios of all subsystem masses in relation to the total system mass
+          frac_m_dry_nomargin: 0.98542
+          frac_m_margin: 0.29684
+          frac_m_dry_margin: 0.68858
+          frac_m_propellant: 0.01458
+          frac_m_payload: 0.20207
+          frac_m_structmech: 0.19886
+          frac_m_thermal: 0.019612
+          frac_m_power: 0.1589
+          frac_m_ttc: 0.013546
+          frac_m_adc: 0.057169
+          frac_m_propulsion: 0.026651
+          frac_m_other: 0.011767
+        evolution_success: 0
+        n_success: 5
+        convergence: 1
+        system:
+          dcep_info:
+            dcep_name: System solutions
+            dcep_unit: "-"
+            dcep_description: Parametric modelled system parameters are listed here
+          power:
+            dcep_info:
+              dcep_name: Power systems
+              dcep_unit: "-"
+              dcep_description: Power system parameters are listed here
+            PV:
+              dcep_info:
+                dcep_name: Photovoltaics
+                dcep_unit: "-"
+                dcep_description: Photovoltaic system parameters are listed here
+              PV_power_output_required: 6097.04
+              PV_efficiency: 0.4
+              PV_eff_area_required: 11.2012
+              heat:
+                dcep_info:
+                  dcep_name: Generated heat
+                  dcep_unit: W
+                  dcep_description: Worst case generated heat of this component
+                Q_PV_solar_irradiance: 9145.56
+            battery:
+              dcep_info:
+                dcep_name: battery system
+                dcep_unit: "-"
+                dcep_description: Parameters of the required battery system are listed here
+              E_battery_required_max: 9.84219e+06
+              P_batt_max: 4682.52
+              heat:
+                dcep_info:
+                  dcep_name: Generated heat
+                  dcep_unit: W
+                  dcep_description: Worst case generated heat of this component
+                Q_batt_max: 234.126
+              voltage: 28
+              current_max: 167.233
+              n_cycles_per_year: 5011
+              batt_efficiency: 0.95
+            converter:
+              dcep_info:
+                dcep_name: power conversion
+                dcep_unit: "-"
+                dcep_description: parameters of the power conversion system listed here
+              I_PDU_in: 217.751
+              I_PDU_out: 160.544
+              heat:
+                dcep_info:
+                  dcep_name: Generated heat
+                  dcep_unit: W
+                  dcep_description: Worst case generated heat of this component
+                Q_conv_max: 187.301
+              PDU_efficiency: 0.96
+            parameter:
+              dcep_info:
+                none: no attributes defined
+              p_a_mean: 1360.8
+              p_a_min: 1360.67
+              p_a_max: 1360.93
+              p_consumed_max: 4448.4
+              power_margin: 1.25
+        orbit:
+          dcep_info:
+            dcep_name: Orbit time
+            dcep_unit: s
+            dcep_description: Time to complete full orbit revolution
+          orbit:
+            dcep_info:
+              dcep_name: Orbit time
+              dcep_unit: s
+              dcep_description: Time to complete full orbit revolution
+            height: 7.37101e+06
+            velocity: 7353.82
+            time:
+              dcep_info:
+                dcep_name: Orbit times
+                dcep_unit: s
+                dcep_description: Orbit times are listed here
+              orbit: 6297.87
+              shadow:
+                dcep_info:
+                  dcep_name: Orbit shadow times
+                  dcep_unit: s
+                  dcep_description: Orbit shadow times are listed here
+                umbra: 2083.29
+                penumbra: 18.6075
+                total: 2101.9
+              average_light: 4205.28
+              full_light: 4195.98
+              comm_max: 1056.41
+            magneticfield: 1.4587e-05

@@ -3,7 +3,7 @@ function [mission_parameters database simulation_parameters]= input_processing()
     % Mission Parameters
     [mission_parameters] =  read_input_mission_parameter();
     
-    % Database     % THIS WILL BE OBSOLETE SOON check by hash for diff-> update DB scaling model functions automatically
+    % Database     
     [database]    =  read_reference_data();
     database.DOF  =  read_DOF();
     
@@ -129,36 +129,36 @@ function [known unknown]        = system_with_unknown_totals(known, unknown, mar
     all_known_masses = 0;
     fracs = [];
     for i=1:numel(known_parameters)
-    fracs = [fracs scale_SMAD_parameter_inverse_fraction(known.mass.(known_parameters{i}), sc_type, 'm_total',strcat('fraction_', known_parameters{i}))];
+    fracs = [fracs scale_SMAD_parameter_inverse_fraction(known.mass.(known_parameters{i}), sc_type, 'mass_total',strcat('fraction_', known_parameters{i}))];
     all_known_masses = all_known_masses +known.mass.(known_parameters{i});
     end
     
     all_known_fractions = sum(fracs);
     
     %get mass estimates 
-    unknown.mass.m_total_margin = all_known_masses/all_known_fractions;
-    unknown.mass.mass_total = unknown.mass.m_total_margin/(1-margin);
-    unknown.mass.m_margin = unknown.mass.mass_total-unknown.mass.m_total_margin;
+    unknown.mass.mass_total_margin = all_known_masses/all_known_fractions;
+    unknown.mass.mass_total = unknown.mass.mass_total_margin/(1-margin);
+    unknown.mass.m_margin = unknown.mass.mass_total-unknown.mass.mass_total_margin;
     
     %get all system estimates
     for i=1:numel(unknown_parameters)
       if not(strcmp(unknown_parameters{i},'mass_total'))
-        unknown.mass.(unknown_parameters{i}) = scale_SMAD_parameter(unknown.mass.m_total_margin, sc_type, 'm_total',strcat('fraction_',unknown_parameters{i}))*unknown.mass.m_total_margin;
+        unknown.mass.(unknown_parameters{i}) = scale_SMAD_parameter(unknown.mass.mass_total_margin, sc_type, 'mass_total',strcat('fraction_',unknown_parameters{i}))*unknown.mass.mass_total_margin;
       endif
     endfor
     
     unknown_parameters = fieldnames(unknown.power);
     %get all system powerset
-    power_tot_relevant = scale_SMAD_parameter(unknown.mass.m_total_margin, sc_type, 'm_total','power_total');
+    power_tot_relevant = scale_SMAD_parameter(unknown.mass.mass_total_margin, sc_type, 'mass_total','power_total');
 
     for i=1:numel(fieldnames(unknown.power))
         if not(strcmp(unknown_parameters{i},'power_total'))
-        unknown.power.(unknown_parameters{i}) = scale_SMAD_parameter(unknown.mass.m_total_margin, sc_type, 'm_total',strcat('fraction_',unknown_parameters{i}))*power_tot_relevant;
+        unknown.power.(unknown_parameters{i}) = scale_SMAD_parameter(unknown.mass.mass_total_margin, sc_type, 'mass_total',strcat('fraction_',unknown_parameters{i}))*power_tot_relevant;
         end
     endfor
     
     %restablish sum of total power
-    new_power_tot = sumass_powers(known.power, unknown.power);
+    new_power_tot = sum_powers(known.power, unknown.power);
     
      %update total power
     if isfield(unknown.power, 'power_total')
@@ -174,9 +174,9 @@ function [known unknown]        = system_with_unknown_totals(known, unknown, mar
         known.power.power_total_margin = new_power_tot;
       end
     end
-    unknown.mass.mass_power = scale_SMAD_parameter(new_power_tot, sc_type, 'power_total','fraction_mass_power')*unknown.mass.m_total_margin;
+    unknown.mass.mass_power = scale_SMAD_parameter(new_power_tot, sc_type, 'power_total','fraction_mass_power')*unknown.mass.mass_total_margin;
     
-    [unknown.mass.mass_total unknown.mass.m_margin unknown.mass.m_total_margin] = mass_validate(known.mass,unknown.mass);
+    [unknown.mass.mass_total unknown.mass.m_margin unknown.mass.mass_total_margin] = mass_validate(known.mass,unknown.mass);
   else
     % go from powers to total power to total mass to masses  
     
@@ -201,7 +201,7 @@ function [known unknown]        = system_with_unknown_totals(known, unknown, mar
         end   
     endfor
     
-    new_power_tot = sumass_powers(known.power, unknown.power);
+    new_power_tot = sum_powers(known.power, unknown.power);
     
     if new_power_tot >  unknown.power.power_total
         disp('')
@@ -216,15 +216,15 @@ function [known unknown]        = system_with_unknown_totals(known, unknown, mar
       end
     
     %do mass total 
-      unknown.mass.mass_total= scale_SMAD_parameter(unknown.power.power_total,sc_type,'power_total', 'm_total');
+      unknown.mass.mass_total= scale_SMAD_parameter(unknown.power.power_total,sc_type,'power_total', 'mass_total');
       unknown_parameters = fieldnames(unknown.mass);
       unknown.mass.m_margin = unknown.mass.mass_total*margin;
-      unknown.mass.m_total_margin = unknown.mass.mass_total-unknown.mass.m_margin;
+      unknown.mass.mass_total_margin = unknown.mass.mass_total-unknown.mass.m_margin;
       
       
      for i=1:numel(unknown_parameters)
       if not(strcmp(unknown_parameters{i},'mass_total'))
-       unknown.mass.(unknown_parameters{i}) = scale_SMAD_parameter(unknown.mass.m_total_margin, sc_type, 'm_total',strcat('fraction_',unknown_parameters{i}))*unknown.mass.m_total_margin;
+       unknown.mass.(unknown_parameters{i}) = scale_SMAD_parameter(unknown.mass.mass_total_margin, sc_type, 'mass_total',strcat('fraction_',unknown_parameters{i}))*unknown.mass.mass_total_margin;
       endif
      endfor
      
@@ -234,9 +234,9 @@ function [known unknown]        = system_with_unknown_totals(known, unknown, mar
       mass_new = mass_new +unknown.mass.(unknown_parameters{i});
       endif
     endfor
-    unknown.mass.m_total_margin = mass_new;
-    unknown.mass.mass_total = unknown.mass.m_total_margin*(1+margin);
-    unknown.mass.m_margin = unknown.mass.mass_total-unknown.mass.m_total_margin;
+    unknown.mass.mass_total_margin = mass_new;
+    unknown.mass.mass_total = unknown.mass.mass_total_margin*(1+margin);
+    unknown.mass.m_margin = unknown.mass.mass_total-unknown.mass.mass_total_margin;
     
 
   end
@@ -272,14 +272,14 @@ function [known unknown]        = system_with_known_totalpower(known, unknown, m
     unknown_parameters = fieldnames(unknown.mass);
     
     % get unknown total mass first % inverse search here from correlation power total to total mass 
-    unknown.mass.mass_total =  scale_SMAD_parameter(known.power.power_total, sc_type, 'power_total','m_total');  % redefine as unknown here
+    unknown.mass.mass_total =  scale_SMAD_parameter(known.power.power_total, sc_type, 'power_total','mass_total');  % redefine as unknown here
     unknown.mass.m_margin = unknown.mass.mass_total*margin;
-    unknown.mass.m_total_margin = unknown.mass.mass_total- unknown.mass.m_margin;
+    unknown.mass.mass_total_margin = unknown.mass.mass_total- unknown.mass.m_margin;
     
     for i=1:numel(unknown_parameters)
       %known.mass.mass_total
       if not(strcmp(fieldnames(unknown.mass){i},'mass_total'))
-        unknown.mass.(unknown_parameters{i}) = scale_SMAD_parameter(unknown.mass.m_total_margin, sc_type, 'm_total',strcat('fraction_',unknown_parameters{i}))*unknown.mass.m_total_margin;
+        unknown.mass.(unknown_parameters{i}) = scale_SMAD_parameter(unknown.mass.mass_total_margin, sc_type, 'mass_total',strcat('fraction_',unknown_parameters{i}))*unknown.mass.mass_total_margin;
       end
     endfor
     
@@ -288,16 +288,16 @@ function [known unknown]        = system_with_known_totalpower(known, unknown, m
       unknown_parameters = fieldnames(unknown.power);
       
       % for consistence in power estimates, do not apply a given power total
-      power_tot_relevant = scale_SMAD_parameter(unknown.mass.m_total_margin, sc_type, 'm_total','power_total');
+      power_tot_relevant = scale_SMAD_parameter(unknown.mass.mass_total_margin, sc_type, 'mass_total','power_total');
       
       for i=1:numel(fieldnames(unknown.power))
           if not(strcmp(unknown_parameters{i},'power_total'))
-          unknown.power.(unknown_parameters{i}) = scale_SMAD_parameter(unknown.mass.m_total_margin, sc_type, 'm_total',strcat('fraction_',unknown_parameters{i}))*power_tot_relevant;
+          unknown.power.(unknown_parameters{i}) = scale_SMAD_parameter(unknown.mass.mass_total_margin, sc_type, 'mass_total',strcat('fraction_',unknown_parameters{i}))*power_tot_relevant;
           end
       endfor
 
       %restablish sum of total power
-      new_power_tot = sumass_powers(known.power, unknown.power);
+      new_power_tot = sum_powers(known.power, unknown.power);
       
        %update total power
       if isfield(unknown.power, 'power_total')
@@ -315,11 +315,11 @@ function [known unknown]        = system_with_known_totalpower(known, unknown, m
       end
     
     %update mass of power system
-    unknown.mass.mass_power = scale_SMAD_parameter(new_power_tot, sc_type, 'power_total','fraction_mass_power')*unknown.mass.m_total_margin;
+    unknown.mass.mass_power = scale_SMAD_parameter(new_power_tot, sc_type, 'power_total','fraction_mass_power')*unknown.mass.mass_total_margin;
     end
   
     % total mass check
-    [known.mass.mass_total known.mass.m_margin known.mass.m_total_margin] = mass_validate(known.mass,unknown.mass);
+    [known.mass.mass_total known.mass.m_margin known.mass.mass_total_margin] = mass_validate(known.mass,unknown.mass);
 endfunction
 
 function [known unknown]        = system_with_known_mass_total(known, unknown, margin, sc_type)                % when only total mass is known, this. % missing case with total power?
@@ -329,11 +329,11 @@ function [known unknown]        = system_with_known_mass_total(known, unknown, m
       unknown_parameters = fieldnames(unknown.mass);
       
       known.mass.m_margin = known.mass.mass_total*margin;
-      known.mass.m_total_margin = known.mass.mass_total- known.mass.m_margin;
+      known.mass.mass_total_margin = known.mass.mass_total- known.mass.m_margin;
       
       for i=1:numel(fieldnames(unknown.mass))
         %known.mass.mass_total
-        unknown.mass.(unknown_parameters{i}) = scale_SMAD_parameter(known.mass.m_total_margin, sc_type, 'm_total',strcat('fraction_',unknown_parameters{i}))*known.mass.m_total_margin;
+        unknown.mass.(unknown_parameters{i}) = scale_SMAD_parameter(known.mass.mass_total_margin, sc_type, 'mass_total',strcat('fraction_',unknown_parameters{i}))*known.mass.mass_total_margin;
       endfor
     end 
     
@@ -343,20 +343,20 @@ function [known unknown]        = system_with_known_mass_total(known, unknown, m
       unknown_parameters = fieldnames(unknown.power);
       
       % for consistence in power estimates, do not apply a given power total
-      power_tot_relevant = scale_SMAD_parameter(known.mass.m_total_margin, sc_type, 'm_total','power_total');
+      power_tot_relevant = scale_SMAD_parameter(known.mass.mass_total_margin, sc_type, 'mass_total','power_total');
       
       for i=1:numel(fieldnames(unknown.power))
           if not(strcmp(unknown_parameters{i},'power_total'))
-            unknown.power.(unknown_parameters{i}) = scale_SMAD_parameter(known.mass.m_total_margin, sc_type, 'm_total',strcat('fraction_',unknown_parameters{i}))*power_tot_relevant;
+            unknown.power.(unknown_parameters{i}) = scale_SMAD_parameter(known.mass.mass_total_margin, sc_type, 'mass_total',strcat('fraction_',unknown_parameters{i}))*power_tot_relevant;
           end
       endfor
 
       %restablish sum of total power
       if isfield(known,'power')
-        new_power_tot = sumass_powers(known.power, unknown.power);
+        new_power_tot = sum_powers(known.power, unknown.power);
       else
         standin.variable.name = 0
-        new_power_tot = sumass_powers(standin.variable, unknown.power);
+        new_power_tot = sum_powers(standin.variable, unknown.power);
       endif
 
     
@@ -381,16 +381,16 @@ function [known unknown]        = system_with_known_mass_total(known, unknown, m
     end
     % total mass check
     if isfield(unknown,'mass')
-      [known.mass.mass_total known.mass.m_margin known.mass.m_total_margin] = mass_validate(known.mass, unknown.mass);
+      [known.mass.mass_total known.mass.m_margin known.mass.mass_total_margin] = mass_validate(known.mass, unknown.mass);
     end
 endfunction
 
-function [p_new]                = sumass_powers(p_known, p_unknown)                                              % updates: the total system power input fields of known and unknown.power
+function [p_new]   = sum_powers(p_known, p_unknown)                                              % updates: the total system power input fields of known and unknown.power
   
   % case handling if known or unknown power total
-    disp(p_known)
-    disp(p_unknown)
-  p_new = 0;
+    %disp(p_known);
+    %disp(p_unknown);
+    p_new = 0;
     %add derived system powers
     parameters= fieldnames(p_known);
     for i=1:numel(parameters)
@@ -409,18 +409,13 @@ function [p_new]                = sumass_powers(p_known, p_unknown)             
     
 endfunction
 
-function [mass_total m_margin m_total_margin] = mass_validate(m_known,m_unknown);                              % checks the applicable masses of the system, recalculates the available margin
+function [mass_total m_margin mass_total_margin] = mass_validate(m_known,m_unknown);                              % checks the applicable masses of the system, recalculates the available margin
   
-  
-  
-  
-  
-
   m_new = 0;
   % add derived system masses
   parameters= fieldnames(m_unknown);
   for i=1:numel(parameters)
-    if not(strcmp(parameters{i},'mass_total') || strcmp(parameters{i},'m_margin') || strcmp(parameters{i},'m_total_margin'))
+    if not(strcmp(parameters{i},'mass_total') || strcmp(parameters{i},'m_margin') || strcmp(parameters{i},'mass_total_margin'))
       m_new=m_new +m_unknown.(parameters{i});
     endif
   endfor
@@ -428,18 +423,18 @@ function [mass_total m_margin m_total_margin] = mass_validate(m_known,m_unknown)
   % add known system masses
   parameters= fieldnames(m_known);
   for i=1:numel(parameters)
-    if not(strcmp(parameters{i},'mass_total') || strcmp(parameters{i},'m_margin') || strcmp(parameters{i},'m_total_margin'))
+    if not(strcmp(parameters{i},'mass_total') || strcmp(parameters{i},'m_margin') || strcmp(parameters{i},'mass_total_margin'))
       m_new=m_new +m_known.(parameters{i});
     endif
   endfor
 
   if isfield(m_unknown, 'mass_total')
       m_tot         = m_unknown.mass_total;
-      m_tot_margin  = m_unknown.m_total_margin;
+      m_tot_margin  = m_unknown.mass_total_margin;
       m_margin_old  = m_unknown.m_margin;
   elseif isfield(m_known, 'mass_total')
       m_tot         = m_known.mass_total;
-      m_tot_margin  = m_known.m_total_margin;
+      m_tot_margin  = m_known.mass_total_margin;
       m_margin_old  = m_known.m_margin;
   end
   % compare sum to previous margin sum
@@ -448,7 +443,7 @@ function [mass_total m_margin m_total_margin] = mass_validate(m_known,m_unknown)
   
   %new residual margin mass 
   m_margin = m_margin_old + diff_m;
-  m_total_margin = m_tot - m_margin; 
+  mass_total_margin = m_tot - m_margin; 
 
   if (m_new > m_tot || m_margin < 0)
     disp('Warning: Total mass limit exceeded!');

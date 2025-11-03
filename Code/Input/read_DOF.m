@@ -1,15 +1,13 @@
 function [DOF] = read_DOF()
-% reads file the currently defines degrees of freedoms in different implemented systems
-
-if exist("Database/model_DOF.xml")
-  disp('Reading Degress of Freedom Input File');
-  DOF_parameters = xml2struct('Database/model_DOF.xml');
-  DOF = typeset_struct(DOF_parameters);
-  disp('Success');
-  disp(' ');
-  fflush(stdout);
-else
-  disp('No Degress of Freedom Input File');
-end
-
+    disp('Reading Degrees of Freedom Input File');
+    
+    try
+        DOF = read_file_auto('Database/model_DOF');
+        disp('Success');
+        disp(' ');
+        fflush(stdout);
+    catch err
+        disp('No Degrees of Freedom Input File');
+        DOF = struct();
+    end
 end

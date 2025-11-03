@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>  
+<reference_data_spacecraft>
+	<spacecraft>
+		<name>AIM</name>
+		<name_long>Aeronomy of Ice in the Mesosphere</name_long>
+		<launch_year>2007</launch_year>
+		<source>Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff </source>
+		<orbit_type>No Propulsion</orbit_type>
+		<mass_total>200</mass_total>
+		<power_total>216</power_total>
+		<mass_payload>64</mass_payload>
+		<fraction_mass_payload>.32</fraction_mass_payload>
+		<fraction_mass_structmech>.27</fraction_mass_structmech>  
+		<fraction_mass_thermal>.02</fraction_mass_thermal>
+		<fraction_mass_power>.22</fraction_mass_power>   
+		<fraction_mass_TTC>.02</fraction_mass_TTC>  
+		<fraction_mass_OBC>.05</fraction_mass_OBC>
+		<fraction_mass_ADC>.1</fraction_mass_ADC>
+		<fraction_mass_propulsion>0</fraction_mass_propulsion>
+		<fraction_mass_other>0</fraction_mass_other>
+		<fraction_power_payload>.38</fraction_power_payload>
+		<size_x>1.4</size_x>
+		<size_y>1.4</size_y>
+		<size_h>1.1</size_h>
+		<TRL>8</TRL>
+	</spacecraft>
+	<spacecraft>
+		<name>COBE</name>
+		<name_long>Cosmic Background Explorer</name_long>
+		<launch_year>1989</launch_year>
+		<source>Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff </source>
+		<orbit_type>No Propulsion</orbit_type>
+		<mass_total>2245</mass_total>
+		<mass_payload>1147</mass_payload>
+		<fraction_mass_payload>.51</fraction_mass_payload>
+		<fraction_mass_structmech>.15</fraction_mass_structmech> 
+		<fraction_mass_thermal>.02</fraction_mass_thermal>
+		<fraction_mass_power>.2</fraction_mass_power>
+		<fraction_mass_TTC>.02</fraction_mass_TTC> 
+		<fraction_mass_OBC>.05 </fraction_mass_OBC>
+		<fraction_mass_ADC>.1 </fraction_mass_ADC>
+		<fraction_mass_propulsion>0</fraction_mass_propulsion>
+		<fraction_mass_other>0</fraction_mass_other>
+		<size_x>5.49</size_x>
+		<size_y>5.49</size_y>
+		<size_h>2.44</size_h>
+		<TRL>8</TRL>
+	</spacecraft>
+	<spacecraft>
+		<name>FAST</name>
+		<name_long>Fast Auroral SnapshoT Explorer</name_long>	
+		<launch_year>1996</launch_year>
+		<source>Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff </source>
+		<orbit_type>No Propulsion</orbit_type>
+		<mass_total>191</mass_total>
+		<power_total>52</power_total>
+		<mass_payload>65</mass_payload>
+		<fraction_mass_payload>.34</fraction_mass_payload>
+		<fraction_mass_structmech>.14</fraction_mass_structmech> 
+		<fraction_mass_thermal>.02</fraction_mass_thermal>
+		<fraction_mass_power>.31</fraction_mass_power> 
+		<fraction_mass_TTC>.03</fraction_mass_TTC> 
+		<fraction_mass_OBC>.08</fraction_mass_OBC>
+		<fraction_mass_ADC>.05</fraction_mass_ADC>
+		<fraction_mass_propulsion>0</fraction_mass_propulsion>
+		<fraction_mass_other>.04</fraction_mass_other>
+		<fraction_power_payload>.37</fraction_power_payload>
+		<fraction_power_structmech>.0</fraction_power_structmech>  
+		<fraction_power_thermal>.12</fraction_power_thermal>
+		<fraction_power_power>.11</fraction_power_power>
+		<fraction_power_TTC>.22</fraction_power_TTC>
+		<fraction_power_OBC>.11</fraction_power_OBC>
+		<fraction_power_ADC>.8</fraction_power_ADC>
+		<fraction_propulsion_power>0</fraction_propulsion_power>
+		<size_x>0.93</size_x>
+		<size_y>0.93</size_y>
+		<size_h>1.02</size_h>
+		<TRL>8</TRL>
+	</spacecraft>
+	<spacecraft>
+		<name>Aqua</name>
+		<name_long>EOS PM-1</name_long>
+		<launch_year>2002</launch_year>
+		<source>Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff </source>
+		<orbit_type>Low Earth</orbit_type>
+		<mass_total>2941</mass_total>
+		<mass_total_dry>2799</mass_total_dry>
+		<power_total>1609</power_total>
+		<mass_payload>1022</mass_payload>
+		<fraction_mass_payload>.37</fraction_mass_payload>
+		<fraction_mass_structmech>.26</fraction_mass_structmech> 
+		<fraction_mass_thermal>.02</fraction_mass_thermal>
+		<fraction_mass_power>-.27</fraction_mass_power> 
+		<fraction_mass_TTC>.01</fraction_mass_TTC> 
+		<fraction_mass_OBC>.02</fraction_mass_OBC>
+		<fraction_mass_ADC>.04</fraction_mass_ADC>
+		<fraction_mass_propulsion>.02</fraction_mass_propulsion>
+		<fraction_mass_other>0</fraction_mass_other>
+		<fraction_power_payload>.61</fraction_power_payload>
+		<fraction_power_structmech>0</fraction_power_structmech>  
+		<fraction_power_thermal>.03</fraction_power_thermal>
+		<fraction_power_power>.03</fraction_power_power>
+		<fraction_power_OBC>.2</fraction_power_OBC>
+		<fraction_power_ADC>.1</fraction_power_ADC>
+		<fraction_propulsion_power>.01</fraction_propulsion_power>
+		<size_x>4.81</size_x>
+		<size_y>16.7</size_y>
+		<size_h>8.04</size_h>
+		<TRL>8</TRL>
+	</spacecraft>
+	<spacecraft>
+		<name>Astro-E</name>
+		<name_long> Suzaku (formerly ASTRO-EII) </name_long>
+		<launch_year>2000</launch_year>
+		<source>Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff </source>
+		<orbit_type>Low Earth</orbit_type>
+		<mass_total>1678</mass_total>
+		<mass_total_dry>1578</mass_total_dry>
+		<power_total>858</power_total>
+		<mass_payload>977</mass_payload>
+		<fraction_mass_payload>.62</fraction_mass_payload>
+		<fraction_mass_structmech>.11</fraction_mass_structmech> 
+		<fraction_mass_thermal>.04</fraction_mass_thermal>
+		<fraction_mass_power>.11</fraction_mass_power> 
+		<fraction_mass_TTC>.01</fraction_mass_TTC> 
+		<fraction_mass_OBC>.02</fraction_mass_OBC>
+		<fraction_mass_ADC>.06</fraction_mass_ADC>
+		<fraction_mass_propulsion>.03</fraction_mass_propulsion>
+		<fraction_mass_other>0</fraction_mass_other>
+		<fraction_power_payload>.58</fraction_power_payload>
+		<fraction_power_thermal>.14</fraction_power_thermal>
+		<size_x>2.</size_x>
+		<size_y>2.</size_y>
+		<size_h>5.</size_h>
+		<TRL>8</TRL>
+	</spacecraft>
+</reference_data_spacecraft>

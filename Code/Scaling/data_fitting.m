@@ -1,4 +1,5 @@
-function [data_fit] = data_fitting(data)
+function [data_fit] = data_fitting(data) % THIS WILL BE REPLACED BY THE NEW SCALING LAW FITTING PROCEDURE
+
   
       threshold = 0.95;  % max 1-> perfect fit %TODO Simulation parameter
 

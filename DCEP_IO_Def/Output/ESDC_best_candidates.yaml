@@ -1,0 +1,93 @@
+# ESDC YAML Data File
+# Generated: 2025-10-30 14:16:56
+# Octave 9.1.0
+
+best_solutions:
+  case_1:
+    best_1:
+      mass: 155
+      dv: 685.97
+      power_propulsion: 202.9
+      propulsion_system: arcjet
+      propellant: NH3
+      c_e: 7848
+      thrust: 0.014369
+      power_thruster: 186.141
+      power_jet: 56.3855
+      eff_PPU: 0.9174
+      eff_thruster: 0.30292
+      subsystem_masses:
+        m_dry_nomargin: 142.027
+        m_margin: 46.1817
+        m_dry_margin: 99.419
+        m_propellant: 12.9729
+        m_payload: 30.8199
+        m_structure: 26.8431
+        m_thermal: 1.9884
+        m_power: 20.878
+        m_ttc: 1.9884
+        m_adc: 5.9651
+        m_propulsion: 4.38
+        m_misc: 2.9826
+      mission_parameters:
+        maneuver_duration: 7.08527e+06
+      mass_fractions:
+        frac_m_dry_nomargin: 0.9163
+        frac_m_margin: 0.29795
+        frac_m_dry_margin: 0.64141
+        frac_m_propellant: 0.083696
+        frac_m_payload: 0.19884
+        frac_m_structure: 0.17318
+        frac_m_thermal: 0.012828
+        frac_m_power: 0.1347
+        frac_m_ttc: 0.012828
+        frac_m_adc: 0.038485
+        frac_m_propulsion: 0.028258
+        frac_m_misc: 0.019242
+      evolution_success: 0
+      n_success: 11
+      convergence: 1
+  case_2:
+    best_1:
+      mass: 155
+      dv: 526.25
+      power_propulsion: 202.9
+      propulsion_system: arcjet
+      propellant: NH3
+      c_e: 7848
+      thrust: 0.014369
+      power_thruster: 186.668
+      power_jet: 56.3855
+      eff_PPU: 0.9174
+      eff_thruster: 0.30292
+      subsystem_masses:
+        m_dry_nomargin: 144.947
+        m_margin: 47.4564
+        m_dry_margin: 101.463
+        m_propellant: 10.0528
+        m_payload: 31.4536
+        m_structure: 27.395
+        m_thermal: 2.0293
+        m_power: 21.3072
+        m_ttc: 2.0293
+        m_adc: 6.0878
+        m_propulsion: 4.1448
+        m_misc: 3.0439
+      mission_parameters:
+        maneuver_duration: 5.49043e+06
+      mass_fractions:
+        frac_m_dry_nomargin: 0.93514
+        frac_m_margin: 0.30617
+        frac_m_dry_margin: 0.6546
+        frac_m_propellant: 0.064857
+        frac_m_payload: 0.20293
+        frac_m_structure: 0.17674
+        frac_m_thermal: 0.013092
+        frac_m_power: 0.13747
+        frac_m_ttc: 0.013092
+        frac_m_adc: 0.039276
+        frac_m_propulsion: 0.02674
+        frac_m_misc: 0.019638
+      evolution_success: 0
+      n_success: 1
+      convergence: 1

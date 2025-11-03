@@ -1,0 +1,39 @@
+# ESDC YAML Data File
+# Generated: 2025-10-30 14:16:57
+# Octave 9.1.0
+
+HET:
+  ppu:
+    - type: HET
+      name: MK1
+      company: Thales
+      power: 1500
+      mass: 10.9
+      efficiency: 0.916
+      source: " todo - La Rosa"
+    - type: HET
+      name: MK2
+      company: Thales
+      power: 2500
+      efficiency: 0.95
+      source: " todo - La Rosa"
+    - type: HET
+      name: MK3
+      company: Thales
+      power: 5000
+      mass: 18.6
+      efficiency: 0.95
+      source: " todo - La Rosa"
+    - type: HET
+      name: ELEKTRO
+      company: Airbus
+      power: 5000
+      mass: 21
+      efficiency: 0.95
+      source: " todo - La Rosa"
+    - type: HET
+      name: SITAEL 5kW
+      company: SITAEL
+      power: 5000
+      mass: 13
+      source: " todo - La Rosa"

@@ -1,0 +1,1487 @@
+# ESDC YAML Data File
+# Generated: 2025-10-30 14:16:58
+# Octave 9.1.0
+
+reference_data_spacecraft:
+  spacecraft:
+    - name: AIM
+      name_long: Aeronomy of Ice in the Mesosphere
+      launch_year: 2007
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: No Propulsion
+      mass_total: 200
+      power_total: 216
+      mass_payload: 64
+      fraction_mass_payload: 0.32
+      fraction_mass_structmech: 0.27
+      fraction_mass_thermal: 0.02
+      fraction_mass_power: 0.22
+      fraction_mass_TTC: 0.02
+      fraction_mass_OBC: 0.05
+      fraction_mass_ADC: 0.1
+      fraction_mass_propulsion: 0
+      fraction_mass_other: 0
+      fraction_power_payload: 0.38
+      size_x: 1.4
+      size_y: 1.4
+      size_h: 1.1
+      TRL: 8
+    - name: COBE
+      name_long: Cosmic Background Explorer
+      launch_year: 1989
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: No Propulsion
+      mass_total: 2245
+      mass_payload: 1147
+      fraction_mass_payload: 0.51
+      fraction_mass_structmech: 0.15
+      fraction_mass_thermal: 0.02
+      fraction_mass_power: 0.2
+      fraction_mass_TTC: 0.02
+      fraction_mass_OBC: 0.05
+      fraction_mass_ADC: 0.1
+      fraction_mass_propulsion: 0
+      fraction_mass_other: 0
+      size_x: 5.49
+      size_y: 5.49
+      size_h: 2.44
+      TRL: 8
+    - name: FAST
+      name_long: Fast Auroral SnapshoT Explorer
+      launch_year: 1996
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: No Propulsion
+      mass_total: 191
+      power_total: 52
+      mass_payload: 65
+      fraction_mass_payload: 0.34
+      fraction_mass_structmech: 0.14
+      fraction_mass_thermal: 0.02
+      fraction_mass_power: 0.31
+      fraction_mass_TTC: 0.03
+      fraction_mass_OBC: 0.08
+      fraction_mass_ADC: 0.05
+      fraction_mass_propulsion: 0
+      fraction_mass_other: 0.04
+      fraction_power_payload: 0.37
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.12
+      fraction_power_power: 0.11
+      fraction_power_TTC: 0.22
+      fraction_power_OBC: 0.11
+      fraction_power_ADC: 0.8
+      fraction_propulsion_power: 0
+      size_x: 0.93
+      size_y: 0.93
+      size_h: 1.02
+      TRL: 8
+    - name: FUSE
+      name_long: Far Ultraviolet Spectroscopic Explorer
+      launch_year: 1999
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: No Propulsion
+      mass_total: 1332
+      power_total: 520
+      mass_payload: 782
+      fraction_mass_payload: 0.59
+      fraction_mass_structmech: 0.19
+      fraction_mass_thermal: 0.01
+      fraction_mass_power: 0.13
+      fraction_mass_TTC: 0.01
+      fraction_mass_OBC: 0.04
+      fraction_mass_ADC: 0.04
+      fraction_mass_propulsion: 0
+      fraction_mass_other: 0
+      fraction_power_payload: 0.58
+      size_x: 1.9
+      size_y: 1.9
+      size_h: 5.3
+      TRL: 8
+    - name: GALEX
+      name_long: Galaxy Evolution Explorer
+      launch_year: 2003
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: No Propulsion
+      mass_total: 287
+      power_total: 362
+      mass_payload: 133
+      fraction_mass_payload: 0.46
+      fraction_mass_structmech: 0.14
+      fraction_mass_thermal: 0.01
+      fraction_mass_power: 0.17
+      fraction_mass_TTC: 0.02
+      fraction_mass_OBC: 0.07
+      fraction_mass_ADC: 0.04
+      fraction_mass_propulsion: 0
+      fraction_mass_other: 0
+      fraction_power_payload: 0.36
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.04
+      fraction_power_power: 0.07
+      fraction_power_TTC: 0.21
+      fraction_power_OBC: 0.16
+      fraction_power_ADC: 0.16
+      fraction_propulsion_power: 0
+      size_x: 1
+      size_y: 1
+      size_h: 2.5
+      TRL: 8
+    - name: RHESSI
+      name_long: Ramaty High Energy Solar Spectroscopic Imager
+      launch_year: 2001
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: No Propulsion
+      mass_total: 284
+      power_total: 252
+      mass_payload: 131
+      fraction_mass_payload: 0.46
+      fraction_mass_structmech: 0.24
+      fraction_mass_thermal: 0.01
+      fraction_mass_power: 0.17
+      fraction_mass_TTC: 0.01
+      fraction_mass_OBC: 0.05
+      fraction_mass_ADC: 0.02
+      fraction_mass_propulsion: 0
+      fraction_mass_other: 0
+      fraction_power_payload: 0.69
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.06
+      fraction_power_power: 0.1
+      fraction_power_TTC: 0.04
+      fraction_power_OBC: 0.1
+      fraction_power_ADC: 0.02
+      fraction_propulsion_power: 0
+      size_x: 2.16
+      size_y: 2.16
+      size_h: 5.76
+      TRL: 8
+    - name: HST
+      name_long: Hubble Space Telescope
+      launch_year: 1990
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: No Propulsion
+      mass_total: 11866
+      mass_payload: 5610
+      fraction_mass_payload: 0.47
+      fraction_mass_structmech: 0.25
+      fraction_mass_thermal: 0.02
+      fraction_mass_power: 0.09
+      fraction_mass_TTC: 0.01
+      fraction_mass_OBC: 0.01
+      fraction_mass_ADC: 0.04
+      fraction_mass_propulsion: 0
+      fraction_mass_other: 0.1
+      size_x: 4.2
+      size_y: 4.2
+      size_h: 13.2
+      TRL: 8
+    - name: IMAGE
+      name_long: "Imager for Magnetopause-to-Aurora Global Exploration"
+      launch_year: 2000
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: No Propulsion
+      mass_total: 492
+      power_total: 238
+      mass_payload: 178
+      fraction_mass_payload: 0.36
+      fraction_mass_structmech: 0.28
+      fraction_mass_thermal: 0.05
+      fraction_mass_power: 0.17
+      fraction_mass_TTC: 0.02
+      fraction_mass_OBC: 0.02
+      fraction_mass_ADC: 0.05
+      fraction_mass_propulsion: 0
+      fraction_mass_other: 0.04
+      fraction_power_payload: 0.6
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.04
+      fraction_power_power: 0.08
+      fraction_power_TTC: 0.16
+      fraction_power_OBC: 0.05
+      fraction_power_ADC: 0.06
+      fraction_propulsion_power: 0
+      size_x: 2.25
+      size_y: 2.25
+      size_h: 1.52
+      TRL: 8
+    - name: RXTE
+      name_long: "Rossi X-ray Timing Explorer"
+      launch_year: 1995
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: No Propulsion
+      mass_total: 3040
+      power_total:  
+      mass_payload: 995
+      fraction_mass_payload: 0.33
+      fraction_mass_structmech: 0.38
+      fraction_mass_thermal: 0.02
+      fraction_mass_power: 0.2
+      fraction_mass_TTC: 0.01
+      fraction_mass_OBC: 0.02
+      fraction_mass_ADC: 0.05
+      fraction_mass_propulsion: 0
+      size_x: 1.8
+      size_y: 1.8
+      size_h: 5.4
+      TRL: 8
+    - name: SAMPEX
+      name_long: Solar Anomalous and Magnetospheric Particle Explorer
+      launch_year: 1992
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: No Propulsion
+      mass_total: 162
+      power_total: 73
+      mass_payload: 53
+      fraction_mass_payload: 0.32
+      fraction_mass_structmech: 0.16
+      fraction_mass_thermal: 0.03
+      fraction_mass_power: 0.25
+      fraction_mass_TTC: 0.03
+      fraction_mass_OBC: 0.08
+      fraction_mass_ADC: 0.06
+      fraction_mass_propulsion: 0
+      fraction_mass_other: 0.07
+      fraction_power_payload: 0.29
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.04
+      fraction_power_power: 0.13
+      fraction_power_TTC: 0.1
+      fraction_power_OBC: 0.28
+      fraction_power_ADC: 0.15
+      fraction_propulsion_power: 0
+      size_x: 0.9
+      size_y: 0.9
+      size_h: 1.5
+      TRL: 8
+    - name: SWAS
+      name_long: Submillimeter Wave Astronomy Satellite
+      launch_year: 1998
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: No Propulsion
+      mass_total: 293
+      power_total: 182
+      mass_payload: 95
+      fraction_mass_payload: 0.33
+      fraction_mass_structmech: 0.18
+      fraction_mass_thermal: 0.01
+      fraction_mass_power: 0.25
+      fraction_mass_TTC: 0.02
+      fraction_mass_OBC: 0.06
+      fraction_mass_ADC: 0.12
+      fraction_mass_propulsion: 0
+      fraction_mass_other: 0.04
+      fraction_power_payload: 0.33
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.05
+      fraction_power_power: 0.08
+      fraction_power_TTC: 0.06
+      fraction_power_OBC: 0.14
+      fraction_power_ADC: 0.34
+      fraction_propulsion_power: 0
+      size_x: 1.02
+      size_y: 1.02
+      size_h: 1.63
+      TRL: 8
+    - name: SWIFT
+      name_long: Neil Gehrels Swift Observatory
+      launch_year: 2004
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: No Propulsion
+      mass_total: 1465
+      power_total: 966
+      mass_payload: 854
+      fraction_mass_payload: 0.58
+      fraction_mass_structmech: 0.16
+      fraction_mass_thermal: 0.01
+      fraction_mass_power: 0.15
+      fraction_mass_TTC: 0.01
+      fraction_mass_OBC: 0.02
+      fraction_mass_ADC: 0.07
+      fraction_mass_propulsion: 0
+      fraction_mass_other: 0
+      fraction_power_payload: 0.16
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.03
+      fraction_power_power: 0.13
+      fraction_power_TTC: 0.02
+      fraction_power_OBC: 0.06
+      fraction_power_ADC: 0.14
+      fraction_propulsion_power: 0
+      size_x: 5.4
+      size_y: 5.4
+      size_h: 5.6
+      TRL: 8
+    - name: TERRIERS
+      name_long: Topographic Experiment using Radiative Recombinative Ionospheric EUV and Radio Sources
+      launch_year: 1999
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: No Propulsion
+      mass_total: 125
+      mass_payload: 50
+      fraction_mass_payload: 0.4
+      fraction_mass_structmech: 0.06
+      fraction_mass_thermal: 0
+      fraction_mass_power: 0.12
+      fraction_mass_TTC: 0.07
+      fraction_mass_OBC: 0.09
+      fraction_mass_ADC: 0.07
+      fraction_mass_propulsion: 0
+      fraction_mass_other: 0.2
+      size_x: 0.5
+      size_y: 0.5
+      size_h: 1
+      comment: sizes used from HETE bus
+      TRL: 8
+    - name: TRACE
+      name_long: Transition Region and Coronal Explorer
+      launch_year: 1998
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: No Propulsion
+      mass_total: 211
+      mass_payload: 60
+      fraction_mass_payload: 0.28
+      fraction_mass_structmech: 0.23
+      fraction_mass_thermal: 0.02
+      fraction_mass_power: 0.22
+      fraction_mass_TTC: 0.02
+      fraction_mass_OBC: 0.04
+      fraction_mass_ADC: 0.17
+      fraction_mass_propulsion: 0
+      fraction_mass_other: 0.02
+      size_x: 1.1
+      size_y: 1.1
+      size_h: 1.9
+      TRL: 8
+    - name: WIRE
+      name_long: Wide Field Infrared Explorer
+      launch_year: 1999
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: No Propulsion
+      mass_total: 260
+      power_total: 132
+      mass_payload: 107
+      fraction_mass_payload: 0.41
+      fraction_mass_structmech: 0.12
+      fraction_mass_thermal: 0.04
+      fraction_mass_power: 0.19
+      fraction_mass_TTC: 0.02
+      fraction_mass_OBC: 0.03
+      fraction_mass_ADC: 0.17
+      fraction_mass_propulsion: 0
+      fraction_mass_other: 0.02
+      fraction_power_payload: 0.2
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0
+      fraction_power_power: 0.11
+      fraction_power_TTC: 0.07
+      fraction_power_OBC: 0.15
+      fraction_power_ADC: 0.47
+      fraction_propulsion_power: 0
+      TRL: 8
+    - name: "Astro-E"
+      name_long: " Suzaku (formerly ASTRO-EII) "
+      launch_year: 2000
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Low Earth
+      mass_total: 1678
+      mass_total_dry: 1578
+      power_total: 858
+      mass_payload: 977
+      fraction_mass_payload: 0.62
+      fraction_mass_structmech: 0.11
+      fraction_mass_thermal: 0.04
+      fraction_mass_power: 0.11
+      fraction_mass_TTC: 0.01
+      fraction_mass_OBC: 0.02
+      fraction_mass_ADC: 0.06
+      fraction_mass_propulsion: 0.03
+      fraction_mass_other: 0
+      fraction_power_payload: 0.58
+      fraction_power_thermal: 0.14
+      size_x: 2
+      size_y: 2
+      size_h: 5
+      TRL: 8
+    - name: Aqua
+      name_long: "EOS PM-1"
+      launch_year: 2002
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Low Earth
+      mass_total: 2941
+      mass_total_dry: 2799
+      power_total: 1609
+      mass_payload: 1022
+      fraction_mass_payload: 0.37
+      fraction_mass_structmech: 0.26
+      fraction_mass_thermal: 0.02
+      fraction_mass_power: -0.27
+      fraction_mass_TTC: 0.01
+      fraction_mass_OBC: 0.02
+      fraction_mass_ADC: 0.04
+      fraction_mass_propulsion: 0.02
+      fraction_mass_other: 0
+      fraction_power_payload: 0.61
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.03
+      fraction_power_power: 0.03
+      fraction_power_OBC: 0.2
+      fraction_power_ADC: 0.1
+      fraction_propulsion_power: 0.01
+      size_x: 4.81
+      size_y: 16.7
+      size_h: 8.04
+      TRL: 8
+    - name: CGRO
+      name_long: Compton Gamma Ray Observatory
+      launch_year: 1991
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Low Earth
+      mass_total: 16221
+      mass_total_dry: 14279
+      mass_payload: 5999
+      fraction_mass_payload: 0.42
+      fraction_mass_structmech: 0.35
+      fraction_mass_thermal: 0.01
+      fraction_mass_power: 0.11
+      fraction_mass_TTC: 0.01
+      fraction_mass_OBC: 0.02
+      fraction_mass_ADC: 0.03
+      fraction_mass_propulsion: 0.02
+      fraction_mass_other: 0.04
+      size_x: 4.2
+      size_y: 4.2
+      size_h: 9.1
+      comment: Bus width same as Hubble Space Telescope
+      TRL: 8
+    - name: CALIPSO
+      name_long: "Cloud-Aerosol Lidar and Infrared Pathfinder Satellite Observations"
+      launch_year: 2006
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Low Earth
+      mass_total: 577
+      mass_total_dry: 548
+      power_total: 508
+      mass_payload: 283
+      fraction_mass_payload: 0.52
+      fraction_mass_structmech: 0.12
+      fraction_mass_thermal: 0.02
+      fraction_mass_power: 0.19
+      fraction_mass_TTC: 0.01
+      fraction_mass_OBC: 0.05
+      fraction_mass_ADC: 0.08
+      fraction_mass_propulsion: 0.01
+      fraction_mass_other: 0
+      fraction_power_payload: 0.5
+      fraction_propulsion_power: 0
+      size_x: 1.49
+      size_y: 1.84
+      size_h: 2.31
+      TRL: 8
+    - name: CloudSat
+      launch_year: 2006
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Low Earth
+      mass_total: 847
+      mass_total_dry: 771
+      power_total: 598
+      mass_payload: 255
+      fraction_mass_payload: 0.33
+      fraction_mass_structmech: 0.25
+      fraction_mass_thermal: 0.03
+      fraction_mass_power: 0.24
+      fraction_mass_TTC: 0.02
+      fraction_mass_OBC: 0.03
+      fraction_mass_ADC: 0.07
+      fraction_mass_propulsion: 0.03
+      fraction_mass_other: 0
+      fraction_power_payload: 0.58
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.1
+      fraction_power_power: 0.11
+      fraction_power_TTC: 0.03
+      fraction_power_OBC: 0.05
+      fraction_power_ADC: 0.14
+      fraction_propulsion_power: 0
+      size_x: 2.03
+      size_y: 2.29
+      size_h: 2.54
+      TRL: 8
+    - name: "EO-1"
+      name_long: "Earth Observing-1"
+      launch_year: 2000
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Low Earth
+      mass_total: 579
+      mass_total_dry: 556
+      power_total: 298
+      mass_payload: 185
+      fraction_mass_payload: 0.33
+      fraction_mass_structmech: 0.26
+      fraction_mass_thermal: 0.02
+      fraction_mass_power: 0.28
+      fraction_mass_TTC: 0.01
+      fraction_mass_OBC: 0.03
+      fraction_mass_ADC: 0.06
+      fraction_mass_propulsion: 0.02
+      fraction_mass_other: 0
+      fraction_power_payload: 0.4
+      fraction_power_structmech: 0.04
+      fraction_power_thermal: 0.04
+      fraction_power_power: 0.09
+      fraction_power_TTC: 0.05
+      fraction_power_OBC: 0.12
+      fraction_power_ADC: 0.26
+      fraction_propulsion_power: 0
+      size_x: 1.4
+      size_y: 1.4
+      size_h: 2
+      TRL: 8
+    - name: "Equator-S"
+      launch_year: 1997
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Low Earth
+      mass_total: 230
+      mass_total_dry: 189
+      power_total: 89
+      mass_payload: 46
+      fraction_mass_payload: 0.25
+      fraction_mass_structmech: 0.42
+      fraction_mass_thermal: 0.01
+      fraction_mass_power: 0.2
+      fraction_mass_TTC: 0
+      fraction_mass_OBC: 0.04
+      fraction_mass_ADC: 0.06
+      fraction_mass_propulsion: 0
+      fraction_mass_other: 0.02
+      fraction_power_payload: 0.51
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0
+      fraction_power_power: 0.16
+      fraction_power_ADC: 0.34
+      fraction_propulsion_power: 0
+      TRL: 8
+    - name: Fermi GLAST
+      name_long: "Fermi Gamma-ray Space Telescope"
+      launch_year: 2008
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Low Earth
+      mass_total: 4307
+      mass_total_dry: 3947
+      power_total: 1646
+      mass_payload: 2889
+      fraction_mass_payload: 0.73
+      fraction_mass_structmech: 0.11
+      fraction_mass_thermal: 0.01
+      fraction_mass_power: 0.11
+      fraction_mass_TTC: 0.01
+      fraction_mass_OBC: 0.01
+      fraction_mass_ADC: 0.02
+      fraction_mass_propulsion: 0.01
+      fraction_mass_other: 0
+      fraction_power_payload: 0.47
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.14
+      fraction_power_power: 0.15
+      fraction_power_TTC: 0.02
+      fraction_power_OBC: 0.09
+      fraction_power_ADC: 0.1
+      fraction_propulsion_power: 0.02
+      size_x: 2.5
+      size_y: 2.5
+      size_h: 2.8
+      TRL: 8
+    - name: GRACE
+      name_long: Gravity Recovery and Climate Experiment
+      launch_year: 2002
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Low Earth
+      mass_total: 471
+      mass_total_dry: 458
+      power_total: 92
+      mass_payload: 70
+      fraction_mass_payload: 0.15
+      fraction_mass_structmech: 0.35
+      fraction_mass_thermal: 0.06
+      fraction_mass_power: 0.15
+      fraction_mass_TTC: 0.01
+      fraction_mass_OBC: 0.03
+      fraction_mass_ADC: 0.17
+      fraction_mass_propulsion: 0.08
+      fraction_mass_other: 0
+      fraction_power_payload: 0.55
+      fraction_power_structmech: 0.01
+      fraction_power_thermal: 0
+      fraction_power_power: 0.06
+      fraction_power_TTC: 0.6
+      fraction_power_OBC: 0.32
+      fraction_power_ADC: 0
+      fraction_propulsion_power: 0
+      size_x: 1.942
+      size_y: 0.72
+      size_h: 3.123
+      TRL: 8
+    - name: Lewis
+      launch_year: 1997
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Low Earth
+      mass_total: 385
+      mass_total_dry: 342
+      mass_payload: 97
+      fraction_mass_payload: 0.28
+      fraction_mass_structmech: 0.2
+      fraction_mass_thermal: 0.01
+      fraction_mass_power: 0.27
+      fraction_mass_TTC: 0
+      fraction_mass_OBC: 0.07
+      fraction_mass_ADC: 0.1
+      fraction_mass_propulsion: 0.05
+      fraction_mass_other: 0.01
+      size_h: 1.77
+      TRL: 8
+    - name: "ST-5"
+      name_long: Space Technology 5
+      launch_year: 2006
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Low Earth
+      mass_total: 25
+      mass_total_dry: 24
+      power_total: 40
+      mass_payload: 1
+      fraction_mass_payload: 0.03
+      fraction_mass_structmech: 0.32
+      fraction_mass_thermal: 0.03
+      fraction_mass_power: 0.31
+      fraction_mass_TTC: 0.08
+      fraction_mass_OBC: 0.09
+      fraction_mass_ADC: 0.05
+      fraction_mass_propulsion: 0.06
+      fraction_mass_other: 0
+      fraction_power_payload: 0.2
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0
+      fraction_power_power: 0.14
+      fraction_power_TTC: 0.52
+      fraction_power_OBC: 0.11
+      fraction_power_ADC: 0.02
+      fraction_propulsion_power: 0.01
+      size_x: 0.53
+      size_y: 0.53
+      size_h: 0.48
+      TRL: 8
+    - name: Terra
+      name_long: "EOS AM-1"
+      launch_year: 1999
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Low Earth
+      mass_total: 4771
+      mass_total_dry: 4432
+      power_total: 2159
+      mass_payload: 1096
+      fraction_mass_payload: 0.25
+      fraction_mass_structmech: 0.33
+      fraction_mass_thermal: 0.05
+      fraction_mass_power: 0.21
+      fraction_mass_TTC: 0.04
+      fraction_mass_OBC: 0.07
+      fraction_mass_ADC: 0.04
+      fraction_mass_propulsion: 0.01
+      fraction_mass_other: 0.01
+      fraction_power_payload: 0.46
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.05
+      fraction_power_power: 0.08
+      fraction_power_OBC: 0.34
+      fraction_power_ADC: 0.08
+      fraction_propulsion_power: 0
+      size_x: 3.55
+      size_y: 3.5
+      size_h: 6.8
+      TRL: 8
+    - name: TOMS/EP
+      name_long: "Total Ozone Mapping Spectrometer - Earth Probe"
+      launch_year: 1996
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Low Earth
+      mass_total: 289
+      mass_total_dry: 215
+      mass_payload: 34
+      fraction_mass_payload: 0.16
+      fraction_mass_structmech: 0.29
+      fraction_mass_thermal: 0.02
+      fraction_mass_power: 0.23
+      fraction_mass_TTC: 0
+      fraction_mass_OBC: 0.08
+      fraction_mass_ADC: 0.12
+      fraction_mass_propulsion: 0.08
+      fraction_mass_other: 0.03
+      size_x: 1.16
+      size_y: 1.16
+      size_h: 1.77
+      TRL: 8
+    - name: TRMM
+      name_long: Tropical Rainfall Measuring Mission
+      launch_year: 1997
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Low Earth
+      mass_total: 3512
+      mass_total_dry: 2611
+      power_total: 1019
+      mass_payload: 640
+      fraction_mass_payload: 0.24
+      fraction_mass_structmech: 0.38
+      fraction_mass_thermal: 0.04
+      fraction_mass_power: 0.18
+      fraction_mass_TTC: 0.01
+      fraction_mass_OBC: 0.03
+      fraction_mass_ADC: 0.06
+      fraction_mass_propulsion: 0.05
+      fraction_mass_other: 0
+      fraction_power_payload: 0.41
+      fraction_power_structmech: 0.04
+      fraction_power_thermal: 0.18
+      fraction_power_power: 0.11
+      fraction_power_TTC: 0.05
+      fraction_power_OBC: 0.05
+      fraction_power_ADC: 0.15
+      fraction_propulsion_power: 0
+      size_x: 3.7
+      size_y: 3.7
+      size_h: 5.1
+      TRL: 8
+    - name: UARS
+      name_long: Upper Atmosphere Research Satellite
+      launch_year: 1991
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Low Earth
+      mass_total: 7483
+      mass_total_dry: 6607
+      mass_payload: 2098
+      fraction_mass_payload: 0.32
+      fraction_mass_structmech: 0.28
+      fraction_mass_thermal: 0.02
+      fraction_mass_power: 0.13
+      fraction_mass_TTC: 0
+      fraction_mass_OBC: 0.04
+      fraction_mass_ADC: 0.04
+      fraction_mass_propulsion: 0.02
+      fraction_mass_other: 0.15
+      size_x: 4.5
+      size_y: 4.5
+      size_h: 10.7
+      TRL: 8
+    - name: LandSat 7
+      launch_year: 1999
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Low Earth
+      mass_total: 2105
+      mass_total_dry: 1983
+      mass_payload: 404
+      fraction_mass_payload: 0.2
+      fraction_mass_structmech: 0.27
+      fraction_mass_thermal: 0.01
+      fraction_mass_power: 0.25
+      fraction_mass_TTC: 0.03
+      fraction_mass_OBC: 0.09
+      fraction_mass_ADC: 0.04
+      fraction_mass_propulsion: 0.01
+      fraction_mass_other: 0.1
+      size_x: 2.74
+      size_y: 2.74
+      size_h: 4.04
+      TRL: 8
+    - name: "NOAA-16"
+      name_long: "National Oceanic and Atmospheric Administration-L "
+      launch_year: 2000
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Low Earth
+      mass_total: 2246
+      mass_total_dry: 1595
+      power_total: 778
+      mass_payload: 362
+      fraction_mass_payload: 0.23
+      fraction_mass_structmech: 0.2
+      fraction_mass_thermal: 0.02
+      fraction_mass_power: 0.24
+      fraction_mass_TTC: 0.02
+      fraction_mass_OBC: 0.06
+      fraction_mass_ADC: 0.03
+      fraction_mass_propulsion: 0.02
+      fraction_mass_other: 0.07
+      fraction_power_payload: 0.51
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.18
+      fraction_power_power: 0.03
+      fraction_power_TTC: 0.08
+      fraction_power_OBC: 0.05
+      fraction_power_ADC: 0.09
+      fraction_propulsion_power: 0
+      TRL: 8
+    - name: "NOAA-N prime"
+      name_long: National Oceanic and Atmospheric Administration N prime
+      launch_year: 2009
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Low Earth
+      mass_total: 1391
+      mass_total_dry: 1382
+      power_total: 858
+      mass_payload: 312
+      fraction_mass_payload: 0.23
+      fraction_mass_structmech: 0.34
+      fraction_mass_thermal: 0.03
+      fraction_mass_power: 0.28
+      fraction_mass_TTC: 0.03
+      fraction_mass_OBC: 0.04
+      fraction_mass_ADC: 0.05
+      fraction_mass_propulsion: 0.01
+      fraction_mass_other: 0
+      fraction_power_payload: 0.52
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.23
+      fraction_power_power: 0.03
+      fraction_power_TTC: 0.08
+      fraction_power_OBC: 0.05
+      fraction_power_ADC: 0.09
+      fraction_propulsion_power: 0
+      size_x: 1.88
+      size_y: 1.88
+      size_h: 4.19
+      TRL: 8
+    - name: ACE
+      name_long: Advanced Composition Explorer
+      launch_year: 1997
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: High Earth
+      mass_total: 759
+      mass_total_dry: 561
+      power_total: 305
+      mass_payload: 168
+      fraction_mass_payload: 0.3
+      fraction_mass_structmech: 0.23
+      fraction_mass_thermal: 0.07
+      fraction_mass_power: 0.2
+      fraction_mass_TTC: 0.04
+      fraction_mass_OBC: 0.05
+      fraction_mass_ADC: 0.01
+      fraction_mass_propulsion: 0.07
+      fraction_mass_other: 0.03
+      fraction_power_payload: 0.35
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.29
+      fraction_power_power: 0.04
+      fraction_power_TTC: 0.01
+      fraction_power_OBC: 0.27
+      fraction_power_ADC: 0.04
+      fraction_propulsion_power: 0
+      size_x: 2
+      size_y: 2
+      size_h: 1.9
+      TRL: 8
+    - name: Chandra
+      name_long: "Chandra X-ray Observatory"
+      launch_year: 1999
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: High Earth
+      mass_total: 5698
+      mass_total_dry: 4699
+      mass_payload: 2918
+      fraction_mass_payload: 0.62
+      fraction_mass_structmech: 0.15
+      fraction_mass_thermal: 0.02
+      fraction_mass_power: 0.09
+      fraction_mass_TTC: 0
+      fraction_mass_OBC: 0.02
+      fraction_mass_ADC: 0.04
+      fraction_mass_propulsion: 0.04
+      fraction_mass_other: 0.02
+      size_x: 4.3
+      size_y: 4.3
+      size_h: 11.8
+      TRL: 8
+    - name: MAP
+      name_long: Wilkinson Microwave Anisotropy Probe
+      launch_year: 2001
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: High Earth
+      mass_total: 814
+      mass_total_dry: 741
+      power_total: 371
+      mass_payload: 305
+      fraction_mass_payload: 0.41
+      fraction_mass_structmech: 0.23
+      fraction_mass_thermal: 0.06
+      fraction_mass_power: 0.13
+      fraction_mass_TTC: 0.02
+      fraction_mass_OBC: 0.03
+      fraction_mass_ADC: 0.08
+      fraction_mass_propulsion: 0.02
+      fraction_mass_other: 0.02
+      fraction_power_payload: 0.37
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.07
+      fraction_power_power: 0.06
+      fraction_power_TTC: 0.09
+      fraction_power_OBC: 0.13
+      fraction_power_ADC: 0.24
+      fraction_propulsion_power: 0
+      size_x: 1.4
+      size_y: 1.4
+      size_h: 1.6
+      TRL: 8
+    - name: SOHO
+      name_long: Solar and Heliospheric Observatory
+      launch_year: 1995
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: High Earth
+      mass_total: 1854
+      mass_total_dry: 1602
+      power_total: 1186
+      mass_payload: 899
+      fraction_mass_payload: 0.56
+      fraction_mass_structmech: 0.12
+      fraction_mass_thermal: 0.02
+      fraction_mass_power: 0.13
+      fraction_mass_TTC: 0.01
+      fraction_mass_OBC: 0.04
+      fraction_mass_ADC: 0.05
+      fraction_mass_propulsion: 0.03
+      fraction_mass_other: 0.03
+      fraction_power_payload: 0.55
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.11
+      fraction_power_power: 0.08
+      fraction_power_TTC: 0
+      fraction_power_OBC: 0.11
+      fraction_power_ADC: 0.13
+      fraction_propulsion_power: 0.02
+      size_x: 2.7
+      size_y: 3.7
+      size_h: 4.3
+      TRL: 8
+    - name: STEREO
+      name_long: Solar Terrestrial Relations Observatory
+      launch_year: 2006
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: High Earth
+      mass_total: 619
+      mass_total_dry: 558
+      power_total: 514
+      mass_payload: 138
+      fraction_mass_payload: 0.25
+      fraction_mass_structmech: 0.28
+      fraction_mass_thermal: 0.04
+      fraction_mass_power: 0.24
+      fraction_mass_TTC: 0.06
+      fraction_mass_OBC: 0.01
+      fraction_mass_ADC: 0.06
+      fraction_mass_propulsion: 0.06
+      fraction_mass_other: 0.03
+      fraction_power_payload: 0.23
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.1
+      fraction_power_power: 0.1
+      fraction_power_TTC: 0.25
+      fraction_power_OBC: 0.08
+      fraction_power_ADC: 0.16
+      fraction_propulsion_power: 0
+      size_x: 1.14
+      size_y: 2.03
+      size_h: 6.47
+      TRL: 8
+    - name: Triana
+      name_long: Deep Space Climate Observatory
+      launch_year: "-"
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: High Earth
+      mass_total: 2995
+      mass_total_dry: 577
+      power_total: 394
+      mass_payload: 104
+      fraction_mass_payload: 0.18
+      fraction_mass_structmech: 0.11
+      fraction_mass_thermal: 0.02
+      fraction_mass_power: 0.05
+      fraction_mass_TTC: 0.02
+      fraction_mass_OBC: 0.01
+      fraction_mass_ADC: 0.08
+      fraction_mass_propulsion: 0.3
+      fraction_mass_other: 0.23
+      fraction_power_payload: 0.38
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.16
+      fraction_power_power: 0.1
+      fraction_power_TTC: 0.09
+      fraction_power_OBC: 0.04
+      fraction_power_ADC: 0.23
+      fraction_propulsion_power: 0
+      size_x: 1.4
+      size_y: 1.4
+      size_h: 1.8
+      TRL: 8
+    - name: WIND
+      name_long: 
+      launch_year: 1994
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: High Earth
+      mass_total: 1226
+      mass_total_dry: 856
+      mass_payload: 182
+      fraction_mass_payload: 0.21
+      fraction_mass_structmech: 0.23
+      fraction_mass_thermal: 0.03
+      fraction_mass_power: 0.31
+      fraction_mass_TTC: 0.02
+      fraction_mass_OBC: 0.07
+      fraction_mass_ADC: 0.02
+      fraction_mass_propulsion: 0.05
+      fraction_mass_other: 0.05
+      size_x: 2.4
+      size_y: 2.4
+      size_h: 1.8
+      TRL: 8
+    - name: "GOES-12"
+      name_long: "GOES-M"
+      launch_year: 2001
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: High Earth
+      mass_total: 2275
+      mass_total_dry: 1058
+      power_total: 1046
+      mass_payload: 343
+      fraction_mass_payload: 0.32
+      fraction_mass_structmech: 0.22
+      fraction_mass_thermal: 0.06
+      fraction_mass_power: 0.16
+      fraction_mass_TTC: 0.04
+      fraction_mass_OBC: 0.03
+      fraction_mass_ADC: 0.08
+      fraction_mass_propulsion: 0.08
+      fraction_mass_other: 0
+      fraction_power_payload: 0.44
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.13
+      fraction_power_power: 0.02
+      fraction_power_TTC: 0.22
+      fraction_power_OBC: 0.03
+      fraction_power_ADC: 0.15
+      fraction_propulsion_power: 0
+      size_x: 1.88
+      size_y: 1.88
+      size_h: 4.2
+      TRL: 8
+    - name: TDRS 7
+      name_long: Tracking and Data Relay Satellite 7
+      launch_year: 1995
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: High Earth
+      mass_total: 2201
+      mass_total_dry: 1649
+      power_total: 1621
+      mass_payload: 311
+      fraction_mass_payload: 0.19
+      fraction_mass_structmech: 0.28
+      fraction_mass_thermal: 0.03
+      fraction_mass_power: 0.28
+      fraction_mass_TTC: 0
+      fraction_mass_OBC: 0.03
+      fraction_mass_ADC: 0.06
+      fraction_mass_propulsion: 0.05
+      fraction_mass_other: 0.07
+      fraction_power_payload: 0.54
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.29
+      fraction_power_power: 0.01
+      fraction_power_TTC: 0
+      fraction_power_OBC: 0.04
+      fraction_power_ADC: 0.12
+      fraction_propulsion_power: 0.01
+      size_x: 14.2
+      size_y: 14.2
+      size_h: 17.3
+      TRL: 8
+    - name: Spitzer
+      name_long:  Space Infrared Telescope Facility (SIRTF)
+      launch_year: 2003
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: High Earth
+      mass_total: 849
+      mass_total_dry: 833
+      power_total: 434
+      mass_payload: 453
+      fraction_mass_payload: 0.54
+      fraction_mass_structmech: 0.17
+      fraction_mass_thermal: 0.01
+      fraction_mass_power: 0.13
+      fraction_mass_TTC: 0.03
+      fraction_mass_OBC: 0.02
+      fraction_mass_ADC: 0.07
+      fraction_mass_propulsion: 0.03
+      fraction_mass_other: 0
+      fraction_power_payload: 0.14
+      size_x: 2.1
+      size_y: 2.1
+      size_h: 4.5
+      TRL: 8
+    - name: IBEX
+      name_long: Interstellar Boundary Explorer
+      launch_year: 2008
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: High Earth
+      mass_total: 458
+      mass_total_dry: 117
+      power_total: 70
+      mass_payload: 26
+      fraction_mass_payload: 0.22
+      fraction_mass_structmech: 0.44
+      fraction_mass_thermal: 0.03
+      fraction_mass_power: 0.13
+      fraction_mass_TTC: 0.04
+      fraction_mass_OBC: 0.02
+      fraction_mass_ADC: 0.02
+      fraction_mass_propulsion: 0.06
+      fraction_mass_other: 0.04
+      fraction_power_payload: 0.32
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.12
+      fraction_power_power: 0.12
+      fraction_power_TTC: 0.22
+      fraction_power_OBC: 0.22
+      fraction_power_ADC: 0.17
+      fraction_propulsion_power: 0.02
+      size_x: 0.93
+      size_y: 0.93
+      size_h: 0.5
+      TRL: 8
+    - name: "GOES-N"
+      name_long: Geostationary Operational Environmental Satellite N
+      launch_year: 2006
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: High Earth
+      mass_total: 3217
+      mass_total_dry: 1546
+      mass_payload: 345
+      fraction_mass_payload: 0.22
+      fraction_mass_structmech: 0.31
+      fraction_mass_thermal: 0.07
+      fraction_mass_power: 0.14
+      fraction_mass_TTC: 0.07
+      fraction_mass_OBC: 0.03
+      fraction_mass_ADC: 0.08
+      fraction_mass_propulsion: 0.06
+      fraction_mass_other: 0
+      size_x: 1.88
+      size_y: 1.88
+      size_h: 4.2
+      TRL: 8
+    - name: SDO
+      name_long: Solar Dynamics Observatory
+      launch_year: 2010
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: High Earth
+      mass_total: 2975
+      mass_total_dry: 1561
+      power_total: 969
+      mass_payload: 298
+      fraction_mass_payload: 0.19
+      fraction_mass_structmech: 0.35
+      fraction_mass_thermal: 0.02
+      fraction_mass_power: 0.2
+      fraction_mass_TTC: 0.04
+      fraction_mass_OBC: 0.03
+      fraction_mass_ADC: 0.07
+      fraction_mass_propulsion: 0.06
+      fraction_mass_other: 0.03
+      fraction_power_payload: 0.35
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.11
+      fraction_power_power: 0.15
+      fraction_power_TTC: 0.07
+      fraction_power_OBC: 0.07
+      fraction_power_ADC: 0.18
+      fraction_propulsion_power: 0.01
+      size_x: 2.22
+      size_y: 2.22
+      size_h: 4.5
+      TRL: 8
+    - name: Cassini
+      name_long: Cassini–Huygens
+      launch_year: 1997
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Planetary
+      mass_total: 5565
+      mass_total_dry: 2558
+      power_total: 1338
+      mass_payload: 688
+      fraction_mass_payload: 0.27
+      fraction_mass_structmech: 0.14
+      fraction_mass_thermal: 0.03
+      fraction_mass_power: 0.14
+      fraction_mass_TTC: 0.06
+      fraction_mass_OBC: 0.05
+      fraction_mass_ADC: 0.06
+      fraction_mass_propulsion: 0.19
+      fraction_mass_other: 0.05
+      fraction_power_payload: 0.56
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.11
+      fraction_power_power: 0.04
+      fraction_power_TTC: 0
+      fraction_power_OBC: 0.11
+      fraction_power_ADC: 0.11
+      fraction_propulsion_power: 0.7
+      size_x: 4
+      size_y: 4
+      size_h: 6.8
+      TRL: 8
+    - name: Clementine
+      name_long: Deep Space Program Science Experiment (DSPSE)
+      launch_year: 1994
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Planetary
+      mass_total: 1646
+      mass_total_dry: 259
+      mass_payload: 14
+      fraction_mass_payload: 0.05
+      fraction_mass_structmech: 0.24
+      fraction_mass_thermal: 0.09
+      fraction_mass_power: 0.14
+      fraction_mass_TTC: 0.05
+      fraction_mass_OBC: 0.04
+      fraction_mass_ADC: 0.06
+      fraction_mass_propulsion: 0.21
+      fraction_mass_other: 0.13
+      size_x: 1.14
+      size_y: 1.14
+      size_h: 1.88
+      TRL: 8
+    - name: Galileo
+      name_long: Jupiter Orbiter Probe
+      launch_year: 1989
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Planetary
+      mass_total: 2560
+      mass_total_dry: 1880
+      mass_payload: 148
+      fraction_mass_payload: 0.3
+      fraction_mass_structmech: 0.17
+      fraction_mass_thermal: 0.04
+      fraction_mass_power: 0.13
+      fraction_mass_TTC: 0.04
+      fraction_mass_OBC: 0.03
+      fraction_mass_ADC: 0.08
+      fraction_mass_propulsion: 0.1
+      fraction_mass_other: 0.1
+      size_x: 4.6
+      size_y: 4.6
+      size_h: 6.15
+      TRL: 8
+    - name: LRO
+      name_long: Lunar Reconnaissance Orbiter
+      launch_year: 2009
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Planetary
+      mass_total: 1915
+      mass_total_dry: 1018
+      power_total: 620
+      mass_payload: 96
+      fraction_mass_payload: 0.09
+      fraction_mass_structmech: 0.31
+      fraction_mass_thermal: 0.08
+      fraction_mass_power: 0.24
+      fraction_mass_TTC: 0.07
+      fraction_mass_OBC: 0.02
+      fraction_mass_ADC: 0.06
+      fraction_mass_propulsion: 0.12
+      fraction_mass_other: 0
+      fraction_power_payload: 0.18
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.2
+      fraction_power_power: 0.1
+      fraction_power_TTC: 0.17
+      fraction_power_OBC: 0.15
+      fraction_power_ADC: 0.18
+      fraction_propulsion_power: 0.02
+      size_x: 2.74
+      size_y: 2.52
+      size_h: 3.86
+      TRL: 8
+    - name: Magellan
+      launch_year: 1989
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Planetary
+      mass_total: 3455
+      mass_total_dry: 1127
+      mass_payload: 130
+      fraction_mass_payload: 0.12
+      fraction_mass_structmech: 0.29
+      fraction_mass_thermal: 0.05
+      fraction_mass_power: 0.18
+      fraction_mass_TTC: 0.09
+      fraction_mass_OBC: 0.04
+      fraction_mass_ADC: 0.08
+      fraction_mass_propulsion: 0.07
+      fraction_mass_other: 0.09
+      size_x: 4.6
+      size_y: 4.6
+      size_h: 6.4
+      TRL: 8
+    - name: Mars Odyssey
+      name_long: 2001 Mars Odyssey
+      launch_year: 2001
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Planetary
+      mass_total: 727
+      mass_total_dry: 377
+      mass_payload: 45
+      fraction_mass_payload: 0.12
+      fraction_mass_structmech: 0.28
+      fraction_mass_thermal: 0.05
+      fraction_mass_power: 0.23
+      fraction_mass_TTC: 0.06
+      fraction_mass_OBC: 0.03
+      fraction_mass_ADC: 0.06
+      fraction_mass_propulsion: 0.13
+      fraction_mass_other: 0.03
+      size_x: 2.2
+      size_y: 2.6
+      size_h: 1.7
+      TRL: 8
+    - name: NEAR
+      name_long: Near Earth Asteroid Rendezvous Shoemaker
+      launch_year: 1996
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Planetary
+      mass_total: 808
+      mass_total_dry: 482
+      power_total: 852
+      mass_payload: 56
+      fraction_mass_payload: 0.12
+      fraction_mass_structmech: 0.19
+      fraction_mass_thermal: 0.04
+      fraction_mass_power: 0.23
+      fraction_mass_TTC: 0.05
+      fraction_mass_OBC: 0.06
+      fraction_mass_ADC: 0.06
+      fraction_mass_propulsion: 0.25
+      fraction_mass_other: 0.01
+      fraction_power_payload: 0.11
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.18
+      fraction_power_power: 0.01
+      fraction_power_TTC: 0.07
+      fraction_power_OBC: 0.1
+      fraction_power_ADC: 0.06
+      fraction_propulsion_power: 0.47
+      size_x: 1.7
+      size_y: 1.7
+      size_h: 2.75
+      TRL: 8
+    - name: MESSENGER
+      name_long: MErcury Surface, Space ENvironment, GEochemistry, and Ranging
+      launch_year: 2004
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Planetary
+      mass_total: 1102
+      mass_total_dry: 508
+      power_total: 633
+      mass_payload: 47
+      fraction_mass_payload: 0.09
+      fraction_mass_structmech: 0.25
+      fraction_mass_thermal: 0.1
+      fraction_mass_power: 0.24
+      fraction_mass_TTC: 0.06
+      fraction_mass_OBC: 0.02
+      fraction_mass_ADC: 0.07
+      fraction_mass_propulsion: 0.16
+      fraction_mass_other: 0
+      fraction_power_payload: 0.15
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.05
+      fraction_power_power: 0.17
+      fraction_power_TTC: 0.2
+      fraction_power_OBC: 0.05
+      fraction_power_ADC: 0.19
+      fraction_propulsion_power: 0.19
+      size_x: 1.85
+      size_y: 1.27
+      size_h: 1.42
+      TRL: 8
+    - name: MRO
+      name_long: Mars Reconnaissance Orbiter
+      launch_year: 2005
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Planetary
+      mass_total: 2114
+      mass_total_dry: 953
+      power_total: 815
+      mass_payload: 130
+      fraction_mass_payload: 0.14
+      fraction_mass_structmech: 0.33
+      fraction_mass_thermal: 0.03
+      fraction_mass_power: 0.25
+      fraction_mass_TTC: 0.07
+      fraction_mass_OBC: 0.03
+      fraction_mass_ADC: 0.06
+      fraction_mass_propulsion: 0.1
+      fraction_mass_other: 0
+      fraction_power_payload: 0.19
+      fraction_power_structmech: 0.05
+      fraction_power_thermal: 0.25
+      fraction_power_power: 0.05
+      fraction_power_TTC: 0.26
+      fraction_power_OBC: 0.11
+      fraction_power_ADC: 0.09
+      fraction_propulsion_power: 0
+      size_x: 3
+      size_y: 3
+      size_h: 6.5
+      TRL: 8
+    - name: New Horizons
+      launch_year: 2006
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Planetary
+      mass_total: 478
+      mass_total_dry: 401
+      mass_payload: 30
+      fraction_mass_payload: 0.08
+      fraction_mass_structmech: 0.32
+      fraction_mass_thermal: 0.07
+      fraction_mass_power: 0.27
+      fraction_mass_TTC: 0.1
+      fraction_mass_OBC: 0.06
+      fraction_mass_ADC: 0.05
+      fraction_mass_propulsion: 0.07
+      fraction_mass_other: 0
+      size_x: 2.2
+      size_y: 2.1
+      size_h: 2.7
+      TRL: 8
+    - name: Stardust
+      name_long: "Stardust-NExT"
+      launch_year: 1999
+      source: "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+      orbit_type: Planetary
+      mass_total: 385
+      mass_total_dry: 299
+      power_total: 234
+      mass_payload: 71
+      fraction_mass_payload: 0.24
+      fraction_mass_structmech: 0.2
+      fraction_mass_thermal: 0.03
+      fraction_mass_power: 0.33
+      fraction_mass_TTC: 0.06
+      fraction_mass_OBC: 0.03
+      fraction_mass_ADC: 0.03
+      fraction_mass_propulsion: 0.06
+      fraction_mass_other: 0
+      fraction_power_payload: 0.12
+      fraction_power_structmech: 0
+      fraction_power_thermal: 0.15
+      fraction_power_power: 0.21
+      fraction_power_TTC: 0.22
+      fraction_power_OBC: 0.16
+      fraction_power_ADC: 0.11
+      fraction_propulsion_power: 0.03
+      size_x: 0.66
+      size_y: 0.66
+      size_h: 1.71
+      TRL: 8
