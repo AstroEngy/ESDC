@@ -1,0 +1,245 @@
+# ESDC YAML Data File
+# Generated: 2025-10-30 14:16:59
+# Octave 9.1.0
+
+plots:
+  plot_case:
+    - active: true
+      type: 3d
+      input_cases: "[1,2]"
+      save:
+      filename:
+        input_case_number:
+          active: true
+        input_case_info:
+          active: true
+          fields: "{"deltav"}"
+      image:
+        active: true
+        formats: "{"png"}"
+      octave_figure:
+        active: false
+      animate_and_save:
+      active: true
+      compression: true
+      fps: 24
+      animation_order: by_generation
+      lineages:
+      indexes: "{"1:18"}"
+      sorting_dof: "{"mass_fractions", "total"}"
+      sorting_direction: increasing
+      appearance:
+      view: "[30, 60]"
+      custom_limits:
+        active: false
+        xlim: "[-100, 100]"
+        ylim: "[-100, 100]"
+        zlim: "[-100, 1]"
+      title:
+        active: false
+        name: Propulsion Unit Optimization
+        fontsize: 14
+      labels:
+        active: true
+        fontsize: 12
+      legend:
+        active: true
+        fontsize: 9
+      custom_display_names:
+        x:
+          active: true
+          name: Effective Exhaust Velocity / m/s
+        y:
+          active: true
+          name: Thrust / N
+        z:
+          active: true
+          name: "Mass Fraction / - "
+        line_type:
+          active: true
+          name: "{"Arc Jet", "Grid Ion Thruster"}"
+        line_color:
+          active: true
+          name: Effective exhaust velocity / m/s 
+        marker_type:
+          active: true
+          name: "{"He", "Xe", "NH3"}"
+        marker_color:
+          active: true
+          name: Thrust / N 
+      x:
+      active: true
+      dof: "{"c_e"}"
+      type: continuous
+      y:
+      active: true
+      dof: "{"thrust"}"
+      type: continuous
+      z:
+      active: true
+      dof: "{"mass_fractions", "total"}"
+      type: continuous
+      plot_line_active: true
+      line_type:
+      active: true
+      dof: "{"propulsion_system"}"
+      type: discrete
+      dof_values: "{"arcjet", "gridionthruster"}"
+      plot_values: "{"-", "--"}"
+      default_plot_value: "-"
+      line_color:
+      active: false
+      dof: "{"c_e"}"
+      type: continuous
+      plot_values: "{"jet"}"
+      default_plot_value: "[0, 0, 0]"
+      marker_type:
+      active: true
+      dof: "{"propellant"}"
+      type: discrete
+      dof_values: "{"He", "Xe", "NH3"}"
+      plot_values: "{"+", "o", "*"}"
+      default_plot_value: o
+      marker_color:
+      active: false
+      dof: "{"thrust"}"
+      type: continuous
+      plot_values: "{"jet"}"
+      default_plot_value: "[0, 0, 0]"
+      subsystems_bars:
+      active: true
+      container_field: mass_fractions
+      line_type: "-"
+      line_colors_colormap: "{"lines"}"
+      line_width: 3
+      seed_points:
+      active: true
+      sizedata: 172
+      failed_mutations:
+      active: false
+      custom_plot_values:
+        line_type:
+          active: true
+          custom_plot_value: ":"
+        line_color:
+          active: true
+          custom_plot_value: r
+        marker_type:
+          active: true
+          custom_plot_value: d
+        marker_color:
+          active: true
+          custom_plot_value: r
+    - active: true
+      type: 2d
+      input_cases: "[1,2]"
+      save:
+      filename:
+        input_case_number:
+          active: true
+        input_case_info:
+          active: true
+          fields: "{ "deltav"}"
+      image:
+        active: true
+        formats: "{"png"}"
+      octave_figure:
+        active: false
+      animate_and_save:
+      active: true
+      compression: true
+      fps: 2
+      animation_order: by_generation
+      lineages:
+      indexes: "{"1:18"}"
+      sorting_dof: "{"mass_fractions", "total"}"
+      sorting_direction: increasing
+      appearance:
+      custom_limits:
+        active: false
+        xlim: "[-100, 100]"
+        ylim: "[-100, 100]"
+      title:
+        active: false
+        name: Propulsion Unit Optimization
+        fontsize: 14
+      labels:
+        active: true
+        fontsize: 12
+      legend:
+        active: true
+        fontsize: 9
+      custom_display_names:
+        x:
+          active: true
+          name: "Generation / - "
+        y:
+          active: true
+          name: "Total Mass Fraction / - "
+        line_type:
+          active: true
+          name: "{"Arc Jet", "Grid Ion Thruster"}"
+        line_color:
+          active: true
+          name: "Effective Exhaust Velocity [m/s]"
+        marker_type:
+          active: true
+          name: "{"He", "Xe", "NH3"}"
+        marker_color:
+          active: true
+          name: Thrust / N s
+      y:
+      active: true
+      dof: "{"mass_fractions", "total"}"
+      type: continuous
+      plot_line_active: true
+      line_type:
+      active: true
+      dof: "{"propulsion_system"}"
+      type: discrete
+      dof_values: "{"arcjet", "gridionthruster"}"
+      plot_values: "{"-", "--"}"
+      default_plot_value: "-"
+      line_color:
+      active: false
+      dof: "{"c_e"}"
+      type: continuous
+      plot_values: "{"jet"}"
+      default_plot_value: "[0, 0, 0]"
+      marker_type:
+      active: true
+      dof: "{"propellant"}"
+      type: discrete
+      dof_values: "{"He", "Xe", "NH3"}"
+      plot_values: "{"+", "o", "*"}"
+      default_plot_value: o
+      marker_color:
+      active: false
+      dof: "{"thrust"}"
+      type: continuous
+      plot_values: "{"jet"}"
+      default_plot_value: "[0, 0, 0]"
+      subsystems_bars:
+      active: true
+      container_field: mass_fractions
+      line_type: "-"
+      line_colors_colormap: "{"lines"}"
+      line_width: 3
+      seed_points:
+      active: true
+      sizedata: 108
+      failed_mutations:
+      active: false
+      custom_plot_values:
+        line_type:
+          active: true
+          custom_plot_value: ":"
+        line_color:
+          active: true
+          custom_plot_value: r
+        marker_type:
+          active: false
+          custom_plot_value: d
+        marker_color:
+          active: true
+          custom_plot_value: r

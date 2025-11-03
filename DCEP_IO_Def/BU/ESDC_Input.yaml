@@ -1,0 +1,12 @@
+# ESDC YAML Data File
+# Generated: 2025-10-30 14:16:56
+# Octave 9.1.0
+
+Satellite_parameters:
+  input_case:
+    - totalmass: 500
+      deltav: 685.97
+      P_propulsion: 202.9
+    - totalmass: 155
+      deltav: 526.25
+      P_propulsion: 202.9

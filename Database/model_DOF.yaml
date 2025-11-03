@@ -1,0 +1,20 @@
+# ESDC YAML Data File
+# Generated: 2025-10-30 14:16:58
+# Octave 9.1.0
+
+propulsion_system:
+  arcjet:
+    DOF:
+      - c_e
+      - propellant
+      - thrust
+  gridionthruster:
+    DOF:
+      - c_e
+      - propellant
+      - thrust
+  FEEP:
+    DOF:
+      - c_e
+      - propellant
+      - thrust
