@@ -1,38 +1,137 @@
+## -*- texinfo -*-
+## @deftypefn {} {@var{scaling_model_struct} =} update_scaling_model (@var{force_update_flag})
+## Update scaling law database by checking for changes and regenerating CSV files.
+##
+## Master function that orchestrates the update of all scaling law lookup tables
+## from XML reference databases. Checks for database changes using MD5 hashes
+## and regenerates scaling law CSV files only when needed, unless forced.
+## Processes both component/system scaling and spacecraft scaling.
+##
+## @strong{Inputs:}
+## @table @var
+## @item force_update_flag
+## Logical flag (0 or 1) to force regeneration of all scaling laws:
+## @itemize
+## @item 0 - Update only if database files have changed (hash-based detection)
+## @item 1 - Force regeneration regardless of database state
+## @end itemize
+## @end table
+##
+## @strong{Outputs:}
+## @table @var
+## @item scaling_model_struct
+## Empty return (function signature compatibility). Actual outputs are CSV files
+## written to Database/Scaling/ directory.
+## @end table
+##
+## @strong{Side Effects:}
+## @itemize
+## @item Reads ESDC_Reference_Data_Systems.xml and ESDC_Reference_Data_Spacecrafts.xml
+## @item Creates or updates MD5 hash files for change detection
+## @item Generates/updates multiple CSV files in Database/Scaling/ directory:
+##   - Component scaling laws (mass-to-power, mass-to-thrust, etc.)
+##   - Spacecraft scaling laws (total-mass-to-payload, etc.)
+## @item Displays status messages during processing
+## @end itemize
+##
+## @strong{Algorithm:}
+## @enumerate
+## @item Calls update_system_scaling() for component/system scaling laws
+## @item Calls update_SC_scaling() for spacecraft scaling laws
+## @item Each sub-function handles hash checking and conditional updates
+## @end enumerate
+##
+## @strong{Notes:}
+## @itemize
+## @item Designed for incremental updates: skips regeneration if data unchanged
+## @item Force update useful after code changes or manual database edits
+## @item Processing time depends on database size (can take minutes for large DBs)
+## @item Database/Scaling/ directory must exist or be writable
+## @end itemize
+##
+## @seealso{update_system_scaling, update_SC_scaling, read_reference_data, read_reference_spacecraft_data}
+## @end deftypefn
+
 function [scaling_model_struct] = update_scaling_model(force_update_flag)
   disp('Database check:');
-  %System scaling
-  update_system_scaling(force_update_flag); %generates .csv look-up tables for component data from database
-  %[data] = read_reference_data();    
-  %update_generic_component_scaling_model(data);  
-
-  %SC data scaling
-  update_SC_scaling(force_update_flag); %generates .csv look-up tables for spacecraft data
-  % [data] = read_reference_spacecraft_data();     %for debugging
-  % update_generic_spacecraft_scaling_model(data);
+  
+  % System/component scaling: generates CSV lookup tables from component database
+  update_system_scaling(force_update_flag);
+  
+  % Spacecraft scaling: generates CSV lookup tables from spacecraft database
+  update_SC_scaling(force_update_flag);
 
 end
+
+%% ==========================================================================
+%% SPACECRAFT SCALING UPDATE
+%% ==========================================================================
+
+## -*- texinfo -*-
+## @deftypefn {} {} update_SC_scaling (@var{force_update})
+## Update spacecraft scaling laws with hash-based change detection.
+##
+## Checks if spacecraft reference database has changed using MD5 hash comparison
+## and regenerates spacecraft scaling law CSV files only when needed. Hash file
+## stores previous database state to enable incremental updates.
+##
+## @strong{Inputs:}
+## @table @var
+## @item force_update
+## Logical flag (0 or 1) to bypass hash checking and force full regeneration.
+## @end table
+##
+## @strong{Outputs:}
+## None (empty return).
+##
+## @strong{Side Effects:}
+## @itemize
+## @item Reads Database/ESDC_Reference_Data_Spacecrafts.xml
+## @item Creates/updates Database/ESDC_Reference_Data_Spacecrafts_hash
+## @item Generates CSV files via update_generic_spacecraft_scaling_model()
+## @item Displays status messages (hash file creation, updates detected, etc.)
+## @end itemize
+##
+## @strong{Algorithm:}
+## @enumerate
+## @item Check if hash file exists
+## @item If exists: compare stored hash with current database MD5
+## @item If changed or no hash: regenerate scaling laws and update hash
+## @item If @var{force_update}=1: regenerate regardless of hash state
+## @end enumerate
+##
+## @seealso{update_generic_spacecraft_scaling_model, read_reference_spacecraft_data}
+## @end deftypefn
 
 function[] = update_SC_scaling(force_update)
 
     make_update = 0;
+    
+    % Check if hash file exists for change detection
     if exist("Database/ESDC_Reference_Data_Spacecrafts_hash");
     hash_file = fopen('Database/ESDC_Reference_Data_Spacecrafts_hash', "r");
     hash_val = fgetl(hash_file);
     fclose(hash_file);
+    
+    % Compute current database hash and compare
     current_hash = hash('md5', fileread('Database/ESDC_Reference_Data_Spacecrafts.xml'));
       if (hash_val == current_hash)
       disp('No updates to spacecraft database detected.');
-        %return;
       else
       disp('Updates to spacecraft database detected.');
-        [data] = read_reference_spacecraft_data();                    % add output here
+        % Load spacecraft data and regenerate scaling laws
+        [data] = read_reference_spacecraft_data();
+        
+        % Update hash file with new database state
         hash_file= fopen('Database/ESDC_Reference_Data_Spacecrafts_hash', "w");
         fprintf(hash_file, hash('md5', fileread('Database/ESDC_Reference_Data_Spacecrafts.xml')));
         fclose(hash_file);
+        
         update_generic_spacecraft_scaling_model(data);
         disp('Updates to S/C db complete.');
       end
     else
+      % No hash file exists - first run, create it
       disp('No spacecraft database hash file found');
       disp('Creating hash file');
       hash_file= fopen('Database/ESDC_Reference_Data_Spacecrafts_hash', "a");
@@ -42,39 +141,115 @@ function[] = update_SC_scaling(force_update)
       make_update = 1;
     end
     
+    % Force update overrides hash-based detection
     if (force_update)
       disp('Forcing Spacecraft Database Update');
     end
+    
+    % Perform update if needed (first run or forced)
     if (make_update | force_update)
       [data] = read_reference_spacecraft_data();
       update_generic_spacecraft_scaling_model(data);
     end
 end
 
+%% ==========================================================================
+%% SPACECRAFT SCALING MODEL GENERATION
+%% ==========================================================================
+
+## -*- texinfo -*-
+## @deftypefn {} {} update_generic_spacecraft_scaling_model (@var{data})
+## Generate all spacecraft scaling law CSV files from reference data.
+##
+## Processes spacecraft reference database to create scaling laws correlating
+## various spacecraft parameters (mass, power, payload) filtered by orbit type.
+## Generates separate CSV files for each orbit type and parameter pair combination.
+##
+## @strong{Inputs:}
+## @table @var
+## @item data
+## Struct containing spacecraft reference data loaded from XML database.
+## Expected structure: data.reference_data_spacecraft.spacecraft (or .reference_data_spracecraft for legacy compatibility).
+## Can be struct or cell array; automatically normalized to 1D cell array.
+## @end table
+##
+## @strong{Outputs:}
+## None (empty return).
+##
+## @strong{Side Effects:}
+## @itemize
+## @item Generates multiple CSV files in Database/Scaling/ directory
+## @item Filename pattern: scaling_spacecraft_@{orbit_type@}_parameter_@{field_x@}_to_@{field_y@}.csv
+## @item Correlates predefined fields: m_total, m_payload, p_total, p_payload
+## @item Excludes metadata fields: name, launch_year, source, orbit_type, TRL, name_long, comment
+## @item Displays progress messages during processing
+## @end itemizes
+##
+## @strong{Algorithm:}
+## @enumerate
+## @item Extract spacecraft data from input structure (handle struct/cell variants)
+## @item Normalize to 1D cell array of spacecraft entry structs
+## @item Collect all unique orbit types from entries
+## @item Collect all available field names across all entries
+## @item For each combination of:
+##   - Orbit type (LEO, GEO, etc.)
+##   - Predefined correlation field (m_total, m_payload, p_total, p_payload)
+##   - Available parameter field (not in exclusion list)
+## @item Call update_generic_spacecraft_system_scaling_a_to_b() to generate CSV
+## @end enumerate
+##
+## @strong{Notes:}
+## @itemize
+## @item Handles both struct and cell array input formats automatically
+## @item Supports legacy field name typo (reference_data_spracecraft)
+## @item Empty spacecraft entries are safely skipped
+## @item Only numeric correlatable fields generate scaling laws
+## @item Processing time scales with number of spacecraft × parameter combinations
+## @end itemizes
+##
+## @seealso{update_generic_spacecraft_system_scaling_a_to_b, read_reference_spacecraft_data}
+## @end deftypefn
+
 function [] =  update_generic_spacecraft_scaling_model(data)
   
-    exclusion_list =    {'name', 'launch_year', 'source', 'orbit_type','TRL','name_long', 'comment'};  % list of xml field names that are not to be correlated 
+    % Exclusion list: metadata fields that should not be correlated numerically
+    exclusion_list =    {'name', 'launch_year', 'source', 'orbit_type','TRL','name_long', 'comment'};
     disp('Updating spacecraft scaling models');
-    % Correct field name and provide fallback if reader used alternate key
+    
+    % === Extract spacecraft data from input structure ===
+    % Handle field name variations (correct vs legacy typo)
     if isfield(data, 'reference_data_spacecraft')
-      scdata = data.reference_data_spacecraft{1,1}.spacecraft;
+      ref_field = data.reference_data_spacecraft;
     elseif isfield(data, 'reference_data_spracecraft')  % fallback for legacy typo
-      scdata = data.reference_data_spracecraft{1,1}.spacecraft;
+      ref_field = data.reference_data_spracecraft;
     else
       error('update_generic_spacecraft_scaling_model: missing field ''reference_data_spacecraft'' in input data');
     end
+    
+    % === Normalize spacecraft data structure ===
+    % Handle both cell array and struct formats from XML reader
+    if iscell(ref_field)
+      % If it's a cell array, extract first element
+      scdata = ref_field{1,1}.spacecraft;
+    elseif isstruct(ref_field) && isfield(ref_field, 'spacecraft')
+      % If it's a struct with spacecraft field, access directly
+      scdata = ref_field.spacecraft;
+    else
+      error('update_generic_spacecraft_scaling_model: unexpected reference data structure');
+    end
 
-    % Normalize input to a cell array of structs for uniform processing
+    % Convert to 1D cell array of spacecraft structs for uniform iteration
     if iscell(scdata)
-      rawEntries = scdata(:);
+      rawEntries = scdata(:);  % Ensure column vector
     elseif isstruct(scdata)
-      % convert struct array to cell array of single-element structs
+      % Convert struct array to cell array for consistent indexing
       rawEntries = num2cell(scdata(:));
     else
       error('update_generic_spacecraft_scaling_model: unexpected spacecraft data type');
     end
 
-    % Collect union of all field names across entries
+    % === Collect metadata for correlation generation ===
+    % Determine which fields are available across all spacecraft entries
     allFieldNames = {};
     for i = 1:numel(rawEntries)
       if isempty(rawEntries{i})
@@ -85,36 +260,41 @@ function [] =  update_generic_spacecraft_scaling_model(data)
     end
     allFieldNames = unique(allFieldNames);
 
-   
-
-    % determine different cases of orbit types
+    % Collect unique orbit types for filtering (LEO, GEO, MEO, etc.)
     distinct_orbit_cases  = {};
-    for i=1:numel(data)
-      if isfield(data(i), 'orbit_type')
-        distinct_orbit_cases{i}=data(i).orbit_type;
+    for i=1:numel(rawEntries)
+      if ~isempty(rawEntries{i}) && isfield(rawEntries{i}, 'orbit_type')
+        distinct_orbit_cases{i}=rawEntries{i}.orbit_type;
       else
         distinct_orbit_cases{i} = '';
       end
     end
     distinct_orbit_cases = unique(distinct_orbit_cases);
 
-    % determine number of potentially correlatable fields  
+    % Collect all unique field names available for correlation  
     all_fields = {};
-    for i=1:numel(data)
-      case_fields = fieldnames(data(i));
-      all_fields = [all_fields; case_fields];
+    for i=1:numel(rawEntries)
+      if ~isempty(rawEntries{i})
+        case_fields = fieldnames(rawEntries{i});
+        all_fields = [all_fields; case_fields];
+      end
     end
     all_fields = unique(all_fields);
 
+    % === Generate scaling law CSV files ===
+    % Predefined parameters to use as independent variables in correlations
     to_correlate = {'m_total','m_payload','p_total','p_payload'}; 
+    
+    % Triple nested loop: orbit types × correlation variables × all fields
     for i=1: numel(distinct_orbit_cases);
-      for j=1:numel(to_correlate)                                                                               
+      for j=1:numel(to_correlate)
        for k=1:numel(all_fields)
-         %strcmp(all_fields{1,k},exclusion_list)
-         if sum(strcmp(all_fields{1,k},exclusion_list))  % exclusion from numerical correlation
-           %just skip
+         % Skip fields in exclusion list (non-numeric metadata)
+         if sum(strcmp(all_fields{k},exclusion_list))
+           % Field excluded, skip correlation
          else
-          update_generic_spacecraft_system_scaling_a_to_b(data,char(distinct_orbit_cases{i}),char(to_correlate{1,j}),char(all_fields{1,k}));
+          % Generate scaling law CSV for this orbit type and parameter pair
+          update_generic_spacecraft_system_scaling_a_to_b(rawEntries,char(distinct_orbit_cases{i}),char(to_correlate{j}),char(all_fields{k}));
          end
        end
       end
@@ -127,27 +307,32 @@ end
 
 function [] = update_system_scaling(force_update)
   make_update = 0;
-  %%DEBUG block:  Always do system scaling
-  %data= read_reference_data(); 
-  %update_generic_component_scaling_model(data); 
   
+  % Check if hash file exists for change detection
   if exist("Database/ESDC_Reference_Data_Systems_hash")
     hash_file = fopen('Database/ESDC_Reference_Data_Systems_hash', "r");
     hash_val = fgetl(hash_file);
     fclose(hash_file);
+    
+    % Compute current database hash and compare
     current_hash = hash('md5', fileread('Database/ESDC_Reference_Data_Systems.xml'));
     if (hash_val == current_hash)
       disp('No updates to database detected.');
       else
       disp('Updates to database detected.');
-        [data] = read_reference_data();                    % add output here
+        % Load component data and regenerate scaling laws
+        [data] = read_reference_data();
+        
+        % Update hash file with new database state
         hash_file= fopen('Database/ESDC_Reference_Data_Systems_hash', "w");
         fprintf(hash_file, hash('md5', fileread('Database/ESDC_Reference_Data_Systems.xml')));
         fclose(hash_file);
+        
         update_generic_component_scaling_model(data);
         disp('Updates complete.');
       end
   else
+    % No hash file exists - first run, create it
     disp('No database hash file found');
     disp('Creating hash file');
     hash_file= fopen('Database/ESDC_Reference_Data_Systems_hash', "a");
@@ -156,54 +341,121 @@ function [] = update_system_scaling(force_update)
     fclose(hash_file);
     make_update= 1;
   end
+  
+  % Force update overrides hash-based detection
   if force_update
     disp('Forcing Component Database Update');
   end
+  
+  % Perform update if needed (first run or forced)
   if (make_update | force_update)
     [data] = read_reference_data();
     update_generic_component_scaling_model(data);
   end
 end
 
+%% ==========================================================================
+%% COMPONENT SCALING MODEL GENERATION
+%% ==========================================================================
+
+## -*- texinfo -*-
+## @deftypefn {} {} update_generic_component_scaling_model (@var{data})
+## Generate all component scaling law CSV files from reference data.
+##
+## Processes component reference database to create scaling laws correlating
+## component parameters (mass, power, thrust, etc.) across the system hierarchy:
+## system type → technology type → component type → parameters. Special handling
+## for thruster data with propellant-specific subdivisions.
+##
+## @strong{Inputs:}
+## @table @var
+## @item data
+## Struct containing component reference data loaded from XML database.
+## Expected structure: data.reference_data.@{system_type@}.@{technology_type@}.@{component_type@}
+## with parameter fields (mass, power, thrust, etc.) in each component entry.
+## @end table
+##
+## @strong{Outputs:}
+## None (empty return).
+##
+## @strong{Side Effects:}
+## @itemize
+## @item Generates multiple CSV files in Database/Scaling/ directory
+## @item Filename patterns:
+##   - Generic: scaling_@{system@}_@{tech@}_@{component@}_@{field_x@}_to_@{field_y@}.csv
+##   - Propellant: scaling_@{system@}_@{tech@}_thruster_with_propellant_@{prop@}_@{field_x@}_to_@{field_y@}.csv
+## @item Displays progress messages during processing
+## @end itemizes
+##
+## @strong{Algorithm:}
+## @enumerate
+## @item Iterate through system types (propulsion_system, power_system, etc.)
+## @item For each system, iterate through technology types (arcjet, GIT, etc.)
+## @item For each technology, iterate through component types (thruster, ppu, etc.)
+## @item For each component, iterate through all parameters
+## @item Special case: thrusters get propellant-subdivided scaling laws
+## @item Generic case: all other components get combined scaling laws
+## @item Call update_generic_component_scaling_a_to_b() for each correlation
+## @end enumerate
+##
+## @strong{Notes:}
+## @itemize
+## @item Thruster parameters are correlated against mass with propellant subdivision
+## @item All other components correlate parameters against mass without subdivision
+## @item Skips 'system' parameter fields (metadata, not correlatable)
+## @item Handles both single struct and cell array component data
+## @item Processing time scales with database size (system × technology × component × parameter)
+## @end itemizes
+##
+## @seealso{update_generic_component_scaling_a_to_b, read_reference_data}
+## @end deftypefn
+
 function [] =  update_generic_component_scaling_model(data)
 disp('Starting updating of scaling data');
 disp('');
-system_type_names=fieldnames(data.reference_data); % System loop - e.g. propulsion, power etc.
-%disp(system_type_names)
+
+% === Iterate through system hierarchy ===
+% Level 1: System types (propulsion_system, power_system, communication, etc.)
+system_type_names=fieldnames(data.reference_data);
+
 for k=1:numel(system_type_names)
   
+  % Level 2: Technology types within each system (arcjet, gridded_ion_thruster, etc.)
   technology_type_names=fieldnames(data.reference_data.(char(system_type_names(k))));
-  for i=1:numel(technology_type_names)                    % Technology loop - e.g. arcjet, GIT etc.
+  for i=1:numel(technology_type_names)
 
-    %disp(data.reference_data.(char(system_type_names(k))).(char(technology_type_names(i))))
-    %disp(system_type_names(k))
-    %disp(technology_type_names(i))
-    %disp(data.reference_data.(char(system_type_names(k))))
-    component_type_names=fieldnames(data.reference_data.(char(system_type_names(k))).(char(technology_type_names(i)))); %bug here , when updating DB, probably because tech types dont exist?
-    for j=1:numel(component_type_names)                   % Component loop - e.g. thruster, ppu, solar cell, etc.
-      if not(isstruct(data.reference_data.(char(system_type_names(k))).(char(technology_type_names(i))).(char(component_type_names(j))))) % HERE single field will not be considered
+    % Level 3: Component types within each technology (thruster, ppu, solar_cell, etc.)
+    component_type_names=fieldnames(data.reference_data.(char(system_type_names(k))).(char(technology_type_names(i))));
+    for j=1:numel(component_type_names)
+      % Handle both struct and cell array component data
+      if not(isstruct(data.reference_data.(char(system_type_names(k))).(char(technology_type_names(i))).(char(component_type_names(j)))))
+        % Cell array format
         parameter_names=fieldnames(data.reference_data.(char(system_type_names(k))).(char(technology_type_names(i))).(char(component_type_names(j))){1,i});
       else
+        % Struct format
         parameter_names=fieldnames(data.reference_data.(char(system_type_names(k))).(char(technology_type_names(i))).(char(component_type_names(j))));
       end
       
+      % Skip metadata 'system' fields
       if strcmp(parameter_names,"system") 
         break;
       end
-        for l=1:numel(parameter_names)                      % Parameter loop - e.g. mass, power, etc 
-          if strcmp(char(component_type_names(j)),'thruster')     % Case distinction of scaling parameters of thrusters being propellant dependent
+      
+        % Level 4: Parameters within each component (mass, power, thrust, etc.)
+        for l=1:numel(parameter_names)
+          % Special case: thruster parameters use propellant subdivision
+          if strcmp(char(component_type_names(j)),'thruster')
           update_generic_component_scaling_a_to_b(data,char(system_type_names(k)),char(technology_type_names(i)),char(component_type_names(j)),'mass',char(parameter_names(l)), 'propellant');
-          else                                                    % Generic correlation of two parameters
+          else
+          % Generic case: all other components without subdivision
           update_generic_component_scaling_a_to_b(data,char(system_type_names(k)),char(technology_type_names(i)),char(component_type_names(j)),'mass',char(parameter_names(l)));
           end
-        
         end
 
     end
   end
-  
-%update_generic_component_scaling_a_to_b(data,'propulsion_system','arcjet','ppu','mass','power')
 end
+
 disp('');
 disp('Updating scaling data complete');
 disp('');
