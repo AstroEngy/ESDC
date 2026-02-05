@@ -18,6 +18,8 @@ Simulation_parameters:
     n_fails_to_converge: 3
     n_verbosity: 10
   output:
+    CLI:
+      n_verbosity: 10
     xml:
       full_history: 0
       optimal_candidates: 1
