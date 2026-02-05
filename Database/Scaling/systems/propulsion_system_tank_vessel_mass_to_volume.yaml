@@ -1,0 +1,42 @@
+correlation:
+  type: "systems"
+  category: "propulsion_system_tank_vessel"
+  x_parameter: "mass"
+  y_parameter: "volume"
+  x_unit: "/ kg"
+  y_unit: "/ V"
+data:
+  count: 8
+  x: [2.5, 5.2, 5.2, 5.8, 8.7, 15.5, 28, 43.5]
+  y: [0.0084, 0.0308, 0.0308, 0.0018, 0.0382, 0.04, 0.2, 0.35]
+  names:
+    - "Working Medium Tank MVSK"
+    - "Monopropellant Tank with Stiff-Plastic Separation Device (Diaphragm)"
+    - "Monopropellant Tank with Stiff-Plastic Separation Device (Diaphragm)"
+    - "Composite Vessel"
+    - "Composite Storage Tank"
+    - "Bipropellant Tank with Stiff-Plastic Separation Devices (Diaphragms)"
+    - "Metal Composite Xenon Tank XT-200"
+    - "Metal Composite Xenon Tank XT-350"
+  sources:
+    - "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/working-medium-tank-mvsk/"
+    - "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/monopropellant-tank-with-stiff-plastic-separation-device-diaphragm/"
+    - "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/monopropellant-tank-with-stiff-plastic-separation-device-diaphragm/"
+    - "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/composite-vessel/"
+    - "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/composite-storage-tank/"
+    - "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/bipropellant-tank-with-stiff-plastic-separation-devices-diaphragms/"
+    - "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/metal-composite-xenon-tank-XT-200/"
+    - "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/metal-composite-xenon-tank-XT-350/"
+fit:
+  type: "polynomial"
+  degree: 3
+  coefficients: [-7.78311e-06, 0.000662289, -0.00683674, 0.0359543]
+  r_squared: 0.98544
+  rmse: 0.0139081
+  x_range: [2.5, 43.5]
+  y_range: [0.0018, 0.35]
+  x_fit: [2.5, 2.91414, 3.32828, 3.74242, 4.15657, 4.57071, 4.98485, 5.39899, 5.81313, 6.22727, 6.64141, 7.05556, 7.4697, 7.88384, 8.29798, 8.71212, 9.12626, 9.5404, 9.95455, 10.3687, 10.7828, 11.197, 11.6111, 12.0253, 12.4394, 12.8535, 13.2677, 13.6818, 14.096, 14.5101, 14.9242, 15.3384, 15.7525, 16.1667, 16.5808, 16.9949, 17.4091, 17.8232, 18.2374, 18.6515, 19.0657, 19.4798, 19.8939, 20.3081, 20.7222, 21.1364, 21.5505, 21.9646, 22.3788, 22.7929, 23.2071, 23.6212, 24.0354, 24.4495, 24.8636, 25.2778, 25.6919, 26.1061, 26.5202, 26.9343, 27.3485, 27.7626, 28.1768, 28.5909, 29.0051, 29.4192, 29.8333, 30.2475, 30.6616, 31.0758, 31.4899, 31.904, 32.3182, 32.7323, 33.1465, 33.5606, 33.9747, 34.3889, 34.803, 35.2172, 35.6313, 36.0455, 36.4596, 36.8737, 37.2879, 37.702, 38.1162, 38.5303, 38.9444, 39.3586, 39.7727, 40.1869, 40.601, 41.0152, 41.4293, 41.8434, 42.2576, 42.6717, 43.0859, 43.5]
+  y_fit: [-0.0111081, -0.00764726, -0.00418644, -0.000725615, 0.00273521, 0.00619603, 0.00965685, 0.0131177, 0.0165785, 0.0200393, 0.0235001, 0.026961, 0.0304218, 0.0338826, 0.0373434, 0.0408042, 0.0442651, 0.0477259, 0.0511867, 0.0546475, 0.0581083, 0.0615692, 0.06503, 0.0684908, 0.0719516, 0.0754124, 0.0788733, 0.0823341, 0.0857949, 0.0892557, 0.0927166, 0.0961774, 0.0996382, 0.103099, 0.10656, 0.110021, 0.113481, 0.116942, 0.120403, 0.123864, 0.127325, 0.130786, 0.134246, 0.137707, 0.141168, 0.144629, 0.14809, 0.151551, 0.155011, 0.158472, 0.161933, 0.165394, 0.168855, 0.172315, 0.175776, 0.179237, 0.182698, 0.186159, 0.18962, 0.19308, 0.196541, 0.200002, 0.203463, 0.206924, 0.210384, 0.213845, 0.217306, 0.220767, 0.224228, 0.227689, 0.231149, 0.23461, 0.238071, 0.241532, 0.244993, 0.248454, 0.251914, 0.255375, 0.258836, 0.262297, 0.265758, 0.269218, 0.272679, 0.27614, 0.279601, 0.283062, 0.286523, 0.289983, 0.293444, 0.296905, 0.300366, 0.303827, 0.307287, 0.310748, 0.314209, 0.31767, 0.321131, 0.324592, 0.328052, 0.331513]
+metadata:
+  generated: "2026-02-03 11:51:26"
+  data_points_used: 8

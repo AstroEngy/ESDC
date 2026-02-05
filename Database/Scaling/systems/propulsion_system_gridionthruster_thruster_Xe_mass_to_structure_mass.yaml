@@ -1,0 +1,38 @@
+correlation:
+  type: "systems"
+  category: "propulsion_system_gridionthruster_thruster_Xe"
+  x_parameter: "mass"
+  y_parameter: "structure_mass"
+  x_unit: "/ kg"
+  y_unit: "/ m"
+data:
+  count: 6
+  x: [0.44, 0.44, 1.8, 1.8, 1.8, 1.8]
+  y: [5, 5, 5, 5, 5, 5]
+  names:
+    - "RIT µX max"
+    - "RIT µX min"
+    - "Arclight"
+    - "RIT 10 EVO mean"
+    - "RIT 10 EVO min"
+    - "RIT 10 EVO max"
+  sources:
+    - "Ariane Group - http://www.space-propulsion.com/spacecraft-propulsion/propulsion-systems/electric-propulsion/images/rit-thruster-family-performance-data.jpg"
+    - "Ariane Group - http://www.space-propulsion.com/spacecraft-propulsion/propulsion-systems/electric-propulsion/images/rit-thruster-family-performance-data.jpg"
+    - "Ariane Group - ARCLIGHT ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-propulsion.com/brochures/electric-propulsion/arclight-electric-space-propulsion.pdf"
+    - "Ariane Group - http://www.space-propulsion.com/spacecraft-propulsion/propulsion-systems/electric-propulsion/images/rit-thruster-family-performance-data.jpg"
+    - "Ariane Group - http://www.space-propulsion.com/spacecraft-propulsion/propulsion-systems/electric-propulsion/images/rit-thruster-family-performance-data.jpg"
+    - "Ariane Group - http://www.space-propulsion.com/spacecraft-propulsion/propulsion-systems/electric-propulsion/images/rit-thruster-family-performance-data.jpg"
+fit:
+  type: "polynomial"
+  degree: 3
+  coefficients: [-0.566868, 0.331397, 1.65303, 4.2568]
+  r_squared: -Inf
+  rmse: 8.88178e-16
+  x_range: [0.44, 1.8]
+  y_range: [5, 5]
+  x_fit: [0.44, 0.453737, 0.467475, 0.481212, 0.494949, 0.508687, 0.522424, 0.536162, 0.549899, 0.563636, 0.577374, 0.591111, 0.604848, 0.618586, 0.632323, 0.646061, 0.659798, 0.673535, 0.687273, 0.70101, 0.714747, 0.728485, 0.742222, 0.75596, 0.769697, 0.783434, 0.797172, 0.810909, 0.824646, 0.838384, 0.852121, 0.865859, 0.879596, 0.893333, 0.907071, 0.920808, 0.934545, 0.948283, 0.96202, 0.975758, 0.989495, 1.00323, 1.01697, 1.03071, 1.04444, 1.05818, 1.07192, 1.08566, 1.09939, 1.11313, 1.12687, 1.14061, 1.15434, 1.16808, 1.18182, 1.19556, 1.20929, 1.22303, 1.23677, 1.25051, 1.26424, 1.27798, 1.29172, 1.30545, 1.31919, 1.33293, 1.34667, 1.3604, 1.37414, 1.38788, 1.40162, 1.41535, 1.42909, 1.44283, 1.45657, 1.4703, 1.48404, 1.49778, 1.51152, 1.52525, 1.53899, 1.55273, 1.56646, 1.5802, 1.59394, 1.60768, 1.62141, 1.63515, 1.64889, 1.66263, 1.67636, 1.6901, 1.70384, 1.71758, 1.73131, 1.74505, 1.75879, 1.77253, 1.78626, 1.8]
+  y_fit: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+metadata:
+  generated: "2026-02-03 11:51:26"
+  data_points_used: 6

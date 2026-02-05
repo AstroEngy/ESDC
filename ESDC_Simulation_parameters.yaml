@@ -1,0 +1,23 @@
+# ESDC YAML Data File
+# Generated: 2025-10-30 14:16:55
+# Octave 9.1.0
+
+Simulation_parameters:
+  defaults:
+    orbit_min: 350
+    orbit_max: 45000
+    orbit:
+      no_propulsion: 550
+      Low_Earth: 1000
+      High_Earth: 35786
+  evolver:
+    seed_points: 10
+    minimal_step_size: 1e-05
+    max_jump_range: 10
+    n_fails_to_converge: 5
+  output:
+    CLI:
+      n_verbosity: 5
+    xml:
+      full_history: 1
+      optimal_candidates: 2

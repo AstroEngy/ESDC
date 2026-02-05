@@ -44,7 +44,7 @@ mu_EP_mesh = [];
 mesh_handle = mesh(F_mesh,c_e_mesh,mu_EP_mesh, 'FaceAlpha', 0.5, 'EdgeAlpha', 0.5);%transparent faces, opaque
 hold on;
 xlabel('F / N');
-ylabel('c_e / m/s');
+ylabel('c_{e} / m/s');
 zlabel('\mu_{EP} / - ');
 
 set(mesh_handle, 'FaceColor',map(j,:),'edgecolor',map(j,:));
@@ -129,7 +129,7 @@ color_matrix_propellant = zeros(size(mesh_collector{1},1), size(mesh_collector{1
 figure('Name','Mass Fraction EP System Combined Minimal Fitness Landscape');
 mesh(F_mesh,c_e_mesh,mu_min_mesh, color_matrix_concept,'FaceAlpha', 0., 'EdgeAlpha', 1.);
 xlabel('F / N');
-ylabel('c_e / m/s');
+ylabel('c_{e} / m/s');
 zlabel('\mu_{EP} / - ');
 view(-142,30)
 legend;
@@ -138,7 +138,7 @@ legend;
 figure('Name','Mass Fraction EP System Combined Minimal Fitness Landscape');
 mesh(F_mesh,c_e_mesh,mu_min_mesh, color_matrix_propellant,'FaceAlpha', 0., 'EdgeAlpha', 1.);
 xlabel('F / N');
-ylabel('c_e / m/s');
+ylabel('c_{e} / m/s');
 zlabel('\mu_{EP} / - ');
 view(-142,30)
 

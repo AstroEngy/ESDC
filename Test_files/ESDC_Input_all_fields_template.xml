@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Satellite_parameters dcep_version="20191025" dcep_show="false">
+        <input_case dcep_show="false">
+                <totalmass dcep_name="Satellite Mass" dcep_unit="kg" dcep_description="Currently estimated mass of satellite">155</totalmass>
+                <deltav dcep_name="Required Delta v" dcep_unit="m/s" dcep_description="Minimum Delta v to be delivered by propulsion system">685.97</deltav>
+                <p_propulsion dcep_name="Available Power" dcep_unit="W" dcep_description="Power available for propulsion system">202.9</p_propulsion>
+                <m_propellant>1</m_propellant>
+                <m_payload>1</m_payload>
+                <m_structmech>1</m_structmech>
+                <m_thermal>1</m_thermal>
+                <m_power>1</m_power>
+                <m_TTC>1</m_TTC>
+                <m_ADC>1</m_ADC>
+                <m_propulsion>1</m_propulsion>
+                <m_other>1</m_other>
+                <p_total>1</p_total>
+                <p_payload>1</p_payload>
+                <p_structmech>1</p_structmech>
+                <p_thermal>1</p_thermal>
+                <p_power>1</p_power>
+                <p_TTC>1</p_TTC>
+                <p_ADC>1</p_ADC>
+        </input_case>
+</Satellite_parameters>
+

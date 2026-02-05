@@ -1,0 +1,38 @@
+correlation:
+  type: "spacecraft"
+  category: "Planetary"
+  x_parameter: "mass_payload"
+  y_parameter: "fraction_propulsion_power"
+  x_unit: "/ kg"
+  y_unit: "/ -"
+data:
+  count: 6
+  x: [47, 56, 71, 96, 130, 688]
+  y: [0.19, 0.47, 0.03, 0.02, 0, 0.7]
+  names:
+    - "MESSENGER"
+    - "NEAR"
+    - "Stardust"
+    - "LRO"
+    - "MRO"
+    - "Cassini"
+  sources:
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+fit:
+  type: "polynomial"
+  degree: 3
+  coefficients: [-8.81454e-08, 8.43657e-05, -0.016645, 0.923258]
+  r_squared: 0.807216
+  rmse: 0.115745
+  x_range: [47, 688]
+  y_range: [0, 0.7]
+  x_fit: [47, 53.4747, 59.9495, 66.4242, 72.899, 79.3737, 85.8485, 92.3232, 98.798, 105.273, 111.747, 118.222, 124.697, 131.172, 137.646, 144.121, 150.596, 157.071, 163.545, 170.02, 176.495, 182.97, 189.444, 195.919, 202.394, 208.869, 215.343, 221.818, 228.293, 234.768, 241.242, 247.717, 254.192, 260.667, 267.141, 273.616, 280.091, 286.566, 293.04, 299.515, 305.99, 312.465, 318.939, 325.414, 331.889, 338.364, 344.838, 351.313, 357.788, 364.263, 370.737, 377.212, 383.687, 390.162, 396.636, 403.111, 409.586, 416.061, 422.535, 429.01, 435.485, 441.96, 448.434, 454.909, 461.384, 467.859, 474.333, 480.808, 487.283, 493.758, 500.232, 506.707, 513.182, 519.657, 526.131, 532.606, 539.081, 545.556, 552.03, 558.505, 564.98, 571.455, 577.929, 584.404, 590.879, 597.354, 603.828, 610.303, 616.778, 623.253, 629.727, 636.202, 642.677, 649.152, 655.626, 662.101, 668.576, 675.051, 681.525, 688]
+  y_fit: [0.278144, 0.248545, 0.219638, 0.191423, 0.163898, 0.137064, 0.110921, 0.0854696, 0.0607091, 0.0366396, 0.0132612, -0.00942605, -0.0314223, -0.0527274, -0.0733414, -0.0932644, -0.112496, -0.131037, -0.148887, -0.166045, -0.182513, -0.198289, -0.213375, -0.227769, -0.241472, -0.254485, -0.266806, -0.278436, -0.289374, -0.299622, -0.309179, -0.318045, -0.326219, -0.333703, -0.340495, -0.346597, -0.352007, -0.356726, -0.360754, -0.364091, -0.366737, -0.368692, -0.369956, -0.370528, -0.37041, -0.3696, -0.3681, -0.365908, -0.363025, -0.359452, -0.355187, -0.350231, -0.344584, -0.338246, -0.331216, -0.323496, -0.315085, -0.305982, -0.296189, -0.285704, -0.274528, -0.262662, -0.250104, -0.236855, -0.222915, -0.208284, -0.192962, -0.176948, -0.160244, -0.142848, -0.124762, -0.105984, -0.0865157, -0.0663559, -0.0455051, -0.0239632, -0.00173016, 0.0211939, 0.0448091, 0.0691153, 0.0941127, 0.119801, 0.146181, 0.173251, 0.201013, 0.229466, 0.258609, 0.288444, 0.31897, 0.350187, 0.382095, 0.414695, 0.447985, 0.481966, 0.516639, 0.552002, 0.588057, 0.624803, 0.662239, 0.700367]
+metadata:
+  generated: "2026-02-03 11:51:10"
+  data_points_used: 6

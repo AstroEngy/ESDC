@@ -12,7 +12,7 @@ plotLegend = [];
     end
     
     lgd = legend('Location','northeast',plotLegend);
-    xlabel('c_e / m/s');
+    xlabel('c_{e} / m/s');
     ylabel('P_{jet} / W');
     
     saveas(fig_handle,strcat('Output/','ESDC Full Concept Power Comparison ', case_type,'.png'),'png');

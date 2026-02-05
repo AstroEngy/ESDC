@@ -29,7 +29,7 @@ if nargin < 1
   runID = 0;
 end
 if nargin < 2
-  force_db_update = 0;  % Default to NOT forcing update
+  force_db_update = 1;  % Default to NOT forcing update
 end
 
 clc

@@ -1,0 +1,48 @@
+correlation:
+  type: "spacecraft"
+  category: "Low Earth"
+  x_parameter: "mass_total"
+  y_parameter: "fraction_power_ADC"
+  x_unit: "/ kg"
+  y_unit: "/ -"
+data:
+  count: 11
+  x: [25, 230, 471, 579, 847, 1391, 2246, 2941, 3512, 4307, 4771]
+  y: [0.02, 0.34, 0, 0.26, 0.14, 0.09, 0.09, 0.1, 0.15, 0.1, 0.08]
+  names:
+    - "ST-5"
+    - "Equator-S"
+    - "GRACE"
+    - "EO-1"
+    - "CloudSat"
+    - "NOAA-N prime"
+    - "NOAA-16"
+    - "Aqua"
+    - "TRMM"
+    - "Fermi GLAST"
+    - "Terra"
+  sources:
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+fit:
+  type: "polynomial"
+  degree: 3
+  coefficients: [-3.75813e-13, 3.57294e-09, -2.07698e-05, 0.151168]
+  r_squared: 0.0424702
+  rmse: 0.0922075
+  x_range: [25, 4771]
+  y_range: [0, 0.34]
+  x_fit: [25, 72.9394, 120.879, 168.818, 216.758, 264.697, 312.636, 360.576, 408.515, 456.455, 504.394, 552.333, 600.273, 648.212, 696.152, 744.091, 792.03, 839.97, 887.909, 935.848, 983.788, 1031.73, 1079.67, 1127.61, 1175.55, 1223.48, 1271.42, 1319.36, 1367.3, 1415.24, 1463.18, 1511.12, 1559.06, 1607, 1654.94, 1702.88, 1750.82, 1798.76, 1846.7, 1894.64, 1942.58, 1990.52, 2038.45, 2086.39, 2134.33, 2182.27, 2230.21, 2278.15, 2326.09, 2374.03, 2421.97, 2469.91, 2517.85, 2565.79, 2613.73, 2661.67, 2709.61, 2757.55, 2805.48, 2853.42, 2901.36, 2949.3, 2997.24, 3045.18, 3093.12, 3141.06, 3189, 3236.94, 3284.88, 3332.82, 3380.76, 3428.7, 3476.64, 3524.58, 3572.52, 3620.45, 3668.39, 3716.33, 3764.27, 3812.21, 3860.15, 3908.09, 3956.03, 4003.97, 4051.91, 4099.85, 4147.79, 4195.73, 4243.67, 4291.61, 4339.55, 4387.48, 4435.42, 4483.36, 4531.3, 4579.24, 4627.18, 4675.12, 4723.06, 4771]
+  y_fit: [0.14721, 0.146642, 0.146074, 0.145506, 0.144938, 0.14437, 0.143802, 0.143234, 0.142666, 0.142098, 0.141531, 0.140963, 0.140395, 0.139827, 0.139259, 0.138691, 0.138123, 0.137555, 0.136987, 0.136419, 0.135851, 0.135284, 0.134716, 0.134148, 0.13358, 0.133012, 0.132444, 0.131876, 0.131308, 0.13074, 0.130172, 0.129605, 0.129037, 0.128469, 0.127901, 0.127333, 0.126765, 0.126197, 0.125629, 0.125061, 0.124493, 0.123925, 0.123358, 0.12279, 0.122222, 0.121654, 0.121086, 0.120518, 0.11995, 0.119382, 0.118814, 0.118246, 0.117679, 0.117111, 0.116543, 0.115975, 0.115407, 0.114839, 0.114271, 0.113703, 0.113135, 0.112567, 0.112, 0.111432, 0.110864, 0.110296, 0.109728, 0.10916, 0.108592, 0.108024, 0.107456, 0.106888, 0.10632, 0.105753, 0.105185, 0.104617, 0.104049, 0.103481, 0.102913, 0.102345, 0.101777, 0.101209, 0.100641, 0.100074, 0.0995057, 0.0989377, 0.0983698, 0.0978019, 0.097234, 0.0966661, 0.0960982, 0.0955303, 0.0949624, 0.0943945, 0.0938266, 0.0932587, 0.0926908, 0.0921229, 0.091555, 0.0909871]
+metadata:
+  generated: "2026-02-03 11:49:24"
+  data_points_used: 11

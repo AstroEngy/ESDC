@@ -13,7 +13,7 @@ disp(' ')
         plot(input.c_e,input.result.structure_mass./input.result.EP_sys_mass,'-y','LineWidth',1.5);
         plot(input.c_e,input.result.propellant_mass./input.result.EP_sys_mass,'-m','LineWidth',1.5);
         plot([input.result.mu_EP_min_c_e input.result.mu_EP_min_c_e],[0 1],'-dk');
-    xlabel('c_e / m/s');
+    xlabel('c_{e} / m/s');
     ylabel('\mu_{Component} / -');
     ylim([0 1]);
     %todo plot2 file 

@@ -21,7 +21,7 @@ plotLegend = [];
 
     lgd = legend('Location','northeast',plotLegend);
 
-    xlabel('c_e / m/s');
+    xlabel('c_{e} / m/s');
     ylabel('t_{burn} / days');
     
     saveas(fig_handle,strcat('Output/','ESDC Full Concept Burn Time Comparison ', case_type,'.png'),'png');

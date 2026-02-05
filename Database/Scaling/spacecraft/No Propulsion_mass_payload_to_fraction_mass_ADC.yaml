@@ -1,0 +1,56 @@
+correlation:
+  type: "spacecraft"
+  category: "No Propulsion"
+  x_parameter: "mass_payload"
+  y_parameter: "fraction_mass_ADC"
+  x_unit: "/ kg"
+  y_unit: "/ -"
+data:
+  count: 15
+  x: [50, 53, 60, 64, 65, 95, 107, 131, 133, 178, 782, 854, 995, 1147, 5610]
+  y: [0.07, 0.06, 0.17, 0.1, 0.05, 0.12, 0.17, 0.02, 0.04, 0.05, 0.04, 0.07, 0.05, 0.1, 0.04]
+  names:
+    - "TERRIERS"
+    - "SAMPEX"
+    - "TRACE"
+    - "AIM"
+    - "FAST"
+    - "SWAS"
+    - "WIRE"
+    - "RHESSI"
+    - "GALEX"
+    - "IMAGE"
+    - "FUSE"
+    - "SWIFT"
+    - "RXTE"
+    - "COBE"
+    - "HST"
+  sources:
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+fit:
+  type: "polynomial"
+  degree: 3
+  coefficients: [-4.59747e-11, 3.10235e-07, -0.000306176, 0.111116]
+  r_squared: 0.196553
+  rmse: 0.0401751
+  x_range: [50, 5610]
+  y_range: [0.02, 0.17]
+  x_fit: [50, 106.162, 162.323, 218.485, 274.646, 330.808, 386.97, 443.131, 499.293, 555.455, 611.616, 667.778, 723.939, 780.101, 836.263, 892.424, 948.586, 1004.75, 1060.91, 1117.07, 1173.23, 1229.39, 1285.56, 1341.72, 1397.88, 1454.04, 1510.2, 1566.36, 1622.53, 1678.69, 1734.85, 1791.01, 1847.17, 1903.33, 1959.49, 2015.66, 2071.82, 2127.98, 2184.14, 2240.3, 2296.46, 2352.63, 2408.79, 2464.95, 2521.11, 2577.27, 2633.43, 2689.6, 2745.76, 2801.92, 2858.08, 2914.24, 2970.4, 3026.57, 3082.73, 3138.89, 3195.05, 3251.21, 3307.37, 3363.54, 3419.7, 3475.86, 3532.02, 3588.18, 3644.34, 3700.51, 3756.67, 3812.83, 3868.99, 3925.15, 3981.31, 4037.47, 4093.64, 4149.8, 4205.96, 4262.12, 4318.28, 4374.44, 4430.61, 4486.77, 4542.93, 4599.09, 4655.25, 4711.41, 4767.58, 4823.74, 4879.9, 4936.06, 4992.22, 5048.38, 5104.55, 5160.71, 5216.87, 5273.03, 5329.19, 5385.35, 5441.52, 5497.68, 5553.84, 5610]
+  y_fit: [0.0820838, 0.0816071, 0.0811305, 0.0806538, 0.0801772, 0.0797005, 0.0792238, 0.0787472, 0.0782705, 0.0777939, 0.0773172, 0.0768406, 0.0763639, 0.0758872, 0.0754106, 0.0749339, 0.0744573, 0.0739806, 0.073504, 0.0730273, 0.0725507, 0.072074, 0.0715973, 0.0711207, 0.070644, 0.0701674, 0.0696907, 0.0692141, 0.0687374, 0.0682607, 0.0677841, 0.0673074, 0.0668308, 0.0663541, 0.0658775, 0.0654008, 0.0649241, 0.0644475, 0.0639708, 0.0634942, 0.0630175, 0.0625409, 0.0620642, 0.0615876, 0.0611109, 0.0606342, 0.0601576, 0.0596809, 0.0592043, 0.0587276, 0.058251, 0.0577743, 0.0572976, 0.056821, 0.0563443, 0.0558677, 0.055391, 0.0549144, 0.0544377, 0.053961, 0.0534844, 0.0530077, 0.0525311, 0.0520544, 0.0515778, 0.0511011, 0.0506245, 0.0501478, 0.0496711, 0.0491945, 0.0487178, 0.0482412, 0.0477645, 0.0472879, 0.0468112, 0.0463345, 0.0458579, 0.0453812, 0.0449046, 0.0444279, 0.0439513, 0.0434746, 0.0429979, 0.0425213, 0.0420446, 0.041568, 0.0410913, 0.0406147, 0.040138, 0.0396614, 0.0391847, 0.038708, 0.0382314, 0.0377547, 0.0372781, 0.0368014, 0.0363248, 0.0358481, 0.0353714, 0.0348948]
+metadata:
+  generated: "2026-02-03 11:48:49"
+  data_points_used: 15

@@ -1,0 +1,42 @@
+correlation:
+  type: "spacecraft"
+  category: "No Propulsion"
+  x_parameter: "power_total"
+  y_parameter: "fraction_power_OBC"
+  x_unit: "/ W"
+  y_unit: "/ -"
+data:
+  count: 8
+  x: [52, 73, 132, 182, 238, 252, 362, 966]
+  y: [0.11, 0.28, 0.15, 0.14, 0.05, 0.1, 0.16, 0.06]
+  names:
+    - "FAST"
+    - "SAMPEX"
+    - "WIRE"
+    - "SWAS"
+    - "IMAGE"
+    - "RHESSI"
+    - "GALEX"
+    - "SWIFT"
+  sources:
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+    - "Space Mission Engineering - Authors: The New SMAD, James Wertz, David Everett, Jeffery Puschell; Series: Space Technology Library, Vol. 28; Publisher: Microcosm Press, Year: 2011,  ISBN: 978-1881883159, p950ff "
+fit:
+  type: "polynomial"
+  degree: 3
+  coefficients: [-2.95087e-09, 4.1619e-06, -0.00147992, 0.266295]
+  r_squared: 0.362224
+  rmse: 0.0539338
+  x_range: [52, 966]
+  y_range: [0.05, 0.28]
+  x_fit: [52, 61.2323, 70.4646, 79.697, 88.9293, 98.1616, 107.394, 116.626, 125.859, 135.091, 144.323, 153.556, 162.788, 172.02, 181.253, 190.485, 199.717, 208.949, 218.182, 227.414, 236.646, 245.879, 255.111, 264.343, 273.576, 282.808, 292.04, 301.273, 310.505, 319.737, 328.97, 338.202, 347.434, 356.667, 365.899, 375.131, 384.364, 393.596, 402.828, 412.061, 421.293, 430.525, 439.758, 448.99, 458.222, 467.455, 476.687, 485.919, 495.152, 504.384, 513.616, 522.848, 532.081, 541.313, 550.545, 559.778, 569.01, 578.242, 587.475, 596.707, 605.939, 615.172, 624.404, 633.636, 642.869, 652.101, 661.333, 670.566, 679.798, 689.03, 698.263, 707.495, 716.727, 725.96, 735.192, 744.424, 753.657, 762.889, 772.121, 781.354, 790.586, 799.818, 809.051, 818.283, 827.515, 836.747, 845.98, 855.212, 864.444, 873.677, 882.909, 892.141, 901.374, 910.606, 919.838, 929.071, 938.303, 947.535, 956.768, 966]
+  y_fit: [0.158512, 0.157418, 0.156325, 0.155231, 0.154137, 0.153044, 0.15195, 0.150856, 0.149762, 0.148669, 0.147575, 0.146481, 0.145387, 0.144294, 0.1432, 0.142106, 0.141013, 0.139919, 0.138825, 0.137731, 0.136638, 0.135544, 0.13445, 0.133357, 0.132263, 0.131169, 0.130075, 0.128982, 0.127888, 0.126794, 0.1257, 0.124607, 0.123513, 0.122419, 0.121326, 0.120232, 0.119138, 0.118044, 0.116951, 0.115857, 0.114763, 0.11367, 0.112576, 0.111482, 0.110388, 0.109295, 0.108201, 0.107107, 0.106013, 0.10492, 0.103826, 0.102732, 0.101639, 0.100545, 0.0994511, 0.0983574, 0.0972637, 0.09617, 0.0950762, 0.0939825, 0.0928888, 0.0917951, 0.0907014, 0.0896076, 0.0885139, 0.0874202, 0.0863265, 0.0852327, 0.084139, 0.0830453, 0.0819516, 0.0808579, 0.0797641, 0.0786704, 0.0775767, 0.076483, 0.0753893, 0.0742955, 0.0732018, 0.0721081, 0.0710144, 0.0699206, 0.0688269, 0.0677332, 0.0666395, 0.0655458, 0.064452, 0.0633583, 0.0622646, 0.0611709, 0.0600771, 0.0589834, 0.0578897, 0.056796, 0.0557023, 0.0546085, 0.0535148, 0.0524211, 0.0513274, 0.0502336]
+metadata:
+  generated: "2026-02-03 11:49:11"
+  data_points_used: 8

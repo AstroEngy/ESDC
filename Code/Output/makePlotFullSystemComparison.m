@@ -32,7 +32,7 @@ plotLegend = [];
     
     lgd = legend('Location','northeast',plotLegend);
 
-    xlabel('c_e / m/s');
+    xlabel('c_{e} / m/s');
     ylabel('\mu_{EPropSys} / -');
     ylim([0 1]);
     

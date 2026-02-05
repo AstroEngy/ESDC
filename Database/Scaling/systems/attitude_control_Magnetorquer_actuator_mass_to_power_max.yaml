@@ -1,0 +1,15 @@
+correlation:
+  type: "systems"
+  category: "attitude_control_Magnetorquer_actuator"
+  x_parameter: "mass"
+  y_parameter: "power_max"
+  x_unit: "/ kg"
+  y_unit: "/ W"
+data:
+  count: 2
+  x: [0.196, 0.45]
+  y: [1.2, 3]
+  names:
+    - "ISIS Magnetorquer board"
+    - "NSS CubeSat ACS solution"
+  sources:

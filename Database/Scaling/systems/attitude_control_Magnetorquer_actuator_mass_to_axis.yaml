@@ -1,0 +1,19 @@
+correlation:
+  type: "systems"
+  category: "attitude_control_Magnetorquer_actuator"
+  x_parameter: "mass"
+  y_parameter: "axis"
+  x_unit: "/ kg"
+  y_unit: ""
+data:
+  count: 6
+  x: [0.028, 0.03, 0.046, 0.05, 0.196, 0.45]
+  y: [1, 1, 1, 1, 3, 3]
+  names:
+    - "Cubetorquer"
+    - "NCTR-M002 Magnetorquer Rod"
+    - "Cubecoil"
+    - "NCTR-M012 Magnetorquer Rod"
+    - "ISIS Magnetorquer board"
+    - "NSS CubeSat ACS solution"
+  sources:

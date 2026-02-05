@@ -1,0 +1,19 @@
+correlation:
+  type: "systems"
+  category: "propulsion_system_FEEP_thruster_Indium"
+  x_parameter: "mass"
+  y_parameter: "thrust"
+  x_unit: "/ kg"
+  y_unit: "/ N"
+data:
+  count: 6
+  x: [0.68, 1.2, 1.2, 1.23, 2.6, 10.4]
+  y: [0.00033, 0.00035, 0.0005, 0.00035, 0.001, 0.004]
+  names:
+    - "Nano"
+    - "Nano R3"
+    - "Nano IR3"
+    - "Nano AR3"
+    - "Micro R3-1"
+    - "Micro R3-4"
+  sources:
