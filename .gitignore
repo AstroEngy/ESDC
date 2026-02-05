@@ -1,5 +1,6 @@
 /Output
-/Input 
+/Input
+Database/*_hash
 *.csv
 *.pdf
 octave-workspace
