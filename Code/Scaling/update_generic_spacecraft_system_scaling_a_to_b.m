@@ -97,16 +97,19 @@ function [] = update_generic_spacecraft_system_scaling_a_to_b (data, orbit_type,
   for i=1:numel(data)
         % Access data as 1D cell array with single index
         % Filter by orbit type and validate field existence and non-empty values
-        if ~isempty(data{i}) && isfield(data{i},'orbit_type') && strcmp(data{i}.orbit_type,orbit_type) && isfield(data{i},field_x)  && isfield(data{i},field_y) && not(isempty(data{i}.(field_x))) && not(isempty(data{i}.(field_y))) % consider data only when orbit type of object is correct and the respective field exists
-              % Collect x and y parameter values from matching spacecraft
-              x = [x data{i}.(field_x)];
-              y = [y data{i}.(field_y)];
-              
-              % Optionally collect spacecraft name for reference (currently unused in output)
-              if isfield(data{i},"name")
-                name{1,numel(x)} = data{i}.name;
-              else
-                name{1,numel(x)} = {};
+        if ~isempty(data{i}) &&  isfield(data{i},'orbit_type') && strcmp(data{i}.orbit_type,orbit_type) && isfield(data{i},field_x)  && isfield(data{i},field_y) && not(isempty(data{i}.(field_x))) && not(isempty(data{i}.(field_y)))
+              % Validate that both fields contain numeric data (not structs or cells)
+              if isnumeric(data{i}.(field_x)) && isnumeric(data{i}.(field_y))
+                  % Collect x and y parameter values from matching spacecraft
+                  x = [x data{i}.(field_x)];
+                  y = [y data{i}.(field_y)];
+                  
+                  % Optionally collect spacecraft name for reference (currently unused in output)
+                  if isfield(data{i},"name")
+                    name{1,numel(x)} = data{i}.name;
+                  else
+                    name{1,numel(x)} = {};
+                  end
               end
         end
   end

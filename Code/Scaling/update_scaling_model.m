@@ -283,7 +283,7 @@ function [] =  update_generic_spacecraft_scaling_model(data)
 
     % === Generate scaling law CSV files ===
     % Predefined parameters to use as independent variables in correlations
-    to_correlate = {'m_total','m_payload','p_total','p_payload'}; 
+    to_correlate = {'mass_total','mass_payload','power_total','power_payload'}; 
     
     % Triple nested loop: orbit types × correlation variables × all fields
     for i=1: numel(distinct_orbit_cases);
