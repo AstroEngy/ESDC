@@ -4,9 +4,9 @@
 
 Satellite_parameters:
   input_case:
-    - totalmass: 500
+    - mass_total: 500
       deltav: 685.97
-      P_propulsion: 202.9
-    - totalmass: 155
+      propulsion_power: 202.9
+    - mass_total: 155
       deltav: 526.25
-      P_propulsion: 202.9
+      propulsion_power: 202.9
