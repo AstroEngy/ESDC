@@ -107,6 +107,13 @@ function [generation_new, convergence] = evolve_population(input, db_data, confi
       population(i,j).evolution_success = test_maximize_parameter(population(i,j), lineage, {'subsystem_masses','m_margin'}); % add this to sim parameter options
       %population(i,j).evolution_success = test_minimize_parameter(population(i,j), lineage, {'mass'});                        % does not work properly!!
 
+      % Reject individuals with NaN c_e or thrust — invalid propulsion solution.
+      % Exception: sc_type==1 ('No Propulsion') where these fields are not applicable.
+      sc_type_i = input.Satellite_parameters.input_case{i}.derived.sc_type;
+      if sc_type_i ~= 1 && (isnan(population(i,j).c_e) || isnan(population(i,j).thrust))
+        population(i,j).evolution_success = 0;
+      end
+
       %refresh the number of the last sucessful lineage member here
       if population(i,j).evolution_success== 1
         population(i,j).n_success = size(generation_data,2)+1;
