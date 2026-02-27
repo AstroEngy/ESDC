@@ -14,7 +14,8 @@ function [in_struct] = typeset_struct(in_struct)
         
         %disp(fields_2)
         if strcmp(fields_2{1},"Text")
-          [num, state] = str2num(in_struct.(fields_1{i}).Text);
+          num = str2double(in_struct.(fields_1{i}).Text);
+          state = ~isnan(num);
           if state == 0
             %disp('string');
             field_value = char(in_struct.(fields_1{i}).Text);
@@ -36,7 +37,8 @@ function [in_struct] = typeset_struct(in_struct)
         for j=1:size(in_struct.(fields_1{i}),2)
         fields_2 =fieldnames(in_struct.(fields_1{i}){1,j});
         if (strcmp(fields_2{1},"Text"))
-           [num, state] = str2num(in_struct.(fields_1{i}){1,j}.Text);
+           num = str2double(in_struct.(fields_1{i}){1,j}.Text);
+          state = ~isnan(num);
           if state ==0
             %disp('string');
             field_value = char(in_struct.(fields_1{i}){1,j}.Text);
