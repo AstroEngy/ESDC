@@ -29,7 +29,15 @@ function eff = literature_fallback_efficiency(propulsion_type, propellant)
       eff = 0.60;
     case {'feep', 'electrospray'}
       eff = 0.50;
+    case {'chemical', 'resistojet'}
+      % Chemical / resistojet: efficiency here is combustion+nozzle efficiency (c* efficiency),
+      % NOT P_jet/P_electrical. Electrical input is negligible compared to propellant enthalpy.
+      % Typical bipropellant c* efficiency: 0.94-0.99 (Sutton & Biblarz, Rocket Propulsion Elements, 8th ed.)
+      % Monopropellant hydrazine: 0.85-0.95 (Brown, Spacecraft Propulsion, AIAA, 1996)
+      % Resistojet adds ~10-30% Isp augmentation via electrical heating; combustion eff ~0.90.
+      % Recommended fallback: 0.90
+      eff = 0.90;
     otherwise
-      eff = 0.30;  % generic fallback
+      eff = 0.30;  % generic fallback, recommended here as 30% to consider a worst case
   endswitch
 endfunction

@@ -2,13 +2,20 @@ function eff_thruster = get_thruster_eff(data, propellant, power_in, propulsion_
   %returns the efficiency of a certain thruster type for a specific propellant
   % power_in (optional): mission thruster input power (power_propulsion * eff_ppu),
   %   used as P_in fallback when the DB entry has no 'power' field.
-  % propulsion_type (optional): technology string (e.g. 'arcjet', 'HET') used for
-  %   literature-based fallback when no efficiency can be derived from DB data.
+  % propulsion_type (optional): technology string used for literature-based fallback.
   if nargin < 3
     power_in = NaN;
   end
   if nargin < 4
     propulsion_type = '';
+  end
+
+  % --- Chemical propulsion: efficiency concept is combustion/nozzle, not electrical ---
+  % P_jet / P_electrical is physically meaningless for chemical thrusters.
+  % Return combustion efficiency directly; see literature_fallback_efficiency for value & source.
+  if strcmp(propulsion_type, 'chemical')
+    eff_thruster = literature_fallback_efficiency('chemical', propellant);
+    return;
   end
 
   n_thruster = size(data,2);
