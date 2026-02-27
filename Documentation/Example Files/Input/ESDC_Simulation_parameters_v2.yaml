@@ -1,0 +1,174 @@
+# ESDC YAML Data File
+# Generated: 2025-10-30 14:16:56
+# Octave 9.1.0
+
+Simulation_parameters:
+  dcep_info:
+    dcep_name: ESDC Simulation Parameter Definition
+    dcep_description: The required set of values for performing an ESDC optimization
+    dcep_min_occurrence: 1
+    dcep_no_value: true
+  defaults:
+    dcep_name: Orbit Default Values
+    dcep_description: Orbit height defauts are defined here
+    dcep_min_occurrence: 1
+    dcep_no_value: true
+    orbit_min:
+      dcep_name: Minimum orbit height
+      dcep_unit: km
+      dcep_description: Minimum orbit height considered during orbit height variation
+      dcep_type: float
+      dcep_no_value: false
+      dcep_default: 350
+      dcep_min_occurrence: 1
+      dcep_max_occurrence: 1
+      dcep_min_inclusive: 0
+    orbit_max:
+      dcep_name: Maximum orbit height
+      dcep_unit: km
+      dcep_description: Maximum orbit height considered during orbit height variation
+      dcep_type: float
+      dcep_no_value: false
+      dcep_default: 45000
+      dcep_min_occurrence: 1
+      dcep_max_occurrence: 1
+      dcep_min_inclusive: 0
+    orbit:
+      dcep_info:
+        dcep_name: Default orbit heights
+        dcep_description: Default orbit heights to be used if none are given
+        dcep_min_occurrence: 1
+        dcep_no_value: true
+      no_propulsion:
+        dcep_info:
+          dcep_name: "Default orbit height - no propulsion"
+          dcep_unit: km
+          dcep_description: Default orbit heights to be used if none is given for the case of no propulsion
+          dcep_type: float
+          dcep_no_value: false
+          dcep_default: 550
+          dcep_min_occurrence: 1
+          dcep_max_occurrence: 1
+          dcep_min_inclusive: 0
+      Low_Earth:
+        dcep_info:
+          dcep_name: "Default orbit height - LEO"
+          dcep_unit: km
+          dcep_description: Default orbit heights to be used if none is given for the case of propelled LEO spacecraft
+          dcep_type: float
+          dcep_no_value: false
+          dcep_default: 1000
+          dcep_min_occurrence: 1
+          dcep_max_occurrence: 1
+          dcep_min_inclusive: 0
+      High_Earth:
+        dcep_info:
+          dcep_name: "Default orbit height - HEO"
+          dcep_unit: km
+          dcep_description: Default orbit heights to be used if none is given for the case of propelled HEO spacecraft (GEO)
+          dcep_type: float
+          dcep_no_value: false
+          dcep_default: 35786
+          dcep_min_occurrence: 1
+          dcep_max_occurrence: 1
+          dcep_min_inclusive: 0
+  evolver:
+    dcep_info:
+      dcep_name: Evolver parameters
+      dcep_description: Default orbit heights to be used if none are given
+      dcep_min_occurrence: 1
+      dcep_no_value: true
+    seed_points:
+      dcep_info:
+        dcep_name: Seed point number
+        dcep_unit: "-"
+        dcep_description: efine number of seed points/lineages to be used per input case"
+        dcep_type: float
+        dcep_no_value: false
+        dcep_default: 50
+        dcep_min_occurrence: 1
+        dcep_max_occurrence: 1
+        dcep_min_inclusive: 0
+    minimal_step_size:
+      dcep_info:
+        dcep_name: Evolution minimal mutation resolution
+        dcep_unit: "-"
+        dcep_description: volution algorithm minimal mutation resolution for continuous degrees of freedom
+        dcep_type: float
+        dcep_no_value: false
+        dcep_default: 1e-05
+        dcep_min_occurrence: 1
+        dcep_max_occurrence: 1
+    max_jump_range:
+      dcep_info:
+        dcep_name: Evolution maximum mutation range
+        dcep_unit: "-"
+        dcep_description: "Evolution algorithm maximum mutation step size - multiple of minimal resolution."
+        dcep_type: float
+        dcep_no_value: false
+        dcep_default: 50
+        dcep_min_occurrence: 1
+        dcep_max_occurrence: 1
+        dcep_min_inclusive: 0
+    n_fails_to_converge:
+      dcep_info:
+        dcep_name: Evolution convergence threshold
+        dcep_unit: "-"
+        dcep_description: Number of evolution attemps before convergence is assumed
+        dcep_type: float
+        dcep_no_value: false
+        dcep_default: 50
+        dcep_min_occurrence: 1
+        dcep_max_occurrence: 1
+        dcep_min_inclusive: 0
+  output:
+    dcep_info:
+      dcep_name: Output definition parameters
+      dcep_description: Options to define how output is generated is defined here
+      dcep_min_occurrence: 1
+      dcep_no_value: true
+    CLI:
+      dcep_info:
+        dcep_name: Options for CLI and Log File
+        dcep_description: Definitions for Command Line and Log File
+        dcep_min_occurrence: 1
+        dcep_no_value: true
+      n_verbosity:
+        dcep_info:
+          dcep_name: Verbosity Frequency
+          dcep_unit: "-"
+          dcep_description: Number of generations to pass before new status output is generated
+          dcep_type: float
+          dcep_no_value: false
+          dcep_default: 5
+          dcep_min_occurrence: 1
+          dcep_max_occurrence: 1
+          dcep_min_inclusive: 0
+    xml:
+      dcep_info:
+        dcep_name: Options for XML Files
+        dcep_description: Definitions for XML data content and generation
+        dcep_min_occurrence: 1
+        dcep_no_value: true
+      full_history:
+        dcep_info:
+          dcep_name: Full history
+          dcep_unit: "-"
+          dcep_description: Produce an XML file with the full evolutionary history, i.e. every generation of every lineage. Might be time consuming to outpt. Not DCEP supported, mainly for debugging. Options 0 or 1
+          dcep_type: float
+          dcep_no_value: false
+          dcep_default: 0
+          dcep_min_occurrence: 1
+          dcep_max_occurrence: 1
+          dcep_min_inclusive: 0
+      optimal_candidates:
+        dcep_info:
+          dcep_name: Optimal Solutions
+          dcep_unit: "-"
+          dcep_description: Produce an XML file with a set number of optimal candidates to be included per input case. Increasing the number might be time consuming.
+          dcep_type: float
+          dcep_no_value: false
+          dcep_default: 5
+          dcep_min_occurrence: 1
+          dcep_max_occurrence: 1
+          dcep_min_inclusive: 0

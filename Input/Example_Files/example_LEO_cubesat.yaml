@@ -1,0 +1,11 @@
+# ESDC Example Input — Small LEO CubeSat
+# Orbit:       Low Earth Orbit (~550 km)
+# Spacecraft:  Nanosatellite / CubeSat class (~6U, ~10 kg)
+# Use case:    Drag compensation / orbit maintenance
+# All fields not listed here are left undeclared and resolved by ESDC defaults.
+
+Satellite_parameters:
+  input_case:
+    - mass_total: 10
+      deltav: 150
+      orbit_height: 550

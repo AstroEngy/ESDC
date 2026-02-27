@@ -1,0 +1,11 @@
+# ESDC Example Input — GEO Communication Satellite
+# Orbit:       Geostationary Earth Orbit (35 786 km)
+# Spacecraft:  Large GEO platform (~2 000 kg)
+# Use case:    GTO-to-GEO orbit raising + station keeping (15 yr lifetime)
+# All fields not listed here are left undeclared and resolved by ESDC defaults.
+
+Satellite_parameters:
+  input_case:
+    - mass_total: 2000
+      deltav: 1800
+      orbit_height: 35786

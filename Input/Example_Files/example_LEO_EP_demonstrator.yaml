@@ -1,0 +1,14 @@
+# ESDC Example Input — High-Power Electric Propulsion Demonstrator
+# Orbit:       Low Earth Orbit (~1 000 km)
+# Spacecraft:  Technology demonstrator class (~500 kg)
+# Use case:    EP system comparison — low-thrust constraint applied
+# thrust_mode: low  restricts evolver to ion/Hall/FEEP technologies only
+# All fields not listed here are left undeclared and resolved by ESDC defaults.
+
+Satellite_parameters:
+  input_case:
+    - mass_total: 500
+      deltav: 1000
+      orbit_height: 1000
+      propulsion_power: 5000
+      thrust_mode: low

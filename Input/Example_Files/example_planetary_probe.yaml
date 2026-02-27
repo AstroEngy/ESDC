@@ -1,0 +1,11 @@
+# ESDC Example Input — Deep Space / Planetary Probe
+# Orbit:       Earth escape / interplanetary trajectory
+# Spacecraft:  Planetary science probe class (~300 kg)
+# Use case:    Deep-space trajectory correction manoeuvres + orbit insertion
+# orbit_height left undeclared — ESDC will infer planetary/high-energy class from deltav.
+# All fields not listed here are left undeclared and resolved by ESDC defaults.
+
+Satellite_parameters:
+  input_case:
+    - mass_total: 300
+      deltav: 2500

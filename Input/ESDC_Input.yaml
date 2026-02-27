@@ -7,8 +7,6 @@ Satellite_parameters:
     - mass_total: 155
       deltav: 685.97
       propulsion_power: 202.9
-      thrust_mode: high
     - mass_total: 155
       deltav: 526.25
       propulsion_power: 202.9
-      thrust_mode: high

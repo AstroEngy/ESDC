@@ -1,0 +1,11 @@
+# ESDC Example Input — Medium Earth Orbit / Transfer Orbit
+# Orbit:       High Earth / transfer orbit (~20 000 km, e.g. MEO / GPS-like)
+# Spacecraft:  Navigation satellite class (~800 kg)
+# Use case:    Orbital insertion + station keeping
+# All fields not listed here are left undeclared and resolved by ESDC defaults.
+
+Satellite_parameters:
+  input_case:
+    - mass_total: 800
+      deltav: 900
+      orbit_height: 20000

@@ -1,0 +1,14 @@
+# ESDC Example Input — Medium LEO Earth Observation Satellite
+# Orbit:       Low Earth Orbit (~600 km sun-synchronous)
+# Spacecraft:  Small satellite class (~150 kg)
+# Use case:    Orbit maintenance + end-of-life deorbit manoeuvre
+# All fields not listed here are left undeclared and resolved by ESDC defaults.
+
+Satellite_parameters:
+  input_case:
+    - mass_total: 150
+      deltav: 300
+      orbit_height: 600
+    - mass_total: 150
+      deltav: 500
+      orbit_height: 600
