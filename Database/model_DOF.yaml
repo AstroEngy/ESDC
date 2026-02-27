@@ -5,13 +5,11 @@
 propulsion_system:
   arcjet:
     DOF:
-      c_e:
-        - high
-        - low
-      propellant: ~
-      thrust:
-        - high
-        - low
+      - c_e_high
+      - c_e_low
+      - propellant
+      - thrust_high
+      - thrust_low
   gridionthruster:
     DOF:
       - c_e
@@ -34,13 +32,11 @@ propulsion_system:
       - thrust
   HET:
     DOF:
-      c_e:
-        - high
-        - low
-      propellant: ~
-      thrust:
-        - high
-        - low
+      - c_e_high
+      - c_e_low
+      - propellant
+      - thrust_high
+      - thrust_low
   electrospray:
     DOF:
       - c_e

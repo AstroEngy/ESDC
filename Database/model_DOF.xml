@@ -1,56 +1,48 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<propulsion_system>
 		<arcjet>
-			<c_e>
-				<mode>high</mode>
-				<mode>low</mode>
-			</c_e>
-			<propellant/>
-			<thrust>
-				<mode>high</mode>
-				<mode>low</mode>
-			</thrust>
+			<DOF>c_e_high</DOF>
+			<DOF>c_e_low</DOF>
+			<DOF>propellant</DOF>
+			<DOF>thrust_high</DOF>
+			<DOF>thrust_low</DOF>
 		</arcjet>
 		<gridionthruster>
-			<c_e/>
-			<propellant/>
-			<thrust/>
+			<DOF>c_e</DOF>
+			<DOF>propellant</DOF>
+			<DOF>thrust</DOF>
 		</gridionthruster>
 		<FEEP>
-			<c_e/>
-			<propellant/>
-			<thrust/>
+			<DOF>c_e</DOF>
+			<DOF>propellant</DOF>
+			<DOF>thrust</DOF>
 		</FEEP>
 		<RF_plasma>
-			<c_e/>
-			<propellant/>
-			<thrust/>
+			<DOF>c_e</DOF>
+			<DOF>propellant</DOF>
+			<DOF>thrust</DOF>
 		</RF_plasma>
 		<chemical>
-			<c_e/>
-			<propellant/>
-			<thrust/>
+			<DOF>c_e</DOF>
+			<DOF>propellant</DOF>
+			<DOF>thrust</DOF>
 		</chemical>
 		<HET>
-			<c_e>
-				<mode>high</mode>
-				<mode>low</mode>
-			</c_e>
-			<propellant/>
-			<thrust>
-				<mode>high</mode>
-				<mode>low</mode>
-			</thrust>
+			<DOF>c_e_high</DOF>
+			<DOF>c_e_low</DOF>
+			<DOF>propellant</DOF>
+			<DOF>thrust_high</DOF>
+			<DOF>thrust_low</DOF>
 		</HET>
 		<electrospray>
-			<c_e/>
-			<propellant/>
-			<thrust/>
+			<DOF>c_e</DOF>
+			<DOF>propellant</DOF>
+			<DOF>thrust</DOF>
 		</electrospray>
 		<resistojet>
-			<c_e/>
-			<propellant/>
-			<thrust/>
+			<DOF>c_e</DOF>
+			<DOF>propellant</DOF>
+			<DOF>thrust</DOF>
 		</resistojet>
 	</propulsion_system>
 
