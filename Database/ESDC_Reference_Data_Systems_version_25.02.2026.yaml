@@ -1,0 +1,1139 @@
+# ESDC YAML Data File
+# Generated: 2025-11-03 10:16:38
+# Octave 9.1.0
+
+reference_data:
+  propulsion_system:
+    arcjet:
+      thruster:
+        - type: arcjet
+          name: Velarc
+          thrust: 0.04002
+          c_e: 4415
+          power_jet: 88.3441
+          massflow: 9e-06
+          mass: 0.3
+          efficiency: 0.3178
+          propellant: NH3
+          structure_mass: 0.94815
+          source: IRS arcjet database
+          TRL: 6
+        - type: arcjet
+          name: ARTUS IM3
+          thrust: 0.106883
+          c_e: 4836
+          power_jet: 258.443
+          massflow: 2.21e-05
+          mass: 0.732
+          efficiency: 0.324839
+          propellant: NH3
+          structure_mass: 0.94815
+          source: IRS arcjet database
+          TRL: 6
+        - type: arcjet
+          name: TALOS
+          thrust: 0.1025
+          c_e: 4767.44
+          power_jet: 244.331
+          massflow: 2.15e-05
+          efficiency: 0.305414
+          propellant: NH3
+          structure_mass: 0.94815
+          source: IRS arcjet database
+          TRL: 6
+        - type: arcjet
+          name: "ESEX -flight"
+          thrust: 1.93
+          c_e: 7710.66
+          power_jet: 7440.79
+          massflow: 0.000250303
+          efficiency: 0.267
+          propellant: NH3
+          structure_mass: 0.94815
+          source: IRS arcjet database
+          TRL: 9
+        - type: arcjet
+          name: "ESEX -IM"
+          thrust: 2
+          c_e: 7848
+          power_jet: 7848
+          massflow: 0.000254842
+          efficiency: 0.299542
+          propellant: NH3
+          structure_mass: 0.94815
+          source: IRS arcjet database
+          TRL: 8
+        - type: arcjet
+          name: Artur He
+          thrust: 0.27
+          c_e: 6136.35
+          power_jet: 828.407
+          massflow: 4.4e-05
+          mass: 0.455
+          efficiency: 0.70204
+          propellant: He
+          structure_mass: 0.493
+          source: IRS arcjet database
+          TRL: 6
+        - type: arcjet
+          name: Artur He
+          thrust: 0.18
+          c_e: 4090.91
+          power_jet: 368.182
+          massflow: 4.4e-05
+          mass: 0.455
+          efficiency: 0.73636
+          propellant: He
+          structure_mass: 0.493
+          source: IRS arcjet database
+          TRL: 6
+        - type: arcjet
+          name: Velarc
+          thrust: 0.0345
+          c_e: 5886
+          power_jet: 101.534
+          massflow: 6e-06
+          mass: 0.3
+          efficiency: 0.7532
+          propellant: He
+          structure_mass: 0.493
+          source: IRS arcjet database
+          TRL: 6
+        - type: arcjet
+          name: "ATOS-2 max"
+          thrust: 0.0345
+          c_e: 6180.3
+          massflow: 0.036
+          mass: 0.385
+          power: 1600
+          propellant: NH3
+          source: "ATOS1 Daten_ESDC_IRS - 2001 - Riehle - ATOS-Final-Report"
+          TRL: 8
+        - type: arcjet
+          name: "ATOS-2 min"
+          thrust: 0.0345
+          c_e: 4905
+          massflow: 0.022
+          mass: 0.385
+          power: 1000
+          propellant: NH3
+          source: "ATOS1 Daten_ESDC_IRS - 2001 - Riehle - ATOS-Final-Report"
+          TRL: 8
+      ppu:
+        - type: arcjet
+          name: ATOS
+          power: 800
+          mass: 1.89
+          efficiency: 0.92
+          source: "Riehle, M.: ATOS - Arcjet Flugexperiment auf dem Amateurfunksatelliten AMSAT-P3-D, Final report, DARA FKZ TT 50 TT 9404, 1994"
+          TRL: 8
+        - type: arcjet
+          name: "MR-509"
+          power: 1800
+          mass: 4.12
+          efficiency: 0.9
+          source: "Smith, R. D., Roberts, C. R., Aadland, R. S., Lichtin, D. A., Davies, K.: Flight qualification of the 1.8 kW MR-509 Hydrazine Arcjet System, IEPC-97-081, 25th International Electric Propulsion Conference, Cleveland Ohio. United States of America,1997, http://electricrocket.org/IEPC/7081.pdf"
+          TRL: 8
+        - type: arcjet
+          name: "MR-509-2"
+          power: 1745
+          mass: 6.2
+          efficiency: 0.934
+          source: "Dieter Zube, Dan Fye, Ideo Masuda and Yoshifumi Gotoh: Low bus voltage hydrazine arcjet system for geostationary satellites, 2021, https://doi.org/10.2514/6.1998-3631"
+          TRL: 8
+        - type: arcjet
+          name: "MR-512"
+          power: 1780
+          mass: 6.2
+          efficiency: 0.91
+          source: "MR-512, Enyclopedia Astronautica, Webpage, http://www.astronautix.com/m/mr-512.html, last accessed 24.10.2016"
+          TRL: 8
+        - type: arcjet
+          name: ESEX
+          power: 30000
+          mass: 48.4
+          efficiency: 0.95
+          source: "http://electricrocket.org/IEPC/IEPC1993-048.pdf"
+          TRL: 9
+      requiredsystems:
+        system:
+          - PPU
+          - Structure
+          - Propellant
+          - Tank
+    FEEP:
+      thruster:
+        - type: FEEP
+          name: Nano
+          thrust: 0.00033
+          c_e: 35316
+          mass: 0.68
+          mass_propellant: 0.22
+          power: 40
+          propellant: Indium
+          source:
+        - type: FEEP
+          name: Nano R3
+          thrust: 0.00035
+          c_e: 34335
+          mass: 1.2
+          mass_propellant: 0.22
+          power: 40
+          propellant: Indium
+          source:
+        - type: FEEP
+          name: Nano AR3
+          thrust: 0.00035
+          c_e: 34335
+          mass: 1.23
+          mass_propellant: 0.22
+          power: 40
+          propellant: Indium
+          source:
+        - type: FEEP
+          name: Nano IR3
+          thrust: 0.0005
+          c_e: 19620
+          mass: 1.2
+          mass_propellant: 0.22
+          power: 45
+          propellant: Indium
+          source:
+        - type: FEEP
+          name: "Micro R3-1"
+          thrust: 0.001
+          c_e: 19620
+          mass: 2.6
+          mass_propellant: 1.3
+          power: 100
+          propellant: Indium
+          source:
+        - type: FEEP
+          name: "Micro R3-4"
+          thrust: 0.004
+          c_e: 19620
+          mass: 10.4
+          mass_propellant: 5.2
+          power: 400
+          propellant: Indium
+          source:
+    RF_plasma:
+      thruster:
+        type: RF_plasma
+        name: REGULUS
+        c_e: 5886
+        thrust: 0.00055
+        mass: 2.5
+        massflow: 0.0001
+        power: 50
+        propellant: Iodine
+        total_impulse: 3000
+        source: "https://www.t4innovation.com/wp-content/uploads/2019/10/T4i_REGULUS_datasheet_.pdf"
+    gridionthruster:
+      thruster:
+        - type: gridionthruster
+          name: Arclight
+          thrust: 0.012
+          c_e: 23544
+          power_jet: 141.264
+          massflow: 5.09684e-07
+          mass: 1.8
+          efficiency: 0.35316
+          propellant: Xe
+          structure_mass: 5
+          source: "Ariane Group - ARCLIGHT ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-propulsion.com/brochures/electric-propulsion/arclight-electric-space-propulsion.pdf"
+        - type: gridionthruster
+          name: RIT 10 EVO mean
+          thrust: 0.015
+          c_e: 29430
+          power_jet: 220.725
+          massflow: 5.09684e-07
+          mass: 1.8
+          efficiency: 0.507414
+          propellant: Xe
+          structure_mass: 5
+          source: "Ariane Group - http://www.space-propulsion.com/spacecraft-propulsion/propulsion-systems/electric-propulsion/images/rit-thruster-family-performance-data.jpg"
+        - type: gridionthruster
+          name: RIT 10 EVO min
+          thrust: 0.005
+          c_e: 18639
+          power_jet: 46.5975
+          mass: 1.8
+          efficiency: 0.321366
+          propellant: Xe
+          structure_mass: 5
+          source: "Ariane Group - http://www.space-propulsion.com/spacecraft-propulsion/propulsion-systems/electric-propulsion/images/rit-thruster-family-performance-data.jpg"
+        - type: gridionthruster
+          name: RIT 10 EVO max
+          thrust: 0.025
+          c_e: 31392
+          power_jet: 392.4
+          mass: 1.8
+          efficiency: 0.516316
+          propellant: Xe
+          structure_mass: 5
+          source: "Ariane Group - http://www.space-propulsion.com/spacecraft-propulsion/propulsion-systems/electric-propulsion/images/rit-thruster-family-performance-data.jpg"
+        - type: gridionthruster
+          name: RIT µX max
+          thrust: 0.0005
+          c_e: 2943
+          power_jet: 0.73575
+          mass: 0.44
+          efficiency: 0.014715
+          propellant: Xe
+          structure_mass: 5
+          source: "Ariane Group - http://www.space-propulsion.com/spacecraft-propulsion/propulsion-systems/electric-propulsion/images/rit-thruster-family-performance-data.jpg"
+        - type: gridionthruster
+          name: RIT µX min
+          thrust: 5e-05
+          c_e: 29430
+          power_jet: 0.73575
+          mass: 0.44
+          efficiency: 0.014715
+          propellant: Xe
+          structure_mass: 5
+          source: "Ariane Group - http://www.space-propulsion.com/spacecraft-propulsion/propulsion-systems/electric-propulsion/images/rit-thruster-family-performance-data.jpg"
+      ppu:
+        type: gridionthruster
+        name: Arclight PPU
+        mass: 6.5
+        power: 450
+        efficiency: 0.92
+      requiredsystems:
+        system:
+          - PPU
+          - Structure
+          - Propellant
+          - Tank
+    chemical:
+      thruster:
+        type: chemical
+        name: PM200
+        thrust: 0.5
+        c_e: 2795.85
+        power: 12
+        delta_v: 230
+        mass: 1.1
+        mass_propellant: 0.31
+        impulse_tot: 850
+        propellant: Bi
+        source: "https://hyperiontechnologies.nl/wp-content/uploads/2019/11/HT_PM200.pdf"
+    tank:
+      vessel:
+        - type: tank
+          name: "Metal Composite Xenon Tank XT-350"
+          mass: 43.5
+          propellant: Xenon
+          mass_propellant: 570
+          pressure: 9.807*10^6
+          volume: 0.35
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/metal-composite-xenon-tank-XT-350/"
+        - type: tank
+          name: "Metal Composite Xenon Tank XT-200"
+          mass: 28
+          propellant: Xenon
+          mass_propellant: 570
+          pressure: 8.826*10^6
+          volume: 0.2
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/metal-composite-xenon-tank-XT-200/"
+        - type: tank
+          name: "Bipropellant Tank with Stiff-Plastic Separation Devices (Diaphragms)"
+          mass: 15.5
+          propellant:
+          pressure: 2.94*10^6
+          volume: 0.04
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/bipropellant-tank-with-stiff-plastic-separation-devices-diaphragms/"
+        - type: tank
+          name: "Monopropellant Tank with Stiff-Plastic Separation Device (Diaphragm)"
+          mass: 5.2
+          propellant:
+          pressure: 1.67*10^6
+          volume: 0.0308
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/monopropellant-tank-with-stiff-plastic-separation-device-diaphragm/"
+        - type: tank
+          name: "Monopropellant Tank with Stiff-Plastic Separation Device (Diaphragm)"
+          mass: 5.2
+          propellant:
+          pressure: 1.67*10^6
+          volume: 0.0308
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/monopropellant-tank-with-stiff-plastic-separation-device-diaphragm/"
+        - type: tank
+          name: Composite Storage Tank
+          mass: 8.7
+          propellant:
+          pressure: 14.2*10^6
+          volume: 0.0382
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/composite-storage-tank/"
+        - type: tank
+          name: Composite Vessel
+          mass: 5.8
+          propellant:
+          pressure: 17.6*10^6
+          volume: 0.0018
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/composite-vessel/"
+        - type: tank
+          name: Working Medium Tank MVSK
+          mass: 2.5
+          propellant: Hydrazine
+          pressure: 1.32*10^6
+          volume: 0.0084
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/working-medium-tank-mvsk/"
+  power_generation:
+    photovoltaic:
+      cell:
+        - type: photovoltaic
+          name: Solar Panels 1U
+          power_max: 2.3
+          mass: 0.05
+          area: 0.01
+          efficiency: 0.3
+          source: "https://www.isispace.nl/wp-content/uploads/2016/02/Solar-Panels-Brochure-v1.pdf"
+        - type: photovoltaic
+          name: Solar Panels 2U
+          power_max: 4.6
+          mass: 0.1
+          area: 0.02
+          efficiency: 0.3
+          source: "https://www.isispace.nl/wp-content/uploads/2016/02/Solar-Panels-Brochure-v1.pdf"
+        - type: photovoltaic
+          name: Solar Panels 3U
+          power_max: 6.9
+          mass: 0.15
+          area: 0.03
+          efficiency: 0.3
+          source: "https://www.isispace.nl/wp-content/uploads/2016/02/Solar-Panels-Brochure-v1.pdf"
+        - type: photovoltaic
+          name: Solar Panels 6U
+          power_max: 17
+          mass: 0.3
+          area: 0.06
+          efficiency: 0.3
+          source: "https://www.isispace.nl/wp-content/uploads/2016/02/Solar-Panels-Brochure-v1.pdf"
+        - type: photovoltaic
+          name: JUNO Spacecraft Array
+          power_max: 14000
+          mass: 340
+          area: 60
+          efficiency: 0.3
+          source: "Mass: https://www.nasa.gov/mission_pages/juno/launch/Juno_solarpower.html , area: https://www.jpl.nasa.gov/news/press_kits/juno/facts/,"
+          comment: Max power is power generated at 1 AU
+  thermal:
+    active:
+      heater:
+        - type: electric
+          name: Glavkosmos Electric Heaters for Manned Spacecraft
+          voltage: 34
+          resistance: 196
+          power: 5.898
+          mass: 0.026
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heating-elements/electric-heaters-for-manned-spacecraft/"
+        - type: electric
+          name: Glavkosmos Electric Heaters for Manned Spacecraft
+          voltage: 34
+          resistance: 45
+          power: 25.688
+          mass: 0.055
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heating-elements/electric-heaters-for-manned-spacecraft/"
+        - type: electric
+          name: Glavkosmos Electric Heaters for Manned Spacecraft
+          voltage: 23
+          resistance: 196
+          power: 2.699
+          mass: 0.026
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heating-elements/electric-heaters-for-manned-spacecraft/"
+        - type: electric
+          name: Glavkosmos Electric Heaters for Manned Spacecraft
+          voltage: 23
+          resistance: 45
+          power: 11.7556
+          mass: 0.055
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heating-elements/electric-heaters-for-manned-spacecraft/"
+    passive:
+      isolator:
+        type: panel
+        name: "Glavkosmos Multi-layer Composite Structures"
+        thickness: 0.3
+        mass_per_sqm: 4
+        source: "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heat-transfer-tubes-radiators/multi-layer-composite-structures/"
+      conductor:
+        type:
+          - panel
+          - panel
+        name:
+          - Glavkosmos Arterial Heat Pipes
+          - Glavkosmos Arterial Heat Pipes
+        max_trans_Q:
+          - 1000 W m
+          - 1000 W m
+        thickness:
+          - 12
+          - 16
+        mass_per_m:
+          - 0.145
+          - 0.22
+        source:
+          - "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heat-transfer-tubes-radiators/arterial-heat-pipes/"
+          - "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heat-transfer-tubes-radiators/arterial-heat-pipes/"
+  structure:
+    CubeSat:
+      bus:
+        - type: CubeSat
+          name: Structure 1U CubeSat with Separation System
+          length: 0.1
+          height: 0.1
+          width: 0.1135
+          mass: 0.132
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/platform-bus/structure-1U-CubeSat-with-Separation-System/"
+        - type: CubeSat
+          name: Structure 3U CubeSat with Separation System
+          length: 0.1
+          height: 0.1
+          width: 0.3405
+          mass: 0.455
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/platform-bus/structure-3U-CubeSat-with-separation-system/"
+  attitude_control:
+    Magnetorquer:
+      actuator:
+        - type: Magnetorquer
+          name: Cubetorquer
+          nom_mag_moment: 0.24
+          sat_mag_moment: 1.5
+          power_nom: 0.2
+          mass: 0.028
+          axis: 1
+          el_resistance: 30
+          source:
+        - type: Magnetorquer
+          name: Cubecoil
+          nom_mag_moment: 0.13
+          power_nom: 0.3
+          mass: 0.046
+          axis: 1
+          source:
+        - type: Magnetorquer
+          name: ISIS Magnetorquer board
+          nom_mag_moment: 0.2
+          power_nom: 0.175
+          power_max: 1.2
+          mass: 0.196
+          axis: 3
+          source:
+        - type: Magnetorquer
+          name: NSS CubeSat ACS solution
+          nom_mag_moment: 0.2
+          power_nom: 1.8
+          power_max: 3
+          mass: 0.45
+          axis: 3
+          source:
+        - type: Magnetorquer
+          name: "NCTR-M002 Magnetorquer Rod"
+          nom_mag_moment: 0.2
+          power_nom: 0.2
+          mass: 0.03
+          axis: 1
+          source: "https://www.cubesatshop.com/wp-content/uploads/2016/06/NewSpace-Magnetorquer-Rod_7b.pdf"
+        - type: Magnetorquer
+          name: "NCTR-M012 Magnetorquer Rod"
+          nom_mag_moment: 1.19
+          power_nom: 0.8
+          mass: 0.05
+          axis: 1
+          source: "https://www.cubesatshop.com/wp-content/uploads/2016/06/NewSpace-Magnetorquer-Rod_7b.pdf"
+    ReactionWheel:
+      actuator:
+        - type: Reaction Wheel
+          name: Cube Wheel Large
+          torque_max: 0.0023
+          momentum_storage: 0.03
+          power_nom: 0.27
+          power_max: 2.2
+          mass: 0.22
+          axis: 1
+          source:
+        - type: Reaction Wheel
+          name: Cube Wheel Medium
+          torque_max: 0.0001
+          momentum_storage: 0.01
+          power_nom: 0.24
+          power_max: 1.5
+          mass: 0.14
+          axis: 1
+          source:
+        - type: Reaction Wheel
+          name: Cube Wheel Small
+          torque_max: 0.00023
+          momentum_storage: 0.0017
+          power_nom: 0.12
+          power_max: 0.72
+          mass: 0.22
+          axis: 1
+          source:
+        - type: Reaction Wheel
+          name: "MAI-400 Reaction Wheel"
+          torque_max: 0.000635
+          momentum_storage: 0.00935
+          power_nom: 0.85
+          power_max: 2.2
+          mass: 0.11
+          axis: 1
+          source:
+        - type: Reaction Wheel
+          name: RS100 – Reaction Sphere
+          torque_max: 0.001
+          momentum_storage: 0.01
+          power_max: 1
+          mass: 0.4
+          axis: 4
+          source:
+        - type: Reaction Wheel
+          name: "NRWA-T005"
+          torque_max: 0.01
+          momentum_storage: 0.05
+          power_nom: 0.8
+          mass: 0.5
+          axis: 1
+          source: "https://www.cubesatshop.com/wp-content/uploads/2020/11/NewSpace-Reaction-Wheel_2020-10a.pdf"
+        - type: Reaction Wheel
+          name: "NRWA-T065"
+          torque_max: 0.02
+          momentum_storage: 0.65
+          power_nom: 1.12
+          mass: 1.55
+          axis: 1
+          source: "https://www.cubesatshop.com/wp-content/uploads/2020/11/NewSpace-Reaction-Wheel_2020-10a.pdf"
+        - type: Reaction Wheel
+          name: "NRWA-T2"
+          torque_max: 0.021
+          momentum_storage: 2
+          power_nom: 0.336
+          mass: 1.8
+          axis: 1
+          source: "https://www.cubesatshop.com/wp-content/uploads/2020/11/NewSpace-Reaction-Wheel_2020-10a.pdf"
+        - type: Reaction Wheel
+          name: RW Wittenstein
+          torque_nom: 0.0001
+          momentum_storage: 0.002
+          power_nom: 0.3
+          power_max: 1
+          mass: 0.003
+          axis: 1
+          source: "https://cyber-motor.wittenstein.de/en-en/reaction-wheel/"
+        - type: Reaction Wheel
+          name: "REWL-30"
+          torque_max: 0.015
+          momentum_storage: 0.003
+          mass: 0.055
+          axis: 1
+          source:
+        - type: Reaction Wheel
+          name: "REWL-50"
+          torque_max: 0.042
+          momentum_storage: 0.005
+          mass: 0.155
+          axis: 1
+          source:
+        - type: Reaction Wheel
+          name: "REWL-1000"
+          torque_max: 0.04
+          momentum_storage: 1
+          mass: 0.9
+          power_nom: 15
+          power_max: 500
+          axis: 1
+          source: "https://space-inventor.com/wordpress/wp-content/uploads/2020/07/rewl-1000-factsheet.pdf"
+        - type: Reaction Wheel
+          name: KU Leuven RW
+          torque_max: 0.005
+          momentum_storage: 0.004
+          mass: 0.085
+          power_nom: 0.2
+          power_max: 0.6
+          axis: 1
+          source:
+        - type: Reaction Wheel
+          name: "RW-0.01"
+          torque_max: 0.001
+          momentum_storage: 0.018
+          mass: 0.12
+          power_nom: 0.25
+          power_max: 1.05
+          axis: 1
+          source: "https://satsearch.co/products/sinclair-interplanetary-rw-0-01"
+        - type: Reaction Wheel
+          name: "RRW-0.003"
+          torque_max: 0.001
+          momentum_storage: 0.005
+          mass: 0.05
+          axis: 1
+          source: "http://www.sinclairinterplanetary.com/reactionwheels"
+        - type: Reaction Wheel
+          name: "Nanosatellite Reaction Wheels (RW-0.03)"
+          torque_max: 0.04
+          momentum_storage: 0.04
+          mass: 0.185
+          power_nom: 0.3
+          power_max: 1.8
+          axis: 1
+          source: "http://www.sinclairinterplanetary.com/reactionwheels"
+        - type: Reaction Wheel
+          name: "Microsatellite Reaction Wheels (RW3-0.06)"
+          torque_max: 0.02
+          momentum_storage: 0.18
+          mass: 0.226
+          power_nom: 0.9
+          power_max: 23.4
+          axis: 1
+          source: "http://www.sinclairinterplanetary.com/reactionwheels"
+        - type: Reaction Wheel
+          name: "Rad-Hard Reaction Wheels (RW4-0.2)"
+          torque_max: 0.1
+          momentum_storage: 0.2
+          mass: 0.6
+          axis: 1
+          source: "http://www.sinclairinterplanetary.com/reactionwheels"
+        - type: Reaction Wheel
+          name: "Rad-Hard Reaction Wheels (RW4-0.4)"
+          torque_max: 0.1
+          momentum_storage: 0.4
+          mass: 0.77
+          axis: 1
+          source: "http://www.sinclairinterplanetary.com/reactionwheels"
+        - type: Reaction Wheel
+          name: "GEO Reaction Wheels (RW4-1.0)"
+          torque_max: 0.1
+          momentum_storage: 1
+          mass: 1.38
+          power_nom: 5.3
+          power_max: 45
+          axis: 1
+          source: "http://www.sinclairinterplanetary.com/reactionwheels"
+        - type: Reaction Wheel
+          name: "Microsatellite Reaction Wheels (RW3-1.0)"
+          torque_max: 0.05
+          momentum_storage: 1
+          mass: 0.97
+          power_nom: 15.1
+          power_max: 46.7
+          axis: 1
+          source: "http://www.sinclairinterplanetary.com/reactionwheels"
+        - type: Reaction Wheel
+          name: RWP015
+          torque_max: 0.004
+          momentum_storage: 0.015
+          mass: 0.13
+          power_nom: 1
+          axis: 1
+          source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
+        - type: Reaction Wheel
+          name: RWP050
+          torque_max: 0.007
+          momentum_storage: 0.05
+          mass: 0.24
+          power_nom: 1
+          axis: 1
+          source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
+        - type: Reaction Wheel
+          name: RWP100
+          torque_max: 0.007
+          momentum_storage: 0.1
+          mass: 0.35
+          power_nom: 1
+          axis: 1
+          source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
+        - type: Reaction Wheel
+          name: RWP500
+          torque_max: 0.025
+          momentum_storage: 0.5
+          mass: 0.75
+          power_nom: 6
+          axis: 1
+          source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
+        - type: Reaction Wheel
+          name: RW1
+          torque_max: 0.1
+          momentum_storage: 1
+          mass: 0.75
+          power_nom: 9
+          axis: 1
+          source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
+        - type: Reaction Wheel
+          name: RW4
+          torque_max: 0.25
+          momentum_storage: 4
+          mass: 3
+          power_nom: 10
+          axis: 1
+          source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
+        - type: Reaction Wheel
+          name: RW4
+          torque_max: 0.25
+          momentum_storage: 8
+          mass: 4.1
+          power_nom: 10
+          axis: 1
+          source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
+        - type: Reaction Wheel
+          name: CubeSat Reaction Wheels Control System SatBus 4RW0
+          torque_max: 0.0059
+          momentum_storage: 0.037
+          mass: 0.665
+          power_nom: 0.6
+          power_max: 6
+          axis: 4
+          source: "https://nanoavionics.com/cubesat-components/cubesat-reaction-wheels-control-system-satbus-4rw/"
+        - type: Reaction Wheel
+          name: "RW400 - 15"
+          torque_max: 0.012
+          momentum_storage: 0.015
+          mass: 0.155
+          power_nom: 1.9
+          power_max: 15
+          axis: 1
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2015/07/HT_RW400_v2.1-flyer.pdf"
+        - type: Reaction Wheel
+          name: "RW400 - 30"
+          torque_max: 0.012
+          momentum_storage: 0.03
+          mass: 0.21
+          power_nom: 1.9
+          power_max: 15
+          axis: 1
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2015/07/HT_RW400_v2.1-flyer.pdf"
+        - type: Reaction Wheel
+          name: "RW400 - 60"
+          torque_max: 0.012
+          momentum_storage: 0.06
+          mass: 0.375
+          power_nom: 1.9
+          power_max: 15
+          axis: 1
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2015/07/HT_RW400_v2.1-flyer.pdf"
+        - type: Reaction Wheel
+          name: "NanoTorque GSW-600"
+          torque_max: 0.0015
+          momentum_storage: 0.019
+          mass: 0.18
+          power_nom: 0.3
+          power_max: 2.55
+          axis: 1
+          source: "https://gomspace.com/UserFiles/Subsystems/datasheet/gs-ds-nanotorque-gsw-600-20.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel RW1 for Pico and Nano Satellites Typ A
+          torque_max: 2.3e-05
+          momentum_storage: 0.00058
+          mass: 0.125
+          power_nom: 0.62
+          power_max: 0.72
+          axis: 4
+          source: "https://www.astrofein.com/2728/dwnld/admin/Datenblatt_RW1.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel RW1 for Pico and Nano Satellites Typ B
+          torque_max: 4e-06
+          momentum_storage: 0.0001
+          mass: 0.093
+          power_nom: 0.62
+          power_max: 0.72
+          axis: 4
+          source: "https://www.astrofein.com/2728/dwnld/admin/Datenblatt_RW1.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel RW35 for Nano and Micro Satellites
+          torque_max: 0.005
+          momentum_storage: 0.1
+          mass: 0.5
+          power_nom: 4.5
+          power_max: 5
+          axis: 1
+          source: "https://www.astrofein.com/2728/dwnld/admin/Datenblatt_RW35.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel RW90 for Small and Micro Satellites
+          torque_max: 0.015
+          momentum_storage: 0.34
+          mass: 0.9
+          power_nom: 3.5
+          power_max: 15
+          axis: 1
+          source: "https://www.astrofein.com/2728/dwnld/48_Datenblatt_RW90.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel RW150 for Small Satellites
+          torque_max: 0.03
+          momentum_storage: 1
+          mass: 1.5
+          power_nom: 5
+          power_max: 50
+          axis: 1
+          source: "https://www.astrofein.com/2728/dwnld/admin/Datenblatt_RW150.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel RW250 for Small Satellites
+          torque_max: 0.1
+          momentum_storage: 4
+          mass: 2.7
+          power_nom: 18
+          power_max: 150
+          axis: 1
+          source: "https://www.astrofein.com/2728/dwnld/admin/Datenblatt_RW250.pdf"
+        - type: Reaction Wheel
+          name: "RSI 15-215/20"
+          torque_max: 0.215
+          momentum_storage: 15
+          mass: 7.7
+          power_nom: 15
+          power_max: 90
+          axis: 1
+          source: "http://www.electronicnote.com/media/downloads/RSI%2045_A4.pdf"
+        - type: Reaction Wheel
+          name: "RSI 45-75/60"
+          torque_max: 0.075
+          momentum_storage: 45
+          mass: 7.7
+          power_nom: 22
+          power_max: 90
+          axis: 1
+          source: "http://www.electronicnote.com/media/downloads/RSI%2045_A4.pdf"
+        - type: Reaction Wheel
+          name: "RSI 01-5/15"
+          torque_max: 0.005
+          momentum_storage: 0.04
+          mass: 0.6
+          power_nom: 2
+          power_max: 4
+          axis: 1
+          source: "http://www.electronicnote.com/RCG/RSI%2001_A4.pdf"
+        - type: Reaction Wheel
+          name: "RSI 01-5/28i"
+          torque_max: 0.005
+          momentum_storage: 0.12
+          mass: 0.7
+          power_nom: 2
+          power_max: 4
+          axis: 1
+          source: "http://www.electronicnote.com/RCG/RSI%2001_A4.pdf"
+        - type: Reaction Wheel
+          name: MSCI MicroWheel 200
+          torque_max: 0.03
+          momentum_storage: 0.18
+          mass: 0.94
+          power_nom: 7
+          power_max: 50
+          axis: 1
+          source: "http://www.reactionwheel.ca/products/MicroWheel-200.pdf"
+        - type: Reaction Wheel
+          name: MSCI MicroWheel 1000
+          torque_max: 0.03
+          momentum_storage: 1.1
+          mass: 1.44
+          power_nom: 9
+          power_max: 50
+          axis: 1
+          source: "http://www.mscinc.ca/products/MicroWheel-1000.pdf"
+        - type: Reaction Wheel
+          name: MSCI MicroWheel 4000
+          torque_max: 0.05
+          momentum_storage: 4
+          mass: 3.3
+          power_nom: 11
+          power_max: 200
+          axis: 1
+          source: "http://www.reactionwheel.ca/products/MicroWheel-4000.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel HMMW
+          torque_max: 0.012
+          momentum_storage: 0.4
+          mass: 1.05
+          power_nom: 4.3
+          axis: 1
+          source: "https://www.mpcnet.co.jp/e/e_product/elec/img/UEX_110010-C(E)_RW-IRU.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel Mini
+          torque_max: 0.01
+          momentum_storage: 1.5
+          mass: 2.6
+          power_nom: 15
+          power_max: 25
+          axis: 1
+          source: "https://www.mpcnet.co.jp/e/e_product/elec/img/UEX_110010-C(E)_RW-IRU.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel Type S
+          torque_max: 0.06
+          momentum_storage: 10
+          mass: 3.9
+          power_nom: 10
+          power_max: 50
+          axis: 1
+          source: "https://www.mpcnet.co.jp/e/e_product/elec/img/UEX_110010-C(E)_RW-IRU.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel Type M
+          torque_max: 0.1
+          momentum_storage: 30
+          mass: 9.3
+          power_nom: 21
+          power_max: 115
+          axis: 1
+          source: "https://www.mpcnet.co.jp/e/e_product/elec/img/UEX_110010-C(E)_RW-IRU.pdf"
+        - type: Reaction Wheel
+          name: "Reaction Wheel Type M-A"
+          torque_max: 0.2
+          momentum_storage: 30
+          mass: 8.6
+          power_nom: 23
+          power_max: 208
+          axis: 1
+          source: "https://www.mpcnet.co.jp/e/e_product/elec/img/UEX_110010-C(E)_RW-IRU.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel Type L
+          torque_max: 0.2
+          momentum_storage: 80
+          mass: 11
+          power_nom: 23
+          power_max: 208
+          axis: 1
+          source: "https://www.mpcnet.co.jp/e/e_product/elec/img/UEX_110010-C(E)_RW-IRU.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel（RW)
+          torque_max: 0.02
+          momentum_storage: 0.3
+          mass: 1.1
+          power_nom: 3
+          power_max: 10
+          axis: 1
+          source: "https://www.tamagawa-seiki.com/products/space/ta6494.html"
+        - type: Reaction Wheel
+          name: "MAI-101"
+          torque_max: 0.000635
+          momentum_storage: 0.0011
+          mass: 0.64
+          axis: 4
+          source: "http://www.ati-space.com/ATI.files/11_index.files/MAI-101%20Specification%20ATI%203-18-11.pdf"
+    Sensor:
+      sensor:
+        - type: Magnetometer
+          name: MM200
+          power: 0.28
+          sampling_rate: 500
+          mass: 0.012
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2020/01/HT_MM200_V1.0.pdf"
+        - type: Sunsensor
+          name: SS200
+          power: 0.04
+          accuracy: 1
+          FOV: 110
+          sampling_rate: 100
+          mass: 0.003
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2019/11/HT_SS200.pdf"
+        - type: Sunsensor
+          name: "FSS-1"
+          power: 0.09
+          accuracy: 1
+          axis: 2
+          FOV: 120
+          mass: 0.008
+          source: "https://space-inventor.com/wordpress/wp-content/uploads/2020/07/FSS-1-factsheet.pdf"
+        - type: Startracker
+          name: ST200
+          power: 0.6
+          accuracy_pitch: 0.00833333
+          accuracy_yaw: 0.00833333
+          accuracy_roll: 0.0555556
+          max_slew_tilt: 0.3
+          max_slew_roll: 0.6
+          sampling_rate: 5
+          half_angle: 30.45
+          mass: 0.042
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2015/07/HT_ST200_v2.1-flyer.pdf"
+        - type: Startracker
+          name: ST400
+          power: 0.7
+          accuracy_pitch: 0.00277778
+          accuracy_yaw: 0.00277778
+          accuracy_roll: 0.0333333
+          max_slew_tilt: 0.5
+          max_slew_roll: 1
+          sampling_rate: 5
+          half_angle: 40
+          mass: 0.28
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2019/11/HT_ST400.pdf"
+        - type: Startracker
+          name: "STAR-T3"
+          power: 1
+          accuracy_pitch: 0.00277778
+          accuracy_yaw: 0.00277778
+          accuracy_roll: 0.0333333
+          max_slew_tilt: 0.3
+          max_slew_roll: 0.3
+          half_angle: 37.5
+          mass: 0.35
+          source: "https://space-inventor.com/wordpress/wp-content/uploads/2019/11/STAR-T3-one-pager.pdf"
+    Integrated:
+      integrated:
+        - type: ACS
+          name: iACS200
+          aggregate:
+          torque_max: 0.1
+          momentum_storage: 0.006
+          nom_mag_moment: 0.1
+          axis: 3
+          accuracy: 15
+          max_slew: 1.5
+          power: 1.3
+          mass: 0.41
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2019/11/HT_iACS200.pdf"
+        - type: ACS
+          name: iACS400
+          aggregate:
+          torque_max: 2
+          momentum_storage: 0.05
+          nom_mag_moment: 0.4
+          axis: 3
+          accuracy: 1
+          max_slew: 1.5
+          power: 2
+          mass: 1.7
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2015/07/HT_iADCS400_v2.1-flyer.pdf"
+        - type: ACS
+          name: iADCS200
+          aggregate:
+          torque_max: 0.087
+          momentum_storage: 0.006
+          nom_mag_moment: 0.1
+          axis: 3
+          accuracy: 1
+          max_slew: 1.5
+          power: 1.4
+          mass: 0.47
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2019/11/HT_iADCS200.pdf"
+        - type: ACS
+          name: "ADCS-R3"
+          aggregate:
+          torque_max: 0.002
+          momentum_storage: 0.06
+          nom_mag_moment: 0.2
+          axis: 4
+          accuracy: 1
+          max_slew: 1.5
+          mass: 0.6
+          source: "https://space-inventor.com/wordpress/wp-content/uploads/2020/01/ADCS-R3_facts-sheet_p1.pdf"
+        - type: ACS
+          name: KU Leuven ADCS
+          aggregate:
+          torque_max: 0.0005
+          momentum_storage: 0.004
+          nom_mag_moment: 0.13
+          axis: 3
+          accuracy: 0.11
+          max_slew:
+          power: 1.4
+          mass: 0.715
+          source: "https://www.cubesatshop.com/wp-content/uploads/2018/10/KULADCS-Datasheet_v2.pdf"
+  communication:
+    Laser:
+      laser:
+        type: Laser
+        name: CUBECAT
+        downlink: 1e+09
+        uplink: 200000
+        storage: 6.4e+10
+        pointing_deg: 0.5
+        pointing_knowledge_error: 0.0172
+        power: 15
+        mass: 1.33
+        source: "https://hyperiontechnologies.nl/wp-content/uploads/2019/11/HT_CubeCat.pdf"
