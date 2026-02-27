@@ -225,6 +225,22 @@ Satellite_parameter:
       dcep_max_occurrence: 1
       dcep_min_inclusive: 0
       dcep_one_of: "[$dcep_ref ~ Satellite_parameter*mass_total, $dcep_ref ~ Satellite_parameter*mass_propellant, $dcep_ref ~ Satellite_parameter*mass_payload, $dcep_ref ~ Satellite_parameter*mass_structure, $dcep_ref ~ Satellite_parameter*mass_thermal, $dcep_ref ~ Satellite_parameter*mass_power, $dcep_ref ~ Satellite_parameter*mass_TTC, $dcep_ref ~ Satellite_parameter*mass_ADC, $dcep_ref ~ Satellite_parameter*mass_propulsion, $dcep_ref ~ Satellite_parameter*mass_other, $dcep_ref ~ Satellite_parameter*power_total, $dcep_ref ~ Satellite_parameter*power_payload, $dcep_ref ~ Satellite_parameter*power_structure, $dcep_ref ~ Satellite_parameter*power_thermal, $dcep_ref ~ Satellite_parameter*power_power_sys, $dcep_ref ~ Satellite_parameter*power_TTC, $dcep_ref ~ Satellite_parameter*power_ADC, $dcep_ref ~ Satellite_parameter*power_propulsion]"
+  thrust_mode:
+    dcep_info:
+      dcep_name: Thrust Mode Constraint
+      dcep_unit: "-"
+      dcep_description: >
+        Optional. Restricts the evolver to one thrust operating mode for propulsion
+        technologies that define both high and low-thrust variants (e.g. arcjet, HET).
+        'high' — only high-thrust DOFs (thrust_high, c_e_high) are considered.
+        'low'  — only low-thrust  DOFs (thrust_low,  c_e_low)  are considered.
+        Omit this field entirely (or leave empty) to allow all modes.
+      dcep_type: string
+      dcep_no_value: true
+      dcep_default: ""
+      dcep_min_occurrence: 0
+      dcep_max_occurrence: 1
+      dcep_allowed_values: ["high", "low", ""]
   complete_elem:
     dcep_info:
       dcep_name: deltav

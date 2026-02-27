@@ -1,0 +1,14 @@
+# ESDC YAML Data File
+# Generated: 2025-10-30 14:16:55
+# Octave 9.1.0
+
+Satellite_parameters:
+  input_case:
+    - mass_total: 155
+      deltav: 685.97
+      propulsion_power: 202.9
+      thrust_mode: high
+    - mass_total: 155
+      deltav: 526.25
+      propulsion_power: 202.9
+      thrust_mode: high
