@@ -30,7 +30,7 @@ if isfield(db_data.reference_data.propulsion_system.(individual_data.propulsion_
   individual_data.eff_PPU = get_ppu_eff(db_data.reference_data.propulsion_system.(individual_data.propulsion_system).ppu);
 end
 %update efficiency of thruster for new propellant
-individual_data.eff_thruster = get_thruster_eff(db_data.reference_data.propulsion_system.(individual_data.propulsion_system).thruster, individual_data.propellant);
+individual_data.eff_thruster = get_thruster_eff(db_data.reference_data.propulsion_system.(individual_data.propulsion_system).thruster, individual_data.propellant, NaN, individual_data.propulsion_system);
 
 % update jet power
 individual_data.power_jet = refresh_power_jet(individual_data);

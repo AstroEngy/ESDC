@@ -3,7 +3,7 @@ function individual_data = mutate_propellant(individual_data, db_data)
   %get a random available propellant type for this propulsion type 
   while 1
   [propellant_type_new n_propellant] =get_random_propellant(db_data.reference_data.propulsion_system, individual_data.propulsion_system);
-    if n_propellant==1
+    if n_propellant <= 1
       %disp('No alternative propellants available!');
       break
     end
@@ -28,7 +28,7 @@ function individual_data = mutate_propellant(individual_data, db_data)
   % else keep c_e constant
 
   %update efficiency of thruster for new propellant
-  individual_data.eff_thruster = get_thruster_eff(db_data.reference_data.propulsion_system.(individual_data.propulsion_system).thruster, individual_data.propellant);
+  individual_data.eff_thruster = get_thruster_eff(db_data.reference_data.propulsion_system.(individual_data.propulsion_system).thruster, individual_data.propellant, NaN, individual_data.propulsion_system);
 
   % update jet power
   individual_data.power_jet = refresh_power_jet(individual_data);

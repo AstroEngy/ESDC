@@ -30,7 +30,7 @@ function [generation_new, convergence] = evolve_population(input, db_data, confi
       % add function to overwrite .subsystem_masses.propulsion with new mass()
       % add remaining mass to margin or payload ...or remove from total mass...potential for reiterate
       % change evolutionary fitness condition for minimal mass? or from maximum margin+payload mass?
-      EP_scalings = mass_budget_propulsion(population(i,j), population(i,j).subsystem_masses.mass_propellant);
+      EP_scalings = mass_budget_propulsion(population(i,j), population(i,j).subsystem_masses.mass_propellant, db_data);
 
       %Calculate diff between smad and tool
       d_EP =  EP_scalings.total - population(i,j).subsystem_masses.mass_propulsion;

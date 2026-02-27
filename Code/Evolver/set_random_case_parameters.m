@@ -36,12 +36,22 @@ function [propulsion propellant c_e F p_thr p_jet eff_ppu eff_thruster] = set_ra
       % calculate c_e and propulsion system performance data 
       [c_e p_thr p_jet eff_ppu eff_thruster] = get_propulsion_system_performance_data_wo_c_e(db_data.reference_data.propulsion_system, propulsion, propellant, F, power_propulsion); 
       % TODO: likely inconsistent results?
+    case 'thrust_high'
+      [F propellant]= get_random_thrust_and_propellant(db_data.reference_data.propulsion_system, propulsion, 'high');
+      [c_e p_thr p_jet eff_ppu eff_thruster] = get_propulsion_system_performance_data_wo_c_e(db_data.reference_data.propulsion_system, propulsion, propellant, F, power_propulsion);
+    case 'thrust_low'
+      [F propellant]= get_random_thrust_and_propellant(db_data.reference_data.propulsion_system, propulsion, 'low');
+      [c_e p_thr p_jet eff_ppu eff_thruster] = get_propulsion_system_performance_data_wo_c_e(db_data.reference_data.propulsion_system, propulsion, propellant, F, power_propulsion);
     case 'c_e'
       %disp('Considering c_e variation') %maybe redundant
-      
       [c_e propellant]=get_random_c_e_and_propellant(db_data.reference_data.propulsion_system, propulsion);
       [F p_thr p_jet eff_ppu eff_thruster] = get_propulsion_system_performance_data_wo_thrust(db_data.reference_data.propulsion_system, propulsion, propellant, c_e, power_propulsion);
-
+    case 'c_e_high'
+      [c_e propellant]=get_random_c_e_and_propellant(db_data.reference_data.propulsion_system, propulsion, 'high');
+      [F p_thr p_jet eff_ppu eff_thruster] = get_propulsion_system_performance_data_wo_thrust(db_data.reference_data.propulsion_system, propulsion, propellant, c_e, power_propulsion);
+    case 'c_e_low'
+      [c_e propellant]=get_random_c_e_and_propellant(db_data.reference_data.propulsion_system, propulsion, 'low');
+      [F p_thr p_jet eff_ppu eff_thruster] = get_propulsion_system_performance_data_wo_thrust(db_data.reference_data.propulsion_system, propulsion, propellant, c_e, power_propulsion);
       % function to look up relevant c_e s from DB, select 1 randomly from available span 
     otherwise
       disp('DOF case laws not found. Check spelling') 

@@ -2,12 +2,40 @@ function eff_ppu = get_ppu_eff(data)
  %todo: update this to not consider the average of all relevant PPUs but look for data adaptive estimate
   n_ppu = size(data,2);
   if n_ppu==1
-    eff_ppu= data.efficiency;
+    if isfield(data, 'efficiency')
+      eff_ppu = scalar_field(data, 'efficiency');
+    else
+      eff_ppu = 1;  % assume ideal PPU if no efficiency data available
+    end
   else
     eff_ppu_list = [];
     for i=1:n_ppu
-      eff_ppu_list = [eff_ppu_list;data{i}.efficiency];
+      if isfield(data{i}, 'efficiency')
+        val = scalar_field(data{i}, 'efficiency');
+        if ~isnan(val)
+          eff_ppu_list = [eff_ppu_list; val];
+        end
+      end
     end
+    if isempty(eff_ppu_list)
+      eff_ppu = 1;  % assume ideal PPU if no efficiency data available
+    else
       eff_ppu = average_array(eff_ppu_list);
+    end
+  end
+end
+
+function val = scalar_field(s, fname)
+  % Extract a scalar from a field that may be a scalar or a min/max struct.
+  if ~isfield(s, fname)
+    val = NaN;
+  elseif isstruct(s.(fname))
+    if isfield(s.(fname), 'min') && isfield(s.(fname), 'max')
+      val = (s.(fname).min + s.(fname).max) / 2;
+    else
+      val = NaN;
+    end
+  else
+    val = s.(fname);
   end
 end

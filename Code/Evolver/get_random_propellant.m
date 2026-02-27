@@ -8,13 +8,24 @@ function [propellant n_propellants] = get_random_propellant(data, propulsion)
     n_thruster_entries = size(data.(propulsion).thruster,2); % change here how to get the data 
     for i=1:n_thruster_entries
       if n_thruster_entries==1
-            propellant_data = data.(propulsion).thruster.propellant;
+        if ~isfield(data.(propulsion).thruster, 'propellant')
+          continue;
+        end
+        propellant_data = data.(propulsion).thruster.propellant;
       else
-            propellant_data = data.(propulsion).thruster{i}.propellant;
+        if ~isfield(data.(propulsion).thruster{i}, 'propellant')
+          continue;
+        end
+        propellant_data = data.(propulsion).thruster{i}.propellant;
       end 
       if ~any(strcmp(propellant_list,propellant_data))
         propellant_list{1,end+1} = propellant_data;
       end
+    end
+    if isempty(propellant_list)
+      propellant = 'unknown';
+      n_propellants = 0;
+      return;
     end
     n_propellants = size(propellant_list,2);
     n_case= randi(n_propellants);

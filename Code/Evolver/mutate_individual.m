@@ -22,10 +22,10 @@ function [individual_new] = mutate_individual(input, db_data, config, individual
   evolver_config = config.Simulation_parameters.evolver;
 
   switch cases{1,n_mutation_case}
-    case 'c_e'
+    case {'c_e', 'c_e_high', 'c_e_low'}
       [individual_new] = mutate_c_e(individual_old, db_data, evolver_config);
 
-    case 'thrust'
+    case {'thrust', 'thrust_high', 'thrust_low'}
       [individual_new] = mutate_thrust(individual_old, db_data, evolver_config);
 
     case 'propellant'
@@ -35,7 +35,7 @@ function [individual_new] = mutate_individual(input, db_data, config, individual
       [individual_new] = mutate_propulsion_system(individual_old, db_data);
 
     otherwise
-      disp('Mutation laws not found.');
+      warning('mutate_individual: mutation law not found for DOF: %s', cases{1,n_mutation_case});
   end
 
 end
