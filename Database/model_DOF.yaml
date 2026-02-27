@@ -1,19 +1,52 @@
 # ESDC YAML Data File
-# Generated: 2025-10-30 14:16:58
+# Generated: 2026-02-27 00:00:00
 # Octave 9.1.0
 
 propulsion_system:
   arcjet:
     DOF:
-      - c_e
-      - propellant
-      - thrust
+      c_e:
+        - high
+        - low
+      propellant: ~
+      thrust:
+        - high
+        - low
   gridionthruster:
     DOF:
       - c_e
       - propellant
       - thrust
   FEEP:
+    DOF:
+      - c_e
+      - propellant
+      - thrust
+  RF_plasma:
+    DOF:
+      - c_e
+      - propellant
+      - thrust
+  chemical:
+    DOF:
+      - c_e
+      - propellant
+      - thrust
+  HET:
+    DOF:
+      c_e:
+        - high
+        - low
+      propellant: ~
+      thrust:
+        - high
+        - low
+  electrospray:
+    DOF:
+      - c_e
+      - propellant
+      - thrust
+  resistojet:
     DOF:
       - c_e
       - propellant

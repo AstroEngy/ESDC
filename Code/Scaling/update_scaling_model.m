@@ -307,50 +307,43 @@ end
 
 function [] = update_system_scaling(force_update)
   make_update = 0;
-  
+
   % Check if hash file exists for change detection
   if exist("Database/ESDC_Reference_Data_Systems_hash")
     hash_file = fopen('Database/ESDC_Reference_Data_Systems_hash', "r");
     hash_val = fgetl(hash_file);
     fclose(hash_file);
-    
+
     % Compute current database hash and compare
     current_hash = hash('md5', fileread('Database/ESDC_Reference_Data_Systems.xml'));
     if (hash_val == current_hash)
       disp('No updates to database detected.');
-      else
+    else
       disp('Updates to database detected.');
-        % Load component data and regenerate scaling laws
-        [data] = read_reference_data();
-        
-        % Update hash file with new database state
-        hash_file= fopen('Database/ESDC_Reference_Data_Systems_hash', "w");
-        fprintf(hash_file, hash('md5', fileread('Database/ESDC_Reference_Data_Systems.xml')));
-        fclose(hash_file);
-        
-        update_generic_component_scaling_model(data);
-        disp('Updates complete.');
-      end
+      make_update = 1;
+    end
   else
-    % No hash file exists - first run, create it
+    % No hash file exists - first run
     disp('No database hash file found');
-    disp('Creating hash file');
-    hash_file= fopen('Database/ESDC_Reference_Data_Systems_hash', "a");
-    disp('Write hash');
-    fprintf(hash_file, hash('md5', fileread('Database/ESDC_Reference_Data_Systems.xml')));
-    fclose(hash_file);
-    make_update= 1;
+    make_update = 1;
   end
-  
+
   % Force update overrides hash-based detection
   if force_update
     disp('Forcing Component Database Update');
   end
-  
+
   % Perform update if needed (first run or forced)
+  % Hash file is only written after a successful update
   if (make_update | force_update)
     [data] = read_reference_data();
     update_generic_component_scaling_model(data);
+    % Update succeeded - now persist the new hash
+    disp('Writing database hash file');
+    hash_file = fopen('Database/ESDC_Reference_Data_Systems_hash', "w");
+    fprintf(hash_file, hash('md5', fileread('Database/ESDC_Reference_Data_Systems.xml')));
+    fclose(hash_file);
+    disp('Updates complete.');
   end
 end
 
@@ -428,12 +421,16 @@ for k=1:numel(system_type_names)
     component_type_names=fieldnames(data.reference_data.(char(system_type_names(k))).(char(technology_type_names(i))));
     for j=1:numel(component_type_names)
       % Handle both struct and cell array component data
-      if not(isstruct(data.reference_data.(char(system_type_names(k))).(char(technology_type_names(i))).(char(component_type_names(j)))))
-        % Cell array format
-        parameter_names=fieldnames(data.reference_data.(char(system_type_names(k))).(char(technology_type_names(i))).(char(component_type_names(j))){1,i});
-      else
+      component_data = data.reference_data.(char(system_type_names(k))).(char(technology_type_names(i))).(char(component_type_names(j)));
+      if iscell(component_data)
+        % Cell array format - use first element for fieldnames
+        parameter_names=fieldnames(component_data{1,1});
+      elseif isstruct(component_data)
         % Struct format
-        parameter_names=fieldnames(data.reference_data.(char(system_type_names(k))).(char(technology_type_names(i))).(char(component_type_names(j))));
+        parameter_names=fieldnames(component_data);
+      else
+        % String or other scalar - not indexable for fieldnames, skip
+        continue;
       end
       
       % Skip metadata 'system' fields

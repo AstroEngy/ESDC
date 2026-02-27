@@ -1,19 +1,56 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<propulsion_system>
 		<arcjet>
-			<DOF>c_e</DOF>
-			<DOF>propellant</DOF>
-			<DOF>thrust</DOF>	
+			<c_e>
+				<mode>high</mode>
+				<mode>low</mode>
+			</c_e>
+			<propellant/>
+			<thrust>
+				<mode>high</mode>
+				<mode>low</mode>
+			</thrust>
 		</arcjet>
 		<gridionthruster>
-			<DOF>c_e</DOF>
-			<DOF>propellant</DOF>
-			<DOF>thrust</DOF>
+			<c_e/>
+			<propellant/>
+			<thrust/>
 		</gridionthruster>
 		<FEEP>
-			<DOF>c_e</DOF>
-			<DOF>propellant</DOF>
-			<DOF>thrust</DOF>
+			<c_e/>
+			<propellant/>
+			<thrust/>
 		</FEEP>
+		<RF_plasma>
+			<c_e/>
+			<propellant/>
+			<thrust/>
+		</RF_plasma>
+		<chemical>
+			<c_e/>
+			<propellant/>
+			<thrust/>
+		</chemical>
+		<HET>
+			<c_e>
+				<mode>high</mode>
+				<mode>low</mode>
+			</c_e>
+			<propellant/>
+			<thrust>
+				<mode>high</mode>
+				<mode>low</mode>
+			</thrust>
+		</HET>
+		<electrospray>
+			<c_e/>
+			<propellant/>
+			<thrust/>
+		</electrospray>
+		<resistojet>
+			<c_e/>
+			<propellant/>
+			<thrust/>
+		</resistojet>
 	</propulsion_system>
 
