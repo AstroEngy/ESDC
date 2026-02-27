@@ -38,5 +38,24 @@ function evolution_data = evolver(input, db_data, config,runID)
   fprintf('\nSuccess: Evolver has converged at %d generations\n', n_gen);
   fflush(stdout);
 
-  evolution_data = generation;                                                  % Assign data of all generations as evolution data to prepare output data of full evolutionary history
+  % Collapse to best-per-lineage snapshot.
+  % During evolution the full generation cell was needed for get_lineage / convergence
+  % testing. Now that the loop is done we discard failed mutants to save memory.
+  % Each individual's n_success field points to the generation index that holds its
+  % global optimum; copy those individuals into a single snapshot matrix.
+  n_cases_ev = size(generation{1}, 1);
+  n_seeds_ev  = size(generation{1}, 2);
+  best_gen = generation{end};                                                   % pre-allocate with correct struct layout
+  for ev_i = 1:n_cases_ev
+    for ev_j = 1:n_seeds_ev
+      best_gen(ev_i, ev_j) = generation{generation{end}(ev_i,ev_j).n_success}(ev_i, ev_j);
+    end
+  end
+
+  if config.Simulation_parameters.output.xml.full_history
+    generation{end+1} = best_gen;                                               % full history mode: keep all generations, append best as final entry
+    evolution_data = generation;
+  else
+    evolution_data = {best_gen};                                                % default: only the best snapshot (one cell entry)
+  end
 end

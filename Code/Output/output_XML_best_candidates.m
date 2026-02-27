@@ -10,10 +10,8 @@ function output_XML_best_candidates(config, evolution_data,runID)
     for i=1:size(evolution_data{1},2)
     %TODO replace here?  % appended here mass.fractions.total - former EP system mass fraction total
     %      solution_list = [solution_list , evolution_data{end}(j,i).mass_fractions.total];
-    % Use n_success to retrieve the global best individual for this lineage,
-    % not just the last-generation member which may be a failed mutant.
-    n_best = evolution_data{end}(j,i).n_success;
-    ind_i = evolution_data{n_best}(j,i);
+    % evolution_data{end} is already the best-per-lineage snapshot (set by evolver.m).
+    ind_i = evolution_data{end}(j,i);
     score_i = str2num(ind_i.subsystem_masses.m_margin.Text);
     % Exclude individuals with NaN c_e or thrust (invalid propulsion solution).
     % sc_type==1 ('No Propulsion') is exempt — NaN propulsion fields are expected there.
@@ -42,9 +40,8 @@ function output_XML_best_candidates(config, evolution_data,runID)
    end
 
     for k=1:config.Simulation_parameters.output.xml.optimal_candidates
-      % Retrieve the globally-best individual for this lineage (at n_success generation).
-      n_best_k = evolution_data{end}(j,idx(k)).n_success;
-      optimal_solution.best_solutions.(strcat('case_',num2str(j))).(strcat('best_',num2str(k))) =  evolution_data{n_best_k}(j,idx(k));
+      % evolution_data{end} is the best-per-lineage snapshot; read directly.
+      optimal_solution.best_solutions.(strcat('case_',num2str(j))).(strcat('best_',num2str(k))) =  evolution_data{end}(j,idx(k));
 
         if k==1 && j==1
          % optimal_solution.best_solutions.(strcat('case_',num2str(j))).(strcat('best_',num2str(k))).dcep_info.dcep_show ="false";
