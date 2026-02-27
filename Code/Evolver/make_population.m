@@ -56,13 +56,18 @@ for i = 1:numel(input.Satellite_parameters.input_case)
         population_member.totalimpulse = get_field_safe(case_parameters, 'totalimpulse');
         population_member.deltav = get_field_safe(case_parameters, 'deltav');
         population_member.propulsion_power = get_field_safe(case_parameters, 'propulsion_power');
+        thrust_mode = get_field_safe(case_parameters, 'thrust_mode');
+        if isempty(thrust_mode)
+          thrust_mode = '';
+        end
+        population_member.thrust_mode = thrust_mode;
 
       
 
       % determine respective random case DOF parameters
       %disp(input)
       %here issue with fractions later...
-      [population_member.propulsion_system, population_member.propellant, population_member.c_e, population_member.thrust, population_member.power_thruster, population_member.power_jet, population_member.eff_PPU, population_member.eff_thruster]  = set_random_case_parameters( database_data, population_member.propulsion_power);
+      [population_member.propulsion_system, population_member.propellant, population_member.c_e, population_member.thrust, population_member.power_thruster, population_member.power_jet, population_member.eff_PPU, population_member.eff_thruster]  = set_random_case_parameters( database_data, population_member.propulsion_power, population_member.thrust_mode);
       
       %calculate system masses and mission parameters
 %     population_member.subsystem_masses = mass_budget_propulsion(population_member);

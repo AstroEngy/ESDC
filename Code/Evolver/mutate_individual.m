@@ -16,6 +16,23 @@ function [individual_new] = mutate_individual(input, db_data, config, individual
     cases{1,end+1}='propulsion_system';
   end
 
+  % Apply thrust_mode filter to DOF list and propulsion_system option
+  thrust_mode = '';
+  if isfield(individual_old, 'thrust_mode') && ~isempty(individual_old.thrust_mode)
+    thrust_mode = individual_old.thrust_mode;
+  end
+  if ~isempty(thrust_mode)
+    dof_filtered = filter_dof_by_thrust_mode(db_data.DOF, thrust_mode);
+    if isfield(dof_filtered.propulsion_system, individual_old.propulsion_system)
+      cases = dof_filtered.propulsion_system.(individual_old.propulsion_system).DOF;
+    end
+    % Only allow propulsion_system mutation if >1 compatible system remains
+    if numel(fieldnames(dof_filtered.propulsion_system)) > 1
+      cases{1,end+1} = 'propulsion_system';
+    end
+  end
+  n_DOF = numel(cases);
+
   %determine the parameter to be mutated
   n_mutation_case = randi(n_DOF);
   

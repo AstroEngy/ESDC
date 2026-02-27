@@ -1,11 +1,20 @@
-function [propulsion propellant c_e F p_thr p_jet eff_ppu eff_thruster] = set_random_case_parameters(db_data, power_propulsion)
-  n_DOF = num_struct_members_full(db_data.DOF, 'DOF');
+function [propulsion propellant c_e F p_thr p_jet eff_ppu eff_thruster] = set_random_case_parameters(db_data, power_propulsion, thrust_mode)
+  % thrust_mode (optional): 'high', 'low', or '' (any).
+  % Filters available DOFs and technologies before random selection.
+  if nargin < 3
+    thrust_mode = '';
+  end
+
+  % Apply thrust_mode filter to DOF struct before counting
+  dof = filter_dof_by_thrust_mode(db_data.DOF, thrust_mode);
+
+  n_DOF = num_struct_members_full(dof, 'DOF');
   n_random_case = randi(n_DOF);
 
   %determine the type of respective propulsion system
-  propulsion_systems =db_data.DOF.propulsion_system;
-  index_low =0;
-  names=fieldnames(propulsion_systems);
+  propulsion_systems = dof.propulsion_system;
+  index_low = 0;
+  names = fieldnames(propulsion_systems);
 
   for i=1:numel(names)
       n_sub = num_struct_members_full(propulsion_systems.(names{i}),'DOF');
