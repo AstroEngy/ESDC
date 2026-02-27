@@ -1,4 +1,5 @@
 function eff = literature_fallback_efficiency(propulsion_type, propellant)
+  % TODO: Externalize these magic numbers to a config file or database for easier maintenance and transparency.
   % Returns literature-based typical thruster jet efficiency (P_jet/P_in) by technology.
   % Used only when no DB entry or calculable efficiency is available.
   %
