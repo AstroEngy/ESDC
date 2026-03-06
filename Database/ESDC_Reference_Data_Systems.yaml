@@ -8,104 +8,104 @@ reference_data:
       thruster:
         - type: arcjet
           name: Velarc (NH3)
-          thrust: 0.04002
-          c_e: 4415
-          power_jet: 88.3441
-          massflow: 9e-06
-          mass: 0.3
+          thrust: 0.04002  # N
+          c_e: 4415  # m/s
+          power_jet: 88.3441  # W
+          massflow: 9e-06  # kg/s
+          mass: 0.3  # kg
           efficiency: 0.3178
           propellant: NH3
-          structure_mass: 0.94815
+          structure_mass: 0.94815  # kg
           source: IRS arcjet database
           TRL: 6
         - type: arcjet
           name: ARTUS IM3
-          thrust: 0.106883
-          c_e: 4836
-          power_jet: 258.443
-          massflow: 2.21e-05
-          mass: 0.732
+          thrust: 0.106883  # N
+          c_e: 4836  # m/s
+          power_jet: 258.443  # W
+          massflow: 2.21e-05  # kg/s
+          mass: 0.732  # kg
           efficiency: 0.324839
           propellant: NH3
-          structure_mass: 0.94815
+          structure_mass: 0.94815  # kg
           source: IRS arcjet database
           TRL: 6
         - type: arcjet
           name: TALOS
-          thrust: 0.1025
-          c_e: 4767.44
-          power_jet: 244.331
-          massflow: 2.15e-05
+          thrust: 0.1025  # N
+          c_e: 4767.44  # m/s
+          power_jet: 244.331  # W
+          massflow: 2.15e-05  # kg/s
           efficiency: 0.305414
           propellant: NH3
-          structure_mass: 0.94815
+          structure_mass: 0.94815  # kg
           source: IRS arcjet database
           TRL: 6
         - type: arcjet
           name: "ESEX -flight"
-          thrust: 1.93
-          c_e: 7710.66
-          power_jet: 7440.79
-          massflow: 0.000250303
+          thrust: 1.93  # N
+          c_e: 7710.66  # m/s
+          power_jet: 7440.79  # W
+          massflow: 0.000250303  # kg/s
           efficiency: 0.267
           propellant: NH3
-          structure_mass: 0.94815
+          structure_mass: 0.94815  # kg
           source: IRS arcjet database
           TRL: 9
         - type: arcjet
           name: "ESEX -IM"
-          thrust: 2
-          c_e: 7848
-          power_jet: 7848
-          massflow: 0.000254842
+          thrust: 2  # N
+          c_e: 7848  # m/s
+          power_jet: 7848  # W
+          massflow: 0.000254842  # kg/s
           efficiency: 0.299542
           propellant: NH3
-          structure_mass: 0.94815
+          structure_mass: 0.94815  # kg
           source: IRS arcjet database
           TRL: 8
         - type: arcjet
           name: Artur He
-          thrust:
+          thrust:  # N
             min: 0.18
             max: 0.27
-          c_e:
+          c_e:  # m/s
             min: 4090.91
             max: 6136.35
-          power_jet:
+          power_jet:  # W
             min: 368.182
             max: 828.407
-          massflow: 4.4e-05
-          mass: 0.455
+          massflow: 4.4e-05  # kg/s
+          mass: 0.455  # kg
           efficiency:
             min: 0.70204
             max: 0.73636
           propellant: He
-          structure_mass: 0.493
+          structure_mass: 0.493  # kg
           source: IRS arcjet database
           TRL: 6
         - type: arcjet
           name: Velarc (He)
-          thrust: 0.0345
-          c_e: 5886
-          power_jet: 101.534
-          massflow: 6e-06
-          mass: 0.3
+          thrust: 0.0345  # N
+          c_e: 5886  # m/s
+          power_jet: 101.534  # W
+          massflow: 6e-06  # kg/s
+          mass: 0.3  # kg
           efficiency: 0.7532
           propellant: He
-          structure_mass: 0.493
+          structure_mass: 0.493  # kg
           source: IRS arcjet database
           TRL: 6
         - type: arcjet
           name: ATOS-2
-          thrust: 0.0345
-          c_e:
+          thrust: 0.0345  # N
+          c_e:  # m/s
             min: 4905
             max: 6180.3
-          massflow:
+          massflow:  # kg/s
             min: 0.022
             max: 0.036
-          mass: 0.385
-          power:
+          mass: 0.385  # kg
+          power:  # W
             min: 1000
             max: 1600
           propellant: NH3
@@ -116,17 +116,17 @@ reference_data:
         # ----------------------------------------
         - type: arcjet
           name: HIPARC-W (TIHTUS arcjet stage)
-          thrust: 3.34
-          power: 50000
+          thrust: 3.34  # N
+          power: 50000  # W
           propellant: Hydrogen
           source: "Böhrk et al., Arcjet Stage Investigation and Inductive Hydrogen Heating in the TIHTUS Engine, IEPC-2005-275, 29th IEPC, Princeton University, 2005."
           # Evidence: "maximum thrust measured 3.34 N at 50 kW electric power" (p.3)
         - type: arcjet
           name: HIPARC-R (100 kW hydrogen arcjet)
-          thrust: 3.0
-          c_e: 14709.975
-          power: 100000
-          massflow: 0.0002
+          thrust: 3.0  # N
+          c_e: 14709.975  # m/s
+          power: 100000  # W
+          massflow: 0.0002  # kg/s
           efficiency: 0.22
           propellant: Hydrogen
           source: "Auweter-Kurtz et al., 100 kW Class Hydrogen Arcjet Thruster, IEPC-97-007, 25th IEPC, 1997."
@@ -136,27 +136,27 @@ reference_data:
         # ----------------------------------------
         - type: arcjet
           name: "Low Power Hydrazine Arcjet EM S/N 001"
-          thrust:
+          thrust:  # N
             min: 0.183
             max: 0.223
-          c_e:
+          c_e:  # m/s
             min: 4256.0861
             max: 4746.4186
-          power_jet:
+          power_jet:  # W
             min: 1260
             max: 1700
-          massflow:
+          massflow:  # kg/s
             min: 3.49e-05
             max: 4.85e-05
-          mass: 0.83
+          mass: 0.83  # kg
           propellant: N2H4
           source: "Yano, S.E., Arcjet Thruster Research and Technology, Phase II Final Report, NASA CR-182276, Rocket Research Company for NASA Lewis, March 1991."
           # Evidence: "Thrust BOL 0.223 N / EOL 0.183 N; Isp 434–484 s; power 1260–1700 W; flow 34.9–48.5 mg/s; mass 0.83 kg"
         - type: arcjet
           name: "Low Power Hydrazine Arcjet EM S/N 002"
-          c_e: 4481.63905
-          power_jet: 1260
-          mass: 0.83
+          c_e: 4481.63905  # m/s
+          power_jet: 1260  # W
+          mass: 0.83  # kg
           propellant: N2H4
           source: "Yano, S.E., Arcjet Thruster Research and Technology, Phase II Final Report, NASA CR-182276, Rocket Research Company for NASA Lewis, March 1991."
           # Evidence: "mission average Isp 457 s; baseline power 1260 W; same mass as S/N 001"
@@ -165,10 +165,10 @@ reference_data:
         # ----------------------------------------
         - type: arcjet
           name: "Plasmadyne 1 kW Arcjet (H2/N2 mixtures)"
-          c_e:
+          c_e:  # m/s
             min: 3873.63
             max: 4903.33
-          power_jet:
+          power_jet:  # W
             min: 700
             max: 1150
           efficiency: 0.31
@@ -180,46 +180,46 @@ reference_data:
         # ----------------------------------------
         - type: arcjet
           name: "DME Arcjet Thruster (Kyushu Institute of Technology)"
-          thrust: 0.15
-          c_e: 2648.7
-          massflow: 0.00006
-          power_jet: 1300
+          thrust: 0.15  # N
+          c_e: 2648.7  # m/s
+          massflow: 0.00006  # kg/s
+          power_jet: 1300  # W
           propellant: "Dimethyl Ether (DME)"
           source: "Kakami et al., Acta Astronautica 68 (2011) 1228–1233, DOI:10.1016/j.actaastro.2010.10.019."
           # Evidence: "thrust 0.15 N, Isp 270 s, mass flow 60 mg/s, discharge power 1300 W"
       ppu:
         - type: arcjet
           name: ATOS
-          power: 800
-          mass: 1.89
+          power: 800  # W
+          mass: 1.89  # kg
           efficiency: 0.92
           source: "Riehle, M.: ATOS - Arcjet Flugexperiment auf dem Amateurfunksatelliten AMSAT-P3-D, Final report, DARA FKZ TT 50 TT 9404, 1994"
           TRL: 8
         - type: arcjet
           name: "MR-509"
-          power: 1800
-          mass: 4.12
+          power: 1800  # W
+          mass: 4.12  # kg
           efficiency: 0.9
           source: "Smith, R. D., Roberts, C. R., Aadland, R. S., Lichtin, D. A., Davies, K.: Flight qualification of the 1.8 kW MR-509 Hydrazine Arcjet System, IEPC-97-081, 25th International Electric Propulsion Conference, Cleveland Ohio. United States of America,1997, http://electricrocket.org/IEPC/7081.pdf"
           TRL: 8
         - type: arcjet
           name: "MR-509-2"
-          power: 1745
-          mass: 6.2
+          power: 1745  # W
+          mass: 6.2  # kg
           efficiency: 0.934
           source: "Dieter Zube, Dan Fye, Ideo Masuda and Yoshifumi Gotoh: Low bus voltage hydrazine arcjet system for geostationary satellites, 2021, https://doi.org/10.2514/6.1998-3631"
           TRL: 8
         - type: arcjet
           name: "MR-512"
-          power: 1780
-          mass: 6.2
+          power: 1780  # W
+          mass: 6.2  # kg
           efficiency: 0.91
           source: "MR-512, Enyclopedia Astronautica, Webpage, http://www.astronautix.com/m/mr-512.html, last accessed 24.10.2016"
           TRL: 8
         - type: arcjet
           name: ESEX
-          power: 30000
-          mass: 48.4
+          power: 30000  # W
+          mass: 48.4  # kg
           efficiency: 0.95
           source: "http://electricrocket.org/IEPC/IEPC1993-048.pdf"
           TRL: 9
@@ -233,129 +233,129 @@ reference_data:
       thruster:
         - type: FEEP
           name: Nano
-          thrust: 0.00033
-          c_e: 35316
-          mass: 0.68
-          mass_propellant: 0.22
-          power: 40
+          thrust: 0.00033  # N
+          c_e: 35316  # m/s
+          mass: 0.68  # kg
+          mass_propellant: 0.22  # kg
+          power: 40  # W
           propellant: Indium
           source: "https://www.enpulsion.com/order/enpulsion-nano/"
         - type: FEEP
           name: Nano R3
-          thrust: 0.00035
-          c_e: 34335
-          mass: 1.2
-          mass_propellant: 0.22
-          power: 40
+          thrust: 0.00035  # N
+          c_e: 34335  # m/s
+          mass: 1.2  # kg
+          mass_propellant: 0.22  # kg
+          power: 40  # W
           propellant: Indium
           source: "https://www.enpulsion.com/order/enpulsion-nano/"
         - type: FEEP
           name: Nano AR3
-          thrust: 0.00035
-          c_e: 34335
-          mass: 1.23
-          mass_propellant: 0.22
-          power: 40
+          thrust: 0.00035  # N
+          c_e: 34335  # m/s
+          mass: 1.23  # kg
+          mass_propellant: 0.22  # kg
+          power: 40  # W
           propellant: Indium
           source: "https://www.enpulsion.com/order/enpulsion-nano/"
         - type: FEEP
           name: Nano IR3
-          thrust: 0.0005
-          c_e: 19620
-          mass: 1.2
-          mass_propellant: 0.22
-          power: 45
+          thrust: 0.0005  # N
+          c_e: 19620  # m/s
+          mass: 1.2  # kg
+          mass_propellant: 0.22  # kg
+          power: 45  # W
           propellant: Indium
           source: "https://www.enpulsion.com/order/enpulsion-nano/"
         - type: FEEP
           name: "Micro R3-1"
-          thrust: 0.001
-          c_e: 19620
-          mass: 2.6
-          mass_propellant: 1.3
-          power: 100
+          thrust: 0.001  # N
+          c_e: 19620  # m/s
+          mass: 2.6  # kg
+          mass_propellant: 1.3  # kg
+          power: 100  # W
           propellant: Indium
           source: "https://www.enpulsion.com/order/enpulsion-nano/"
         - type: FEEP
           name: "Micro R3-4"
-          thrust: 0.004
-          c_e: 19620
-          mass: 10.4
-          mass_propellant: 5.2
-          power: 400
+          thrust: 0.004  # N
+          c_e: 19620  # m/s
+          mass: 10.4  # kg
+          mass_propellant: 5.2  # kg
+          power: 400  # W
           propellant: Indium
           source: "https://www.enpulsion.com/order/enpulsion-nano/"
     RF_plasma:
       thruster:
         type: RF_plasma
         name: REGULUS
-        c_e: 5886
-        thrust: 0.00055
-        mass: 2.5
-        massflow: 0.0001
-        power: 50
+        c_e: 5886  # m/s
+        thrust: 0.00055  # N
+        mass: 2.5  # kg
+        massflow: 0.0001  # kg/s
+        power: 50  # W
         propellant: Iodine
-        total_impulse: 3000
+        total_impulse: 3000  # N·s
         source: "https://www.t4innovation.com/wp-content/uploads/2019/10/T4i_REGULUS_datasheet_.pdf"
     gridionthruster:
       thruster:
         - type: gridionthruster
           name: Arclight
-          thrust: 0.012
-          c_e: 23544
-          power_jet: 141.264
-          massflow: 5.09684e-07
-          mass: 1.8
+          thrust: 0.012  # N
+          c_e: 23544  # m/s
+          power_jet: 141.264  # W
+          massflow: 5.09684e-07  # kg/s
+          mass: 1.8  # kg
           efficiency: 0.35316
           propellant: Xe
-          structure_mass: 5
+          structure_mass: 5  # kg
           source: "Ariane Group - ARCLIGHT ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-propulsion.com/brochures/electric-propulsion/arclight-electric-space-propulsion.pdf"
         - type: gridionthruster
           name: RIT 10 EVO
-          thrust:
+          thrust:  # N
             min: 0.005
             nominal: 0.015
             max: 0.025
-          c_e:
+          c_e:  # m/s
             min: 18639
             nominal: 29430
             max: 31392
-          power_jet:
+          power_jet:  # W
             min: 46.5975
             nominal: 220.725
             max: 392.4
-          massflow: 5.09684e-07
-          mass: 1.8
+          massflow: 5.09684e-07  # kg/s
+          mass: 1.8  # kg
           efficiency:
             min: 0.321366
             nominal: 0.507414
             max: 0.516316
           propellant: Xe
-          structure_mass: 5
+          structure_mass: 5  # kg
           source: "Ariane Group - http://www.space-propulsion.com/spacecraft-propulsion/propulsion-systems/electric-propulsion/images/rit-thruster-family-performance-data.jpg"
         - type: gridionthruster
           name: RIT µX
-          thrust:
+          thrust:  # N
             min: 5e-05
             max: 0.0005
-          c_e:
+          c_e:  # m/s
             min: 2943
             max: 29430
-          power_jet: 0.73575
-          mass: 0.44
+          power_jet: 0.73575  # W
+          mass: 0.44  # kg
           efficiency: 0.014715
           propellant: Xe
-          structure_mass: 5
+          structure_mass: 5  # kg
           source: "Ariane Group - http://www.space-propulsion.com/spacecraft-propulsion/propulsion-systems/electric-propulsion/images/rit-thruster-family-performance-data.jpg"
         # ----------------------------------------
         # Goebel & Katz 2008 - Table 1-1 (Ion thruster generic range)
         # ----------------------------------------
         - type: gridionthruster
           name: Ion thruster (typical flight-heritage range)
-          c_e:
+          c_e:  # m/s
             min: 24516.625
             max: 35303.94
-          power:
+          power:  # W
             min: 400
             max: 4300
           efficiency:
@@ -369,13 +369,13 @@ reference_data:
         # ----------------------------------------
         - type: gridionthruster
           name: "NSTAR (DS1)"
-          thrust:
+          thrust:  # N
             min: 0.0207
             max: 0.0927
-          c_e:
+          c_e:  # m/s
             min: 19407.36035
             max: 31342.0534
-          power:
+          power:  # W
             min: 577
             max: 2567
           efficiency:
@@ -389,18 +389,18 @@ reference_data:
         # ----------------------------------------
         - type: gridionthruster
           name: "25-cm XIPS (low-power station keeping)"
-          thrust: 0.080
-          c_e: 33538.743
-          power: 2000
+          thrust: 0.080  # N
+          c_e: 33538.743  # m/s
+          power: 2000  # W
           efficiency: 0.67
           propellant: Xenon
           source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-3."
           # Evidence: "Thrust 80 mN, Isp 3420 s, 2 kW thruster input, efficiency 67%"
         - type: gridionthruster
           name: "25-cm XIPS (high-power orbit raising)"
-          thrust: 0.166
-          c_e: 34813.6075
-          power: 4300
+          thrust: 0.166  # N
+          c_e: 34813.6075  # m/s
+          power: 4300  # W
           efficiency: 0.688
           propellant: Xenon
           source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-3."
@@ -410,9 +410,9 @@ reference_data:
         # ----------------------------------------
         - type: gridionthruster
           name: "T5 Kaufman thruster (station keeping)"
-          thrust: 0.018
-          c_e: 31381.28
-          power: 476
+          thrust: 0.018  # N
+          c_e: 31381.28  # m/s
+          power: 476  # W
           efficiency: 0.55
           propellant: Xenon
           source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-4."
@@ -422,9 +422,9 @@ reference_data:
         # ----------------------------------------
         - type: gridionthruster
           name: "RIT-10 rf thruster (station keeping)"
-          thrust: 0.015
-          c_e: 33342.61
-          power: 459
+          thrust: 0.015  # N
+          c_e: 33342.61  # m/s
+          power: 459  # W
           efficiency: 0.52
           propellant: Xenon
           source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-5."
@@ -434,13 +434,13 @@ reference_data:
         # ----------------------------------------
         - type: gridionthruster
           name: "ETS-8 12-cm Kaufman (north-south station keeping)"
-          thrust:
+          thrust:  # N
             min: 0.0209
             max: 0.0232
-          c_e:
+          c_e:  # m/s
             min: 23555.5733
             max: 26134.72225
-          power:
+          power:  # W
             min: 541
             max: 611
           efficiency:
@@ -454,18 +454,18 @@ reference_data:
         # ----------------------------------------
         - type: gridionthruster
           name: NEXT
-          power: 7000
-          isp: 4100
-          c_e: 40207.265
+          power: 7000  # W
+          isp: 4100  # s
+          c_e: 40207.265  # m/s
           TRL: 7
           propellant: Xenon
           source: "Hofer et al., JPL Poster RPC#R22116, 2022, Figure 4 table."
           # Evidence: "NEXT, 7 kW, Isp 4100 s, TRL 7"
         - type: gridionthruster
           name: RIT-2X
-          power: 7500
-          isp: 3500
-          c_e: 34323.275
+          power: 7500  # W
+          isp: 3500  # s
+          c_e: 34323.275  # m/s
           TRL: 5
           propellant: Xenon
           source: "Hofer et al., JPL Poster RPC#R22116, 2022, Figure 4 table."
@@ -475,13 +475,13 @@ reference_data:
         # ----------------------------------------
         - type: gridionthruster
           name: PBI (Pale Blue)
-          thrust:
+          thrust:  # N
             min: 0.00035
-          power:
+          power:  # W
             max: 60
-          mass:
+          mass:  # kg
             max: 2.0
-          total_impulse:
+          total_impulse:  # N·s
             min: 7000
           propellant: Water
           source: "Pale Blue PBH Water Hall Effect Thruster Datasheet, satsearch (z98e6q)."
@@ -489,8 +489,8 @@ reference_data:
       ppu:
         type: gridionthruster
         name: Arclight PPU
-        mass: 6.5
-        power: 450
+        mass: 6.5  # kg
+        power: 450  # W
         efficiency: 0.92
       requiredsystems:
         system:
@@ -502,13 +502,13 @@ reference_data:
       thruster:
         - type: chemical
           name: PM200
-          thrust: 0.5
-          c_e: 2795.85
-          power: 12
-          delta_v: 230
-          mass: 1.1
-          mass_propellant: 0.31
-          impulse_tot: 850
+          thrust: 0.5  # N
+          c_e: 2795.85  # m/s
+          power: 12  # W
+          delta_v: 230  # m/s
+          mass: 1.1  # kg
+          mass_propellant: 0.31  # kg
+          impulse_tot: 850  # N·s
           propellant: Bi
           source: "https://hyperiontechnologies.nl/wp-content/uploads/2019/11/HT_PM200.pdf"
         # ----------------------------------------
@@ -516,72 +516,72 @@ reference_data:
         # ----------------------------------------
         - type: chemical
           name: "RAFAEL LT-1N-SP (Type 1)"
-          thrust:
+          thrust:  # N
             min: 1.3
             max: 1.4
-          c_e: 2010.091
-          mass: 0.310
-          impulse_tot: 100000
+          c_e: 2010.091  # m/s
+          mass: 0.310  # kg
+          impulse_tot: 100000  # N·s
           propellant: "Hydrazine (N2H4)"
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.44/81."
           # Evidence: "Thrust BOL steady state 1.3÷1.4 N (Type 1), Isp >205 s @5.5 bar, mass ≤310 g, total impulse 100,000 Ns"
         - type: chemical
           name: "RAFAEL LT-1N-SP (Type 2)"
-          thrust:
+          thrust:  # N
             min: 1.0
             max: 1.1
-          c_e: 2010.091
-          mass: 0.310
-          impulse_tot: 60000
+          c_e: 2010.091  # m/s
+          mass: 0.310  # kg
+          impulse_tot: 60000  # N·s
           propellant: "Hydrazine (N2H4)"
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.44/81."
           # Evidence: "Thrust BOL steady state 1.0÷1.1 N (Type 2), Isp >205 s @5.5 bar, mass ≤310 g, total impulse 60,000 Ns"
         - type: chemical
           name: "RAFAEL LT-5N-SP"
-          thrust:
+          thrust:  # N
             min: 1.8
             max: 6.1
-          c_e: 2059.397
-          mass: 0.310
-          impulse_tot: 74000
+          c_e: 2059.397  # m/s
+          mass: 0.310  # kg
+          impulse_tot: 74000  # N·s
           propellant: "Hydrazine (N2H4)"
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.46/81."
           # Evidence: "Thrust 6.1 N @22 bar to 1.8 N @5.5 bar, Isp >210 s @5.5 bar, mass ≤310 g, total impulse 74,000 Ns"
         - type: chemical
           name: "RAFAEL HT-25N-SP"
-          thrust:
+          thrust:  # N
             min: 9.5
             max: 28.0
-          c_e: 2010.091
-          mass: 0.530
-          impulse_tot: 100000
+          c_e: 2010.091  # m/s
+          mass: 0.530  # kg
+          impulse_tot: 100000  # N·s
           propellant: "Hydrazine (N2H4)"
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.48/81."
           # Evidence: "Thrust 28 to 9.5 N, Isp >205 s @5.5 bar, mass ≤530 g, total impulse 100,000 Ns"
         - type: chemical
           name: "RAFAEL AT-25N"
-          thrust: 24.0
-          c_e: 2059.397
-          mass: 0.310
+          thrust: 24.0  # N
+          c_e: 2059.397  # m/s
+          mass: 0.310  # kg
           propellant: "Hydrazine (N2H4)"
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.54/81."
           # Evidence: "Thrust steady state 24 N, Isp >210 s @6 bar, mass 310 g"
         - type: chemical
           name: "RAFAEL ACT-45N"
-          thrust:
+          thrust:  # N
             min: 16.0
             max: 45.0
-          c_e: 1863.264
-          mass: 0.500
-          impulse_tot: 60000
+          c_e: 1863.264  # m/s
+          mass: 0.500  # kg
+          impulse_tot: 60000  # N·s
           propellant: "Hydrazine (N2H4)"
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.56/81."
           # Evidence: "Thrust 45 to 16 N, Isp >190 s @6 bar, mass 500 g, total impulse SSF 60,000 Ns"
         - type: chemical
           name: "RAFAEL ST-200N"
-          thrust: 200.0
-          c_e: 2157.463
-          mass: 1.250
+          thrust: 200.0  # N
+          c_e: 2157.463  # m/s
+          mass: 1.250  # kg
           propellant: "Hydrazine (N2H4)"
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.57/81."
           # Evidence: "Thrust steady state 200±5% N, Isp >220 s, mass ≤1250 g"
@@ -589,144 +589,144 @@ reference_data:
       vessel:
         - type: tank
           name: "Metal Composite Xenon Tank XT-350"
-          mass: 43.5
+          mass: 43.5  # kg
           propellant: Xenon
-          mass_propellant: 570
-          pressure: 9.807*10^6
-          volume: 0.35
+          mass_propellant: 570  # kg
+          pressure: 9.807*10^6  # Pa
+          volume: 0.35  # L
           source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/metal-composite-xenon-tank-XT-350/"
         - type: tank
           name: "Metal Composite Xenon Tank XT-200"
-          mass: 28
+          mass: 28  # kg
           propellant: Xenon
-          mass_propellant: 570
-          pressure: 8.826*10^6
-          volume: 0.2
+          mass_propellant: 570  # kg
+          pressure: 8.826*10^6  # Pa
+          volume: 0.2  # L
           source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/metal-composite-xenon-tank-XT-200/"
         - type: tank
           name: "Bipropellant Tank with Stiff-Plastic Separation Devices (Diaphragms)"
-          mass: 15.5
+          mass: 15.5  # kg
           propellant:
-          pressure: 2.94*10^6
-          volume: 0.04
+          pressure: 2.94*10^6  # Pa
+          volume: 0.04  # L
           source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/bipropellant-tank-with-stiff-plastic-separation-devices-diaphragms/"
         - type: tank
           name: "Monopropellant Tank with Stiff-Plastic Separation Device (Diaphragm)"
-          mass: 5.2
+          mass: 5.2  # kg
           propellant:
-          pressure: 1.67*10^6
-          volume: 0.0308
+          pressure: 1.67*10^6  # Pa
+          volume: 0.0308  # L
           source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/monopropellant-tank-with-stiff-plastic-separation-device-diaphragm/"
         - type: tank
           name: Composite Storage Tank
-          mass: 8.7
+          mass: 8.7  # kg
           propellant:
-          pressure: 14.2*10^6
-          volume: 0.0382
+          pressure: 14.2*10^6  # Pa
+          volume: 0.0382  # L
           source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/composite-storage-tank/"
         - type: tank
           name: Composite Vessel
-          mass: 5.8
+          mass: 5.8  # kg
           propellant:
-          pressure: 17.6*10^6
-          volume: 0.0018
+          pressure: 17.6*10^6  # Pa
+          volume: 0.0018  # L
           source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/composite-vessel/"
         - type: tank
           name: Working Medium Tank MVSK
-          mass: 2.5
+          mass: 2.5  # kg
           propellant: Hydrazine
-          pressure: 1.32*10^6
-          volume: 0.0084
+          pressure: 1.32*10^6  # Pa
+          volume: 0.0084  # L
           source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/working-medium-tank-mvsk/"
         # ----------------------------------------
         # RAFAEL Space Propulsion 2021 Catalog (propellant tanks)
         # ----------------------------------------
         - type: tank
           name: "RAFAEL PEPT-230"
-          mass: 1.3
+          mass: 1.3  # kg
           propellant:
             - Hydrazine
             - IPA
             - distilled water
             - GN2
             - GHe
-          pressure:
+          pressure:  # Pa
             min: 550000
             max: 2400000
-          volume: 0.0045
+          volume: 0.0045  # L
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.24/81 + p.28/81."
           # Evidence: "mass <1.3 kg, operating 24 to 5.5 bar, qualified propellant capacity 4.5 L, compatible Hydrazine/IPA/distilled water/GN2/GHe"
         - type: tank
           name: "RAFAEL PEPT-260"
-          mass: 1.7
+          mass: 1.7  # kg
           propellant:
             - Hydrazine
             - IPA
             - distilled water
             - GN2
             - GHe
-          pressure:
+          pressure:  # Pa
             min: 550000
             max: 2400000
-          volume: 0.0069
+          volume: 0.0069  # L
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.24/81 + p.30/81."
           # Evidence: "mass <1.7 kg, operating 24 to 5.5 bar, qualified propellant capacity 6.9 L"
         - type: tank
           name: "RAFAEL PEPT-330"
-          mass: 3.1
+          mass: 3.1  # kg
           propellant:
             - Hydrazine
             - de-ionized water
             - IPA
             - GN2
             - GHe
-          pressure: 2900000
-          volume: 0.0154
+          pressure: 2900000  # Pa
+          volume: 0.0154  # L
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.24/81 + p.32/81."
           # Evidence: "mass ≤3.1 kg, MEOP 29 bar, qualified propellant capacity 15.4 L"
         - type: tank
           name: "RAFAEL PEPT-420N"
-          mass: 3.9
+          mass: 3.9  # kg
           propellant:
             - Hydrazine
             - distilled water
             - IPA
             - GN2
             - GHe
-          pressure:
+          pressure:  # Pa
             min: 550000
             max: 2540000
-          volume: 0.030
+          volume: 0.030  # L
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.24/81 + p.34/81."
           # Evidence: "mass 3.9 kg, operating 25.4 to 5.5 bar, qualified propellant capacity 30 L"
         - type: tank
           name: "RAFAEL PEPT-590"
-          mass: 7.5
+          mass: 7.5  # kg
           propellant:
             - Hydrazine
             - IPA
             - distilled water
             - GN2
             - GHe
-          pressure:
+          pressure:  # Pa
             min: 550000
             max: 2460000
-          volume: 0.075
+          volume: 0.075  # L
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.24/81 + p.36/81."
           # Evidence: "mass 7.5 kg, operating 24.6 to 5.5 bar, qualified propellant capacity 75 L"
         - type: tank
           name: "RAFAEL PEPT-590GB"
-          mass: 17.5
+          mass: 17.5  # kg
           propellant:
             - Hydrazine
             - IPA
             - distilled water
             - GN2
             - GHe
-          pressure:
+          pressure:  # Pa
             min: 550000
             max: 2740000
-          volume: 0.154
+          volume: 0.154  # L
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.24/81 + p.39/81."
           # Evidence: "mass 17.5 kg, operating 27.4 to 5.5 bar, qualified propellant capacity 154 L"
     HET:
@@ -736,10 +736,10 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: Hall thruster (typical flight-heritage range)
-          c_e:
+          c_e:  # m/s
             min: 14709.975
             max: 19613.3
-          power:
+          power:  # W
             min: 1500
             max: 4500
           efficiency:
@@ -753,8 +753,8 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: BPT-4000 (Aerojet)
-          c_e: 19613.3
-          power:
+          c_e: 19613.3  # m/s
+          power:  # W
             min: 1000
             max: 5000
           efficiency:
@@ -767,36 +767,36 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: SPT-50 (Fakel)
-          thrust: 0.020
-          c_e: 10787.315
-          power: 350
+          thrust: 0.020  # N
+          c_e: 10787.315  # m/s
+          power: 350  # W
           efficiency: 0.35
           propellant: Xenon
           source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-8."
           # Evidence: "Thrust (mN) 20 ... Average Isp (s) 1100 ... Thruster input power (W) 350 ... Total efficiency (%) 35"
         - type: HET
           name: SPT-70 (Fakel)
-          thrust: 0.040
-          c_e: 14709.975
-          power: 700
+          thrust: 0.040  # N
+          c_e: 14709.975  # m/s
+          power: 700  # W
           efficiency: 0.45
           propellant: Xenon
           source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-8."
           # Evidence: "Thrust (mN) 40 ... Isp 1500 s ... 700 W ... 45%"
         - type: HET
           name: SPT-100 (Fakel)
-          thrust: 0.080
-          c_e: 15690.64
-          power: 1350
+          thrust: 0.080  # N
+          c_e: 15690.64  # m/s
+          power: 1350  # W
           efficiency: 0.50
           propellant: Xenon
           source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-8."
           # Evidence: "Thrust (mN) 80 ... Average Isp (s) 1600 ... Thruster input power (W) 1350 ... Total efficiency (%) 50"
         - type: HET
           name: SPT-140 (Fakel)
-          thrust: 0.300
-          c_e: 17161.6375
-          power: 5000
+          thrust: 0.300  # N
+          c_e: 17161.6375  # m/s
+          power: 5000  # W
           efficiency:
             min: 0.55
           propellant: Xenon
@@ -807,9 +807,9 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: PPS-1350-G (Snecma)
-          thrust: 0.088
-          c_e: 16180.9725
-          power: 1500
+          thrust: 0.088  # N
+          c_e: 16180.9725  # m/s
+          power: 1500  # W
           efficiency: 0.55
           propellant: Xenon
           source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-9."
@@ -819,52 +819,52 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: ST40 (SETS)
-          thrust:
+          thrust:  # N
             min: 0.014
             max: 0.028
-          c_e:
+          c_e:  # m/s
             max: 18148.5
-          mass: 1.1
-          power:
+          mass: 1.1  # kg
+          power:  # W
             min: 250
             max: 600
-          discharge_voltage:
+          discharge_voltage:  # V
             min: 250
             max: 300
           efficiency:
             max: 0.40
-          lifetime: 18000000
-          dimension_x: 0.140
-          dimension_y: 0.117
-          dimension_z: 0.122
+          lifetime: 18000000  # s
+          dimension_x: 0.140  # m
+          dimension_y: 0.117  # m
+          dimension_z: 0.122  # m
           propellant: Xenon, Argon, Krypton
           cathode_type: Heaterless Hollow Cathode
           source: "SETS ST40 Hall-Effect Thruster Datasheet, satsearch."
           # Evidence: "14–28 mN, 250–600 W, Isp up to 1850 s, mass ~1.1 kg, 5000 h lifetime, 140×117×122 mm"
         - type: HET
           name: ST-25 (SETS)
-          thrust:
+          thrust:  # N
             min: 0.005
             max: 0.011
-          c_e:
+          c_e:  # m/s
             min: 10787.3
             max: 12748.6
-          mass: 0.95
-          power:
+          mass: 0.95  # kg
+          power:  # W
             min: 140
             max: 200
-          discharge_voltage:
+          discharge_voltage:  # V
             min: 200
             max: 280
           efficiency:
             min: 0.30
-          lifetime:
+          lifetime:  # s
             min: 10800000
           start_time:
             max: 240
-          dimension_x: 0.060
-          dimension_y: 0.107
-          dimension_z: 0.0915
+          dimension_x: 0.060  # m
+          dimension_y: 0.107  # m
+          dimension_z: 0.0915  # m
           propellant: Xenon, Krypton
           cathode_type: Preheated Hollow Cathode
           source: "SETS ST-25 Hall-Effect Thruster Datasheet, satsearch."
@@ -874,45 +874,45 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: SHT100 (SERAN)
-          thrust: 0.005
-          c_e: 9806.65
-          power: 100
-          discharge_voltage: 200
-          total_impulse: 40000
+          thrust: 0.005  # N
+          c_e: 9806.65  # m/s
+          power: 100  # W
+          discharge_voltage: 200  # V
+          total_impulse: 40000  # N·s
           efficiency: 0.32
           propellant: Xenon
           source: "SERAN SYSTEMS SHT100 Datasheet."
           # Evidence: "5 mN, 100 W, 200 V, Isp 1000 s, 40 kNs total impulse, 32% efficiency"
         - type: HET
           name: SHT250 (SERAN)
-          thrust: 0.0125
-          c_e: 12748.645
-          power: 210
-          discharge_voltage: 250
-          total_impulse: 140000
+          thrust: 0.0125  # N
+          c_e: 12748.645  # m/s
+          power: 210  # W
+          discharge_voltage: 250  # V
+          total_impulse: 140000  # N·s
           efficiency: 0.40
           propellant: Xenon
           source: "SERAN SYSTEMS SHT250 Datasheet."
           # Evidence: "12.5 mN, 210 W, 250 V, Isp 1300 s, 140 kNs total impulse, 40% efficiency"
         - type: HET
           name: SHT1500 (SERAN)
-          thrust: 0.080
-          c_e: 17651.97
-          power: 1350
-          discharge_voltage: 300
-          total_impulse: 2000000
+          thrust: 0.080  # N
+          c_e: 17651.97  # m/s
+          power: 1350  # W
+          discharge_voltage: 300  # V
+          total_impulse: 2000000  # N·s
           efficiency: 0.52
           propellant: Xenon
           source: "SERAN SYSTEMS SHT1500 Datasheet."
           # Evidence: "80 mN, 1350 W, 300 V, Isp 1800 s, 2000 kNs total impulse, 52% efficiency"
         - type: HET
           name: CSHT200 (SERAN clustered)
-          thrust: 0.010
-          c_e: 8825.985
-          power: 250
-          total_impulse: 90000
+          thrust: 0.010  # N
+          c_e: 8825.985  # m/s
+          power: 250  # W
+          total_impulse: 90000  # N·s
           efficiency: 0.52
-          mass: 17
+          mass: 17  # kg
           propellant: Xenon
           source: "SERAN SYSTEMS CSHT200 Clustered 200W Hall Thruster Datasheet."
           # Evidence: "10 mN, 250 W, Isp 900 s, 90 kNs total impulse, 52% efficiency, 17 kg dry, 10 kg Xenon"
@@ -921,15 +921,15 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: HEET-05
-          thrust: 0.005
-          c_e: 9316.3175
-          isp: 950
-          power: 100
-          nominal_power: 110
+          thrust: 0.005  # N
+          c_e: 9316.3175  # m/s
+          isp: 950  # s
+          power: 100  # W
+          nominal_power: 110  # W
           efficiency: 0.28
-          mass: 0.47
-          lifetime_confirmed: 9000000
-          lifetime_expected:
+          mass: 0.47  # kg
+          lifetime_confirmed: 9000000  # s
+          lifetime_expected:  # s
             min: 10800000
             max: 11520000
           start_time:
@@ -940,15 +940,15 @@ reference_data:
           # Evidence: "Thrust 5 mN, Isp 950 s, 100 W range, 110 W nominal, 2500 h confirmed / 3000–3200 h expected, FM"
         - type: HET
           name: HEET-10
-          thrust: 0.0102
-          c_e: 10493.1155
-          isp: 1070
-          power: 200
-          nominal_power: 180
+          thrust: 0.0102  # N
+          c_e: 10493.1155  # m/s
+          isp: 1070  # s
+          power: 200  # W
+          nominal_power: 180  # W
           efficiency: 0.32
-          mass: 0.52
-          lifetime_confirmed: 9000000
-          lifetime_expected:
+          mass: 0.52  # kg
+          lifetime_confirmed: 9000000  # s
+          lifetime_expected:  # s
             min: 10800000
             max: 11520000
           start_time:
@@ -959,16 +959,16 @@ reference_data:
           # Evidence: "Thrust 10.2 mN, Isp 1070 s, 200 W range, 180 W nominal, QM"
         - type: HET
           name: HEET-40
-          thrust: 0.040
-          c_e: 13533.177
-          isp: 1380
-          power:
+          thrust: 0.040  # N
+          c_e: 13533.177  # m/s
+          isp: 1380  # s
+          power:  # W
             max: 720
-          nominal_power: 650
+          nominal_power: 650  # W
           efficiency: 0.38
-          mass: 1.9
-          lifetime_confirmed: 10800000
-          lifetime_expected: 14400000
+          mass: 1.9  # kg
+          lifetime_confirmed: 10800000  # s
+          lifetime_expected: 14400000  # s
           start_time:
             max: 240
           status: QM
@@ -977,16 +977,16 @@ reference_data:
           # Evidence: "Thrust 40 mN, Isp 1380 s, up to 720 W, 650 W nominal, QM"
         - type: HET
           name: HEET-85
-          thrust: 0.0846
-          c_e: 14513.842
-          isp: 1480
-          power:
+          thrust: 0.0846  # N
+          c_e: 14513.842  # m/s
+          isp: 1480  # s
+          power:  # W
             min: 1300
             max: 1450
-          nominal_power: 1350
-          mass: 3.8
-          lifetime_confirmed: 23040000
-          lifetime_expected:
+          nominal_power: 1350  # W
+          mass: 3.8  # kg
+          lifetime_confirmed: 23040000  # s
+          lifetime_expected:  # s
             min: 28800000
             max: 30600000
           start_time:
@@ -1000,78 +1000,78 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: BHT-200 (Busek)
-          thrust: 0.013
-          c_e: 13630.24
-          isp: 1390
-          power: 200
-          discharge_voltage: 250
-          mass: 0.98
+          thrust: 0.013  # N
+          c_e: 13630.24  # m/s
+          isp: 1390  # s
+          power: 200  # W
+          discharge_voltage: 250  # V
+          mass: 0.98  # kg
           cathode: BHC-1500
           cathode_location: External
-          cathode_mass: 0.12
+          cathode_mass: 0.12  # kg
           propellant: Xenon, Iodine, Krypton
           source: "Busek Co. Inc., BHT-200 Hall-Effect Thruster Datasheet, satsearch."
           # Evidence: "13 mN, Isp 1390 s, 200 W nominal, 250 V, 0.98 kg thruster + 0.12 kg cathode BHC-1500"
         - type: HET
           name: BHT-600 (Busek)
-          thrust: 0.039
-          c_e: 14709.98
-          isp: 1500
-          power: 600
-          power:
+          thrust: 0.039  # N
+          c_e: 14709.98  # m/s
+          isp: 1500  # s
+          power: 600  # W
+          power:  # W
             min: 300
             max: 800
-          mass: 2.6
+          mass: 2.6  # kg
           cathode: BHC-1500
           cathode_location: External
-          cathode_mass: 0.20
+          cathode_mass: 0.20  # kg
           TRL: 6
           propellant: Xenon, Iodine, Krypton
           source: "Busek Co. Inc., BHT-600 Hall-Effect Thruster Datasheet, satsearch."
           # Evidence: "39 mN, Isp 1500 s, 600 W nominal, 300–800 W throttle, 2.6 kg, TRL 6"
         - type: HET
           name: BHT-1500 (Busek)
-          thrust:
+          thrust:  # N
             min: 0.058
             max: 0.179
-          c_e:
+          c_e:  # m/s
             min: 15837.74
             max: 20050.60
-          isp:
+          isp:  # s
             min: 1615
             max: 2045
-          power:
+          power:  # W
             min: 1000
             max: 2700
-          mass: 6.8
+          mass: 6.8  # kg
           cathode: BHC-2500
           cathode_location: Internal Center Mounted
-          cathode_mass: 0.30
+          cathode_mass: 0.30  # kg
           propellant: Xenon, Iodine, Krypton
           source: "Busek Co. Inc., BHT-1500 Hall-Effect Thruster Datasheet, satsearch."
           # Evidence: "58–179 mN, Isp 1615–2045 s, 1000–2700 W, 6.8 kg thruster + 0.3 kg BHC-2500"
         - type: HET
           name: BHT-8000 (Busek)
-          thrust:
+          thrust:  # N
             min: 0.325
             max: 0.449
-          c_e:
+          c_e:  # m/s
             min: 21672.69
             max: 30005.35
-          isp:
+          isp:  # s
             min: 2210
             max: 3060
-          power: 8000
-          power:
+          power: 8000  # W
+          power:  # W
             min: 4000
             max: 10000
-          discharge_voltage:
+          discharge_voltage:  # V
             min: 400
             max: 800
-          mass: 25
+          mass: 25  # kg
           cathode: BHC-5000
           cathode_location: Internal Center Mounted
-          cathode_mass: 0.40
+          cathode_mass: 0.40  # kg
           propellant: Xenon, Iodine, Krypton
           source: "Busek Co. Inc., BHT-8000 Hall-Effect Thruster Datasheet, satsearch."
           # Evidence: "325–449 mN, Isp 2210–3060 s, 8 kW nominal, 4–10 kW throttle, 400–800 V, 25 kg thruster"
@@ -1080,30 +1080,30 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: "Micro XL / spaceware (Exotrail)"
-          thrust:
+          thrust:  # N
             min: 0.004
             max: 0.007
-          power:
+          power:  # W
             min: 100
             max: 200
-          total_impulse: 52000
-          mass_dry: 5.8
-          mass_wet: 11.5
+          total_impulse: 52000  # N·s
+          mass_dry: 5.8  # kg
+          mass_wet: 11.5  # kg
           TRL: 9
           propellant: Xenon
           source: "Exotrail, spaceware micro XL Xenon, Layout Version v3.0, Issue Date 13/12/2022."
           # Evidence: "4–7 mN, 100–200 W, 52 kNs max total impulse, 5.8 kg dry / 11.5 kg wet, Qualified 2023"
         - type: HET
           name: "Micro Cluster² XL (2x THD) / spaceware (Exotrail)"
-          thrust:
+          thrust:  # N
             min: 0.008
             max: 0.014
-          power:
+          power:  # W
             min: 200
             max: 300
-          total_impulse: 115000
-          mass_dry: 10.1
-          mass_wet: 22.5
+          total_impulse: 115000  # N·s
+          mass_dry: 10.1  # kg
+          mass_wet: 22.5  # kg
           TRL: 9
           propellant: Xenon
           source: "Exotrail, spaceware micro cluster² XL Xenon, Layout Version v3.0, Issue Date 13/12/2022."
@@ -1113,33 +1113,33 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: XR-5
-          power: 3000
-          isp: 2000
-          c_e: 19613.3
+          power: 3000  # W
+          isp: 2000  # s
+          c_e: 19613.3  # m/s
           TRL: 8
           propellant: Xenon
           source: "Hofer et al., JPL Poster RPC#R22116, 2022, Figure 4 table."
         - type: HET
           name: SPT-140 (Hofer R22116)
-          power: 4500
-          isp: 1800
-          c_e: 17651.97
+          power: 4500  # W
+          isp: 1800  # s
+          c_e: 17651.97  # m/s
           TRL: 8
           propellant: Xenon
           source: "Hofer et al., JPL Poster RPC#R22116, 2022, Figure 4 table."
         - type: HET
           name: BHT-6000 (Hofer R22116)
-          power: 5000
-          isp: 1900
-          c_e: 18632.635
+          power: 5000  # W
+          isp: 1900  # s
+          c_e: 18632.635  # m/s
           TRL: 6
           propellant: Xenon
           source: "Hofer et al., JPL Poster RPC#R22116, 2022, Figure 4 table."
         - type: HET
           name: PPE-AEPS
-          power: 12500
-          isp: 2800
-          c_e: 27458.62
+          power: 12500  # W
+          isp: 2800  # s
+          c_e: 27458.62  # m/s
           TRL: 6
           propellant: Xenon
           source: "Hofer et al., JPL Poster RPC#R22116, 2022, Figure 4 table."
@@ -1148,16 +1148,16 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: P5-2 (two-stage Hall thruster)
-          thrust:
+          thrust:  # N
             min: 0.084
             max: 0.244
-          c_e:
+          c_e:  # m/s
             min: 14859
             max: 25453
-          power_jet:
+          power_jet:  # W
             min: 1399
             max: 6108
-          massflow:
+          massflow:  # kg/s
             min: 5.4e-06
             max: 1.02e-05
           efficiency:
@@ -1171,16 +1171,16 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: "PPS-X000 (Snecma)"
-          thrust:
+          thrust:  # N
             min: 0.35
             max: 0.50
-          isp:
+          isp:  # s
             min: 2500
             max: 3200
-          c_e:
+          c_e:  # m/s
             min: 24516.625
             max: 31381.28
-          power:
+          power:  # W
             min: 1500
             max: 7000
           propellant: Xenon
@@ -1191,19 +1191,19 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: H10 (JPL)
-          thrust: 0.457
-          isp: 3400
-          c_e: 33342.61
-          power: 10000
-          power:
+          thrust: 0.457  # N
+          isp: 3400  # s
+          c_e: 33342.61  # m/s
+          power: 10000  # W
+          power:  # W
             max: 20000
-          steady_state_power: 15000
-          discharge_voltage: 800
-          discharge_voltage:
+          steady_state_power: 15000  # W
+          discharge_voltage: 800  # V
+          discharge_voltage:  # V
             min: 150
             max: 800
           efficiency: 0.76
-          mass: 20
+          mass: 20  # kg
           propellant: Xenon
           source: "Hofer, R. R. et al., The H10 high power density hall thruster, Journal of Electric Propulsion, 2025, 4:35, https://doi.org/10.1007/s44205-025-00129-x."
           # Evidence: "457 mN, Isp 3400 s, 10 kW discharge, 76% efficiency, 20 kg, max 20 kW, V_d 150–800 V"
@@ -1212,28 +1212,28 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: BHT-HD-1000 (single-stage)
-          thrust: 0.088
-          c_e: 29419.95
-          isp: 3000
-          power_jet: 2300
-          power_jet:
+          thrust: 0.088  # N
+          c_e: 29419.95  # m/s
+          isp: 3000  # s
+          power_jet: 2300  # W
+          power_jet:  # W
             min: 200
             max: 2500
-          discharge_voltage:
+          discharge_voltage:  # V
             max: 1000
           propellant: Xenon
           source: "Pote, B., Tedrake, R., Performance of a High Specific Impulse Hall Thruster, IEPC-01-35, 27th IEPC, Pasadena, CA, 2001."
           # Evidence: "88 mN, 3000 s Isp at 2.3 kW, power range 200–2500 W, up to 1000 V discharge"
         - type: HET
           name: BHT-HD-1000 (two-stage)
-          thrust: 0.088
-          c_e: 32361.945
-          isp: 3300
-          power_jet: 2300
-          power_jet:
+          thrust: 0.088  # N
+          c_e: 32361.945  # m/s
+          isp: 3300  # s
+          power_jet: 2300  # W
+          power_jet:  # W
             min: 200
             max: 2500
-          discharge_voltage:
+          discharge_voltage:  # V
             max: 1000
           propellant: Xenon
           source: "Pote, B., Tedrake, R., Performance of a High Specific Impulse Hall Thruster, IEPC-01-35, 27th IEPC, Pasadena, CA, 2001."
@@ -1243,86 +1243,86 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: SPT-290
-          thrust: 1.5
-          isp:
+          thrust: 1.5  # N
+          isp:  # s
             min: 1500
             max: 3000
-          c_e:
+          c_e:  # m/s
             min: 14709.975
             max: 29419.95
-          power:
+          power:  # W
             min: 12000
             max: 30000
           efficiency: 0.70
-          diameter: 0.25
+          diameter: 0.25  # m
           propellant: Xenon
           source: "Jankovsky et al., NASA/TM-1999-209436, Table 1."
           # Evidence: "250 mm average diameter, Isp 1500–3000 s, 12–30 kW, thrust 1500 mN, efficiency 0.7"
         - type: HET
           name: T-220
-          thrust: 0.524
-          isp:
+          thrust: 0.524  # N
+          isp:  # s
             min: 1500
             max: 2400
-          c_e:
+          c_e:  # m/s
             min: 14709.975
             max: 23535.96
-          power:
+          power:  # W
             min: 5000
             max: 11000
           efficiency: 0.62
-          diameter: 0.188
+          diameter: 0.188  # m
           propellant: Xenon
           source: "Jankovsky et al., NASA/TM-1999-209436, Table 1."
           # Evidence: "188 mm diameter, Isp 1500–2400 s, 5–11 kW, thrust 524 mN, efficiency 0.62"
         - type: HET
           name: TAL TM-50
-          thrust: 1.114
-          isp:
+          thrust: 1.114  # N
+          isp:  # s
             min: 1500
             max: 3300
-          c_e:
+          c_e:  # m/s
             min: 14709.975
             max: 32361.945
-          power:
+          power:  # W
             min: 10000
             max: 25000
           efficiency: 0.66
-          diameter: 0.20
+          diameter: 0.20  # m
           propellant: Xenon
           source: "Jankovsky et al., NASA/TM-1999-209436, Table 1."
           # Evidence: "200 mm diameter, Isp 1500–3300 s, 10–25 kW, thrust 1114 mN, efficiency 0.66"
         - type: HET
           name: "TAL-200 [Bi]"
-          thrust: 1.13
-          isp:
+          thrust: 1.13  # N
+          isp:  # s
             min: 2000
             max: 5200
-          c_e:
+          c_e:  # m/s
             min: 19613.3
             max: 51002.58
-          power:
+          power:  # W
             min: 10000
             max: 34000
           efficiency: 0.67
-          diameter: 0.20
+          diameter: 0.20  # m
           propellant: Bismuth
           source: "Jankovsky et al., NASA/TM-1999-209436, Table 1."
           # Evidence: "200 mm diameter, Isp 2000–5200 s, 10–34 kW, thrust 1130 mN, efficiency 0.67, Bismuth propellant"
         - type: HET
           name: SPT-200
-          thrust: 0.498
-          isp:
+          thrust: 0.498  # N
+          isp:  # s
             min: 1500
             max: 3000
-          c_e:
+          c_e:  # m/s
             min: 14709.975
             max: 29419.95
-          power:
+          power:  # W
             min: 6000
             max: 11000
           efficiency: 0.63
-          diameter: 0.175
+          diameter: 0.175  # m
           propellant: Xenon
           source: "Jankovsky et al., NASA/TM-1999-209436, Table 1."
           # Evidence: "175 mm diameter, Isp 1500–3000 s, 6–11 kW, thrust 498 mN, efficiency 0.63"
@@ -1331,11 +1331,11 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: Water Hall Thruster (Pale Blue)
-          thrust: 0.010
-          power: 600
-          mass:
+          thrust: 0.010  # N
+          power: 600  # W
+          mass:  # kg
             max: 45
-          total_impulse: 180000
+          total_impulse: 180000  # N·s
           propellant: Water
           source: "Pale Blue PBH Water Hall Effect Thruster Datasheet, satsearch (z98e6q)."
           # Evidence: "10 mN, 600 W, max 45 kg, 180 kNs total impulse, water propellant"
@@ -1344,11 +1344,11 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: BHT-5000 (Busek)
-          thrust:
+          thrust:  # N
             min: 0.310
-          c_e:
+          c_e:  # m/s
             min: 19613
-          power:
+          power:  # W
             min: 3000
             max: 6000
           efficiency: 0.61
@@ -1357,17 +1357,17 @@ reference_data:
           # Evidence: "310 mN+ thrust, c_e >19613 m/s, 3–6 kW, 61% efficiency"
         - type: HET
           name: BHT-6000 (Busek)
-          thrust:
+          thrust:  # N
             min: 0.288
             max: 0.325
-          c_e:
+          c_e:  # m/s
             min: 18639
             max: 26511
-          power:
+          power:  # W
             min: 5000
             max: 6000
-          mass: 13.5
-          total_impulse:
+          mass: 13.5  # kg
+          total_impulse:  # N·s
             min: 8500000
           efficiency: 0.64
           propellant: Xenon, Krypton
@@ -1378,46 +1378,46 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: RAFAEL IHET-300
-          thrust:
+          thrust:  # N
             min: 0.0143
-          c_e: 11767.98
-          power:
+          c_e: 11767.98  # m/s
+          power:  # W
             min: 250
             max: 600
-          mass: 1.6
-          impulse_tot: 135000
+          mass: 1.6  # kg
+          impulse_tot: 135000  # N·s
           propellant: Xe
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.49/81."
           # Evidence: "Thrust @300W >14.3 mN, Isp @300W >1200 s, power 250–600 W, mass 1.6 kg, total impulse >135 kNs"
         - type: HET
           name: RAFAEL R-200
-          thrust:
+          thrust:  # N
             min: 0.005
             max: 0.014
-          c_e:
+          c_e:  # m/s
             min: 7845.32
             max: 12748.645
-          power:
+          power:  # W
             min: 100
             max: 300
-          mass: 2.0
-          impulse_tot: 75000
+          mass: 2.0  # kg
+          impulse_tot: 75000  # N·s
           propellant: Xe
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.50/81."
           # Evidence: "Thrust (Xe) 5–14 mN, Isp 800–1300 s, 100–300 W, mass 2 kg, total impulse >75 kNs"
         - type: HET
           name: RAFAEL R-800
-          thrust:
+          thrust:  # N
             min: 0.023
             max: 0.053
-          c_e:
+          c_e:  # m/s
             min: 12748.645
             max: 15200.308
-          power:
+          power:  # W
             min: 450
             max: 900
-          mass: 1.5
-          impulse_tot: 600000
+          mass: 1.5  # kg
+          impulse_tot: 600000  # N·s
           propellant: Xe
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.51/81."
           # Evidence: "Thrust (Xe) 23–53 mN, Isp 1300–1550 s, 450–900 W, mass 1.5 kg, total impulse >600 kNs"
@@ -1426,32 +1426,32 @@ reference_data:
         # ----------------------------------------
         - type: HET
           name: RAFAEL R-200EPS (complete system)
-          thrust:
+          thrust:  # N
             min: 0.005
             max: 0.014
-          isp:
+          isp:  # s
             min: 800
             max: 1300
-          power:
+          power:  # W
             min: 140
             max: 350
-          total_impulse:
+          total_impulse:  # N·s
             min: 150000
           propellant: Xe
           source: "Electric Propulsion Systems, Rafael Space. Source file: Electric_Propulsion_Systems_extracted_propulsion.xml."
           # Evidence: "2x Thruster Units + PPU + Propellant Tank + Feed System, thrust 5–14 mN, Isp 800–1300 s"
         - type: HET
           name: RAFAEL R-800EPS (complete system)
-          thrust:
+          thrust:  # N
             min: 0.023
             max: 0.053
-          isp:
+          isp:  # s
             min: 1300
             max: 1550
-          power:
+          power:  # W
             min: 500
             max: 1000
-          total_impulse:
+          total_impulse:  # N·s
             min: 1200000
           propellant: Xe
           source: "Electric Propulsion Systems, Rafael Space. Source file: Electric_Propulsion_Systems_extracted_propulsion.xml."
@@ -1470,39 +1470,39 @@ reference_data:
         # ----------------------------------------
         - type: electrospray
           name: BET-300-P Configuration A
-          thrust:
+          thrust:  # N
             min: 1.0e-6
             max: 1.5e-4
-          nominal_thrust: 5.5e-5
-          isp: 850
-          c_e: 8335.6525
+          nominal_thrust: 5.5e-5  # N
+          isp: 850  # s
+          c_e: 8335.6525  # m/s
           efficiency: 0.28
-          total_impulse: 92
-          mass: 0.166
-          volume: 1.18e-4
-          power_nominal: 0.85
-          power:
+          total_impulse: 92  # N·s
+          mass: 0.166  # kg
+          volume: 1.18e-4  # L
+          power_nominal: 0.85  # W
+          power:  # W
             max: 2.25
-          minimum_impulse_bit: 2.0e-6
+          minimum_impulse_bit: 2.0e-6  # N·s
           propellant: EMI-Im
           source: "Busek BET-MAX Electrospray Thruster Datasheet v1.0, August 2021."
           # Evidence: "<1 µN to 150 µN thrust, Isp 850 s, efficiency 28%, 92 Ns total impulse (demonstrated), 166 g wet, 0.85/2.25 W nom/max"
         - type: electrospray
           name: BET-300-P Configuration B
-          thrust:
+          thrust:  # N
             min: 1.0e-6
             max: 1.0e-4
-          nominal_thrust: 5.5e-5
-          isp: 2300
-          c_e: 22555.295
+          nominal_thrust: 5.5e-5  # N
+          isp: 2300  # s
+          c_e: 22555.295  # m/s
           efficiency: 0.45
-          total_impulse: 250
-          mass: 0.166
-          volume: 1.18e-4
-          power_nominal: 1.38
-          power:
+          total_impulse: 250  # N·s
+          mass: 0.166  # kg
+          volume: 1.18e-4  # L
+          power_nominal: 1.38  # W
+          power:  # W
             max: 2.50
-          minimum_impulse_bit: 2.0e-6
+          minimum_impulse_bit: 2.0e-6  # N·s
           propellant: EMI-Im
           source: "Busek BET-MAX Electrospray Thruster Datasheet v1.0, August 2021."
           # Evidence: "<1 µN to 100 µN thrust, Isp 2300 s, efficiency 45%, 250 Ns total impulse (pending), 166 g wet, 1.38/2.50 W nom/max"
@@ -1513,32 +1513,32 @@ reference_data:
         # ----------------------------------------
         - type: resistojet
           name: PBR-10 (Pale Blue)
-          thrust: 0.001
-          power: 6
-          mass:
+          thrust: 0.001  # N
+          power: 6  # W
+          mass:  # kg
             max: 0.6
-          total_impulse:
+          total_impulse:  # N·s
             min: 55
           propellant: Water
           source: "Pale Blue PBH Water Hall Effect Thruster Datasheet, satsearch (z98e6q)."
           # Evidence: "Thrust 1 mN, 6 W, max 0.6 kg, min 55 Ns total impulse, water propellant"
         - type: resistojet
           name: PBR-20 (Pale Blue)
-          thrust: 0.001
-          power: 20
-          mass:
+          thrust: 0.001  # N
+          power: 20  # W
+          mass:  # kg
             max: 1.5
-          total_impulse:
+          total_impulse:  # N·s
             min: 220
           propellant: Water
           source: "Pale Blue PBH Water Hall Effect Thruster Datasheet, satsearch (z98e6q)."
           # Evidence: "Thrust 1 mN, 20 W, max 1.5 kg, min 220 Ns total impulse, water propellant"
         - type: resistojet
           name: PBR-50 (Pale Blue)
-          thrust: 0.010
-          power: 50
-          mass: 13.4
-          total_impulse: 4400
+          thrust: 0.010  # N
+          power: 50  # W
+          mass: 13.4  # kg
+          total_impulse: 4400  # N·s
           propellant: Water
           source: "Pale Blue PBH Water Hall Effect Thruster Datasheet, satsearch (z98e6q)."
           # Evidence: "Thrust 10 mN, 50 W, 13.4 kg, 4400 Ns total impulse, water propellant"
@@ -1547,42 +1547,42 @@ reference_data:
       cell:
         - type: photovoltaic
           name: Solar Panels 1U
-          power:
-            max: 2.3
-          mass: 0.05
-          area: 0.01
+          power:  # W
+            max: 2.3  # W
+          mass: 0.05  # kg
+          area: 0.01  # m²
           efficiency: 0.3
           source: "https://www.isispace.nl/wp-content/uploads/2016/02/Solar-Panels-Brochure-v1.pdf"
         - type: photovoltaic
           name: Solar Panels 2U
-          power:
-            max: 4.6
-          mass: 0.1
-          area: 0.02
+          power:  # W
+            max: 4.6  # W
+          mass: 0.1  # kg
+          area: 0.02  # m²
           efficiency: 0.3
           source: "https://www.isispace.nl/wp-content/uploads/2016/02/Solar-Panels-Brochure-v1.pdf"
         - type: photovoltaic
           name: Solar Panels 3U
-          power:
-            max: 6.9
-          mass: 0.15
-          area: 0.03
+          power:  # W
+            max: 6.9  # W
+          mass: 0.15  # kg
+          area: 0.03  # m²
           efficiency: 0.3
           source: "https://www.isispace.nl/wp-content/uploads/2016/02/Solar-Panels-Brochure-v1.pdf"
         - type: photovoltaic
           name: Solar Panels 6U
-          power:
-            max: 17
-          mass: 0.3
-          area: 0.06
+          power:  # W
+            max: 17  # W
+          mass: 0.3  # kg
+          area: 0.06  # m²
           efficiency: 0.3
           source: "https://www.isispace.nl/wp-content/uploads/2016/02/Solar-Panels-Brochure-v1.pdf"
         - type: photovoltaic
           name: JUNO Spacecraft Array
-          power:
-            max: 14000
-          mass: 340
-          area: 60
+          power:  # W
+            max: 14000  # W
+          mass: 340  # kg
+          area: 60  # m²
           efficiency: 0.3
           source: "Mass: https://www.nasa.gov/mission_pages/juno/launch/Juno_solarpower.html , area: https://www.jpl.nasa.gov/news/press_kits/juno/facts/,"
           comment: Max power is power generated at 1 AU
@@ -1591,38 +1591,38 @@ reference_data:
       heater:
         - type: electric
           name: Glavkosmos Electric Heaters for Manned Spacecraft
-          voltage: 34
-          resistance: 196
-          power: 5.898
-          mass: 0.026
+          voltage: 34  # V
+          resistance: 196  # Ω
+          power: 5.898  # W
+          mass: 0.026  # kg
           source: "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heating-elements/electric-heaters-for-manned-spacecraft/"
         - type: electric
           name: Glavkosmos Electric Heaters for Manned Spacecraft
-          voltage: 34
-          resistance: 45
-          power: 25.688
-          mass: 0.055
+          voltage: 34  # V
+          resistance: 45  # Ω
+          power: 25.688  # W
+          mass: 0.055  # kg
           source: "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heating-elements/electric-heaters-for-manned-spacecraft/"
         - type: electric
           name: Glavkosmos Electric Heaters for Manned Spacecraft
-          voltage: 23
-          resistance: 196
-          power: 2.699
-          mass: 0.026
+          voltage: 23  # V
+          resistance: 196  # Ω
+          power: 2.699  # W
+          mass: 0.026  # kg
           source: "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heating-elements/electric-heaters-for-manned-spacecraft/"
         - type: electric
           name: Glavkosmos Electric Heaters for Manned Spacecraft
-          voltage: 23
-          resistance: 45
-          power: 11.7556
-          mass: 0.055
+          voltage: 23  # V
+          resistance: 45  # Ω
+          power: 11.7556  # W
+          mass: 0.055  # kg
           source: "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heating-elements/electric-heaters-for-manned-spacecraft/"
     passive:
       isolator:
         type: panel
         name: "Glavkosmos Multi-layer Composite Structures"
-        thickness: 0.3
-        mass_per_sqm: 4
+        thickness: 0.3  # mm
+        mass_per_sqm: 4  # kg/m²
         source: "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heat-transfer-tubes-radiators/multi-layer-composite-structures/"
       conductor:
         type:
@@ -1634,7 +1634,7 @@ reference_data:
         max_trans_Q:
           - 1000 W m
           - 1000 W m
-        thickness:
+        thickness:  # mm
           - 12
           - 16
         mass_per_m:
@@ -1648,758 +1648,2373 @@ reference_data:
       bus:
         - type: CubeSat
           name: Structure 1U CubeSat with Separation System
-          length: 0.1
-          height: 0.1
-          width: 0.1135
-          mass: 0.132
+          length: 0.1  # m
+          height: 0.1  # m
+          width: 0.1135  # m
+          mass: 0.132  # kg
           source: "https://trade.glavkosmos.com/catalog/spacecraft/platform-bus/structure-1U-CubeSat-with-Separation-System/"
         - type: CubeSat
           name: Structure 3U CubeSat with Separation System
-          length: 0.1
-          height: 0.1
-          width: 0.3405
-          mass: 0.455
+          length: 0.1  # m
+          height: 0.1  # m
+          width: 0.3405  # m
+          mass: 0.455  # kg
           source: "https://trade.glavkosmos.com/catalog/spacecraft/platform-bus/structure-3U-CubeSat-with-separation-system/"
   attitude_control:
     Magnetorquer:
       actuator:
         - type: Magnetorquer
           name: Cubetorquer
-          nom_mag_moment: 0.24
-          sat_mag_moment: 1.5
-          power_nom: 0.2
-          mass: 0.028
+          nom_mag_moment: 0.24  # A·m²
+          sat_mag_moment: 1.5  # A·m²
+          power_nom: 0.2  # W
+          mass: 0.028  # kg
           axis: 1
-          el_resistance: 30
+          el_resistance: 30  # Ω
           source: "https://www.cubesatshop.com/wp-content/uploads/2016/06/CubeTorquer_Specsheet_V1.0.jpg"
         - type: Magnetorquer
           name: Cubecoil
-          nom_mag_moment: 0.13
-          power_nom: 0.3
-          mass: 0.046
+          nom_mag_moment: 0.13  # A·m²
+          power_nom: 0.3  # W
+          mass: 0.046  # kg
           axis: 1
           source: "https://www.cubesatshop.com/wp-content/uploads/2016/06/CubeTorquer-CubeCoil-Brochure-August-2016.pdf"
         - type: Magnetorquer
           name: ISIS Magnetorquer board
-          nom_mag_moment: 0.2
-          power_nom: 0.175
-          power:
+          nom_mag_moment: 0.2  # A·m²
+          power_nom: 0.175  # W
+          power:  # W
             max: 1.2
-          mass: 0.196
+          mass: 0.196  # kg
           axis: 3
           source: "https://www.cubesatshop.com/product/isis-magnetorquer-board/"
         - type: Magnetorquer
           name: NSS CubeSat ACS solution
-          nom_mag_moment: 0.2
-          power_nom: 1.8
-          power:
+          nom_mag_moment: 0.2  # A·m²
+          power_nom: 1.8  # W
+          power:  # W
             max: 3
-          mass: 0.45
+          mass: 0.45  # kg
           axis: 3
           source: "https://www.cubesatshop.com/product/cubesat-acs-board/"
         - type: Magnetorquer
           name: "NCTR-M002 Magnetorquer Rod"
-          nom_mag_moment: 0.2
-          power_nom: 0.2
-          mass: 0.03
+          nom_mag_moment: 0.2  # A·m²
+          power_nom: 0.2  # W
+          mass: 0.03  # kg
           axis: 1
           source: "https://www.cubesatshop.com/wp-content/uploads/2016/06/NewSpace-Magnetorquer-Rod_7b.pdf"
         - type: Magnetorquer
           name: "NCTR-M012 Magnetorquer Rod"
-          nom_mag_moment: 1.19
-          power_nom: 0.8
-          mass: 0.05
+          nom_mag_moment: 1.19  # A·m²
+          power_nom: 0.8  # W
+          mass: 0.05  # kg
           axis: 1
           source: "https://www.cubesatshop.com/wp-content/uploads/2016/06/NewSpace-Magnetorquer-Rod_7b.pdf"
     ReactionWheel:
       actuator:
         - type: Reaction Wheel
           name: Cube Wheel Large
-          torque:
+          torque:  # N·m
             max: 0.0023
-          momentum_storage: 0.03
-          power_nom: 0.27
-          power:
+          momentum_storage: 0.03  # N·m·s
+          power_nom: 0.27  # W
+          power:  # W
             max: 2.2
-          mass: 0.22
+          mass: 0.22  # kg
           axis: 1
           source: "https://www.cubesatshop.com/wp-content/uploads/2016/06/CubeWheel-Brochure-August-2016.pdf"
         - type: Reaction Wheel
           name: Cube Wheel Medium
-          torque:
+          torque:  # N·m
             max: 0.0001
-          momentum_storage: 0.01
-          power_nom: 0.24
-          power:
+          momentum_storage: 0.01  # N·m·s
+          power_nom: 0.24  # W
+          power:  # W
             max: 1.5
-          mass: 0.14
+          mass: 0.14  # kg
           axis: 1
           source: "https://www.cubesatshop.com/wp-content/uploads/2016/06/CubeWheel-Brochure-August-2016.pdf"
         - type: Reaction Wheel
           name: Cube Wheel Small
-          torque:
+          torque:  # N·m
             max: 0.00023
-          momentum_storage: 0.0017
-          power_nom: 0.12
-          power:
+          momentum_storage: 0.0017  # N·m·s
+          power_nom: 0.12  # W
+          power:  # W
             max: 0.72
-          mass: 0.22
+          mass: 0.22  # kg
           axis: 1
           source: "https://www.cubesatshop.com/wp-content/uploads/2016/06/CubeWheel-Brochure-August-2016.pdf"
         - type: Reaction Wheel
           name: "MAI-400 Reaction Wheel"
-          torque:
+          torque:  # N·m
             max: 0.000635
-          momentum_storage: 0.00935
-          power_nom: 0.85
-          power:
+          momentum_storage: 0.00935  # N·m·s
+          power_nom: 0.85  # W
+          power:  # W
             max: 2.2
-          mass: 0.11
+          mass: 0.11  # kg
           axis: 1
           source: "https://www.cubesatshop.com/product/mai-400-reaction-wheel/"
         - type: Reaction Wheel
           name: RS100 – Reaction Sphere
-          torque:
+          torque:  # N·m
             max: 0.001
-          momentum_storage: 0.01
-          power:
+          momentum_storage: 0.01  # N·m·s
+          power:  # W
             max: 1
-          mass: 0.4
+          mass: 0.4  # kg
           axis: 4
           source: "https://www.cubesatshop.com/product/reaction-sphere/"
         - type: Reaction Wheel
           name: "NRWA-T005"
-          torque:
+          torque:  # N·m
             max: 0.01
-          momentum_storage: 0.05
-          power_nom: 0.8
-          mass: 0.5
+          momentum_storage: 0.05  # N·m·s
+          power_nom: 0.8  # W
+          mass: 0.5  # kg
           axis: 1
           source: "https://www.cubesatshop.com/wp-content/uploads/2020/11/NewSpace-Reaction-Wheel_2020-10a.pdf"
         - type: Reaction Wheel
           name: "NRWA-T065"
-          torque:
+          torque:  # N·m
             max: 0.02
-          momentum_storage: 0.65
-          power_nom: 1.12
-          mass: 1.55
+          momentum_storage: 0.65  # N·m·s
+          power_nom: 1.12  # W
+          mass: 1.55  # kg
           axis: 1
           source: "https://www.cubesatshop.com/wp-content/uploads/2020/11/NewSpace-Reaction-Wheel_2020-10a.pdf"
         - type: Reaction Wheel
           name: "NRWA-T2"
-          torque:
+          torque:  # N·m
             max: 0.021
-          momentum_storage: 2
-          power_nom: 0.336
-          mass: 1.8
+          momentum_storage: 2  # N·m·s
+          power_nom: 0.336  # W
+          mass: 1.8  # kg
           axis: 1
           source: "https://www.cubesatshop.com/wp-content/uploads/2020/11/NewSpace-Reaction-Wheel_2020-10a.pdf"
         - type: Reaction Wheel
           name: RW Wittenstein
-          torque_nom: 0.0001
-          momentum_storage: 0.002
-          power_nom: 0.3
-          power:
+          torque_nom: 0.0001  # N·m
+          momentum_storage: 0.002  # N·m·s
+          power_nom: 0.3  # W
+          power:  # W
             max: 1
-          mass: 0.003
+          mass: 0.003  # kg
           axis: 1
           source: "https://cyber-motor.wittenstein.de/en-en/reaction-wheel/"
         - type: Reaction Wheel
           name: "REWL-30"
-          torque:
+          torque:  # N·m
             max: 0.015
-          momentum_storage: 0.003
-          mass: 0.055
+          momentum_storage: 0.003  # N·m·s
+          mass: 0.055  # kg
           axis: 1
           source: "https://space-inventor.com/wordpress/wp-content/uploads/2019/11/REWL-30-features.pdf"
         - type: Reaction Wheel
           name: "REWL-50"
-          torque:
+          torque:  # N·m
             max: 0.042
-          momentum_storage: 0.005
-          mass: 0.155
+          momentum_storage: 0.005  # N·m·s
+          mass: 0.155  # kg
           axis: 1
           source: "https://space-inventor.com/wordpress/wp-content/uploads/2019/11/REWL-50-features.pdf"
         - type: Reaction Wheel
           name: "REWL-1000"
-          torque:
+          torque:  # N·m
             max: 0.04
-          momentum_storage: 1
-          mass: 0.9
-          power_nom: 15
-          power:
+          momentum_storage: 1  # N·m·s
+          mass: 0.9  # kg
+          power_nom: 15  # W
+          power:  # W
             max: 500
           axis: 1
           source: "https://space-inventor.com/wordpress/wp-content/uploads/2020/07/rewl-1000-factsheet.pdf"
         - type: Reaction Wheel
           name: KU Leuven RW
-          torque:
+          torque:  # N·m
             max: 0.005
-          momentum_storage: 0.004
-          mass: 0.085
-          power_nom: 0.2
-          power:
+          momentum_storage: 0.004  # N·m·s
+          mass: 0.085  # kg
+          power_nom: 0.2  # W
+          power:  # W
             max: 0.6
           axis: 1
           source: "http://www.cubesatpointing.com/DownloadFiles/Datasheets/KULRWDatasheet.pdf"
         - type: Reaction Wheel
           name: "RW-0.01"
-          torque:
+          torque:  # N·m
             max: 0.001
-          momentum_storage: 0.018
-          mass: 0.12
-          power_nom: 0.25
-          power:
+          momentum_storage: 0.018  # N·m·s
+          mass: 0.12  # kg
+          power_nom: 0.25  # W
+          power:  # W
             max: 1.05
           axis: 1
           source: "https://satsearch.co/products/sinclair-interplanetary-rw-0-01"
         - type: Reaction Wheel
           name: "RRW-0.003"
-          torque:
+          torque:  # N·m
             max: 0.001
-          momentum_storage: 0.005
-          mass: 0.05
+          momentum_storage: 0.005  # N·m·s
+          mass: 0.05  # kg
           axis: 1
           source: "http://www.sinclairinterplanetary.com/reactionwheels"
         - type: Reaction Wheel
           name: "Nanosatellite Reaction Wheels (RW-0.03)"
-          torque:
+          torque:  # N·m
             max: 0.04
-          momentum_storage: 0.04
-          mass: 0.185
-          power_nom: 0.3
-          power:
+          momentum_storage: 0.04  # N·m·s
+          mass: 0.185  # kg
+          power_nom: 0.3  # W
+          power:  # W
             max: 1.8
           axis: 1
           source: "http://www.sinclairinterplanetary.com/reactionwheels"
         - type: Reaction Wheel
           name: "Microsatellite Reaction Wheels (RW3-0.06)"
-          torque:
+          torque:  # N·m
             max: 0.02
-          momentum_storage: 0.18
-          mass: 0.226
-          power_nom: 0.9
-          power:
+          momentum_storage: 0.18  # N·m·s
+          mass: 0.226  # kg
+          power_nom: 0.9  # W
+          power:  # W
             max: 23.4
           axis: 1
           source: "http://www.sinclairinterplanetary.com/reactionwheels"
         - type: Reaction Wheel
           name: "Rad-Hard Reaction Wheels (RW4-0.2)"
-          torque:
+          torque:  # N·m
             max: 0.1
-          momentum_storage: 0.2
-          mass: 0.6
+          momentum_storage: 0.2  # N·m·s
+          mass: 0.6  # kg
           axis: 1
           source: "http://www.sinclairinterplanetary.com/reactionwheels"
         - type: Reaction Wheel
           name: "Rad-Hard Reaction Wheels (RW4-0.4)"
-          torque:
+          torque:  # N·m
             max: 0.1
-          momentum_storage: 0.4
-          mass: 0.77
+          momentum_storage: 0.4  # N·m·s
+          mass: 0.77  # kg
           axis: 1
           source: "http://www.sinclairinterplanetary.com/reactionwheels"
         - type: Reaction Wheel
           name: "GEO Reaction Wheels (RW4-1.0)"
-          torque:
+          torque:  # N·m
             max: 0.1
-          momentum_storage: 1
-          mass: 1.38
-          power_nom: 5.3
-          power:
+          momentum_storage: 1  # N·m·s
+          mass: 1.38  # kg
+          power_nom: 5.3  # W
+          power:  # W
             max: 45
           axis: 1
           source: "http://www.sinclairinterplanetary.com/reactionwheels"
         - type: Reaction Wheel
           name: "Microsatellite Reaction Wheels (RW3-1.0)"
-          torque:
+          torque:  # N·m
             max: 0.05
-          momentum_storage: 1
-          mass: 0.97
-          power_nom: 15.1
-          power:
+          momentum_storage: 1  # N·m·s
+          mass: 0.97  # kg
+          power_nom: 15.1  # W
+          power:  # W
             max: 46.7
           axis: 1
           source: "http://www.sinclairinterplanetary.com/reactionwheels"
         - type: Reaction Wheel
           name: RWP015
-          torque:
+          torque:  # N·m
             max: 0.004
-          momentum_storage: 0.015
-          mass: 0.13
-          power_nom: 1
+          momentum_storage: 0.015  # N·m·s
+          mass: 0.13  # kg
+          power_nom: 1  # W
           axis: 1
           source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
         - type: Reaction Wheel
           name: RWP050
-          torque:
+          torque:  # N·m
             max: 0.007
-          momentum_storage: 0.05
-          mass: 0.24
-          power_nom: 1
+          momentum_storage: 0.05  # N·m·s
+          mass: 0.24  # kg
+          power_nom: 1  # W
           axis: 1
           source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
         - type: Reaction Wheel
           name: RWP100
-          torque:
+          torque:  # N·m
             max: 0.007
-          momentum_storage: 0.1
-          mass: 0.35
-          power_nom: 1
+          momentum_storage: 0.1  # N·m·s
+          mass: 0.35  # kg
+          power_nom: 1  # W
           axis: 1
           source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
         - type: Reaction Wheel
           name: RWP500
-          torque:
+          torque:  # N·m
             max: 0.025
-          momentum_storage: 0.5
-          mass: 0.75
-          power_nom: 6
+          momentum_storage: 0.5  # N·m·s
+          mass: 0.75  # kg
+          power_nom: 6  # W
           axis: 1
           source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
         - type: Reaction Wheel
           name: RW1
-          torque:
+          torque:  # N·m
             max: 0.1
-          momentum_storage: 1
-          mass: 0.75
-          power_nom: 9
+          momentum_storage: 1  # N·m·s
+          mass: 0.75  # kg
+          power_nom: 9  # W
           axis: 1
           source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
         - type: Reaction Wheel
           name: RW4
-          torque:
+          torque:  # N·m
             max: 0.25
-          momentum_storage: 4
-          mass: 3
-          power_nom: 10
+          momentum_storage: 4  # N·m·s
+          mass: 3  # kg
+          power_nom: 10  # W
           axis: 1
           source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
         - type: Reaction Wheel
           name: RW4
-          torque:
+          torque:  # N·m
             max: 0.25
-          momentum_storage: 8
-          mass: 4.1
-          power_nom: 10
+          momentum_storage: 8  # N·m·s
+          mass: 4.1  # kg
+          power_nom: 10  # W
           axis: 1
           source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
         - type: Reaction Wheel
           name: CubeSat Reaction Wheels Control System SatBus 4RW0
-          torque:
+          torque:  # N·m
             max: 0.0059
-          momentum_storage: 0.037
-          mass: 0.665
-          power_nom: 0.6
-          power:
+          momentum_storage: 0.037  # N·m·s
+          mass: 0.665  # kg
+          power_nom: 0.6  # W
+          power:  # W
             max: 6
           axis: 4
           source: "https://nanoavionics.com/cubesat-components/cubesat-reaction-wheels-control-system-satbus-4rw/"
         - type: Reaction Wheel
           name: "RW400 - 15"
-          torque:
+          torque:  # N·m
             max: 0.012
-          momentum_storage: 0.015
-          mass: 0.155
-          power_nom: 1.9
-          power:
+          momentum_storage: 0.015  # N·m·s
+          mass: 0.155  # kg
+          power_nom: 1.9  # W
+          power:  # W
             max: 15
           axis: 1
           source: "https://hyperiontechnologies.nl/wp-content/uploads/2015/07/HT_RW400_v2.1-flyer.pdf"
         - type: Reaction Wheel
           name: "RW400 - 30"
-          torque:
+          torque:  # N·m
             max: 0.012
-          momentum_storage: 0.03
-          mass: 0.21
-          power_nom: 1.9
-          power:
+          momentum_storage: 0.03  # N·m·s
+          mass: 0.21  # kg
+          power_nom: 1.9  # W
+          power:  # W
             max: 15
           axis: 1
           source: "https://hyperiontechnologies.nl/wp-content/uploads/2015/07/HT_RW400_v2.1-flyer.pdf"
         - type: Reaction Wheel
           name: "RW400 - 60"
-          torque:
+          torque:  # N·m
             max: 0.012
-          momentum_storage: 0.06
-          mass: 0.375
-          power_nom: 1.9
-          power:
+          momentum_storage: 0.06  # N·m·s
+          mass: 0.375  # kg
+          power_nom: 1.9  # W
+          power:  # W
             max: 15
           axis: 1
           source: "https://hyperiontechnologies.nl/wp-content/uploads/2015/07/HT_RW400_v2.1-flyer.pdf"
         - type: Reaction Wheel
           name: "NanoTorque GSW-600"
-          torque:
+          torque:  # N·m
             max: 0.0015
-          momentum_storage: 0.019
-          mass: 0.18
-          power_nom: 0.3
-          power:
+          momentum_storage: 0.019  # N·m·s
+          mass: 0.18  # kg
+          power_nom: 0.3  # W
+          power:  # W
             max: 2.55
           axis: 1
           source: "https://gomspace.com/UserFiles/Subsystems/datasheet/gs-ds-nanotorque-gsw-600-20.pdf"
         - type: Reaction Wheel
           name: Reaction Wheel RW1 for Pico and Nano Satellites Typ A
-          torque:
+          torque:  # N·m
             max: 2.3e-05
-          momentum_storage: 0.00058
-          mass: 0.125
-          power_nom: 0.62
-          power:
+          momentum_storage: 0.00058  # N·m·s
+          mass: 0.125  # kg
+          power_nom: 0.62  # W
+          power:  # W
             max: 0.72
           axis: 4
           source: "https://www.astrofein.com/2728/dwnld/admin/Datenblatt_RW1.pdf"
         - type: Reaction Wheel
           name: Reaction Wheel RW1 for Pico and Nano Satellites Typ B
-          torque:
+          torque:  # N·m
             max: 4e-06
-          momentum_storage: 0.0001
-          mass: 0.093
-          power_nom: 0.62
-          power:
+          momentum_storage: 0.0001  # N·m·s
+          mass: 0.093  # kg
+          power_nom: 0.62  # W
+          power:  # W
             max: 0.72
           axis: 4
           source: "https://www.astrofein.com/2728/dwnld/admin/Datenblatt_RW1.pdf"
         - type: Reaction Wheel
           name: Reaction Wheel RW35 for Nano and Micro Satellites
-          torque:
+          torque:  # N·m
             max: 0.005
-          momentum_storage: 0.1
-          mass: 0.5
-          power_nom: 4.5
-          power:
+          momentum_storage: 0.1  # N·m·s
+          mass: 0.5  # kg
+          power_nom: 4.5  # W
+          power:  # W
             max: 5
           axis: 1
           source: "https://www.astrofein.com/2728/dwnld/admin/Datenblatt_RW35.pdf"
         - type: Reaction Wheel
           name: Reaction Wheel RW90 for Small and Micro Satellites
-          torque:
+          torque:  # N·m
             max: 0.015
-          momentum_storage: 0.34
-          mass: 0.9
-          power_nom: 3.5
-          power:
+          momentum_storage: 0.34  # N·m·s
+          mass: 0.9  # kg
+          power_nom: 3.5  # W
+          power:  # W
             max: 15
           axis: 1
           source: "https://www.astrofein.com/2728/dwnld/48_Datenblatt_RW90.pdf"
         - type: Reaction Wheel
           name: Reaction Wheel RW150 for Small Satellites
-          torque:
+          torque:  # N·m
             max: 0.03
-          momentum_storage: 1
-          mass: 1.5
-          power_nom: 5
-          power:
+          momentum_storage: 1  # N·m·s
+          mass: 1.5  # kg
+          power_nom: 5  # W
+          power:  # W
             max: 50
           axis: 1
           source: "https://www.astrofein.com/2728/dwnld/admin/Datenblatt_RW150.pdf"
         - type: Reaction Wheel
           name: Reaction Wheel RW250 for Small Satellites
-          torque:
+          torque:  # N·m
             max: 0.1
-          momentum_storage: 4
-          mass: 2.7
-          power_nom: 18
-          power:
+          momentum_storage: 4  # N·m·s
+          mass: 2.7  # kg
+          power_nom: 18  # W
+          power:  # W
             max: 150
           axis: 1
           source: "https://www.astrofein.com/2728/dwnld/admin/Datenblatt_RW250.pdf"
         - type: Reaction Wheel
           name: "RSI 15-215/20"
-          torque:
+          torque:  # N·m
             max: 0.215
-          momentum_storage: 15
-          mass: 7.7
-          power_nom: 15
-          power:
+          momentum_storage: 15  # N·m·s
+          mass: 7.7  # kg
+          power_nom: 15  # W
+          power:  # W
             max: 90
           axis: 1
           source: "http://www.electronicnote.com/media/downloads/RSI%2045_A4.pdf"
         - type: Reaction Wheel
           name: "RSI 45-75/60"
-          torque:
+          torque:  # N·m
             max: 0.075
-          momentum_storage: 45
-          mass: 7.7
-          power_nom: 22
-          power:
+          momentum_storage: 45  # N·m·s
+          mass: 7.7  # kg
+          power_nom: 22  # W
+          power:  # W
             max: 90
           axis: 1
           source: "http://www.electronicnote.com/media/downloads/RSI%2045_A4.pdf"
         - type: Reaction Wheel
           name: "RSI 01-5/15"
-          torque:
+          torque:  # N·m
             max: 0.005
-          momentum_storage: 0.04
-          mass: 0.6
-          power_nom: 2
-          power:
+          momentum_storage: 0.04  # N·m·s
+          mass: 0.6  # kg
+          power_nom: 2  # W
+          power:  # W
             max: 4
           axis: 1
           source: "http://www.electronicnote.com/RCG/RSI%2001_A4.pdf"
         - type: Reaction Wheel
           name: "RSI 01-5/28i"
-          torque:
+          torque:  # N·m
             max: 0.005
-          momentum_storage: 0.12
-          mass: 0.7
-          power_nom: 2
-          power:
+          momentum_storage: 0.12  # N·m·s
+          mass: 0.7  # kg
+          power_nom: 2  # W
+          power:  # W
             max: 4
           axis: 1
           source: "http://www.electronicnote.com/RCG/RSI%2001_A4.pdf"
         - type: Reaction Wheel
           name: MSCI MicroWheel 200
-          torque:
+          torque:  # N·m
             max: 0.03
-          momentum_storage: 0.18
-          mass: 0.94
-          power_nom: 7
-          power:
+          momentum_storage: 0.18  # N·m·s
+          mass: 0.94  # kg
+          power_nom: 7  # W
+          power:  # W
             max: 50
           axis: 1
           source: "http://www.reactionwheel.ca/products/MicroWheel-200.pdf"
         - type: Reaction Wheel
           name: MSCI MicroWheel 1000
-          torque:
+          torque:  # N·m
             max: 0.03
-          momentum_storage: 1.1
-          mass: 1.44
-          power_nom: 9
-          power:
+          momentum_storage: 1.1  # N·m·s
+          mass: 1.44  # kg
+          power_nom: 9  # W
+          power:  # W
             max: 50
           axis: 1
           source: "http://www.mscinc.ca/products/MicroWheel-1000.pdf"
         - type: Reaction Wheel
           name: MSCI MicroWheel 4000
-          torque:
+          torque:  # N·m
             max: 0.05
-          momentum_storage: 4
-          mass: 3.3
-          power_nom: 11
-          power:
+          momentum_storage: 4  # N·m·s
+          mass: 3.3  # kg
+          power_nom: 11  # W
+          power:  # W
             max: 200
           axis: 1
           source: "http://www.reactionwheel.ca/products/MicroWheel-4000.pdf"
         - type: Reaction Wheel
           name: Reaction Wheel HMMW
-          torque:
+          torque:  # N·m
             max: 0.012
-          momentum_storage: 0.4
-          mass: 1.05
-          power_nom: 4.3
+          momentum_storage: 0.4  # N·m·s
+          mass: 1.05  # kg
+          power_nom: 4.3  # W
           axis: 1
           source: "https://www.mpcnet.co.jp/e/e_product/elec/img/UEX_110010-C(E)_RW-IRU.pdf"
         - type: Reaction Wheel
           name: Reaction Wheel Mini
-          torque:
+          torque:  # N·m
             max: 0.01
-          momentum_storage: 1.5
-          mass: 2.6
-          power_nom: 15
-          power:
+          momentum_storage: 1.5  # N·m·s
+          mass: 2.6  # kg
+          power_nom: 15  # W
+          power:  # W
             max: 25
           axis: 1
           source: "https://www.mpcnet.co.jp/e/e_product/elec/img/UEX_110010-C(E)_RW-IRU.pdf"
         - type: Reaction Wheel
           name: Reaction Wheel Type S
-          torque:
+          torque:  # N·m
             max: 0.06
-          momentum_storage: 10
-          mass: 3.9
-          power_nom: 10
-          power:
+          momentum_storage: 10  # N·m·s
+          mass: 3.9  # kg
+          power_nom: 10  # W
+          power:  # W
             max: 50
           axis: 1
           source: "https://www.mpcnet.co.jp/e/e_product/elec/img/UEX_110010-C(E)_RW-IRU.pdf"
         - type: Reaction Wheel
           name: Reaction Wheel Type M
-          torque:
+          torque:  # N·m
             max: 0.1
-          momentum_storage: 30
-          mass: 9.3
-          power_nom: 21
-          power:
+          momentum_storage: 30  # N·m·s
+          mass: 9.3  # kg
+          power_nom: 21  # W
+          power:  # W
             max: 115
           axis: 1
           source: "https://www.mpcnet.co.jp/e/e_product/elec/img/UEX_110010-C(E)_RW-IRU.pdf"
         - type: Reaction Wheel
           name: "Reaction Wheel Type M-A"
-          torque:
+          torque:  # N·m
             max: 0.2
-          momentum_storage: 30
-          mass: 8.6
-          power_nom: 23
-          power:
+          momentum_storage: 30  # N·m·s
+          mass: 8.6  # kg
+          power_nom: 23  # W
+          power:  # W
             max: 208
           axis: 1
           source: "https://www.mpcnet.co.jp/e/e_product/elec/img/UEX_110010-C(E)_RW-IRU.pdf"
         - type: Reaction Wheel
           name: Reaction Wheel Type L
-          torque:
+          torque:  # N·m
             max: 0.2
-          momentum_storage: 80
-          mass: 11
-          power_nom: 23
-          power:
+          momentum_storage: 80  # N·m·s
+          mass: 11  # kg
+          power_nom: 23  # W
+          power:  # W
             max: 208
           axis: 1
           source: "https://www.mpcnet.co.jp/e/e_product/elec/img/UEX_110010-C(E)_RW-IRU.pdf"
         - type: Reaction Wheel
           name: Reaction Wheel（RW)
-          torque:
+          torque:  # N·m
             max: 0.02
-          momentum_storage: 0.3
-          mass: 1.1
-          power_nom: 3
-          power:
+          momentum_storage: 0.3  # N·m·s
+          mass: 1.1  # kg
+          power_nom: 3  # W
+          power:  # W
             max: 10
           axis: 1
           source: "https://www.tamagawa-seiki.com/products/space/ta6494.html"
         - type: Reaction Wheel
           name: "MAI-101"
-          torque:
+          torque:  # N·m
             max: 0.000635
-          momentum_storage: 0.0011
-          mass: 0.64
+          momentum_storage: 0.0011  # N·m·s
+          mass: 0.64  # kg
           axis: 4
           source: "http://www.ati-space.com/ATI.files/11_index.files/MAI-101%20Specification%20ATI%203-18-11.pdf"
     Sensor:
       sensor:
         - type: Magnetometer
           name: MM200
-          power: 0.28
-          sampling_rate: 500
-          mass: 0.012
+          power: 0.28  # W
+          sampling_rate: 500  # Hz
+          mass: 0.012  # kg
           source: "https://hyperiontechnologies.nl/wp-content/uploads/2020/01/HT_MM200_V1.0.pdf"
         - type: Sunsensor
           name: SS200
-          power: 0.04
-          accuracy: 1
-          FOV: 110
-          sampling_rate: 100
-          mass: 0.003
+          power: 0.04  # W
+          accuracy: 1  # deg
+          FOV: 110  # deg
+          sampling_rate: 100  # Hz
+          mass: 0.003  # kg
           source: "https://hyperiontechnologies.nl/wp-content/uploads/2019/11/HT_SS200.pdf"
         - type: Sunsensor
           name: "FSS-1"
-          power: 0.09
-          accuracy: 1
+          power: 0.09  # W
+          accuracy: 1  # deg
           axis: 2
-          FOV: 120
-          mass: 0.008
+          FOV: 120  # deg
+          mass: 0.008  # kg
           source: "https://space-inventor.com/wordpress/wp-content/uploads/2020/07/FSS-1-factsheet.pdf"
         - type: Startracker
           name: ST200
-          power: 0.6
-          accuracy_pitch: 0.00833333
-          accuracy_yaw: 0.00833333
-          accuracy_roll: 0.0555556
-          max_slew_tilt: 0.3
-          max_slew_roll: 0.6
-          sampling_rate: 5
-          half_angle: 30.45
-          mass: 0.042
+          power: 0.6  # W
+          accuracy_pitch: 0.00833333  # deg
+          accuracy_yaw: 0.00833333  # deg
+          accuracy_roll: 0.0555556  # deg
+          max_slew_tilt: 0.3  # deg/s
+          max_slew_roll: 0.6  # deg/s
+          sampling_rate: 5  # Hz
+          half_angle: 30.45  # deg
+          mass: 0.042  # kg
           source: "https://hyperiontechnologies.nl/wp-content/uploads/2015/07/HT_ST200_v2.1-flyer.pdf"
         - type: Startracker
           name: ST400
-          power: 0.7
-          accuracy_pitch: 0.00277778
-          accuracy_yaw: 0.00277778
-          accuracy_roll: 0.0333333
-          max_slew_tilt: 0.5
-          max_slew_roll: 1
-          sampling_rate: 5
-          half_angle: 40
-          mass: 0.28
+          power: 0.7  # W
+          accuracy_pitch: 0.00277778  # deg
+          accuracy_yaw: 0.00277778  # deg
+          accuracy_roll: 0.0333333  # deg
+          max_slew_tilt: 0.5  # deg/s
+          max_slew_roll: 1  # deg/s
+          sampling_rate: 5  # Hz
+          half_angle: 40  # deg
+          mass: 0.28  # kg
           source: "https://hyperiontechnologies.nl/wp-content/uploads/2019/11/HT_ST400.pdf"
         - type: Startracker
           name: "STAR-T3"
-          power: 1
-          accuracy_pitch: 0.00277778
-          accuracy_yaw: 0.00277778
-          accuracy_roll: 0.0333333
-          max_slew_tilt: 0.3
-          max_slew_roll: 0.3
-          half_angle: 37.5
-          mass: 0.35
+          power: 1  # W
+          accuracy_pitch: 0.00277778  # deg
+          accuracy_yaw: 0.00277778  # deg
+          accuracy_roll: 0.0333333  # deg
+          max_slew_tilt: 0.3  # deg/s
+          max_slew_roll: 0.3  # deg/s
+          half_angle: 37.5  # deg
+          mass: 0.35  # kg
           source: "https://space-inventor.com/wordpress/wp-content/uploads/2019/11/STAR-T3-one-pager.pdf"
     Integrated:
       integrated:
         - type: ACS
           name: iACS200
           aggregate:
-          torque:
+          torque:  # N·m
             max: 0.1
-          momentum_storage: 0.006
-          nom_mag_moment: 0.1
+          momentum_storage: 0.006  # N·m·s
+          nom_mag_moment: 0.1  # A·m²
           axis: 3
-          accuracy: 15
-          max_slew: 1.5
-          power: 1.3
-          mass: 0.41
+          accuracy: 15  # deg
+          max_slew: 1.5  # deg/s
+          power: 1.3  # W
+          mass: 0.41  # kg
           source: "https://hyperiontechnologies.nl/wp-content/uploads/2019/11/HT_iACS200.pdf"
         - type: ACS
           name: iACS400
           aggregate:
-          torque:
+          torque:  # N·m
             max: 2
-          momentum_storage: 0.05
-          nom_mag_moment: 0.4
+          momentum_storage: 0.05  # N·m·s
+          nom_mag_moment: 0.4  # A·m²
           axis: 3
-          accuracy: 1
-          max_slew: 1.5
-          power: 2
-          mass: 1.7
+          accuracy: 1  # deg
+          max_slew: 1.5  # deg/s
+          power: 2  # W
+          mass: 1.7  # kg
           source: "https://hyperiontechnologies.nl/wp-content/uploads/2015/07/HT_iADCS400_v2.1-flyer.pdf"
         - type: ACS
           name: iADCS200
           aggregate:
-          torque:
+          torque:  # N·m
             max: 0.087
-          momentum_storage: 0.006
-          nom_mag_moment: 0.1
+          momentum_storage: 0.006  # N·m·s
+          nom_mag_moment: 0.1  # A·m²
           axis: 3
-          accuracy: 1
-          max_slew: 1.5
-          power: 1.4
-          mass: 0.47
+          accuracy: 1  # deg
+          max_slew: 1.5  # deg/s
+          power: 1.4  # W
+          mass: 0.47  # kg
           source: "https://hyperiontechnologies.nl/wp-content/uploads/2019/11/HT_iADCS200.pdf"
         - type: ACS
           name: "ADCS-R3"
           aggregate:
-          torque:
+          torque:  # N·m
             max: 0.002
-          momentum_storage: 0.06
-          nom_mag_moment: 0.2
+          momentum_storage: 0.06  # N·m·s
+          nom_mag_moment: 0.2  # A·m²
           axis: 4
-          accuracy: 1
-          max_slew: 1.5
-          mass: 0.6
+          accuracy: 1  # deg
+          max_slew: 1.5  # deg/s
+          mass: 0.6  # kg
           source: "https://space-inventor.com/wordpress/wp-content/uploads/2020/01/ADCS-R3_facts-sheet_p1.pdf"
         - type: ACS
           name: KU Leuven ADCS
           aggregate:
-          torque:
+          torque:  # N·m
             max: 0.0005
-          momentum_storage: 0.004
-          nom_mag_moment: 0.13
+          momentum_storage: 0.004  # N·m·s
+          nom_mag_moment: 0.13  # A·m²
           axis: 3
-          accuracy: 0.11
-          max_slew:
-          power: 1.4
-          mass: 0.715
+          accuracy: 0.11  # deg
+          max_slew:  # deg/s
+          power: 1.4  # W
+          mass: 0.715  # kg
           source: "https://www.cubesatshop.com/wp-content/uploads/2018/10/KULADCS-Datasheet_v2.pdf"
   communication:
     Laser:
       laser:
         type: Laser
         name: CUBECAT
-        downlink: 1e+09
-        uplink: 200000
-        storage: 6.4e+10
-        pointing_deg: 0.5
-        pointing_knowledge_error: 0.0172
-        power: 15
-        mass: 1.33
+        downlink: 1e+09  # bit/s
+        uplink: 200000  # bit/s
+        storage: 6.4e+10  # bit
+        pointing_deg: 0.5  # deg
+        pointing_knowledge_error: 0.0172  # deg
+        power: 15  # W
+        mass: 1.33  # kg
         source: "https://hyperiontechnologies.nl/wp-content/uploads/2019/11/HT_CubeCat.pdf"
+  energy_storage:
+    Cells:
+      cell:
+        - type: cell
+          name: LP 33081
+          manufacturer: EaglePicher
+          mass: 0.950  # kg
+          capacity: 30  # Ah
+          voltage_nominal: 3.6  # V
+          voltage_range:  # V
+            min: 3.0
+            max: 4.1
+          energy_density: 335  # Wh/L
+          specific_energy: 141  # Wh/kg
+          discharge_current_cont: 150  # A
+          discharge_current_pulse: 300  # A
+          internal_resistance: 2  # mΩ
+          cycle_life: ">2000"  # cycles; @100%DOD @0.5C
+          temp_op:  # °C
+            min: -20
+            max: 60
+          temp_storage:  # °C
+            min: -40
+            max: 20
+          chemistry: Li-Ion NCA
+          source: "EaglePicher Technologies, LLC. 'LP 33081 Li-Ion Cell Datasheet,' Doc. No. LP33081-0123."
+        - type: cell
+          name: LP 33330
+          manufacturer: EaglePicher
+          mass: 0.222  # kg
+          capacity: 6  # Ah
+          voltage_range:  # V
+            min: 3.0
+            max: 4.1
+          energy_density: 263  # Wh/L
+          specific_energy: 105  # Wh/kg
+          discharge_current_cont: 24  # A
+          discharge_current_pulse: 48  # A
+          chemistry: Li-Ion
+          source: "EaglePicher Technologies, LLC. 'LP 33330 Li-Ion Cell Datasheet.'"
+        - type: cell
+          name: LP 32975
+          manufacturer: EaglePicher
+          mass: 0.465  # kg
+          capacity: 12  # Ah
+          voltage_nominal: 3.6  # V
+          voltage_range:  # V
+            min: 3.0
+            max: 4.1
+          energy_density: 285  # Wh/L
+          specific_energy: 114  # Wh/kg
+          discharge_current_cont: 96  # A
+          discharge_current_pulse: 180  # A
+          internal_resistance: 2.5  # mΩ
+          cycle_life: ">2000"  # cycles; @100%DOD
+          temp_op:  # °C
+            min: -20
+            max: 60
+          temp_storage:  # °C
+            min: -40
+            max: 60
+          chemistry: Li-Ion NCA
+          source: "EaglePicher Technologies, LLC. 'LP 32975 Li-Ion Cell Datasheet.'"
+        - type: cell
+          name: LP 33450
+          manufacturer: EaglePicher
+          mass: 1.27  # kg
+          capacity: 43  # Ah
+          voltage_nominal: 3.6  # V
+          voltage_range:  # V
+            min: 3.0
+            max: 4.1
+          energy_density: 378  # Wh/L
+          specific_energy: 153  # Wh/kg
+          discharge_current_cont: 200  # A
+          discharge_current_pulse: 400  # A
+          internal_resistance: 2  # mΩ
+          cycle_life: ">2000"  # cycles; @100%DOD
+          temp_op:  # °C
+            min: -20
+            max: 60
+          chemistry: Li-Ion NCA
+          source: "EaglePicher Technologies, LLC. 'LP 33450 Li-Ion Cell Datasheet.'"
+        - type: cell
+          name: LP 33037
+          manufacturer: EaglePicher
+          mass: 1.6  # kg
+          capacity: 60  # Ah
+          voltage_nominal: 3.6  # V
+          voltage_range:  # V
+            min: 3.0
+            max: 4.1
+          energy_density: 393  # Wh/L
+          specific_energy: 160  # Wh/kg
+          discharge_current_cont: 250  # A
+          discharge_current_pulse: 550  # A
+          internal_resistance: 1  # mΩ
+          cycle_life: ">2000"  # cycles; @100%DOD
+          temp_op:  # °C
+            min: -20
+            max: 40
+          chemistry: Li-Ion NCA
+          source: "EaglePicher Technologies, LLC. 'LP 33037 Li-Ion Cell Datasheet.'"
+        - type: cell
+          name: SLC-21060-003
+          manufacturer: EaglePicher
+          mass: 1.974  # kg
+          dimensions: "172.7 x 81.5 x 58.4 mm"
+          capacity: 72  # Ah
+          energy: 260  # Wh
+          energy_density: 324.1  # Wh/L
+          specific_energy: 131.7  # Wh/kg
+          charge_current_max: 36  # A
+          discharge_current_cont: 72  # A
+          discharge_current_pulse: 144  # A
+          temp_op:  # °C
+            min: +10
+            max: 30
+          temp_storage:  # °C
+            min: -5
+            max: 5
+          chemistry: Li-Ion
+          source: "EaglePicher Technologies, LLC. 'SLC-21060-003 Li-Ion Cell Datasheet.'"
+        - type: cell
+          name: SLC-16050
+          manufacturer: EaglePicher
+          mass: 2.020  # kg
+          dimensions: "173 x 81.5 x 56.9 mm"
+          capacity: 62.5  # Ah
+          energy: 245  # Wh
+          energy_density: 305.4  # Wh/L
+          specific_energy: 121.3  # Wh/kg
+          charge_current_max: 31.25  # A
+          discharge_current_cont: 62.5  # A
+          discharge_current_pulse: 125  # A
+          temp_op:  # °C
+            min: +10
+            max: 30
+          temp_storage:  # °C
+            min: -5
+            max: 5
+          chemistry: Li-Ion
+          source: "EaglePicher Technologies, LLC. 'SLC-16050 Li-Ion Cell Datasheet.'"
+        - type: cell
+          name: VES16
+          manufacturer: Saft
+          mass: 0.155  # kg
+          dimensions: "33 mm diameter x 60 mm height"
+          capacity: 4.5  # Ah
+          energy: 16  # Wh
+          chemistry: Li-Ion
+          source: "Saft Groupe S.A. 'VES16 Li-Ion Cell Datasheet.'"
+        - type: cell
+          name: "18650 COTS-grade"
+          manufacturer: "MELCO (Mitsubishi Electric)"
+          mass: 0.048  # kg
+          dimensions: "18.6 x 65.2 mm (D x L)"
+          capacity: 2.8  # Ah
+          voltage_nominal: 3.6  # V
+          voltage_range:  # V
+            min: 2.5
+            max: 4.2
+          specific_energy: 217  # Wh/kg
+          temp_op_charge:  # °C
+            min: 0
+            max: 60
+          temp_op_discharge:  # °C
+            min: -40
+            max: 60
+          chemistry: Li-Ion
+          source: "Mitsubishi Electric Corporation (MELCO). 'COTS-Grade 18650 Li-Ion Cell Datasheet.'"
+        - type: cell
+          name: "21700 COTS-grade"
+          manufacturer: "MELCO (Mitsubishi Electric)"
+          mass: 0.070  # kg
+          dimensions: "21.55 x 70.15 mm (D x L)"
+          capacity: 4.5  # Ah
+          voltage_nominal: 3.6  # V
+          specific_energy: 242  # Wh/kg
+          temp_op_charge:  # °C
+            min: 0
+            max: 60
+          temp_op_discharge:  # °C
+            min: -40
+            max: 60
+          chemistry: Li-Ion
+          source: "Mitsubishi Electric Corporation (MELCO). 'COTS-Grade 21700 Li-Ion Cell Datasheet.'"
+        - type: cell
+          name: "MP 176065 xtd"
+          manufacturer: Saft
+          mass: 0.135  # kg
+          dimensions: "18.65 x 60.5 x 68.7 mm"
+          capacity: 5.6  # Ah
+          energy: 20.4  # Wh
+          voltage_nominal: 3.65  # V
+          energy_density: 264  # Wh/L
+          specific_energy: 150  # Wh/kg
+          discharge_current_cont: 11  # A
+          discharge_current_pulse: 22  # A
+          temp_op_charge:  # °C
+            min: -30
+            max: 85
+          temp_op_discharge:  # °C
+            min: -40
+            max: 85
+          chemistry: "Li-Ion (IEC: INP19/61/69)"
+          source: "Saft Groupe S.A. 'MP176065 xtd Li-Ion Cell Datasheet,' Doc. No. 31109."
+        - type: cell
+          name: "MP 174565 xtd"
+          manufacturer: Saft
+          mass: 0.097  # kg
+          dimensions: "19.6 x 45.3 x 68.5 mm"
+          capacity: 4.0  # Ah
+          energy: 14.6  # Wh
+          voltage_nominal: 3.65  # V
+          energy_density: 264  # Wh/L
+          specific_energy: 150  # Wh/kg
+          discharge_current_cont: 8  # A
+          discharge_current_pulse: 16  # A
+          temp_op_discharge:  # °C
+            min: -40
+            max: 85
+          chemistry: "Li-Ion (IEC: INP19/46/69)"
+          source: "Saft Groupe S.A. 'MP174565 xtd Li-Ion Cell Datasheet,' Doc. No. 31110."
+        - type: cell
+          name: "MP 176065 xlr"
+          manufacturer: Saft
+          mass: 0.150  # kg
+          dimensions: "19.6 x 60.1 x 65.2 mm"
+          capacity: 6.8  # Ah
+          energy: 24.8  # Wh
+          voltage_nominal: 3.65  # V
+          energy_density: 364  # Wh/L
+          specific_energy: 165  # Wh/kg
+          discharge_current_cont: 14  # A
+          discharge_current_pulse: 27  # A
+          cycle_life: ">1800"  # cycles; @100%DOD @C/2
+          temp_op_discharge:  # °C
+            min: -35
+            max: 60
+          chemistry: "Li-Ion (IEC: INP20/61/66)"
+          source: "Saft Groupe S.A. 'MP176065 xlr Li-Ion Cell Datasheet,' Doc. No. 31157."
+        - type: cell
+          name: "MP 144350 xlr"
+          manufacturer: Saft
+          mass: 0.066  # kg
+          dimensions: "14.5 x 42.9 x 50.1 mm"
+          capacity: 2.6  # Ah
+          energy: 9.4  # Wh
+          voltage_nominal: 3.65  # V
+          energy_density: 335  # Wh/L
+          specific_energy: 142  # Wh/kg
+          discharge_current_cont: 5  # A
+          discharge_current_pulse: 10  # A
+          cycle_life: ">1100"  # cycles; @100%DOD
+          temp_op_discharge:  # °C
+            min: -35
+            max: 60
+          chemistry: "Li-Ion (IEC: INP15/43/51)"
+          source: "Saft Groupe S.A. 'MP144350 xlr Li-Ion Cell Datasheet.'"
+        - type: cell
+          name: "MP 174565 xtd CliP System"
+          manufacturer: Saft
+          mass: 0.116  # kg
+          dimensions: "20.0 x 51.0 x 75.0 mm"
+          capacity: 4.0  # Ah
+          energy: 14.6  # Wh
+          voltage_nominal: 3.65  # V
+          energy_density: 264  # Wh/L
+          specific_energy: 150  # Wh/kg
+          cycle_life: ">=2700"  # cycles; @100%DOD
+          temp_op:  # °C
+            min: -40
+            max: 85
+          chemistry: "Li-Ion (1s1p pack with enclosure)"
+          source: "Saft Groupe S.A. 'MP174565 xtd CliP System Li-Ion Cell Datasheet.'"
+    Batteries:
+      battery:
+        - type: battery
+          name: VES16 4s1p
+          manufacturer: Saft
+          mass: 0.70  # kg
+          dimensions: "90.5 x 84.1 x 77 mm"
+          capacity: 4.5  # Ah
+          energy: 64  # Wh
+          voltage_nominal: 14.8  # V
+          voltage_range:  # V
+            min: 13.2
+            max: 16.4
+          charge_current_max: 2.25  # A
+          discharge_current_cont: 4.5  # A
+          discharge_current_pulse: 9  # A
+          cycle_life: ">25000"  # cycles
+          mission_life: 5  # years; LEO
+          temp_op:  # °C
+            min: +10
+            max: 30
+          temp_storage:  # °C
+            min: -20
+            max: 40
+          topology: 4s1p
+          cells_total: 4  # 4s1p
+          chemistry: "Li-Ion (VES16 cells)"
+          source: "Saft Groupe S.A. 'Space Battery Application Datasheet,' Doc. No. A1003-19, Oct. 2019."
+        - type: battery
+          name: VES16 8s4p
+          manufacturer: Saft
+          mass: 5.0  # kg
+          dimensions: "308 x 180 x 90 mm"
+          capacity: 18  # Ah
+          energy: 512  # Wh
+          voltage_range:  # V
+            min: 25
+            max: 32.8
+          dod: 30  # %
+          mission_life: 18  # years; LEO
+          topology: 8s4p
+          cells_total: 32  # 8s4p
+          chemistry: "Li-Ion (VES16 cells)"
+          source: "Saft Groupe S.A. 'VES16 8s4p Battery Pack Datasheet.'"
+        - type: battery
+          name: VES16 11s16p
+          manufacturer: Saft
+          mass: 28.8  # kg
+          dimensions: "440 x 397 x 170 mm"
+          capacity: 72  # Ah
+          energy: 11264  # Wh
+          voltage_range:  # V
+            min: 29.7
+            max: 45.1
+          dod: 80  # %
+          mission_life: 18  # years; GEO
+          topology: 11s16p
+          cells_total: 176  # 11s16p
+          chemistry: "Li-Ion (VES16 cells)"
+          source: "Saft Groupe S.A. 'VES16 11s16p Battery Pack Datasheet.'"
+        - type: battery
+          name: SAR-10197
+          manufacturer: EaglePicher
+          mass: 63.5  # kg
+          dimensions: "269 x 749 x 264 mm"
+          capacity: 200  # Ah
+          energy: 6660  # Wh
+          voltage_nominal: 33.3  # V
+          voltage_range:  # V
+            min: 27.0
+            max: 35.8
+          specific_energy: 104.9  # Wh/kg
+          charge_current_max: 100  # A
+          discharge_current_cont: 154  # A
+          discharge_current_pulse: 400  # A
+          temp_op:  # °C
+            min: -5
+            max: 35
+          radiation: 3.11  # Mrad
+          mission_life: 15  # years; GEO
+          chemistry: Li-Ion LiCoO2
+          source: "EaglePicher Technologies, LLC. 'Space Battery Datasheet,' Doc. No. SAR-10197."
+        - type: battery
+          name: SAR-10199
+          manufacturer: EaglePicher
+          mass: 35.0  # kg
+          dimensions: "273 x 508 x 273 mm"
+          capacity: 100  # Ah
+          energy: 3663  # Wh
+          voltage_nominal: 33.3  # V
+          voltage_range:  # V
+            min: 27.0
+            max: 36.9
+          specific_energy: 104.6  # Wh/kg
+          charge_current_max: 55  # A
+          discharge_current_cont: 100  # A
+          discharge_current_pulse: 330  # A
+          temp_op:  # °C
+            min: -5
+            max: 35
+          radiation: 3.11  # Mrad
+          mission_life: 15  # years; GEO
+          chemistry: Li-Ion LiCoO2
+          source: "EaglePicher Technologies, LLC. 'Space Battery Datasheet,' Doc. No. SAR-10199."
+        - type: battery
+          name: SAR-10211
+          manufacturer: EaglePicher
+          mass: 38.6  # kg
+          dimensions: "640 x 224.3 x 218.4 mm"
+          capacity: 148  # Ah
+          energy: 4380  # Wh
+          specific_energy: 113.5  # Wh/kg
+          charge_current_max: 72  # A
+          discharge_current_cont: 140  # A
+          discharge_current_pulse: 292  # A
+          temp_op:  # °C
+            min: +10
+            max: 30
+          temp_storage:  # °C
+            min: -5
+            max: 5
+          chemistry: Li-Ion NCA
+          source: "EaglePicher Technologies, LLC. 'Space Battery Datasheet,' Doc. No. SAR-10211."
+        - type: battery
+          name: SAR-10215
+          manufacturer: EaglePicher
+          mass: 3.95  # kg
+          capacity: 15.5  # Ah
+          energy: 446.4  # Wh
+          voltage_nominal: 28.8  # V
+          voltage_range:  # V
+            min: 32.0
+            max: 33.6
+          specific_energy: 113.1  # Wh/kg
+          energy_density: 343  # Wh/L
+          charge_current_max: 7.2  # A
+          discharge_current_cont: 15  # A
+          discharge_current_pulse: 30  # A
+          temp_op_charge:  # °C
+            min: 0
+            max: 60
+          temp_op_discharge:  # °C
+            min: -20
+            max: 60
+          chemistry: Li-Ion
+          source: "EaglePicher Technologies, LLC. 'Space Battery Datasheet,' Doc. No. SAR-10215."
+        - type: battery
+          name: "COTS Satellite Battery (Large, 8s16p or 16s8p)"
+          manufacturer: EaglePicher
+          mass: 27.0  # kg
+          dimensions: "600 x 330 x 116 mm"
+          capacity: 39  # Ah
+          voltage_range:  # V
+            min: 14
+            max: 48
+          specific_energy: 100  # Wh/kg
+          discharge_current_cont: 48  # A
+          discharge_current_pulse: 100  # A
+          cells_total: 128  # 8s16p or 16s8p
+          chemistry: "Li-Ion 18650 (Panasonic or LG)"
+          source: "EaglePicher Technologies, LLC. 'COTS Satellite Battery Datasheet.'"
+        - type: battery
+          name: "COTS Satellite Battery (Medium, 8s16p or 16s8p)"
+          manufacturer: EaglePicher
+          mass: 13.5  # kg; derived (half of large format, datasheet range 9.4-27.0 kg)
+          dimensions: "300 x 330 x 116 mm"
+          voltage_range:  # V
+            min: 14
+            max: 48
+          specific_energy: 88  # Wh/kg; derived (interpolated, datasheet range 75-100 Wh/kg)
+          discharge_current_cont: 48  # A
+          discharge_current_pulse: 100  # A
+          chemistry: "Li-Ion 18650 (Panasonic or LG)"
+          source: "EaglePicher Technologies, LLC. 'COTS Satellite Battery Datasheet.'"
+        - type: battery
+          name: "COTS Satellite Battery (Small, 4s16p or 8s8p)"
+          manufacturer: EaglePicher
+          mass: 9.4  # kg
+          dimensions: "300 x 165 x 116 mm"
+          voltage_range:  # V
+            min: 14
+            max: 48
+          specific_energy: 75  # Wh/kg
+          discharge_current_cont: 48  # A
+          discharge_current_pulse: 100  # A
+          cells_total: 64  # 4s16p or 8s8p
+          chemistry: "Li-Ion 18650 (Panasonic or LG)"
+          source: "EaglePicher Technologies, LLC. 'COTS Satellite Battery Datasheet.'"
+        - type: battery
+          name: SAR-10237 COTS SP 10P8S
+          manufacturer: EaglePicher
+          mass: 5.75  # kg
+          dimensions: "271 x 173 x 90 mm"
+          capacity: 27  # Ah
+          voltage_nominal: 28  # V
+          topology: 10P8S
+          cells_total: 80  # 10P×8S
+          chemistry: Li-Ion 18650
+          source: "EaglePicher Technologies, LLC. 'Space Battery Datasheet,' Doc. No. SAR-10237."
+        - type: battery
+          name: SAR-10239 COTS SP 12P8S
+          manufacturer: EaglePicher
+          mass: 6.75  # kg
+          dimensions: "306 x 173 x 90 mm"
+          capacity: 32.4  # Ah
+          voltage_nominal: 28  # V
+          topology: 12P8S
+          cells_total: 96  # 12P×8S
+          chemistry: Li-Ion 18650
+          source: "EaglePicher Technologies, LLC. 'Space Battery Datasheet,' Doc. No. SAR-10239."
+        - type: battery
+          name: SAR-10243 COTS SP 10P8S Energy
+          manufacturer: EaglePicher
+          mass: 5.75  # kg
+          dimensions: "271 x 173 x 90 mm"
+          capacity: 31.5  # Ah
+          voltage_nominal: 28  # V
+          topology: 10P8S
+          cells_total: 80  # 10P×8S
+          chemistry: Li-Ion 18650
+          source: "EaglePicher Technologies, LLC. 'Space Battery Datasheet,' Doc. No. SAR-10243."
+        - type: battery
+          name: SAR-10245 COTS SP 12P8S Energy
+          manufacturer: EaglePicher
+          mass: 6.75  # kg
+          dimensions: "306 x 173 x 90 mm"
+          capacity: 37.8  # Ah
+          voltage_nominal: 28  # V
+          topology: 12P8S
+          cells_total: 96  # 12P×8S
+          chemistry: Li-Ion 18650
+          source: "EaglePicher Technologies, LLC. 'Space Battery Datasheet,' Doc. No. SAR-10245."
+        - type: battery
+          name: CM1040 36s4p P20
+          manufacturer: EnerSys / ABSL
+          mass: 8.4  # kg
+          dimensions: "209 x 362 x 115 mm"
+          capacity: 8  # Ah
+          energy: 1066  # Wh
+          voltage_range:  # V
+            min: 108
+            max: 151.2
+          radiation: 10  # Mrad; <1% capacity loss
+          temp_op:  # °C
+            min: 0
+            max: 40
+          temp_nonop:  # °C
+            min: -20
+            max: 60
+          topology: 36s4p (P20 cells)
+          cells_total: 144  # 36s4p
+          chemistry: Li-Ion
+          source: "EnerSys / ABSL Power Solutions. 'CM1040 Li-Ion Battery Module Datasheet.'"
+        - type: battery
+          name: CM1040 8s18p P20
+          manufacturer: EnerSys / ABSL
+          mass: 8.8  # kg
+          dimensions: "209 x 362 x 131 mm"
+          capacity: 36  # Ah
+          energy: 1066  # Wh
+          voltage_range:  # V
+            min: 24.0
+            max: 33.6
+          radiation: 10  # Mrad
+          temp_op:  # °C
+            min: 0
+            max: 40 
+          topology: 8s18p (P20 cells)
+          cells_total: 144  # 8s18p
+          chemistry: Li-Ion
+          source: "EnerSys / ABSL Power Solutions. 'CM1040 Li-Ion Battery Module Datasheet.'"
+        - type: battery
+          name: CM170 4s6p P20
+          manufacturer: EnerSys / ABSL
+          mass: 1.6  # kg
+          dimensions: "113 x 132 x 95 mm"
+          capacity: 12  # Ah
+          energy: 178  # Wh
+          voltage_range:  # V
+            min: 12.0
+            max: 16.8
+          radiation: 10  # Mrad
+          temp_op:  # °C
+            min: 0
+            max: 40
+          temp_nonop:  # °C
+            min: -10
+            max: 50
+          topology: 4s6p (P20 cells)
+          cells_total: 24  # 4s6p
+          chemistry: Li-Ion
+          source: "EnerSys / ABSL Power Solutions. 'CM170 Li-Ion Battery Module Datasheet.'"
+        - type: battery
+          name: SV 39501
+          manufacturer: Space Vector
+          mass: 1.0  # kg
+          dimensions: "121 x 112 x 68 mm"
+          capacity: 5  # Ah
+          voltage_nominal: 29  # V
+          voltage_range:  # V
+            min: 20
+            max: 33.2
+          charge_current_max: 5  # A
+          discharge_current_cont: 18  # A
+          discharge_current_pulse: 44  # A
+          temp_op_charge:  # °C
+            min: 0
+            max: 50
+          temp_op_discharge:  # °C
+            min: -20
+            max: 60
+          chemistry: Li-Ion
+          source: "Space Vector Corporation. 'SV 39501 Space Battery Datasheet.'"
+        - type: battery
+          name: SV 39541
+          manufacturer: Space Vector
+          mass: 4.4  # kg
+          dimensions: "248 x 127 x 82 mm"
+          capacity: 25  # Ah
+          energy: 726  # Wh
+          voltage_nominal: 29  # V
+          voltage_range:  # V
+            min: 20
+            max: 33.2
+          charge_current_max: 25  # A
+          discharge_current_cont: 72  # A
+          discharge_current_pulse: 110  # A
+          chemistry: Li-Ion
+          source: "Space Vector Corporation. 'SV 39541 Space Battery Datasheet.'"
+        - type: battery
+          name: "SV 39611/39611-1 FTS Smart"
+          manufacturer: Space Vector
+          mass: 1.68  # kg
+          dimensions: "108 x 81 x 188 mm"
+          capacity: 2.5  # Ah
+          energy: 72  # Wh
+          voltage_nominal: 28.8  # V
+          voltage_range:  # V
+            min: 20
+            max: 33.6
+          charge_current_max: 4  # A
+          discharge_current_cont: 5  # A
+          temp_op_discharge:  # °C
+            min: -20
+            max: 60
+          chemistry: Li-Ion
+          source: "Space Vector Corporation. 'SV 39611/39611-1 Space Battery Datasheet.'"
+        - type: battery
+          name: OPTIMUS-30
+          manufacturer: AAC Clyde Space
+          mass: 0.268  # kg
+          dimensions: "95.89 x 90.17 x 21.55 mm"
+          energy: 30  # Wh
+          voltage_charge_max: 8.4  # V
+          voltage_range:  # V
+            min: 6.2
+            max: 8.4
+          charge_current_max: 1.95  # A
+          temp_op:  # °C
+            min: -10
+            max: 50
+          temp_storage:  # °C
+            min: -20
+            max: 60
+          interface: "PC104; 3.3V and 5V buses"
+          chemistry: Li Polymer
+          source: "AAC Clyde Space Ltd. 'OPTIMUS-30 Battery Module Datasheet.'"
+        - type: battery
+          name: OPTIMUS-40
+          manufacturer: AAC Clyde Space
+          mass: 0.335  # kg
+          dimensions: "95.89 x 90.17 x 27.35 mm"
+          energy: 40  # Wh
+          voltage_charge_max: 8.4  # V
+          voltage_range:  # V
+            min: 6.2
+            max: 8.4
+          charge_current_max: 2.6  # A
+          temp_op:  # °C
+            min: -10
+            max: 50
+          interface: "PC104; 3.3V and 5V buses"
+          chemistry: Li Polymer
+          source: "AAC Clyde Space Ltd. 'OPTIMUS-40 Battery Module Datasheet.'"
+        - type: battery
+          name: OPTIMUS-80
+          manufacturer: AAC Clyde Space
+          mass: 0.670  # kg
+          dimensions: "95.89 x 90.17 x 56.94 mm"
+          energy: 80  # Wh
+          voltage_charge_max: 8.4  # V
+          voltage_range:  # V
+            min: 6.2
+            max: 8.4
+          charge_current_max: 5.2  # A
+          temp_op:  # °C
+            min: -10
+            max: 50
+          interface: "PC104; 3.3V and 5V buses"
+          chemistry: Li Polymer
+          source: "AAC Clyde Space Ltd. 'OPTIMUS-80 Battery Module Datasheet.'"
+        - type: battery
+          name: COSMO-BATT-S
+          manufacturer: Airbus
+          mass_range:  # kg
+            min: 3.0
+            max: 4.6
+          dimensions: "206 x 171 x 109 mm"
+          capacity_range:  # Ah
+            min: 150
+            max: 262
+          energy_range:  # Wh
+            min: 550
+            max: 962
+          specific_energy: 200  # Wh/kg
+          mission_life: 15  # years; GEO; 22 modules in series (50V platform)
+          chemistry: Li-Ion
+          source: "Airbus Defence and Space GmbH. 'COSMO-BATT Space Battery Datasheet.'"
+        - type: battery
+          name: COSMO-BATT-M
+          manufacturer: Airbus
+          mass_range:  # kg
+            min: 5.8
+            max: 9.8
+          dimensions: "286 x 259 x 109 mm"
+          capacity_range:  # Ah
+            min: 306
+            max: 575
+          energy_range:  # Wh
+            min: 1125
+            max: 2112
+          specific_energy: 200  # Wh/kg
+          mission_life: 15  # years; GEO
+          chemistry: Li-Ion
+          source: "Airbus Defence and Space GmbH. 'COSMO-BATT Space Battery Datasheet.'"
+        - type: battery
+          name: COSMO-BATT-L
+          manufacturer: Airbus
+          mass_range:  # kg
+            min: 10.9
+            max: 13.6
+          dimensions: "386 x 259 x 109 mm"
+          capacity_range:  # Ah
+            min: 612
+            max: 805
+          energy_range:  # Wh
+            min: 2250
+            max: 2962
+          specific_energy: 200  # Wh/kg
+          mission_life: 15  # years; GEO
+          chemistry: Li-Ion
+          source: "Airbus Defence and Space GmbH. 'COSMO-BATT Space Battery Datasheet.'"
+        - type: battery
+          name: STELLAR-BATT-S
+          manufacturer: Airbus
+          mass: 9.8  # kg
+          dimensions: "338 x 275 x 110 mm"
+          capacity: 51  # Ah
+          energy: 1685  # Wh
+          voltage_range:  # V
+            min: 22.5
+            max: 37.8
+          specific_energy: 170  # Wh/kg
+          charge_current_max: 15  # A
+          discharge_current_cont: 15  # A
+          discharge_current_pulse: 70  # A
+          cycle_life: 52000  # cycles; @C/2 15%DoD
+          radiation: "8.5 years LEO SEP tolerant"
+          chemistry: Li-Ion
+          source: "Airbus Defence and Space GmbH. 'STELLAR-BATT Space Battery Datasheet.'"
+        - type: battery
+          name: STELLAR-BATT-L 1 brick
+          manufacturer: Airbus
+          mass: 10.0  # kg
+          dimensions: "434 x 400 x 114 mm"
+          capacity: 27.2  # Ah
+          energy: 900  # Wh
+          voltage_range:  # V
+            min: 22.5
+            max: 37.8
+          specific_energy: 90  # Wh/kg
+          charge_current_max: 27.2  # A
+          discharge_current_cont: 27.2  # A
+          discharge_current_pulse: 41  # A
+          radiation: "9.5 years LEO SEP tolerant"
+          chemistry: Li-Ion
+          source: "Airbus Defence and Space GmbH. 'STELLAR-BATT Space Battery Datasheet.'"
+        - type: battery
+          name: STELLAR-BATT-L 2 bricks
+          manufacturer: Airbus
+          mass: 13.7  # kg
+          capacity: 54.4  # Ah
+          energy: 1800  # Wh
+          specific_energy: 135  # Wh/kg
+          discharge_current_cont: 54.4  # A
+          discharge_current_pulse: 82  # A
+          chemistry: Li-Ion
+          source: "Airbus Defence and Space GmbH. 'STELLAR-BATT Space Battery Datasheet.'"
+        - type: battery
+          name: STELLAR-BATT-L 3 bricks
+          manufacturer: Airbus
+          mass: 17.4  # kg
+          capacity: 81.6  # Ah
+          energy: 2700  # Wh
+          specific_energy: 155  # Wh/kg
+          discharge_current_cont: 81.6  # A
+          discharge_current_pulse: 122  # A
+          chemistry: Li-Ion
+          source: "Airbus Defence and Space GmbH. 'STELLAR-BATT Space Battery Datasheet.'"
+        - type: battery
+          name: STELLAR-BATT-L 4 bricks
+          manufacturer: Airbus
+          mass: 21.1  # kg
+          capacity: 108.8  # Ah
+          energy: 3600  # Wh
+          specific_energy: 170  # Wh/kg
+          discharge_current_cont: 108.8  # A
+          discharge_current_pulse: 140  # A
+          chemistry: Li-Ion
+          source: "Airbus Defence and Space GmbH. 'STELLAR-BATT Space Battery Datasheet.'"
+        - type: battery
+          name: ASTRO-BATT 30V Small
+          manufacturer: Airbus
+          mass: 21  # kg
+          dimensions: "350 x 355 x 155 mm"
+          capacity: 122  # Ah
+          energy: 3600  # Wh
+          voltage_range:  # V
+            min: 20
+            max: 33.6
+          specific_energy: 170  # Wh/kg
+          charge_current_max: 60  # A
+          discharge_current_cont: 60  # A
+          discharge_current_pulse: 75  # A
+          cycle_life: 70000  # cycles; @C/5 10%DoD
+          radiation: "12.5 years LEO SEP tolerant"
+          chemistry: Li-Ion
+          source: "Airbus Defence and Space GmbH. 'ASTRO-BATT Space Battery Datasheet.'"
+        - type: battery
+          name: ASTRO-BATT 30V Large
+          manufacturer: Airbus
+          mass: 30  # kg
+          dimensions: "509 x 355 x 155 mm"
+          capacity: 183  # Ah
+          energy: 5400  # Wh
+          voltage_range:  # V
+            min: 20
+            max: 33.6
+          specific_energy: 180  # Wh/kg
+          discharge_current_cont: 40  # A
+          discharge_current_pulse: 50  # A
+          chemistry: Li-Ion
+          source: "Airbus Defence and Space GmbH. 'ASTRO-BATT Space Battery Datasheet.'"
+        - type: battery
+          name: ASTRO-BATT 50V
+          manufacturer: Airbus
+          mass: 30  # kg
+          capacity: 122  # Ah
+          energy: 5400  # Wh
+          voltage_range:  # V
+            min: 30
+            max: 50.4
+          specific_energy: 180  # Wh/kg
+          charge_current_max: 40  # A
+          discharge_current_cont: 40  # A
+          discharge_current_pulse: 50  # A
+          chemistry: Li-Ion
+          source: "Airbus Defence and Space GmbH. 'ASTRO-BATT Space Battery Datasheet.'"
+        - type: battery
+          name: ASTRO-BATT 100V
+          manufacturer: Airbus
+          mass: 30  # kg
+          capacity: 61  # Ah
+          energy: 5400  # Wh
+          voltage_range:  # V
+            min: 60
+            max: 100.8
+          charge_current_max: 60  # A
+          discharge_current_cont: 80  # A
+          discharge_current_pulse: 100  # A
+          chemistry: Li-Ion
+          source: "Airbus Defence and Space GmbH. 'ASTRO-BATT Space Battery Datasheet.'"
+        - type: battery
+          name: LAUNCHER-BATT-S
+          manufacturer: Airbus
+          mass: 2.2  # kg
+          dimensions: "220 x 130 x 110 mm"
+          capacity: 9  # Ah
+          energy: 259  # Wh
+          voltage_range:  # V
+            min: 21.6
+            max: 33.6
+          specific_energy: 115  # Wh/kg
+          charge_current_max: 3  # A
+          discharge_current_cont: 9  # A
+          discharge_current_pulse: 50  # A
+          dod: 15  # %
+          chemistry: Li-Ion
+          source: "Airbus Defence and Space GmbH. 'LAUNCHER-BATT Space Battery Datasheet.'"
+        - type: battery
+          name: LAUNCHER-BATT-L
+          manufacturer: Airbus
+          mass: 9.8  # kg
+          dimensions: "365 x 270 x 110 mm"
+          capacity: 30  # Ah
+          energy: 1620  # Wh
+          voltage_range:  # V
+            min: 40.5
+            max: 63
+          specific_energy: 165  # Wh/kg
+          charge_current_max: 10  # A
+          discharge_current_cont: 33  # A
+          discharge_current_pulse: 230  # A
+          dod: 70  # %
+          chemistry: Li-Ion
+          source: "Airbus Defence and Space GmbH. 'LAUNCHER-BATT Space Battery Datasheet.'"
+        - type: battery
+          name: TITAN-2/L2A
+          manufacturer: EXA
+          mass: 3.7  # kg
+          dimensions: "113.5 x 250.6 x 218.8 mm"
+          energy: 834  # Wh
+          specific_energy: 260  # Wh/kg
+          dod: 94  # %
+          internal_resistance: 55  # mΩ
+          temp_op:  # °C
+            min: -30
+            max: 65
+          radiation: "2 years LEO min"
+          chemistry: Li-Ion Polymer
+          source: "EXA Corporation. 'TITAN-2 Space Battery Datasheet.'"
+        - type: battery
+          name: TITAN-2/L4A
+          manufacturer: EXA
+          mass: 7.4  # kg
+          dimensions: "113.5 x 471.2 x 218.8 mm"
+          energy: 1666  # Wh
+          specific_energy: 260  # Wh/kg
+          dod: 94  # %
+          internal_resistance: 55  # mΩ
+          temp_op:  # °C
+            min: -30
+            max: 65
+          radiation: "2 years LEO min"
+          chemistry: Li-Ion Polymer
+          source: "EXA Corporation. 'TITAN-2 Space Battery Datasheet.'"
+        - type: battery
+          name: TITAN-2/L6B
+          manufacturer: EXA
+          mass: 14.6  # kg
+          dimensions: "113.5 x 691.8 x 218.8 mm"
+          energy: 3225  # Wh
+          specific_energy: 260  # Wh/kg
+          dod: 94  # %
+          internal_resistance: 55  # mΩ
+          temp_op:  # °C
+            min: -30
+            max: 65
+          radiation: "2 years LEO min"
+          chemistry: Li-Ion Polymer
+          source: "EXA Corporation. 'TITAN-2 Space Battery Datasheet.'"
+        - type: battery
+          name: TITAN-1
+          manufacturer: EXA
+          mass: 1.050  # kg
+          energy: 350  # Wh
+          voltage_range:  # V; configurable: 1S (4.2 V) or 2S (8.4 V)
+            min: 4.2
+            max: 8.4
+          capacity: 84  # Ah
+          internal_resistance: 50  # mΩ
+          temp_op:  # °C
+            min: -30
+            max: 80
+          radiation: "2 years LEO"
+          topology: "7 modules (56 cells total)"
+          cells_total: 56  # 7 modules × 8 cells each
+          chemistry: Li-Ion Polymer
+          source: "EXA Corporation. 'TITAN-1 Space Battery Datasheet.'"
+        - type: battery 
+          name: BA01/S
+          manufacturer: EXA
+          mass: 0.115  # kg
+          dimensions: "90 x 96 x 7.5 mm"
+          capacity: 6  # Ah
+          energy: 22.2  # Wh
+          voltage_nominal: 3.7  # V
+          internal_resistance: 7  # mΩ
+          temp_op:  # °C
+            min: -30
+            max: 80
+          radiation: "2 years LEO"
+          topology: "1s4p (4 cells)"
+          cells_total: 4  # 4 LiPo cells
+          chemistry: Li-Ion Polymer
+          source: "EXA Corporation. 'BA01/S Space Battery Datasheet.'"
+        - type: battery 
+          name: BA01/D
+          manufacturer: EXA
+          mass: 0.215  # kg
+          dimensions: "90 x 96 x 15 mm"
+          capacity: 12  # Ah
+          energy: 44.4  # Wh
+          voltage_range:  # V; configurable: 1S (3.7 V) or 2S (7.4 V)
+            min: 3.7
+            max: 7.4
+          radiation: "2 years LEO"
+          topology: "configurable; 8 cells"
+          chemistry: Li-Ion Polymer
+          source: "EXA Corporation. 'BA01/D Space Battery Datasheet.'"
+        - type: battery
+          name: B14-M45
+          manufacturer: iBEOS
+          mass: 0.375  # kg
+          dimensions: "94.5 x 84.1 x 23.1 mm"
+          energy: 45  # Wh
+          voltage_range:  # V
+            min: 13.2
+            max: 16.8
+          discharge_current_cont: 6.5  # A
+          charge_current_max: 1.6  # A
+          temp_op_charge:  # °C
+            min: +10
+            max: 45
+          temp_op_discharge:  # °C
+            min: 0
+            max: 45
+          radiation: 30  # kRad(Si); TID; SEE LET >37
+          cells_total: 4  # 4s1p
+          chemistry: Li-Ion
+          source: "iBEOS GmbH. 'B14-M45 Space Battery Datasheet.'"
+        - type: battery
+          name: B14-M90
+          manufacturer: iBEOS
+          mass: 0.750  # kg; derived: 2× B14-M45 (0.375 kg each)
+          dimensions: "94.5 x 84.1 x 46.2 mm (stacked)"
+          energy: 90  # Wh
+          voltage_range:  # V
+            min: 13.2
+            max: 16.8
+          radiation: 30  # kRad(Si); TID
+          cells_total: 8  # 4s2p (two B14-M45 in parallel)
+          chemistry: Li-Ion
+          source: "iBEOS GmbH. 'B14-M90 Space Battery Datasheet.'"
+        - type: battery
+          name: B28-135
+          manufacturer: iBEOS
+          mass: 0.815  # kg
+          dimensions: "94.5 x 87.5 x 50.6 mm"
+          energy: 135  # Wh
+          voltage_range:  # V
+            min: 22
+            max: 33.6
+          discharge_current_cont: 10  # A
+          charge_current_max: 2.5  # A
+          temp_op:  # °C
+            min: 0
+            max: 45
+          radiation: 30  # kRad(Si); TID
+          cells_total: 8  # 8s1p
+          chemistry: Li-Ion
+          source: "iBEOS GmbH. 'B28-135 Space Battery Datasheet.'"
+        - type: battery
+          name: B28-275
+          manufacturer: iBEOS
+          mass: 2.1  # kg
+          dimensions: "147 x 90 x 130 mm"
+          energy: 275  # Wh
+          voltage_range:  # V
+            min: 24
+            max: 33.6
+          discharge_current_cont: 20  # A
+          charge_current_max: 5  # A
+          temp_op_charge:  # °C
+            min: 0
+            max: 45
+          temp_op_discharge:  # °C
+            min: -25
+            max: 55
+          radiation: 30  # kRad; TID
+          topology: 8S2P
+          cells_total: 16  # 8s2p
+          chemistry: Li-Ion
+          source: "iBEOS GmbH. 'B28 Series Space Battery Datasheet.'"
+        - type: battery
+          name: B28-550
+          manufacturer: iBEOS
+          mass: 4.0  # kg
+          dimensions: "147 x 90 x 240 mm"
+          energy: 550  # Wh
+          voltage_range:  # V
+            min: 24
+            max: 33.6
+          discharge_current_cont: 40  # A
+          charge_current_max: 10  # A
+          temp_op_charge:  # °C
+            min: 0
+            max: 45
+          temp_op_discharge:  # °C
+            min: -25
+            max: 55
+          radiation: 30  # kRad; TID
+          topology: 8S4P
+          cells_total: 32  # 8s4p
+          chemistry: Li-Ion
+          source: "iBEOS GmbH. 'B28 Series Space Battery Datasheet.'"
+        - type: battery
+          name: B28-825
+          manufacturer: iBEOS
+          mass: 5.9  # kg
+          dimensions: "147 x 90 x 350 mm"
+          energy: 825  # Wh
+          voltage_range:  # V
+            min: 24
+            max: 33.6
+          discharge_current_cont: 60  # A
+          charge_current_max: 15  # A
+          temp_op_charge:  # °C
+            min: 0
+            max: 45
+          temp_op_discharge:  # °C
+            min: -25
+            max: 55
+          radiation: 30  # kRad; TID
+          topology: 8S6P
+          cells_total: 48  # 8s6p
+          chemistry: Li-Ion
+          source: "iBEOS GmbH. 'B28 Series Space Battery Datasheet.'"
+        - type: battery
+          name: B28-1100
+          manufacturer: iBEOS
+          mass: 7.8  # kg
+          dimensions: "147 x 90 x 460 mm"
+          energy: 1100  # Wh
+          voltage_range:  # V
+            min: 24
+            max: 33.6
+          discharge_current_cont: 80  # A
+          charge_current_max: 20  # A
+          temp_op_charge:  # °C
+            min: 0
+            max: 45
+          temp_op_discharge:  # °C
+            min: -25
+            max: 55
+          radiation: 30  # kRad; TID
+          topology: 8S8P
+          cells_total: 64  # 8s8p
+          chemistry: Li-Ion
+          source: "iBEOS GmbH. 'B28 Series Space Battery Datasheet.'"
+        - type: battery
+          name: B50-412
+          manufacturer: iBEOS
+          mass: 3.0  # kg
+          dimensions: "147 x 90 x 185 mm"
+          energy: 412  # Wh
+          voltage_range:  # V
+            min: 36
+            max: 50.4
+          discharge_current_cont: 20  # A
+          charge_current_max: 5  # A
+          temp_op_charge:  # °C
+            min: 0
+            max: 45
+          temp_op_discharge:  # °C
+            min: -25
+            max: 55
+          radiation: 30  # kRad; TID
+          topology: 12S2P
+          cells_total: 24  # 12s2p
+          chemistry: Li-Ion
+          source: "iBEOS GmbH. 'B50 Series Space Battery Datasheet.'"
+        - type: battery
+          name: B50-825
+          manufacturer: iBEOS
+          mass: 5.9  # kg
+          dimensions: "147 x 90 x 350 mm"
+          energy: 825  # Wh
+          voltage_range:  # V
+            min: 36
+            max: 50.4
+          discharge_current_cont: 40  # A
+          charge_current_max: 10  # A
+          temp_op_charge:  # °C
+            min: 0
+            max: 45
+          temp_op_discharge:  # °C
+            min: -25
+            max: 55
+          radiation: 30  # kRad; TID
+          topology: 12S4P
+          cells_total: 48  # 12s4p
+          chemistry: Li-Ion
+          source: "iBEOS GmbH. 'B50 Series Space Battery Datasheet.'"
+        - type: battery
+          name: B50-1237
+          manufacturer: iBEOS
+          mass: 8.8  # kg
+          dimensions: "147 x 90 x 515 mm"
+          energy: 1237  # Wh
+          voltage_range:  # V
+            min: 36
+            max: 50.4
+          discharge_current_cont: 60  # A
+          charge_current_max: 15  # A
+          temp_op_charge:  # °C
+            min: 0
+            max: 45
+          temp_op_discharge:  # °C
+            min: -25
+            max: 55
+          radiation: 30  # kRad; TID
+          topology: 12S6P
+          cells_total: 72  # 12s6p
+          chemistry: Li-Ion
+          source: "iBEOS GmbH. 'B50 Series Space Battery Datasheet.'"
+        - type: battery
+          name: LEO C50
+          manufacturer: Lanzo
+          mass: 0.6  # kg
+          dimensions: "90 x 60 x 80 mm"
+          energy: 50.4  # Wh
+          voltage_nominal: 14.4  # V
+          specific_energy: 112  # Wh/kg
+          topology: "4s1p (4 x 18650 cells)"
+          cells_total: 4  # 4s1p
+          chemistry: Li-Ion 18650
+          source: "Lanzo. 'LEO C50 Space Battery Datasheet.'"
+        - type: battery
+          name: LEO C200
+          manufacturer: Lanzo
+          mass: 1.8  # kg
+          dimensions: "90 x 150 x 80 mm"
+          energy: 201.6  # Wh
+          voltage_range:  # V; configurable: 4S (14.4 V) or 8S (28.8 V)
+            min: 14.4
+            max: 28.8
+          specific_energy: 100.8  # Wh/kg
+          topology: "4 modules (16 x 18650 cells)"
+          cells_total: 16  # 4× 4s1p modules
+          chemistry: Li-Ion 18650
+          source: "Lanzo. 'LEO C200 Space Battery Datasheet.'"
+        - type: battery
+          name: YAK C500
+          manufacturer: Lanzo
+          mass: 3.0  # kg
+          dimensions: "300 x 110 x 100 mm"
+          capacity: 17  # Ah
+          energy: 500  # Wh
+          voltage_nominal: 28  # V
+          discharge_current_cont: 50  # A
+          discharge_current_pulse: 85  # A
+          topology: "8s5p (40 x 18650 cells)"
+          cells_total: 40  # 8s5p
+          chemistry: Li-Ion 18650
+          source: "Lanzo. 'YAK C500 Space Battery Datasheet.'"
+        - type: battery
+          name: YAK C1500
+          manufacturer: Lanzo
+          mass: 10.0  # kg
+          dimensions: "320 x 330 x 100 mm"
+          capacity: 51  # Ah
+          energy: 1482  # Wh
+          voltage_nominal: 28  # V
+          discharge_current_cont: 150  # A
+          discharge_current_pulse: 255  # A
+          topology: "3x 8s5p (120 x 18650 cells)"
+          chemistry: Li-Ion 18650
+          source: "Lanzo. 'YAK C1500 Space Battery Datasheet.'"
+        - type: battery
+          name: Pack2 8S3P
+          manufacturer: MP Space
+          mass: 2.42  # kg
+          dimensions: "212.9 x 74.9 x 83.8 mm"
+          energy: 432  # Wh
+          voltage_nominal: 28.8  # V
+          voltage_range:  # V
+            min: 20
+            max: 33.6
+          charge_current_max: 38  # A
+          temp_op_charge:  # °C
+            min: 0
+            max: 55
+          temp_op_discharge:  # °C
+            min: -30
+            max: 55
+          radiation: 35  # kRad(Co-60)
+          mission_life: 5  # years; LEO
+          interface: CAN 2.0
+          topology: 8S3P (21700 cells)
+          cells_total: 24  # 8s3p
+          chemistry: Li-Ion 21700
+          source: "MP. 'Space Pack 2 Battery Module Datasheet.'"
+        - type: battery
+          name: Pack2 8S6P
+          manufacturer: MP Space
+          mass: 4.6  # kg
+          dimensions: "218.9 x 172.2 x 84.2 mm"
+          energy: 864  # Wh
+          voltage_nominal: 28.8  # V
+          voltage_range:  # V
+            min: 20
+            max: 33.6
+          charge_current_max: 38  # A
+          mission_life: 5  # years; LEO
+          interface: CAN 2.0
+          topology: 8S6P (21700 cells)
+          cells_total: 48  # 8s6p
+          chemistry: Li-Ion 21700
+          source: "MP. 'Space Pack 2 Battery Module Datasheet.'"
+        - type: battery
+          name: "n-ART BAT 24Wh"
+          manufacturer: "Gümüş / n-ART"
+          energy: 24  # Wh
+          voltage_range:  # V
+            min: 6.2
+            max: 8.3
+          interface: "I2C (PC104); ARM Cortex M4"
+          topology: "2S1P (2 cells)"
+          cells_total: 4  # 2S2P
+          chemistry: Li-Ion
+          source: "Gümüş Technology. 'n-ART BAT Space Battery Datasheet.'"
+        - type: battery
+          name: "n-ART BAT 48Wh"
+          manufacturer: "Gümüş / n-ART"
+          mass: 0.284  # kg; ~284 g per datasheet Table 8
+          dimensions: "93.7 x 93.0 x 27.9 mm"
+          energy: 48  # Wh
+          voltage_range:  # V
+            min: 6.2
+            max: 8.3
+          interface: "I2C (PC104)"
+          topology: "2S2P (4 cells)"
+          cells_total: 8  # 4S2P or 2S4P; up to 8 cells
+          chemistry: Li-Ion
+          source: "Gümüş Technology. 'n-ART BAT Space Battery Datasheet.'"
+        - type: battery
+          name: BAT-110
+          manufacturer: "BST (Berlin Space Technologies)"
+          mass: 3.0  # kg
+          dimensions: "240 x 119 x 87 mm"
+          energy: 172  # Wh
+          voltage_nominal: 23.1  # V
+          cycle_life: ">3000"  # cycles; @0.5C/1C 100%DoD
+          temp_op:  # °C
+            min: -20
+            max: 40
+          radiation: 30  # kRad(Co-60)
+          mission_life: 5  # years; LEO
+          chemistry: "Li-Fe (Lithium Iron/Ferrite), modular (1-10 strings)"
+          source: "Berlin Space Technologies GmbH (BST). 'BAT-110 Space Battery Datasheet.'"
+        - type: battery
+          name: VLB-16
+          manufacturer: Vectronic Aerospace
+          mass: 4.5  # kg
+          dimensions: "195 x 169 x 100 mm"
+          capacity: 12  # Ah
+          voltage_range:  # V
+            min: 24
+            max: 33
+          charge_current_max: 8  # A
+          discharge_current_cont: 10  # A
+          discharge_current_pulse: 20  # A
+          temp_op_charge:  # °C
+            min: -20
+            max: 60
+          temp_op_discharge:  # °C
+            min: -40
+            max: 60
+          radiation: ">20"  # kRad
+          interface: RS422/RS485
+          cells_total: 16  # 16s1p; SAFT cells
+          chemistry: "Li-Ion (Saft cells)"
+          source: "Vectronic Aerospace GmbH. 'VLB Space Battery Datasheet.'"
+        - type: battery
+          name: VLB-8
+          manufacturer: Vectronic Aerospace
+          mass: 2.7  # kg
+          dimensions: "114 x 192 x 92 mm"
+          capacity: 12  # Ah
+          voltage_range:  # V
+            min: 24
+            max: 33
+          radiation: ">20"  # kRad
+          interface: RS422/RS485
+          cells_total: 8  # 8s1p; SAFT cells
+          chemistry: "Li-Ion (Saft cells)"
+          source: "Vectronic Aerospace GmbH. 'VLB Space Battery Datasheet.'"
+        - type: battery
+          name: "Li-Ion Small Satellite Battery (modular)"
+          manufacturer: Stellar Exploration
+          voltage_nominal: 28  # V
+          specific_energy_range:  # Wh/kg
+            min: 130
+            max: 200
+          discharge_current_cont: 8  # A
+          mission_life: 3  # years; 3-5 range
+          interface: CAN or RS422
+          topology: "modular 8S1P scalable to 8S24P"
+          chemistry: Li-Ion 18650
+          source: "Stellar Exploration Inc. 'Space Battery Datasheet.'"
+        - type: battery
+          name: ASSB (All Solid-State Battery)
+          manufacturer: Redwire
+          dimensions: "260 x 120 x 90 mm"
+          capacity: 20  # Ah
+          voltage_nominal: 28  # V
+          voltage_range:  # V
+            min: 24.5
+            max: 33.6
+          specific_energy: 350  # Wh/kg
+          chemistry: "All-Solid-State Li (no liquid electrolyte)"
+          source: "Redwire Corporation. 'ASSB All-Solid-State Battery Datasheet.'"
+        - type: battery
+          name: "Space Li-Ion Pack (scalable)"
+          manufacturer: Everlight Space
+          capacity_range:  # Ah
+            min: 5
+            max: 50
+          voltage_range:  # V; configurable: 12, 24, 28, or 42 V
+            min: 12
+            max: 42
+          temp_op:  # °C
+            min: +10
+            max: 30
+          mission_life: 3  # years; >=3
+          chemistry: "Li-Ion 18650 (3.0Ah) or Saft MP176065 (5.6Ah)"
+          source: "Everlight Space. 'Li-Ion Battery Pack Datasheet.'"
+        - type: battery
+          name: PowerBank-50
+          manufacturer: TakeMe2Space
+          mass: 0.370  # kg
+          dimensions: "95.5 x 95.5 x 26.0 mm"
+          capacity: 3.5  # Ah
+          energy: 50.4  # Wh
+          voltage_range:  # V
+            min: 12
+            max: 16.8
+          discharge_current_cont: 5  # A
+          discharge_current_pulse: 12  # A
+          cycle_life: 20000  # cycles; @20%DoD / 1000 @80%DoD
+          temp_op:  # °C
+            min: -40
+            max: 85
+          interface: "I2C (PC104)"
+          topology: "4S1P or 2S2P (4 x 18650 NCA cells)"
+          cells_total: 4  # 4× 18650 (2S2P or 4S1P)
+          chemistry: "Li-Ion NCA 18650 (3500mAh cells)"
+          source: "TakeMe2Space B.V. 'PowerBank-50 Space Battery Datasheet.'"
+        - type: battery
+          name: "2P-8S 18650 Battery (RAISE-2)"
+          manufacturer: "MELCO (Mitsubishi Electric)"
+          mass: 1.25  # kg
+          dimensions: "62 x 209 x 86 mm"
+          capacity: 5.6  # Ah
+          voltage_range:  # V
+            min: 24.0
+            max: 33.6
+          specific_energy: 129  # Wh/kg
+          temp_op_charge:  # °C
+            min: +15
+            max: 35
+          temp_op_discharge:  # °C
+            min: -10
+            max: 60
+          mission_life: 1.5  # years; LEO
+          topology: "2P-8S (18650 cells)"
+          cells_total: 16  # 2P×8S
+          chemistry: Li-Ion 18650
+          source: "Mitsubishi Electric Corporation (MELCO). '2P-8S Li-Ion Battery Datasheet (RAISE-2 Mission).'"
+        - type: battery
+          name: "16P-24S COTS-grade Battery"
+          manufacturer: "MELCO (Mitsubishi Electric)"
+          mass: 45.0  # kg
+          dimensions: "381 x 568 x 100 mm"
+          energy: 6220  # Wh
+          voltage_range: "configurable (16P24S topology)"  # V
+          topology: "16P-24S (384 x 21700 cells)"
+          cells_total: 384  # 16P×24S
+          chemistry: Li-Ion 21700
+          source: "Mitsubishi Electric Corporation (MELCO). '16P-24S Li-Ion Battery Datasheet.'"
+        - type: battery
+          name: "40P-8S COTS-grade Battery"
+          manufacturer: "MELCO (Mitsubishi Electric)"
+          mass: 35.0  # kg
+          dimensions: "315 x 435 x 165 mm"
+          energy: 5184  # Wh
+          topology: "40P-8S (320 x 21700 cells)"
+          cells_total: 320  # 40P×8S
+          chemistry: Li-Ion 21700
+          source: "Mitsubishi Electric Corporation (MELCO). '40P-8S Li-Ion Battery Datasheet.'"
+        - type: battery
+          name: "High-Energy Application Battery (>16kWh)"
+          manufacturer: "MELCO (Mitsubishi Electric)"
+          mass: 148.1  # kg
+          dimensions: "460 x 813 x 338 mm"
+          capacity: 410  # Ah
+          energy: 18204  # Wh
+          voltage_range:  # V
+            min: 33.0
+            max: 49.2
+          discharge_current_cont: 190  # A
+          discharge_current_pulse: 1140  # A
+          charge_current_max: 190  # A
+          topology: "2P12S (190Ah cells; bypass switch + OVP)"
+          cells_total: 24  # 2P12S
+          chemistry: Li-Ion
+          source: "Mitsubishi Electric Corporation (MELCO). 'High-Energy Application Li-Ion Battery Datasheet.'"
+        - type: battery
+          name: "Middle-class Energy Application (~12kWh)"
+          manufacturer: "MELCO (Mitsubishi Electric)"
+          mass: 106.0  # kg
+          dimensions: "423 x 658 x 340 mm"
+          capacity: 352  # Ah
+          energy: 13024  # Wh
+          voltage_range:  # V
+            min: 27.5
+            max: 41.0
+          discharge_current_cont: 160  # A
+          discharge_current_pulse: 960  # A
+          charge_current_max: 160  # A
+          topology: "2P10S (160Ah cells; bypass switch + OVP)"
+          cells_total: 20  # 2P10S
+          chemistry: Li-Ion
+          source: "Mitsubishi Electric Corporation (MELCO). 'Medium-Energy Application Li-Ion Battery Datasheet.'"
+        - type: battery
+          name: "Lower-Energy Application (<10kWh)"
+          manufacturer: "MELCO (Mitsubishi Electric)"
+          mass: 75.2  # kg
+          dimensions: "460 x 447 x 338 mm"
+          capacity: 205  # Ah
+          energy: 9102  # Wh
+          voltage_range:  # V
+            min: 33.0
+            max: 49.2
+          discharge_current_cont: 95  # A
+          discharge_current_pulse: 570  # A
+          charge_current_max: 95  # A
+          topology: "12S (190Ah cells; bypass switch + OVP)"
+          cells_total: 12  # 12S
+          chemistry: Li-Ion
+          source: "Mitsubishi Electric Corporation (MELCO). 'Lower-Energy Application Li-Ion Battery Datasheet.'"
+    PCDU:
+      pcdu:
+        - type: pcdu
+          name: "ICEPS2 Type A"
+          manufacturer: "ISIS (Innovative Solutions In Space)"
+          description: "Integrated CubeSat EPS Type A: PIU mainboard + PBP-2S1P (battery pack mounted directly on PIU). For 1U–3U CubeSats."
+          mass: 0.184  # kg; typ (range 0.179–0.189 kg)
+          dimensions: "96 x 92 x 26.5 mm"  # PIU + PBP-2S1P integrated
+          energy: 28.8  # Wh; 2S1P (3.2 Ah × 2 cells)
+          battery_voltage_range:  # V; 2S1P hardware thresholds
+            min: 5.41  # discharge UV cutoff (falling)
+            max: 8.27  # charge OV cutoff (rising)
+          mppt_channels: 3
+          mppt_input_voltage_max: 15  # V
+          mppt_input_current_max: 2  # A
+          output_voltage_VD0: "battery voltage (unregulated)"
+          output_voltage_VD1: "5 V, max 4 A total (3.01 A per channel)"
+          output_voltage_VD2: "3.3 V, max 4 A total (3.01 A per channel)"
+          static_power_consumption: 0.093  # W
+          cell_nominal_capacity: 3.2  # Ah; 18650 cells (default)
+          cell_topology: "2S1P (2 cells)"
+          temp_op_no_battery:  # °C
+            min: -40
+            max: 85
+          temp_op_discharge:  # °C
+            min: -20
+            max: 60
+          temp_op_charge:  # °C
+            min: +10
+            max: 45
+          battery_holding_charge: "6–8 months typ, up to 12 months (by analysis; intermediate check recommended >8 months) at -20 to +20 °C"
+          source: "Innovative Solutions In Space (ISIS) B.V. 'ICEPS2 Integrated CubeSat EPS Datasheet,' Doc. No. ISIS-ICEPS2-DSH-0001, Issue 1.2, 2024."
+        - type: pcdu
+          name: "ICEPS2 Type B"
+          manufacturer: "ISIS (Innovative Solutions In Space)"
+          description: "Integrated CubeSat EPS Type B: PIU mainboard + PBP-4S1P (battery pack separate). For 1U–3U CubeSats."
+          mass: 0.310  # kg; typ (range 0.305–0.315 kg); PIU + PBP-4S1P
+          dimensions_piu: "96 x 92 x 11.3 mm"  # PIU mainboard only
+          dimensions_battery: "94 x 89 x 21.0 mm"  # PBP-4S1P (separate)
+          energy: 57.6  # Wh; 4S1P (3.2 Ah × 4 cells)
+          battery_voltage_range:  # V; 4S1P hardware thresholds
+            min: 11.04  # discharge UV cutoff (falling)
+            max: 16.27  # charge OV cutoff (rising)
+          mppt_channels: 3
+          mppt_input_voltage_max: 15  # V
+          mppt_input_current_max: 2  # A
+          output_voltage_VD0: "battery voltage (unregulated)"
+          output_voltage_VD1: "5 V, max 4 A total (3.01 A per channel)"
+          output_voltage_VD2: "3.3 V, max 4 A total (3.01 A per channel)"
+          static_power_consumption: 0.093  # W
+          cell_nominal_capacity: 3.2  # Ah; 18650 cells (default)
+          cell_topology: "4S1P (4 cells)"
+          temp_op_no_battery:  # °C
+            min: -40
+            max: 85
+          temp_op_discharge:  # °C
+            min: -20
+            max: 60
+          temp_op_charge:  # °C
+            min: +10
+            max: 45
+          battery_holding_charge: "6–8 months typ, up to 12 months (by analysis; intermediate check recommended >8 months) at -20 to +20 °C"
+          source: "Innovative Solutions In Space (ISIS) B.V. 'ICEPS2 Integrated CubeSat EPS Datasheet,' Doc. No. ISIS-ICEPS2-DSH-0001, Issue 1.2, 2024."
+        - type: pcdu
+          name: "ICEPS2 Type C"
+          manufacturer: "ISIS (Innovative Solutions In Space)"
+          description: "Integrated CubeSat EPS Type C: PIU mainboard + PBP-4S1P + PIU DaughterBoard. Adds 2 MPPT channels, 3 extra voltage domains (VD3/VD4 buck, VD5 boost), 8 extra output channels."
+          mass: 0.360  # kg; typ (range 0.355–0.365 kg); PIU + PIU-DB + PBP-4S1P
+          dimensions_piu_db: "96 x 92 x 16 mm"  # PIU + DaughterBoard
+          dimensions_battery: "94 x 89 x 21.0 mm"  # PBP-4S1P (separate)
+          energy: 57.6  # Wh; 4S1P (3.2 Ah × 4 cells)
+          battery_voltage_range:  # V; 4S1P hardware thresholds
+            min: 11.04  # discharge UV cutoff (falling)
+            max: 16.27  # charge OV cutoff (rising)
+          mppt_channels: 5  # 3 on PIU + 2 on DaughterBoard
+          mppt_input_voltage_max: 15  # V
+          mppt_input_current_max: 2  # A
+          output_voltage_VD0: "battery voltage (unregulated)"
+          output_voltage_VD1: "5 V, max 4 A total (3.01 A per channel)"
+          output_voltage_VD2: "3.3 V, max 4 A total (3.01 A per channel)"
+          output_voltage_VD3: "5 V default (custom 2.8–12 V), max 4 A total (3.3 A per channel); Type C only"
+          output_voltage_VD4: "3.3 V default (custom 2.8–12 V), max 4 A total (3.3 A per channel); Type C only"
+          output_voltage_VD5: "28.2 V default (custom Vbat–32.1 V), max 1.5 A; Type C only (boost)"
+          static_power_consumption: 0.093  # W
+          cell_nominal_capacity: 3.2  # Ah; 18650 cells (default)
+          cell_topology: "4S1P (4 cells)"
+          temp_op_no_battery:  # °C
+            min: -40
+            max: 85
+          temp_op_discharge:  # °C
+            min: -20
+            max: 60
+          temp_op_charge:  # °C
+            min: +10
+            max: 45
+          battery_holding_charge: "6–8 months typ, up to 12 months (by analysis; intermediate check recommended >8 months) at -20 to +20 °C"
+          source: "Innovative Solutions In Space (ISIS) B.V. 'ICEPS2 Integrated CubeSat EPS Datasheet,' Doc. No. ISIS-ICEPS2-DSH-0001, Issue 1.2, 2024."

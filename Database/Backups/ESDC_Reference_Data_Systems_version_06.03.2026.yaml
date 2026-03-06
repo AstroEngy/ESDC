@@ -1,0 +1,2405 @@
+# ESDC YAML Data File
+# Generated: 2026-02-26 21:03:00
+# Octave 9.1.0
+
+reference_data:
+  propulsion_system:
+    arcjet:
+      thruster:
+        - type: arcjet
+          name: Velarc (NH3)
+          thrust: 0.04002
+          c_e: 4415
+          power_jet: 88.3441
+          massflow: 9e-06
+          mass: 0.3
+          efficiency: 0.3178
+          propellant: NH3
+          structure_mass: 0.94815
+          source: IRS arcjet database
+          TRL: 6
+        - type: arcjet
+          name: ARTUS IM3
+          thrust: 0.106883
+          c_e: 4836
+          power_jet: 258.443
+          massflow: 2.21e-05
+          mass: 0.732
+          efficiency: 0.324839
+          propellant: NH3
+          structure_mass: 0.94815
+          source: IRS arcjet database
+          TRL: 6
+        - type: arcjet
+          name: TALOS
+          thrust: 0.1025
+          c_e: 4767.44
+          power_jet: 244.331
+          massflow: 2.15e-05
+          efficiency: 0.305414
+          propellant: NH3
+          structure_mass: 0.94815
+          source: IRS arcjet database
+          TRL: 6
+        - type: arcjet
+          name: "ESEX -flight"
+          thrust: 1.93
+          c_e: 7710.66
+          power_jet: 7440.79
+          massflow: 0.000250303
+          efficiency: 0.267
+          propellant: NH3
+          structure_mass: 0.94815
+          source: IRS arcjet database
+          TRL: 9
+        - type: arcjet
+          name: "ESEX -IM"
+          thrust: 2
+          c_e: 7848
+          power_jet: 7848
+          massflow: 0.000254842
+          efficiency: 0.299542
+          propellant: NH3
+          structure_mass: 0.94815
+          source: IRS arcjet database
+          TRL: 8
+        - type: arcjet
+          name: Artur He
+          thrust:
+            min: 0.18
+            max: 0.27
+          c_e:
+            min: 4090.91
+            max: 6136.35
+          power_jet:
+            min: 368.182
+            max: 828.407
+          massflow: 4.4e-05
+          mass: 0.455
+          efficiency:
+            min: 0.70204
+            max: 0.73636
+          propellant: He
+          structure_mass: 0.493
+          source: IRS arcjet database
+          TRL: 6
+        - type: arcjet
+          name: Velarc (He)
+          thrust: 0.0345
+          c_e: 5886
+          power_jet: 101.534
+          massflow: 6e-06
+          mass: 0.3
+          efficiency: 0.7532
+          propellant: He
+          structure_mass: 0.493
+          source: IRS arcjet database
+          TRL: 6
+        - type: arcjet
+          name: ATOS-2
+          thrust: 0.0345
+          c_e:
+            min: 4905
+            max: 6180.3
+          massflow:
+            min: 0.022
+            max: 0.036
+          mass: 0.385
+          power:
+            min: 1000
+            max: 1600
+          propellant: NH3
+          source: "ATOS1 Daten_ESDC_IRS - 2001 - Riehle - ATOS-Final-Report"
+          TRL: 8
+        # ----------------------------------------
+        # Böhrk et al., IEPC-2005-275 / Auwetter-Kurtz et al. IEPC-97-007
+        # ----------------------------------------
+        - type: arcjet
+          name: HIPARC-W (TIHTUS arcjet stage)
+          thrust: 3.34
+          power: 50000
+          propellant: Hydrogen
+          source: "Böhrk et al., Arcjet Stage Investigation and Inductive Hydrogen Heating in the TIHTUS Engine, IEPC-2005-275, 29th IEPC, Princeton University, 2005."
+          # Evidence: "maximum thrust measured 3.34 N at 50 kW electric power" (p.3)
+        - type: arcjet
+          name: HIPARC-R (100 kW hydrogen arcjet)
+          thrust: 3.0
+          c_e: 14709.975
+          power: 100000
+          massflow: 0.0002
+          efficiency: 0.22
+          propellant: Hydrogen
+          source: "Auweter-Kurtz et al., 100 kW Class Hydrogen Arcjet Thruster, IEPC-97-007, 25th IEPC, 1997."
+          # Evidence: "mass flow rate of 200 mg/s, input power 100 kW, thrust 3 N, Isp 1500 s, eta 22%"
+        # ----------------------------------------
+        # Yano, NASA CR-182276, 1991 (Low Power Hydrazine Arcjet)
+        # ----------------------------------------
+        - type: arcjet
+          name: "Low Power Hydrazine Arcjet EM S/N 001"
+          thrust:
+            min: 0.183
+            max: 0.223
+          c_e:
+            min: 4256.0861
+            max: 4746.4186
+          power_jet:
+            min: 1260
+            max: 1700
+          massflow:
+            min: 3.49e-05
+            max: 4.85e-05
+          mass: 0.83
+          propellant: N2H4
+          source: "Yano, S.E., Arcjet Thruster Research and Technology, Phase II Final Report, NASA CR-182276, Rocket Research Company for NASA Lewis, March 1991."
+          # Evidence: "Thrust BOL 0.223 N / EOL 0.183 N; Isp 434–484 s; power 1260–1700 W; flow 34.9–48.5 mg/s; mass 0.83 kg"
+        - type: arcjet
+          name: "Low Power Hydrazine Arcjet EM S/N 002"
+          c_e: 4481.63905
+          power_jet: 1260
+          mass: 0.83
+          propellant: N2H4
+          source: "Yano, S.E., Arcjet Thruster Research and Technology, Phase II Final Report, NASA CR-182276, Rocket Research Company for NASA Lewis, March 1991."
+          # Evidence: "mission average Isp 457 s; baseline power 1260 W; same mass as S/N 001"
+        # ----------------------------------------
+        # Curran & Nakanishi, NASA TM 87279, 1986 (Plasmadyne 1 kW Arcjet)
+        # ----------------------------------------
+        - type: arcjet
+          name: "Plasmadyne 1 kW Arcjet (H2/N2 mixtures)"
+          c_e:
+            min: 3873.63
+            max: 4903.33
+          power_jet:
+            min: 700
+            max: 1150
+          efficiency: 0.31
+          propellant: "H2/N2 mixtures (simulated NH3/N2H4 decomposition products)"
+          source: "Curran, F.M.; Nakanishi, S., Low Power dc Arcjet Operation With Hydrogen/Nitrogen Propellant Mixtures, NASA Technical Memorandum 87279, 1986."
+          # Evidence: "power 0.7–1.15 kW, Isp 395–500 s, thrust efficiency ~0.31 at nominal 1 kW"
+        # ----------------------------------------
+        # Kakami et al., Acta Astronautica 68 (2011) 1228–1233 (DME Arcjet)
+        # ----------------------------------------
+        - type: arcjet
+          name: "DME Arcjet Thruster (Kyushu Institute of Technology)"
+          thrust: 0.15
+          c_e: 2648.7
+          massflow: 0.00006
+          power_jet: 1300
+          propellant: "Dimethyl Ether (DME)"
+          source: "Kakami et al., Acta Astronautica 68 (2011) 1228–1233, DOI:10.1016/j.actaastro.2010.10.019."
+          # Evidence: "thrust 0.15 N, Isp 270 s, mass flow 60 mg/s, discharge power 1300 W"
+      ppu:
+        - type: arcjet
+          name: ATOS
+          power: 800
+          mass: 1.89
+          efficiency: 0.92
+          source: "Riehle, M.: ATOS - Arcjet Flugexperiment auf dem Amateurfunksatelliten AMSAT-P3-D, Final report, DARA FKZ TT 50 TT 9404, 1994"
+          TRL: 8
+        - type: arcjet
+          name: "MR-509"
+          power: 1800
+          mass: 4.12
+          efficiency: 0.9
+          source: "Smith, R. D., Roberts, C. R., Aadland, R. S., Lichtin, D. A., Davies, K.: Flight qualification of the 1.8 kW MR-509 Hydrazine Arcjet System, IEPC-97-081, 25th International Electric Propulsion Conference, Cleveland Ohio. United States of America,1997, http://electricrocket.org/IEPC/7081.pdf"
+          TRL: 8
+        - type: arcjet
+          name: "MR-509-2"
+          power: 1745
+          mass: 6.2
+          efficiency: 0.934
+          source: "Dieter Zube, Dan Fye, Ideo Masuda and Yoshifumi Gotoh: Low bus voltage hydrazine arcjet system for geostationary satellites, 2021, https://doi.org/10.2514/6.1998-3631"
+          TRL: 8
+        - type: arcjet
+          name: "MR-512"
+          power: 1780
+          mass: 6.2
+          efficiency: 0.91
+          source: "MR-512, Enyclopedia Astronautica, Webpage, http://www.astronautix.com/m/mr-512.html, last accessed 24.10.2016"
+          TRL: 8
+        - type: arcjet
+          name: ESEX
+          power: 30000
+          mass: 48.4
+          efficiency: 0.95
+          source: "http://electricrocket.org/IEPC/IEPC1993-048.pdf"
+          TRL: 9
+      requiredsystems:
+        system:
+          - PPU
+          - Structure
+          - Propellant
+          - Tank
+    FEEP:
+      thruster:
+        - type: FEEP
+          name: Nano
+          thrust: 0.00033
+          c_e: 35316
+          mass: 0.68
+          mass_propellant: 0.22
+          power: 40
+          propellant: Indium
+          source: "https://www.enpulsion.com/order/enpulsion-nano/"
+        - type: FEEP
+          name: Nano R3
+          thrust: 0.00035
+          c_e: 34335
+          mass: 1.2
+          mass_propellant: 0.22
+          power: 40
+          propellant: Indium
+          source: "https://www.enpulsion.com/order/enpulsion-nano/"
+        - type: FEEP
+          name: Nano AR3
+          thrust: 0.00035
+          c_e: 34335
+          mass: 1.23
+          mass_propellant: 0.22
+          power: 40
+          propellant: Indium
+          source: "https://www.enpulsion.com/order/enpulsion-nano/"
+        - type: FEEP
+          name: Nano IR3
+          thrust: 0.0005
+          c_e: 19620
+          mass: 1.2
+          mass_propellant: 0.22
+          power: 45
+          propellant: Indium
+          source: "https://www.enpulsion.com/order/enpulsion-nano/"
+        - type: FEEP
+          name: "Micro R3-1"
+          thrust: 0.001
+          c_e: 19620
+          mass: 2.6
+          mass_propellant: 1.3
+          power: 100
+          propellant: Indium
+          source: "https://www.enpulsion.com/order/enpulsion-nano/"
+        - type: FEEP
+          name: "Micro R3-4"
+          thrust: 0.004
+          c_e: 19620
+          mass: 10.4
+          mass_propellant: 5.2
+          power: 400
+          propellant: Indium
+          source: "https://www.enpulsion.com/order/enpulsion-nano/"
+    RF_plasma:
+      thruster:
+        type: RF_plasma
+        name: REGULUS
+        c_e: 5886
+        thrust: 0.00055
+        mass: 2.5
+        massflow: 0.0001
+        power: 50
+        propellant: Iodine
+        total_impulse: 3000
+        source: "https://www.t4innovation.com/wp-content/uploads/2019/10/T4i_REGULUS_datasheet_.pdf"
+    gridionthruster:
+      thruster:
+        - type: gridionthruster
+          name: Arclight
+          thrust: 0.012
+          c_e: 23544
+          power_jet: 141.264
+          massflow: 5.09684e-07
+          mass: 1.8
+          efficiency: 0.35316
+          propellant: Xe
+          structure_mass: 5
+          source: "Ariane Group - ARCLIGHT ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-propulsion.com/brochures/electric-propulsion/arclight-electric-space-propulsion.pdf"
+        - type: gridionthruster
+          name: RIT 10 EVO
+          thrust:
+            min: 0.005
+            nominal: 0.015
+            max: 0.025
+          c_e:
+            min: 18639
+            nominal: 29430
+            max: 31392
+          power_jet:
+            min: 46.5975
+            nominal: 220.725
+            max: 392.4
+          massflow: 5.09684e-07
+          mass: 1.8
+          efficiency:
+            min: 0.321366
+            nominal: 0.507414
+            max: 0.516316
+          propellant: Xe
+          structure_mass: 5
+          source: "Ariane Group - http://www.space-propulsion.com/spacecraft-propulsion/propulsion-systems/electric-propulsion/images/rit-thruster-family-performance-data.jpg"
+        - type: gridionthruster
+          name: RIT µX
+          thrust:
+            min: 5e-05
+            max: 0.0005
+          c_e:
+            min: 2943
+            max: 29430
+          power_jet: 0.73575
+          mass: 0.44
+          efficiency: 0.014715
+          propellant: Xe
+          structure_mass: 5
+          source: "Ariane Group - http://www.space-propulsion.com/spacecraft-propulsion/propulsion-systems/electric-propulsion/images/rit-thruster-family-performance-data.jpg"
+        # ----------------------------------------
+        # Goebel & Katz 2008 - Table 1-1 (Ion thruster generic range)
+        # ----------------------------------------
+        - type: gridionthruster
+          name: Ion thruster (typical flight-heritage range)
+          c_e:
+            min: 24516.625
+            max: 35303.94
+          power:
+            min: 400
+            max: 4300
+          efficiency:
+            min: 0.40
+            max: 0.80
+          propellant: Xenon
+          source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 1-1."
+          # Evidence: "Ion thruster Isp 2500–3600 s, input power 0.4–4.3 kW, efficiency 40–80%, Xenon" (Table 1-1, p.19)
+        # ----------------------------------------
+        # Goebel & Katz 2008 - Table 9-2 (NSTAR DS1)
+        # ----------------------------------------
+        - type: gridionthruster
+          name: "NSTAR (DS1)"
+          thrust:
+            min: 0.0207
+            max: 0.0927
+          c_e:
+            min: 19407.36035
+            max: 31342.0534
+          power:
+            min: 577
+            max: 2567
+          efficiency:
+            min: 0.42
+            max: 0.631
+          propellant: Xenon
+          source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-2."
+          # Evidence: "Thrust 20.7–92.7 mN, Isp 1979–3196 s, PPU input power 577–2567 W, efficiency 42–63.1%"
+        # ----------------------------------------
+        # Goebel & Katz 2008 - Table 9-3 (25-cm XIPS)
+        # ----------------------------------------
+        - type: gridionthruster
+          name: "25-cm XIPS (low-power station keeping)"
+          thrust: 0.080
+          c_e: 33538.743
+          power: 2000
+          efficiency: 0.67
+          propellant: Xenon
+          source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-3."
+          # Evidence: "Thrust 80 mN, Isp 3420 s, 2 kW thruster input, efficiency 67%"
+        - type: gridionthruster
+          name: "25-cm XIPS (high-power orbit raising)"
+          thrust: 0.166
+          c_e: 34813.6075
+          power: 4300
+          efficiency: 0.688
+          propellant: Xenon
+          source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-3."
+          # Evidence: "Thrust 166 mN, Isp 3550 s, 4.3 kW thruster input, efficiency 68.8%"
+        # ----------------------------------------
+        # Goebel & Katz 2008 - Table 9-4 (T5 Kaufman)
+        # ----------------------------------------
+        - type: gridionthruster
+          name: "T5 Kaufman thruster (station keeping)"
+          thrust: 0.018
+          c_e: 31381.28
+          power: 476
+          efficiency: 0.55
+          propellant: Xenon
+          source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-4."
+          # Evidence: "Thrust 18 mN, Isp 3200 s, 476 W thruster input, efficiency 55%"
+        # ----------------------------------------
+        # Goebel & Katz 2008 - Table 9-5 (RIT-10 rf)
+        # ----------------------------------------
+        - type: gridionthruster
+          name: "RIT-10 rf thruster (station keeping)"
+          thrust: 0.015
+          c_e: 33342.61
+          power: 459
+          efficiency: 0.52
+          propellant: Xenon
+          source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-5."
+          # Evidence: "Thrust 15 mN, Isp 3400 s, 459 W thruster input, efficiency 52%"
+        # ----------------------------------------
+        # Goebel & Katz 2008 - Table 9-7 (ETS-8 12-cm Kaufman)
+        # ----------------------------------------
+        - type: gridionthruster
+          name: "ETS-8 12-cm Kaufman (north-south station keeping)"
+          thrust:
+            min: 0.0209
+            max: 0.0232
+          c_e:
+            min: 23555.5733
+            max: 26134.72225
+          power:
+            min: 541
+            max: 611
+          efficiency:
+            min: 0.456
+            max: 0.497
+          propellant: Xenon
+          source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-7."
+          # Evidence: "Thrust 20.9–23.2 mN, Isp 2402–2665 s, 541–611 W, efficiency 45.6–49.7%"
+        # ----------------------------------------
+        # Hofer et al., JPL Poster RPC#R22116, 2022 (gridionthruster entries)
+        # ----------------------------------------
+        - type: gridionthruster
+          name: NEXT
+          power: 7000
+          isp: 4100
+          c_e: 40207.265
+          TRL: 7
+          propellant: Xenon
+          source: "Hofer et al., JPL Poster RPC#R22116, 2022, Figure 4 table."
+          # Evidence: "NEXT, 7 kW, Isp 4100 s, TRL 7"
+        - type: gridionthruster
+          name: RIT-2X
+          power: 7500
+          isp: 3500
+          c_e: 34323.275
+          TRL: 5
+          propellant: Xenon
+          source: "Hofer et al., JPL Poster RPC#R22116, 2022, Figure 4 table."
+          # Evidence: "RIT-2X, 7.5 kW, Isp 3500 s, TRL 5"
+        # ----------------------------------------
+        # Pale Blue PBI water gridionthruster
+        # ----------------------------------------
+        - type: gridionthruster
+          name: PBI (Pale Blue)
+          thrust:
+            min: 0.00035
+          power:
+            max: 60
+          mass:
+            max: 2.0
+          total_impulse:
+            min: 7000
+          propellant: Water
+          source: "Pale Blue PBH Water Hall Effect Thruster Datasheet, satsearch (z98e6q)."
+          # Evidence: "Thrust ≥0.35 mN, power ≤60 W, mass ≤2 kg, total impulse ≥7000 Ns, water propellant"
+      ppu:
+        type: gridionthruster
+        name: Arclight PPU
+        mass: 6.5
+        power: 450
+        efficiency: 0.92
+      requiredsystems:
+        system:
+          - PPU
+          - Structure
+          - Propellant
+          - Tank
+    chemical:
+      thruster:
+        - type: chemical
+          name: PM200
+          thrust: 0.5
+          c_e: 2795.85
+          power: 12
+          delta_v: 230
+          mass: 1.1
+          mass_propellant: 0.31
+          impulse_tot: 850
+          propellant: Bi
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2019/11/HT_PM200.pdf"
+        # ----------------------------------------
+        # RAFAEL Space Propulsion 2021 Catalog (chemical thrusters)
+        # ----------------------------------------
+        - type: chemical
+          name: "RAFAEL LT-1N-SP (Type 1)"
+          thrust:
+            min: 1.3
+            max: 1.4
+          c_e: 2010.091
+          mass: 0.310
+          impulse_tot: 100000
+          propellant: "Hydrazine (N2H4)"
+          source: "Rafael Space Propulsion 2021 Catalog (PDF), p.44/81."
+          # Evidence: "Thrust BOL steady state 1.3÷1.4 N (Type 1), Isp >205 s @5.5 bar, mass ≤310 g, total impulse 100,000 Ns"
+        - type: chemical
+          name: "RAFAEL LT-1N-SP (Type 2)"
+          thrust:
+            min: 1.0
+            max: 1.1
+          c_e: 2010.091
+          mass: 0.310
+          impulse_tot: 60000
+          propellant: "Hydrazine (N2H4)"
+          source: "Rafael Space Propulsion 2021 Catalog (PDF), p.44/81."
+          # Evidence: "Thrust BOL steady state 1.0÷1.1 N (Type 2), Isp >205 s @5.5 bar, mass ≤310 g, total impulse 60,000 Ns"
+        - type: chemical
+          name: "RAFAEL LT-5N-SP"
+          thrust:
+            min: 1.8
+            max: 6.1
+          c_e: 2059.397
+          mass: 0.310
+          impulse_tot: 74000
+          propellant: "Hydrazine (N2H4)"
+          source: "Rafael Space Propulsion 2021 Catalog (PDF), p.46/81."
+          # Evidence: "Thrust 6.1 N @22 bar to 1.8 N @5.5 bar, Isp >210 s @5.5 bar, mass ≤310 g, total impulse 74,000 Ns"
+        - type: chemical
+          name: "RAFAEL HT-25N-SP"
+          thrust:
+            min: 9.5
+            max: 28.0
+          c_e: 2010.091
+          mass: 0.530
+          impulse_tot: 100000
+          propellant: "Hydrazine (N2H4)"
+          source: "Rafael Space Propulsion 2021 Catalog (PDF), p.48/81."
+          # Evidence: "Thrust 28 to 9.5 N, Isp >205 s @5.5 bar, mass ≤530 g, total impulse 100,000 Ns"
+        - type: chemical
+          name: "RAFAEL AT-25N"
+          thrust: 24.0
+          c_e: 2059.397
+          mass: 0.310
+          propellant: "Hydrazine (N2H4)"
+          source: "Rafael Space Propulsion 2021 Catalog (PDF), p.54/81."
+          # Evidence: "Thrust steady state 24 N, Isp >210 s @6 bar, mass 310 g"
+        - type: chemical
+          name: "RAFAEL ACT-45N"
+          thrust:
+            min: 16.0
+            max: 45.0
+          c_e: 1863.264
+          mass: 0.500
+          impulse_tot: 60000
+          propellant: "Hydrazine (N2H4)"
+          source: "Rafael Space Propulsion 2021 Catalog (PDF), p.56/81."
+          # Evidence: "Thrust 45 to 16 N, Isp >190 s @6 bar, mass 500 g, total impulse SSF 60,000 Ns"
+        - type: chemical
+          name: "RAFAEL ST-200N"
+          thrust: 200.0
+          c_e: 2157.463
+          mass: 1.250
+          propellant: "Hydrazine (N2H4)"
+          source: "Rafael Space Propulsion 2021 Catalog (PDF), p.57/81."
+          # Evidence: "Thrust steady state 200±5% N, Isp >220 s, mass ≤1250 g"
+    tank:
+      vessel:
+        - type: tank
+          name: "Metal Composite Xenon Tank XT-350"
+          mass: 43.5
+          propellant: Xenon
+          mass_propellant: 570
+          pressure: 9.807*10^6
+          volume: 0.35
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/metal-composite-xenon-tank-XT-350/"
+        - type: tank
+          name: "Metal Composite Xenon Tank XT-200"
+          mass: 28
+          propellant: Xenon
+          mass_propellant: 570
+          pressure: 8.826*10^6
+          volume: 0.2
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/metal-composite-xenon-tank-XT-200/"
+        - type: tank
+          name: "Bipropellant Tank with Stiff-Plastic Separation Devices (Diaphragms)"
+          mass: 15.5
+          propellant:
+          pressure: 2.94*10^6
+          volume: 0.04
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/bipropellant-tank-with-stiff-plastic-separation-devices-diaphragms/"
+        - type: tank
+          name: "Monopropellant Tank with Stiff-Plastic Separation Device (Diaphragm)"
+          mass: 5.2
+          propellant:
+          pressure: 1.67*10^6
+          volume: 0.0308
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/monopropellant-tank-with-stiff-plastic-separation-device-diaphragm/"
+        - type: tank
+          name: Composite Storage Tank
+          mass: 8.7
+          propellant:
+          pressure: 14.2*10^6
+          volume: 0.0382
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/composite-storage-tank/"
+        - type: tank
+          name: Composite Vessel
+          mass: 5.8
+          propellant:
+          pressure: 17.6*10^6
+          volume: 0.0018
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/composite-vessel/"
+        - type: tank
+          name: Working Medium Tank MVSK
+          mass: 2.5
+          propellant: Hydrazine
+          pressure: 1.32*10^6
+          volume: 0.0084
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/propulsion-systems/fuel-tank-components/working-medium-tank-mvsk/"
+        # ----------------------------------------
+        # RAFAEL Space Propulsion 2021 Catalog (propellant tanks)
+        # ----------------------------------------
+        - type: tank
+          name: "RAFAEL PEPT-230"
+          mass: 1.3
+          propellant:
+            - Hydrazine
+            - IPA
+            - distilled water
+            - GN2
+            - GHe
+          pressure:
+            min: 550000
+            max: 2400000
+          volume: 0.0045
+          source: "Rafael Space Propulsion 2021 Catalog (PDF), p.24/81 + p.28/81."
+          # Evidence: "mass <1.3 kg, operating 24 to 5.5 bar, qualified propellant capacity 4.5 L, compatible Hydrazine/IPA/distilled water/GN2/GHe"
+        - type: tank
+          name: "RAFAEL PEPT-260"
+          mass: 1.7
+          propellant:
+            - Hydrazine
+            - IPA
+            - distilled water
+            - GN2
+            - GHe
+          pressure:
+            min: 550000
+            max: 2400000
+          volume: 0.0069
+          source: "Rafael Space Propulsion 2021 Catalog (PDF), p.24/81 + p.30/81."
+          # Evidence: "mass <1.7 kg, operating 24 to 5.5 bar, qualified propellant capacity 6.9 L"
+        - type: tank
+          name: "RAFAEL PEPT-330"
+          mass: 3.1
+          propellant:
+            - Hydrazine
+            - de-ionized water
+            - IPA
+            - GN2
+            - GHe
+          pressure: 2900000
+          volume: 0.0154
+          source: "Rafael Space Propulsion 2021 Catalog (PDF), p.24/81 + p.32/81."
+          # Evidence: "mass ≤3.1 kg, MEOP 29 bar, qualified propellant capacity 15.4 L"
+        - type: tank
+          name: "RAFAEL PEPT-420N"
+          mass: 3.9
+          propellant:
+            - Hydrazine
+            - distilled water
+            - IPA
+            - GN2
+            - GHe
+          pressure:
+            min: 550000
+            max: 2540000
+          volume: 0.030
+          source: "Rafael Space Propulsion 2021 Catalog (PDF), p.24/81 + p.34/81."
+          # Evidence: "mass 3.9 kg, operating 25.4 to 5.5 bar, qualified propellant capacity 30 L"
+        - type: tank
+          name: "RAFAEL PEPT-590"
+          mass: 7.5
+          propellant:
+            - Hydrazine
+            - IPA
+            - distilled water
+            - GN2
+            - GHe
+          pressure:
+            min: 550000
+            max: 2460000
+          volume: 0.075
+          source: "Rafael Space Propulsion 2021 Catalog (PDF), p.24/81 + p.36/81."
+          # Evidence: "mass 7.5 kg, operating 24.6 to 5.5 bar, qualified propellant capacity 75 L"
+        - type: tank
+          name: "RAFAEL PEPT-590GB"
+          mass: 17.5
+          propellant:
+            - Hydrazine
+            - IPA
+            - distilled water
+            - GN2
+            - GHe
+          pressure:
+            min: 550000
+            max: 2740000
+          volume: 0.154
+          source: "Rafael Space Propulsion 2021 Catalog (PDF), p.24/81 + p.39/81."
+          # Evidence: "mass 17.5 kg, operating 27.4 to 5.5 bar, qualified propellant capacity 154 L"
+    HET:
+      thruster:
+        # ----------------------------------------
+        # Goebel & Katz 2008 - Table 1-1 (Hall thruster generic range)
+        # ----------------------------------------
+        - type: HET
+          name: Hall thruster (typical flight-heritage range)
+          c_e:
+            min: 14709.975
+            max: 19613.3
+          power:
+            min: 1500
+            max: 4500
+          efficiency:
+            min: 0.35
+            max: 0.60
+          propellant: Xenon
+          source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 1-1."
+          # Evidence: "Hall thrusters 1500–2000 [s Isp] ... 1.5–4.5 [kW] ... 35–60 [%]" (Table 1-1, p.19 PDF)
+        # ----------------------------------------
+        # Goebel & Katz 2008 - Section 1.4 (BPT-4000, Aerojet)
+        # ----------------------------------------
+        - type: HET
+          name: BPT-4000 (Aerojet)
+          c_e: 19613.3
+          power:
+            min: 1000
+            max: 5000
+          efficiency:
+            max: 0.52
+          propellant: Xenon
+          source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Sec. 1.4."
+          # Evidence: "operates from 1 to 5 kW ... Isp near 2000 s ... total system efficiency of up to 52%"
+        # ----------------------------------------
+        # Goebel & Katz 2008 - Table 9-8 (SPT family, Fakel)
+        # ----------------------------------------
+        - type: HET
+          name: SPT-50 (Fakel)
+          thrust: 0.020
+          c_e: 10787.315
+          power: 350
+          efficiency: 0.35
+          propellant: Xenon
+          source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-8."
+          # Evidence: "Thrust (mN) 20 ... Average Isp (s) 1100 ... Thruster input power (W) 350 ... Total efficiency (%) 35"
+        - type: HET
+          name: SPT-70 (Fakel)
+          thrust: 0.040
+          c_e: 14709.975
+          power: 700
+          efficiency: 0.45
+          propellant: Xenon
+          source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-8."
+          # Evidence: "Thrust (mN) 40 ... Isp 1500 s ... 700 W ... 45%"
+        - type: HET
+          name: SPT-100 (Fakel)
+          thrust: 0.080
+          c_e: 15690.64
+          power: 1350
+          efficiency: 0.50
+          propellant: Xenon
+          source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-8."
+          # Evidence: "Thrust (mN) 80 ... Average Isp (s) 1600 ... Thruster input power (W) 1350 ... Total efficiency (%) 50"
+        - type: HET
+          name: SPT-140 (Fakel)
+          thrust: 0.300
+          c_e: 17161.6375
+          power: 5000
+          efficiency:
+            min: 0.55
+          propellant: Xenon
+          source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-8."
+          # Evidence: "Thrust (mN) 300 ... Isp 1750 s ... 5000 W ... >55%"
+        # ----------------------------------------
+        # Goebel & Katz 2008 - Table 9-9 (PPS-1350-G, Snecma)
+        # ----------------------------------------
+        - type: HET
+          name: PPS-1350-G (Snecma)
+          thrust: 0.088
+          c_e: 16180.9725
+          power: 1500
+          efficiency: 0.55
+          propellant: Xenon
+          source: "Goebel, D.M. & Katz, I. Fundamentals of Electric Propulsion: Ion and Hall Thrusters. JPL Space Science and Technology Series, March 2008. Table 9-9."
+          # Evidence: "Thrust (mN) 88 ... Average Isp (s) 1650 ... Thruster input power (W) 1500 ... Total efficiency (%) 55"
+        # ----------------------------------------
+        # SETS datasheets (satsearch)
+        # ----------------------------------------
+        - type: HET
+          name: ST40 (SETS)
+          thrust:
+            min: 0.014
+            max: 0.028
+          c_e:
+            max: 18148.5
+          mass: 1.1
+          power:
+            min: 250
+            max: 600
+          discharge_voltage:
+            min: 250
+            max: 300
+          efficiency:
+            max: 0.40
+          lifetime: 18000000
+          dimension_x: 0.140
+          dimension_y: 0.117
+          dimension_z: 0.122
+          propellant: Xenon, Argon, Krypton
+          cathode_type: Heaterless Hollow Cathode
+          source: "SETS ST40 Hall-Effect Thruster Datasheet, satsearch."
+          # Evidence: "14–28 mN, 250–600 W, Isp up to 1850 s, mass ~1.1 kg, 5000 h lifetime, 140×117×122 mm"
+        - type: HET
+          name: ST-25 (SETS)
+          thrust:
+            min: 0.005
+            max: 0.011
+          c_e:
+            min: 10787.3
+            max: 12748.6
+          mass: 0.95
+          power:
+            min: 140
+            max: 200
+          discharge_voltage:
+            min: 200
+            max: 280
+          efficiency:
+            min: 0.30
+          lifetime:
+            min: 10800000
+          start_time:
+            max: 240
+          dimension_x: 0.060
+          dimension_y: 0.107
+          dimension_z: 0.0915
+          propellant: Xenon, Krypton
+          cathode_type: Preheated Hollow Cathode
+          source: "SETS ST-25 Hall-Effect Thruster Datasheet, satsearch."
+          # Evidence: "5–11 mN, 140–200 W, Isp 1100–1300 s, >30% efficiency, ≥3000 h lifetime"
+        # ----------------------------------------
+        # SERAN SYSTEMS datasheets
+        # ----------------------------------------
+        - type: HET
+          name: SHT100 (SERAN)
+          thrust: 0.005
+          c_e: 9806.65
+          power: 100
+          discharge_voltage: 200
+          total_impulse: 40000
+          efficiency: 0.32
+          propellant: Xenon
+          source: "SERAN SYSTEMS SHT100 Datasheet."
+          # Evidence: "5 mN, 100 W, 200 V, Isp 1000 s, 40 kNs total impulse, 32% efficiency"
+        - type: HET
+          name: SHT250 (SERAN)
+          thrust: 0.0125
+          c_e: 12748.645
+          power: 210
+          discharge_voltage: 250
+          total_impulse: 140000
+          efficiency: 0.40
+          propellant: Xenon
+          source: "SERAN SYSTEMS SHT250 Datasheet."
+          # Evidence: "12.5 mN, 210 W, 250 V, Isp 1300 s, 140 kNs total impulse, 40% efficiency"
+        - type: HET
+          name: SHT1500 (SERAN)
+          thrust: 0.080
+          c_e: 17651.97
+          power: 1350
+          discharge_voltage: 300
+          total_impulse: 2000000
+          efficiency: 0.52
+          propellant: Xenon
+          source: "SERAN SYSTEMS SHT1500 Datasheet."
+          # Evidence: "80 mN, 1350 W, 300 V, Isp 1800 s, 2000 kNs total impulse, 52% efficiency"
+        - type: HET
+          name: CSHT200 (SERAN clustered)
+          thrust: 0.010
+          c_e: 8825.985
+          power: 250
+          total_impulse: 90000
+          efficiency: 0.52
+          mass: 17
+          propellant: Xenon
+          source: "SERAN SYSTEMS CSHT200 Clustered 200W Hall Thruster Datasheet."
+          # Evidence: "10 mN, 250 W, Isp 900 s, 90 kNs total impulse, 52% efficiency, 17 kg dry, 10 kg Xenon"
+        # ----------------------------------------
+        # HEET series datasheets (satsearch)
+        # ----------------------------------------
+        - type: HET
+          name: HEET-05
+          thrust: 0.005
+          c_e: 9316.3175
+          isp: 950
+          power: 100
+          nominal_power: 110
+          efficiency: 0.28
+          mass: 0.47
+          lifetime_confirmed: 9000000
+          lifetime_expected:
+            min: 10800000
+            max: 11520000
+          start_time:
+            max: 180
+          status: FM
+          propellant: Xenon
+          source: "HEET-05 Hall-Effect Thruster Datasheet, satsearch (pvy9dc_lajp_heet_05)."
+          # Evidence: "Thrust 5 mN, Isp 950 s, 100 W range, 110 W nominal, 2500 h confirmed / 3000–3200 h expected, FM"
+        - type: HET
+          name: HEET-10
+          thrust: 0.0102
+          c_e: 10493.1155
+          isp: 1070
+          power: 200
+          nominal_power: 180
+          efficiency: 0.32
+          mass: 0.52
+          lifetime_confirmed: 9000000
+          lifetime_expected:
+            min: 10800000
+            max: 11520000
+          start_time:
+            max: 180
+          status: QM
+          propellant: Xenon
+          source: "HEET-10 Hall-Effect Thruster Datasheet, satsearch (pvy9dc_lajp_heet_05)."
+          # Evidence: "Thrust 10.2 mN, Isp 1070 s, 200 W range, 180 W nominal, QM"
+        - type: HET
+          name: HEET-40
+          thrust: 0.040
+          c_e: 13533.177
+          isp: 1380
+          power:
+            max: 720
+          nominal_power: 650
+          efficiency: 0.38
+          mass: 1.9
+          lifetime_confirmed: 10800000
+          lifetime_expected: 14400000
+          start_time:
+            max: 240
+          status: QM
+          propellant: Xenon
+          source: "HEET-40 Hall-Effect Thruster Datasheet, satsearch (pvy9dc_lajp_heet_05)."
+          # Evidence: "Thrust 40 mN, Isp 1380 s, up to 720 W, 650 W nominal, QM"
+        - type: HET
+          name: HEET-85
+          thrust: 0.0846
+          c_e: 14513.842
+          isp: 1480
+          power:
+            min: 1300
+            max: 1450
+          nominal_power: 1350
+          mass: 3.8
+          lifetime_confirmed: 23040000
+          lifetime_expected:
+            min: 28800000
+            max: 30600000
+          start_time:
+            max: 240
+          status: pre-Flight Model
+          propellant: Xenon
+          source: "HEET-85 Hall-Effect Thruster Datasheet, satsearch (pvy9dc_lajp_heet_05)."
+          # Evidence: "Thrust 84.6 mN, Isp 1480 s, 1300–1450 W, pre-FM"
+        # ----------------------------------------
+        # Busek Co. Inc. datasheets (satsearch)
+        # ----------------------------------------
+        - type: HET
+          name: BHT-200 (Busek)
+          thrust: 0.013
+          c_e: 13630.24
+          isp: 1390
+          power: 200
+          discharge_voltage: 250
+          mass: 0.98
+          cathode: BHC-1500
+          cathode_location: External
+          cathode_mass: 0.12
+          propellant: Xenon, Iodine, Krypton
+          source: "Busek Co. Inc., BHT-200 Hall-Effect Thruster Datasheet, satsearch."
+          # Evidence: "13 mN, Isp 1390 s, 200 W nominal, 250 V, 0.98 kg thruster + 0.12 kg cathode BHC-1500"
+        - type: HET
+          name: BHT-600 (Busek)
+          thrust: 0.039
+          c_e: 14709.98
+          isp: 1500
+          power: 600
+          power:
+            min: 300
+            max: 800
+          mass: 2.6
+          cathode: BHC-1500
+          cathode_location: External
+          cathode_mass: 0.20
+          TRL: 6
+          propellant: Xenon, Iodine, Krypton
+          source: "Busek Co. Inc., BHT-600 Hall-Effect Thruster Datasheet, satsearch."
+          # Evidence: "39 mN, Isp 1500 s, 600 W nominal, 300–800 W throttle, 2.6 kg, TRL 6"
+        - type: HET
+          name: BHT-1500 (Busek)
+          thrust:
+            min: 0.058
+            max: 0.179
+          c_e:
+            min: 15837.74
+            max: 20050.60
+          isp:
+            min: 1615
+            max: 2045
+          power:
+            min: 1000
+            max: 2700
+          mass: 6.8
+          cathode: BHC-2500
+          cathode_location: Internal Center Mounted
+          cathode_mass: 0.30
+          propellant: Xenon, Iodine, Krypton
+          source: "Busek Co. Inc., BHT-1500 Hall-Effect Thruster Datasheet, satsearch."
+          # Evidence: "58–179 mN, Isp 1615–2045 s, 1000–2700 W, 6.8 kg thruster + 0.3 kg BHC-2500"
+        - type: HET
+          name: BHT-8000 (Busek)
+          thrust:
+            min: 0.325
+            max: 0.449
+          c_e:
+            min: 21672.69
+            max: 30005.35
+          isp:
+            min: 2210
+            max: 3060
+          power: 8000
+          power:
+            min: 4000
+            max: 10000
+          discharge_voltage:
+            min: 400
+            max: 800
+          mass: 25
+          cathode: BHC-5000
+          cathode_location: Internal Center Mounted
+          cathode_mass: 0.40
+          propellant: Xenon, Iodine, Krypton
+          source: "Busek Co. Inc., BHT-8000 Hall-Effect Thruster Datasheet, satsearch."
+          # Evidence: "325–449 mN, Isp 2210–3060 s, 8 kW nominal, 4–10 kW throttle, 400–800 V, 25 kg thruster"
+        # ----------------------------------------
+        # Exotrail - spaceware™ micro/micro cluster datasheets
+        # ----------------------------------------
+        - type: HET
+          name: "Micro XL / spaceware (Exotrail)"
+          thrust:
+            min: 0.004
+            max: 0.007
+          power:
+            min: 100
+            max: 200
+          total_impulse: 52000
+          mass_dry: 5.8
+          mass_wet: 11.5
+          TRL: 9
+          propellant: Xenon
+          source: "Exotrail, spaceware micro XL Xenon, Layout Version v3.0, Issue Date 13/12/2022."
+          # Evidence: "4–7 mN, 100–200 W, 52 kNs max total impulse, 5.8 kg dry / 11.5 kg wet, Qualified 2023"
+        - type: HET
+          name: "Micro Cluster² XL (2x THD) / spaceware (Exotrail)"
+          thrust:
+            min: 0.008
+            max: 0.014
+          power:
+            min: 200
+            max: 300
+          total_impulse: 115000
+          mass_dry: 10.1
+          mass_wet: 22.5
+          TRL: 9
+          propellant: Xenon
+          source: "Exotrail, spaceware micro cluster² XL Xenon, Layout Version v3.0, Issue Date 13/12/2022."
+          # Evidence: "8–14 mN (2 THDs), 200–300 W, 115 kNs max total impulse, 10.1 kg dry / 22.5 kg wet, Qualified 2023"
+        # ----------------------------------------
+        # Hofer et al., JPL Poster RPC#R22116, 2022 (HET entries)
+        # ----------------------------------------
+        - type: HET
+          name: XR-5
+          power: 3000
+          isp: 2000
+          c_e: 19613.3
+          TRL: 8
+          propellant: Xenon
+          source: "Hofer et al., JPL Poster RPC#R22116, 2022, Figure 4 table."
+        - type: HET
+          name: SPT-140 (Hofer R22116)
+          power: 4500
+          isp: 1800
+          c_e: 17651.97
+          TRL: 8
+          propellant: Xenon
+          source: "Hofer et al., JPL Poster RPC#R22116, 2022, Figure 4 table."
+        - type: HET
+          name: BHT-6000 (Hofer R22116)
+          power: 5000
+          isp: 1900
+          c_e: 18632.635
+          TRL: 6
+          propellant: Xenon
+          source: "Hofer et al., JPL Poster RPC#R22116, 2022, Figure 4 table."
+        - type: HET
+          name: PPE-AEPS
+          power: 12500
+          isp: 2800
+          c_e: 27458.62
+          TRL: 6
+          propellant: Xenon
+          source: "Hofer et al., JPL Poster RPC#R22116, 2022, Figure 4 table."
+        # ----------------------------------------
+        # Hofer et al. IEPC-01-036, 27th IEPC 2001 (P5-2 two-stage Hall thruster)
+        # ----------------------------------------
+        - type: HET
+          name: P5-2 (two-stage Hall thruster)
+          thrust:
+            min: 0.084
+            max: 0.244
+          c_e:
+            min: 14859
+            max: 25453
+          power_jet:
+            min: 1399
+            max: 6108
+          massflow:
+            min: 5.4e-06
+            max: 1.02e-05
+          efficiency:
+            min: 0.39
+            max: 0.57
+          propellant: Xenon
+          source: "Hofer, R.R., Peterson, P.Y., Gallimore, A.D., Jankovsky, R.S., A High Specific Impulse Two-Stage Hall Thruster with Plasma Lens Focusing, IEPC-01-036, 27th IEPC, 2001."
+          # Evidence: "84–244 mN, c_e 14859–25453 m/s, 1399–6108 W jet power, 5.4–10.2 µg/s, efficiency 39–57%"
+        # ----------------------------------------
+        # Mazouffre et al. EUCASS 2007 (PPS®X000, Snecma)
+        # ----------------------------------------
+        - type: HET
+          name: "PPS-X000 (Snecma)"
+          thrust:
+            min: 0.35
+            max: 0.50
+          isp:
+            min: 2500
+            max: 3200
+          c_e:
+            min: 24516.625
+            max: 31381.28
+          power:
+            min: 1500
+            max: 7000
+          propellant: Xenon
+          source: "Mazouffre, S. et al., Performance and physical characteristics of a 5 kW-class Hall effect thruster for space missions. EUCASS, 2007."
+          # Evidence: "up to 350–500 mN thrust, Isp ~2500–3200 s, input power 1.5–7 kW"
+        # ----------------------------------------
+        # Hofer et al. 2025, Journal of Electric Propulsion (H10, JPL)
+        # ----------------------------------------
+        - type: HET
+          name: H10 (JPL)
+          thrust: 0.457
+          isp: 3400
+          c_e: 33342.61
+          power: 10000
+          power:
+            max: 20000
+          steady_state_power: 15000
+          discharge_voltage: 800
+          discharge_voltage:
+            min: 150
+            max: 800
+          efficiency: 0.76
+          mass: 20
+          propellant: Xenon
+          source: "Hofer, R. R. et al., The H10 high power density hall thruster, Journal of Electric Propulsion, 2025, 4:35, https://doi.org/10.1007/s44205-025-00129-x."
+          # Evidence: "457 mN, Isp 3400 s, 10 kW discharge, 76% efficiency, 20 kg, max 20 kW, V_d 150–800 V"
+        # ----------------------------------------
+        # Pote & Tedrake, IEPC-01-35 (BHT-HD-1000, two-stage HET)
+        # ----------------------------------------
+        - type: HET
+          name: BHT-HD-1000 (single-stage)
+          thrust: 0.088
+          c_e: 29419.95
+          isp: 3000
+          power_jet: 2300
+          power_jet:
+            min: 200
+            max: 2500
+          discharge_voltage:
+            max: 1000
+          propellant: Xenon
+          source: "Pote, B., Tedrake, R., Performance of a High Specific Impulse Hall Thruster, IEPC-01-35, 27th IEPC, Pasadena, CA, 2001."
+          # Evidence: "88 mN, 3000 s Isp at 2.3 kW, power range 200–2500 W, up to 1000 V discharge"
+        - type: HET
+          name: BHT-HD-1000 (two-stage)
+          thrust: 0.088
+          c_e: 32361.945
+          isp: 3300
+          power_jet: 2300
+          power_jet:
+            min: 200
+            max: 2500
+          discharge_voltage:
+            max: 1000
+          propellant: Xenon
+          source: "Pote, B., Tedrake, R., Performance of a High Specific Impulse Hall Thruster, IEPC-01-35, 27th IEPC, Pasadena, CA, 2001."
+          # Evidence: "max Isp 3300 s in two-stage mode, same thrust/power envelope"
+        # ----------------------------------------
+        # Jankovsky et al., NASA/TM-1999-209436, Table 1 (high-power Hall thrusters)
+        # ----------------------------------------
+        - type: HET
+          name: SPT-290
+          thrust: 1.5
+          isp:
+            min: 1500
+            max: 3000
+          c_e:
+            min: 14709.975
+            max: 29419.95
+          power:
+            min: 12000
+            max: 30000
+          efficiency: 0.70
+          diameter: 0.25
+          propellant: Xenon
+          source: "Jankovsky et al., NASA/TM-1999-209436, Table 1."
+          # Evidence: "250 mm average diameter, Isp 1500–3000 s, 12–30 kW, thrust 1500 mN, efficiency 0.7"
+        - type: HET
+          name: T-220
+          thrust: 0.524
+          isp:
+            min: 1500
+            max: 2400
+          c_e:
+            min: 14709.975
+            max: 23535.96
+          power:
+            min: 5000
+            max: 11000
+          efficiency: 0.62
+          diameter: 0.188
+          propellant: Xenon
+          source: "Jankovsky et al., NASA/TM-1999-209436, Table 1."
+          # Evidence: "188 mm diameter, Isp 1500–2400 s, 5–11 kW, thrust 524 mN, efficiency 0.62"
+        - type: HET
+          name: TAL TM-50
+          thrust: 1.114
+          isp:
+            min: 1500
+            max: 3300
+          c_e:
+            min: 14709.975
+            max: 32361.945
+          power:
+            min: 10000
+            max: 25000
+          efficiency: 0.66
+          diameter: 0.20
+          propellant: Xenon
+          source: "Jankovsky et al., NASA/TM-1999-209436, Table 1."
+          # Evidence: "200 mm diameter, Isp 1500–3300 s, 10–25 kW, thrust 1114 mN, efficiency 0.66"
+        - type: HET
+          name: "TAL-200 [Bi]"
+          thrust: 1.13
+          isp:
+            min: 2000
+            max: 5200
+          c_e:
+            min: 19613.3
+            max: 51002.58
+          power:
+            min: 10000
+            max: 34000
+          efficiency: 0.67
+          diameter: 0.20
+          propellant: Bismuth
+          source: "Jankovsky et al., NASA/TM-1999-209436, Table 1."
+          # Evidence: "200 mm diameter, Isp 2000–5200 s, 10–34 kW, thrust 1130 mN, efficiency 0.67, Bismuth propellant"
+        - type: HET
+          name: SPT-200
+          thrust: 0.498
+          isp:
+            min: 1500
+            max: 3000
+          c_e:
+            min: 14709.975
+            max: 29419.95
+          power:
+            min: 6000
+            max: 11000
+          efficiency: 0.63
+          diameter: 0.175
+          propellant: Xenon
+          source: "Jankovsky et al., NASA/TM-1999-209436, Table 1."
+          # Evidence: "175 mm diameter, Isp 1500–3000 s, 6–11 kW, thrust 498 mN, efficiency 0.63"
+        # ----------------------------------------
+        # Pale Blue water Hall thruster
+        # ----------------------------------------
+        - type: HET
+          name: Water Hall Thruster (Pale Blue)
+          thrust: 0.010
+          power: 600
+          mass:
+            max: 45
+          total_impulse: 180000
+          propellant: Water
+          source: "Pale Blue PBH Water Hall Effect Thruster Datasheet, satsearch (z98e6q)."
+          # Evidence: "10 mN, 600 W, max 45 kg, 180 kNs total impulse, water propellant"
+        # ----------------------------------------
+        # Busek Co. Inc. (busek2) - BHT-5000, BHT-6000
+        # ----------------------------------------
+        - type: HET
+          name: BHT-5000 (Busek)
+          thrust:
+            min: 0.310
+          c_e:
+            min: 19613
+          power:
+            min: 3000
+            max: 6000
+          efficiency: 0.61
+          propellant: Xenon
+          source: "Mullins et al., Development of a 5kW Class Hall Thruster, IEPC-2019-492, 36th IEPC, University of Vienna, Sept 2019."
+          # Evidence: "310 mN+ thrust, c_e >19613 m/s, 3–6 kW, 61% efficiency"
+        - type: HET
+          name: BHT-6000 (Busek)
+          thrust:
+            min: 0.288
+            max: 0.325
+          c_e:
+            min: 18639
+            max: 26511
+          power:
+            min: 5000
+            max: 6000
+          mass: 13.5
+          total_impulse:
+            min: 8500000
+          efficiency: 0.64
+          propellant: Xenon, Krypton
+          source: "Busek Co. Inc., BHT-6000 Datasheet and Product Page, 2021; IEPC-2019-492 reference."
+          # Evidence: "288–325 mN, c_e 18639–26511 m/s, 5–6 kW, 13.5 kg, >8.5 MNs total impulse, 64% efficiency"
+        # ----------------------------------------
+        # RAFAEL Space Propulsion 2021 Catalog
+        # ----------------------------------------
+        - type: HET
+          name: RAFAEL IHET-300
+          thrust:
+            min: 0.0143
+          c_e: 11767.98
+          power:
+            min: 250
+            max: 600
+          mass: 1.6
+          impulse_tot: 135000
+          propellant: Xe
+          source: "Rafael Space Propulsion 2021 Catalog (PDF), p.49/81."
+          # Evidence: "Thrust @300W >14.3 mN, Isp @300W >1200 s, power 250–600 W, mass 1.6 kg, total impulse >135 kNs"
+        - type: HET
+          name: RAFAEL R-200
+          thrust:
+            min: 0.005
+            max: 0.014
+          c_e:
+            min: 7845.32
+            max: 12748.645
+          power:
+            min: 100
+            max: 300
+          mass: 2.0
+          impulse_tot: 75000
+          propellant: Xe
+          source: "Rafael Space Propulsion 2021 Catalog (PDF), p.50/81."
+          # Evidence: "Thrust (Xe) 5–14 mN, Isp 800–1300 s, 100–300 W, mass 2 kg, total impulse >75 kNs"
+        - type: HET
+          name: RAFAEL R-800
+          thrust:
+            min: 0.023
+            max: 0.053
+          c_e:
+            min: 12748.645
+            max: 15200.308
+          power:
+            min: 450
+            max: 900
+          mass: 1.5
+          impulse_tot: 600000
+          propellant: Xe
+          source: "Rafael Space Propulsion 2021 Catalog (PDF), p.51/81."
+          # Evidence: "Thrust (Xe) 23–53 mN, Isp 1300–1550 s, 450–900 W, mass 1.5 kg, total impulse >600 kNs"
+        # ----------------------------------------
+        # Rafael Electric Propulsion Systems (R-200EPS, R-800EPS)
+        # ----------------------------------------
+        - type: HET
+          name: RAFAEL R-200EPS (complete system)
+          thrust:
+            min: 0.005
+            max: 0.014
+          isp:
+            min: 800
+            max: 1300
+          power:
+            min: 140
+            max: 350
+          total_impulse:
+            min: 150000
+          propellant: Xe
+          source: "Electric Propulsion Systems, Rafael Space. Source file: Electric_Propulsion_Systems_extracted_propulsion.xml."
+          # Evidence: "2x Thruster Units + PPU + Propellant Tank + Feed System, thrust 5–14 mN, Isp 800–1300 s"
+        - type: HET
+          name: RAFAEL R-800EPS (complete system)
+          thrust:
+            min: 0.023
+            max: 0.053
+          isp:
+            min: 1300
+            max: 1550
+          power:
+            min: 500
+            max: 1000
+          total_impulse:
+            min: 1200000
+          propellant: Xe
+          source: "Electric Propulsion Systems, Rafael Space. Source file: Electric_Propulsion_Systems_extracted_propulsion.xml."
+          # Evidence: "2x Thruster Units + PPU + Propellant Tank + Feed System, thrust 23–53 mN, Isp 1300–1550 s"
+      ppu:
+      requiredsystems:
+        system:
+          - PPU
+          - Structure
+          - Propellant
+          - Tank
+    electrospray:
+      thruster:
+        # ----------------------------------------
+        # Busek BET-MAX Electrospray Thruster Datasheet v1.0, August 2021
+        # ----------------------------------------
+        - type: electrospray
+          name: BET-300-P Configuration A
+          thrust:
+            min: 1.0e-6
+            max: 1.5e-4
+          nominal_thrust: 5.5e-5
+          isp: 850
+          c_e: 8335.6525
+          efficiency: 0.28
+          total_impulse: 92
+          mass: 0.166
+          volume: 1.18e-4
+          power_nominal: 0.85
+          power:
+            max: 2.25
+          minimum_impulse_bit: 2.0e-6
+          propellant: EMI-Im
+          source: "Busek BET-MAX Electrospray Thruster Datasheet v1.0, August 2021."
+          # Evidence: "<1 µN to 150 µN thrust, Isp 850 s, efficiency 28%, 92 Ns total impulse (demonstrated), 166 g wet, 0.85/2.25 W nom/max"
+        - type: electrospray
+          name: BET-300-P Configuration B
+          thrust:
+            min: 1.0e-6
+            max: 1.0e-4
+          nominal_thrust: 5.5e-5
+          isp: 2300
+          c_e: 22555.295
+          efficiency: 0.45
+          total_impulse: 250
+          mass: 0.166
+          volume: 1.18e-4
+          power_nominal: 1.38
+          power:
+            max: 2.50
+          minimum_impulse_bit: 2.0e-6
+          propellant: EMI-Im
+          source: "Busek BET-MAX Electrospray Thruster Datasheet v1.0, August 2021."
+          # Evidence: "<1 µN to 100 µN thrust, Isp 2300 s, efficiency 45%, 250 Ns total impulse (pending), 166 g wet, 1.38/2.50 W nom/max"
+    resistojet:
+      thruster:
+        # ----------------------------------------
+        # Pale Blue water resistojets
+        # ----------------------------------------
+        - type: resistojet
+          name: PBR-10 (Pale Blue)
+          thrust: 0.001
+          power: 6
+          mass:
+            max: 0.6
+          total_impulse:
+            min: 55
+          propellant: Water
+          source: "Pale Blue PBH Water Hall Effect Thruster Datasheet, satsearch (z98e6q)."
+          # Evidence: "Thrust 1 mN, 6 W, max 0.6 kg, min 55 Ns total impulse, water propellant"
+        - type: resistojet
+          name: PBR-20 (Pale Blue)
+          thrust: 0.001
+          power: 20
+          mass:
+            max: 1.5
+          total_impulse:
+            min: 220
+          propellant: Water
+          source: "Pale Blue PBH Water Hall Effect Thruster Datasheet, satsearch (z98e6q)."
+          # Evidence: "Thrust 1 mN, 20 W, max 1.5 kg, min 220 Ns total impulse, water propellant"
+        - type: resistojet
+          name: PBR-50 (Pale Blue)
+          thrust: 0.010
+          power: 50
+          mass: 13.4
+          total_impulse: 4400
+          propellant: Water
+          source: "Pale Blue PBH Water Hall Effect Thruster Datasheet, satsearch (z98e6q)."
+          # Evidence: "Thrust 10 mN, 50 W, 13.4 kg, 4400 Ns total impulse, water propellant"
+  power_generation:
+    photovoltaic:
+      cell:
+        - type: photovoltaic
+          name: Solar Panels 1U
+          power:
+            max: 2.3
+          mass: 0.05
+          area: 0.01
+          efficiency: 0.3
+          source: "https://www.isispace.nl/wp-content/uploads/2016/02/Solar-Panels-Brochure-v1.pdf"
+        - type: photovoltaic
+          name: Solar Panels 2U
+          power:
+            max: 4.6
+          mass: 0.1
+          area: 0.02
+          efficiency: 0.3
+          source: "https://www.isispace.nl/wp-content/uploads/2016/02/Solar-Panels-Brochure-v1.pdf"
+        - type: photovoltaic
+          name: Solar Panels 3U
+          power:
+            max: 6.9
+          mass: 0.15
+          area: 0.03
+          efficiency: 0.3
+          source: "https://www.isispace.nl/wp-content/uploads/2016/02/Solar-Panels-Brochure-v1.pdf"
+        - type: photovoltaic
+          name: Solar Panels 6U
+          power:
+            max: 17
+          mass: 0.3
+          area: 0.06
+          efficiency: 0.3
+          source: "https://www.isispace.nl/wp-content/uploads/2016/02/Solar-Panels-Brochure-v1.pdf"
+        - type: photovoltaic
+          name: JUNO Spacecraft Array
+          power:
+            max: 14000
+          mass: 340
+          area: 60
+          efficiency: 0.3
+          source: "Mass: https://www.nasa.gov/mission_pages/juno/launch/Juno_solarpower.html , area: https://www.jpl.nasa.gov/news/press_kits/juno/facts/,"
+          comment: Max power is power generated at 1 AU
+  thermal:
+    active:
+      heater:
+        - type: electric
+          name: Glavkosmos Electric Heaters for Manned Spacecraft
+          voltage: 34
+          resistance: 196
+          power: 5.898
+          mass: 0.026
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heating-elements/electric-heaters-for-manned-spacecraft/"
+        - type: electric
+          name: Glavkosmos Electric Heaters for Manned Spacecraft
+          voltage: 34
+          resistance: 45
+          power: 25.688
+          mass: 0.055
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heating-elements/electric-heaters-for-manned-spacecraft/"
+        - type: electric
+          name: Glavkosmos Electric Heaters for Manned Spacecraft
+          voltage: 23
+          resistance: 196
+          power: 2.699
+          mass: 0.026
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heating-elements/electric-heaters-for-manned-spacecraft/"
+        - type: electric
+          name: Glavkosmos Electric Heaters for Manned Spacecraft
+          voltage: 23
+          resistance: 45
+          power: 11.7556
+          mass: 0.055
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heating-elements/electric-heaters-for-manned-spacecraft/"
+    passive:
+      isolator:
+        type: panel
+        name: "Glavkosmos Multi-layer Composite Structures"
+        thickness: 0.3
+        mass_per_sqm: 4
+        source: "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heat-transfer-tubes-radiators/multi-layer-composite-structures/"
+      conductor:
+        type:
+          - panel
+          - panel
+        name:
+          - Glavkosmos Arterial Heat Pipes
+          - Glavkosmos Arterial Heat Pipes
+        max_trans_Q:
+          - 1000 W m
+          - 1000 W m
+        thickness:
+          - 12
+          - 16
+        mass_per_m:
+          - 0.145
+          - 0.22
+        source:
+          - "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heat-transfer-tubes-radiators/arterial-heat-pipes/"
+          - "https://trade.glavkosmos.com/catalog/spacecraft/temperature-control/heat-transfer-tubes-radiators/arterial-heat-pipes/"
+  structure:
+    CubeSat:
+      bus:
+        - type: CubeSat
+          name: Structure 1U CubeSat with Separation System
+          length: 0.1
+          height: 0.1
+          width: 0.1135
+          mass: 0.132
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/platform-bus/structure-1U-CubeSat-with-Separation-System/"
+        - type: CubeSat
+          name: Structure 3U CubeSat with Separation System
+          length: 0.1
+          height: 0.1
+          width: 0.3405
+          mass: 0.455
+          source: "https://trade.glavkosmos.com/catalog/spacecraft/platform-bus/structure-3U-CubeSat-with-separation-system/"
+  attitude_control:
+    Magnetorquer:
+      actuator:
+        - type: Magnetorquer
+          name: Cubetorquer
+          nom_mag_moment: 0.24
+          sat_mag_moment: 1.5
+          power_nom: 0.2
+          mass: 0.028
+          axis: 1
+          el_resistance: 30
+          source: "https://www.cubesatshop.com/wp-content/uploads/2016/06/CubeTorquer_Specsheet_V1.0.jpg"
+        - type: Magnetorquer
+          name: Cubecoil
+          nom_mag_moment: 0.13
+          power_nom: 0.3
+          mass: 0.046
+          axis: 1
+          source: "https://www.cubesatshop.com/wp-content/uploads/2016/06/CubeTorquer-CubeCoil-Brochure-August-2016.pdf"
+        - type: Magnetorquer
+          name: ISIS Magnetorquer board
+          nom_mag_moment: 0.2
+          power_nom: 0.175
+          power:
+            max: 1.2
+          mass: 0.196
+          axis: 3
+          source: "https://www.cubesatshop.com/product/isis-magnetorquer-board/"
+        - type: Magnetorquer
+          name: NSS CubeSat ACS solution
+          nom_mag_moment: 0.2
+          power_nom: 1.8
+          power:
+            max: 3
+          mass: 0.45
+          axis: 3
+          source: "https://www.cubesatshop.com/product/cubesat-acs-board/"
+        - type: Magnetorquer
+          name: "NCTR-M002 Magnetorquer Rod"
+          nom_mag_moment: 0.2
+          power_nom: 0.2
+          mass: 0.03
+          axis: 1
+          source: "https://www.cubesatshop.com/wp-content/uploads/2016/06/NewSpace-Magnetorquer-Rod_7b.pdf"
+        - type: Magnetorquer
+          name: "NCTR-M012 Magnetorquer Rod"
+          nom_mag_moment: 1.19
+          power_nom: 0.8
+          mass: 0.05
+          axis: 1
+          source: "https://www.cubesatshop.com/wp-content/uploads/2016/06/NewSpace-Magnetorquer-Rod_7b.pdf"
+    ReactionWheel:
+      actuator:
+        - type: Reaction Wheel
+          name: Cube Wheel Large
+          torque:
+            max: 0.0023
+          momentum_storage: 0.03
+          power_nom: 0.27
+          power:
+            max: 2.2
+          mass: 0.22
+          axis: 1
+          source: "https://www.cubesatshop.com/wp-content/uploads/2016/06/CubeWheel-Brochure-August-2016.pdf"
+        - type: Reaction Wheel
+          name: Cube Wheel Medium
+          torque:
+            max: 0.0001
+          momentum_storage: 0.01
+          power_nom: 0.24
+          power:
+            max: 1.5
+          mass: 0.14
+          axis: 1
+          source: "https://www.cubesatshop.com/wp-content/uploads/2016/06/CubeWheel-Brochure-August-2016.pdf"
+        - type: Reaction Wheel
+          name: Cube Wheel Small
+          torque:
+            max: 0.00023
+          momentum_storage: 0.0017
+          power_nom: 0.12
+          power:
+            max: 0.72
+          mass: 0.22
+          axis: 1
+          source: "https://www.cubesatshop.com/wp-content/uploads/2016/06/CubeWheel-Brochure-August-2016.pdf"
+        - type: Reaction Wheel
+          name: "MAI-400 Reaction Wheel"
+          torque:
+            max: 0.000635
+          momentum_storage: 0.00935
+          power_nom: 0.85
+          power:
+            max: 2.2
+          mass: 0.11
+          axis: 1
+          source: "https://www.cubesatshop.com/product/mai-400-reaction-wheel/"
+        - type: Reaction Wheel
+          name: RS100 – Reaction Sphere
+          torque:
+            max: 0.001
+          momentum_storage: 0.01
+          power:
+            max: 1
+          mass: 0.4
+          axis: 4
+          source: "https://www.cubesatshop.com/product/reaction-sphere/"
+        - type: Reaction Wheel
+          name: "NRWA-T005"
+          torque:
+            max: 0.01
+          momentum_storage: 0.05
+          power_nom: 0.8
+          mass: 0.5
+          axis: 1
+          source: "https://www.cubesatshop.com/wp-content/uploads/2020/11/NewSpace-Reaction-Wheel_2020-10a.pdf"
+        - type: Reaction Wheel
+          name: "NRWA-T065"
+          torque:
+            max: 0.02
+          momentum_storage: 0.65
+          power_nom: 1.12
+          mass: 1.55
+          axis: 1
+          source: "https://www.cubesatshop.com/wp-content/uploads/2020/11/NewSpace-Reaction-Wheel_2020-10a.pdf"
+        - type: Reaction Wheel
+          name: "NRWA-T2"
+          torque:
+            max: 0.021
+          momentum_storage: 2
+          power_nom: 0.336
+          mass: 1.8
+          axis: 1
+          source: "https://www.cubesatshop.com/wp-content/uploads/2020/11/NewSpace-Reaction-Wheel_2020-10a.pdf"
+        - type: Reaction Wheel
+          name: RW Wittenstein
+          torque_nom: 0.0001
+          momentum_storage: 0.002
+          power_nom: 0.3
+          power:
+            max: 1
+          mass: 0.003
+          axis: 1
+          source: "https://cyber-motor.wittenstein.de/en-en/reaction-wheel/"
+        - type: Reaction Wheel
+          name: "REWL-30"
+          torque:
+            max: 0.015
+          momentum_storage: 0.003
+          mass: 0.055
+          axis: 1
+          source: "https://space-inventor.com/wordpress/wp-content/uploads/2019/11/REWL-30-features.pdf"
+        - type: Reaction Wheel
+          name: "REWL-50"
+          torque:
+            max: 0.042
+          momentum_storage: 0.005
+          mass: 0.155
+          axis: 1
+          source: "https://space-inventor.com/wordpress/wp-content/uploads/2019/11/REWL-50-features.pdf"
+        - type: Reaction Wheel
+          name: "REWL-1000"
+          torque:
+            max: 0.04
+          momentum_storage: 1
+          mass: 0.9
+          power_nom: 15
+          power:
+            max: 500
+          axis: 1
+          source: "https://space-inventor.com/wordpress/wp-content/uploads/2020/07/rewl-1000-factsheet.pdf"
+        - type: Reaction Wheel
+          name: KU Leuven RW
+          torque:
+            max: 0.005
+          momentum_storage: 0.004
+          mass: 0.085
+          power_nom: 0.2
+          power:
+            max: 0.6
+          axis: 1
+          source: "http://www.cubesatpointing.com/DownloadFiles/Datasheets/KULRWDatasheet.pdf"
+        - type: Reaction Wheel
+          name: "RW-0.01"
+          torque:
+            max: 0.001
+          momentum_storage: 0.018
+          mass: 0.12
+          power_nom: 0.25
+          power:
+            max: 1.05
+          axis: 1
+          source: "https://satsearch.co/products/sinclair-interplanetary-rw-0-01"
+        - type: Reaction Wheel
+          name: "RRW-0.003"
+          torque:
+            max: 0.001
+          momentum_storage: 0.005
+          mass: 0.05
+          axis: 1
+          source: "http://www.sinclairinterplanetary.com/reactionwheels"
+        - type: Reaction Wheel
+          name: "Nanosatellite Reaction Wheels (RW-0.03)"
+          torque:
+            max: 0.04
+          momentum_storage: 0.04
+          mass: 0.185
+          power_nom: 0.3
+          power:
+            max: 1.8
+          axis: 1
+          source: "http://www.sinclairinterplanetary.com/reactionwheels"
+        - type: Reaction Wheel
+          name: "Microsatellite Reaction Wheels (RW3-0.06)"
+          torque:
+            max: 0.02
+          momentum_storage: 0.18
+          mass: 0.226
+          power_nom: 0.9
+          power:
+            max: 23.4
+          axis: 1
+          source: "http://www.sinclairinterplanetary.com/reactionwheels"
+        - type: Reaction Wheel
+          name: "Rad-Hard Reaction Wheels (RW4-0.2)"
+          torque:
+            max: 0.1
+          momentum_storage: 0.2
+          mass: 0.6
+          axis: 1
+          source: "http://www.sinclairinterplanetary.com/reactionwheels"
+        - type: Reaction Wheel
+          name: "Rad-Hard Reaction Wheels (RW4-0.4)"
+          torque:
+            max: 0.1
+          momentum_storage: 0.4
+          mass: 0.77
+          axis: 1
+          source: "http://www.sinclairinterplanetary.com/reactionwheels"
+        - type: Reaction Wheel
+          name: "GEO Reaction Wheels (RW4-1.0)"
+          torque:
+            max: 0.1
+          momentum_storage: 1
+          mass: 1.38
+          power_nom: 5.3
+          power:
+            max: 45
+          axis: 1
+          source: "http://www.sinclairinterplanetary.com/reactionwheels"
+        - type: Reaction Wheel
+          name: "Microsatellite Reaction Wheels (RW3-1.0)"
+          torque:
+            max: 0.05
+          momentum_storage: 1
+          mass: 0.97
+          power_nom: 15.1
+          power:
+            max: 46.7
+          axis: 1
+          source: "http://www.sinclairinterplanetary.com/reactionwheels"
+        - type: Reaction Wheel
+          name: RWP015
+          torque:
+            max: 0.004
+          momentum_storage: 0.015
+          mass: 0.13
+          power_nom: 1
+          axis: 1
+          source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
+        - type: Reaction Wheel
+          name: RWP050
+          torque:
+            max: 0.007
+          momentum_storage: 0.05
+          mass: 0.24
+          power_nom: 1
+          axis: 1
+          source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
+        - type: Reaction Wheel
+          name: RWP100
+          torque:
+            max: 0.007
+          momentum_storage: 0.1
+          mass: 0.35
+          power_nom: 1
+          axis: 1
+          source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
+        - type: Reaction Wheel
+          name: RWP500
+          torque:
+            max: 0.025
+          momentum_storage: 0.5
+          mass: 0.75
+          power_nom: 6
+          axis: 1
+          source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
+        - type: Reaction Wheel
+          name: RW1
+          torque:
+            max: 0.1
+          momentum_storage: 1
+          mass: 0.75
+          power_nom: 9
+          axis: 1
+          source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
+        - type: Reaction Wheel
+          name: RW4
+          torque:
+            max: 0.25
+          momentum_storage: 4
+          mass: 3
+          power_nom: 10
+          axis: 1
+          source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
+        - type: Reaction Wheel
+          name: RW4
+          torque:
+            max: 0.25
+          momentum_storage: 8
+          mass: 4.1
+          power_nom: 10
+          axis: 1
+          source: "https://www.bluecanyontech.com/static/datasheet/BCT_DataSheet_Components_ReactionWheels.pdf"
+        - type: Reaction Wheel
+          name: CubeSat Reaction Wheels Control System SatBus 4RW0
+          torque:
+            max: 0.0059
+          momentum_storage: 0.037
+          mass: 0.665
+          power_nom: 0.6
+          power:
+            max: 6
+          axis: 4
+          source: "https://nanoavionics.com/cubesat-components/cubesat-reaction-wheels-control-system-satbus-4rw/"
+        - type: Reaction Wheel
+          name: "RW400 - 15"
+          torque:
+            max: 0.012
+          momentum_storage: 0.015
+          mass: 0.155
+          power_nom: 1.9
+          power:
+            max: 15
+          axis: 1
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2015/07/HT_RW400_v2.1-flyer.pdf"
+        - type: Reaction Wheel
+          name: "RW400 - 30"
+          torque:
+            max: 0.012
+          momentum_storage: 0.03
+          mass: 0.21
+          power_nom: 1.9
+          power:
+            max: 15
+          axis: 1
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2015/07/HT_RW400_v2.1-flyer.pdf"
+        - type: Reaction Wheel
+          name: "RW400 - 60"
+          torque:
+            max: 0.012
+          momentum_storage: 0.06
+          mass: 0.375
+          power_nom: 1.9
+          power:
+            max: 15
+          axis: 1
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2015/07/HT_RW400_v2.1-flyer.pdf"
+        - type: Reaction Wheel
+          name: "NanoTorque GSW-600"
+          torque:
+            max: 0.0015
+          momentum_storage: 0.019
+          mass: 0.18
+          power_nom: 0.3
+          power:
+            max: 2.55
+          axis: 1
+          source: "https://gomspace.com/UserFiles/Subsystems/datasheet/gs-ds-nanotorque-gsw-600-20.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel RW1 for Pico and Nano Satellites Typ A
+          torque:
+            max: 2.3e-05
+          momentum_storage: 0.00058
+          mass: 0.125
+          power_nom: 0.62
+          power:
+            max: 0.72
+          axis: 4
+          source: "https://www.astrofein.com/2728/dwnld/admin/Datenblatt_RW1.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel RW1 for Pico and Nano Satellites Typ B
+          torque:
+            max: 4e-06
+          momentum_storage: 0.0001
+          mass: 0.093
+          power_nom: 0.62
+          power:
+            max: 0.72
+          axis: 4
+          source: "https://www.astrofein.com/2728/dwnld/admin/Datenblatt_RW1.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel RW35 for Nano and Micro Satellites
+          torque:
+            max: 0.005
+          momentum_storage: 0.1
+          mass: 0.5
+          power_nom: 4.5
+          power:
+            max: 5
+          axis: 1
+          source: "https://www.astrofein.com/2728/dwnld/admin/Datenblatt_RW35.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel RW90 for Small and Micro Satellites
+          torque:
+            max: 0.015
+          momentum_storage: 0.34
+          mass: 0.9
+          power_nom: 3.5
+          power:
+            max: 15
+          axis: 1
+          source: "https://www.astrofein.com/2728/dwnld/48_Datenblatt_RW90.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel RW150 for Small Satellites
+          torque:
+            max: 0.03
+          momentum_storage: 1
+          mass: 1.5
+          power_nom: 5
+          power:
+            max: 50
+          axis: 1
+          source: "https://www.astrofein.com/2728/dwnld/admin/Datenblatt_RW150.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel RW250 for Small Satellites
+          torque:
+            max: 0.1
+          momentum_storage: 4
+          mass: 2.7
+          power_nom: 18
+          power:
+            max: 150
+          axis: 1
+          source: "https://www.astrofein.com/2728/dwnld/admin/Datenblatt_RW250.pdf"
+        - type: Reaction Wheel
+          name: "RSI 15-215/20"
+          torque:
+            max: 0.215
+          momentum_storage: 15
+          mass: 7.7
+          power_nom: 15
+          power:
+            max: 90
+          axis: 1
+          source: "http://www.electronicnote.com/media/downloads/RSI%2045_A4.pdf"
+        - type: Reaction Wheel
+          name: "RSI 45-75/60"
+          torque:
+            max: 0.075
+          momentum_storage: 45
+          mass: 7.7
+          power_nom: 22
+          power:
+            max: 90
+          axis: 1
+          source: "http://www.electronicnote.com/media/downloads/RSI%2045_A4.pdf"
+        - type: Reaction Wheel
+          name: "RSI 01-5/15"
+          torque:
+            max: 0.005
+          momentum_storage: 0.04
+          mass: 0.6
+          power_nom: 2
+          power:
+            max: 4
+          axis: 1
+          source: "http://www.electronicnote.com/RCG/RSI%2001_A4.pdf"
+        - type: Reaction Wheel
+          name: "RSI 01-5/28i"
+          torque:
+            max: 0.005
+          momentum_storage: 0.12
+          mass: 0.7
+          power_nom: 2
+          power:
+            max: 4
+          axis: 1
+          source: "http://www.electronicnote.com/RCG/RSI%2001_A4.pdf"
+        - type: Reaction Wheel
+          name: MSCI MicroWheel 200
+          torque:
+            max: 0.03
+          momentum_storage: 0.18
+          mass: 0.94
+          power_nom: 7
+          power:
+            max: 50
+          axis: 1
+          source: "http://www.reactionwheel.ca/products/MicroWheel-200.pdf"
+        - type: Reaction Wheel
+          name: MSCI MicroWheel 1000
+          torque:
+            max: 0.03
+          momentum_storage: 1.1
+          mass: 1.44
+          power_nom: 9
+          power:
+            max: 50
+          axis: 1
+          source: "http://www.mscinc.ca/products/MicroWheel-1000.pdf"
+        - type: Reaction Wheel
+          name: MSCI MicroWheel 4000
+          torque:
+            max: 0.05
+          momentum_storage: 4
+          mass: 3.3
+          power_nom: 11
+          power:
+            max: 200
+          axis: 1
+          source: "http://www.reactionwheel.ca/products/MicroWheel-4000.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel HMMW
+          torque:
+            max: 0.012
+          momentum_storage: 0.4
+          mass: 1.05
+          power_nom: 4.3
+          axis: 1
+          source: "https://www.mpcnet.co.jp/e/e_product/elec/img/UEX_110010-C(E)_RW-IRU.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel Mini
+          torque:
+            max: 0.01
+          momentum_storage: 1.5
+          mass: 2.6
+          power_nom: 15
+          power:
+            max: 25
+          axis: 1
+          source: "https://www.mpcnet.co.jp/e/e_product/elec/img/UEX_110010-C(E)_RW-IRU.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel Type S
+          torque:
+            max: 0.06
+          momentum_storage: 10
+          mass: 3.9
+          power_nom: 10
+          power:
+            max: 50
+          axis: 1
+          source: "https://www.mpcnet.co.jp/e/e_product/elec/img/UEX_110010-C(E)_RW-IRU.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel Type M
+          torque:
+            max: 0.1
+          momentum_storage: 30
+          mass: 9.3
+          power_nom: 21
+          power:
+            max: 115
+          axis: 1
+          source: "https://www.mpcnet.co.jp/e/e_product/elec/img/UEX_110010-C(E)_RW-IRU.pdf"
+        - type: Reaction Wheel
+          name: "Reaction Wheel Type M-A"
+          torque:
+            max: 0.2
+          momentum_storage: 30
+          mass: 8.6
+          power_nom: 23
+          power:
+            max: 208
+          axis: 1
+          source: "https://www.mpcnet.co.jp/e/e_product/elec/img/UEX_110010-C(E)_RW-IRU.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel Type L
+          torque:
+            max: 0.2
+          momentum_storage: 80
+          mass: 11
+          power_nom: 23
+          power:
+            max: 208
+          axis: 1
+          source: "https://www.mpcnet.co.jp/e/e_product/elec/img/UEX_110010-C(E)_RW-IRU.pdf"
+        - type: Reaction Wheel
+          name: Reaction Wheel（RW)
+          torque:
+            max: 0.02
+          momentum_storage: 0.3
+          mass: 1.1
+          power_nom: 3
+          power:
+            max: 10
+          axis: 1
+          source: "https://www.tamagawa-seiki.com/products/space/ta6494.html"
+        - type: Reaction Wheel
+          name: "MAI-101"
+          torque:
+            max: 0.000635
+          momentum_storage: 0.0011
+          mass: 0.64
+          axis: 4
+          source: "http://www.ati-space.com/ATI.files/11_index.files/MAI-101%20Specification%20ATI%203-18-11.pdf"
+    Sensor:
+      sensor:
+        - type: Magnetometer
+          name: MM200
+          power: 0.28
+          sampling_rate: 500
+          mass: 0.012
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2020/01/HT_MM200_V1.0.pdf"
+        - type: Sunsensor
+          name: SS200
+          power: 0.04
+          accuracy: 1
+          FOV: 110
+          sampling_rate: 100
+          mass: 0.003
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2019/11/HT_SS200.pdf"
+        - type: Sunsensor
+          name: "FSS-1"
+          power: 0.09
+          accuracy: 1
+          axis: 2
+          FOV: 120
+          mass: 0.008
+          source: "https://space-inventor.com/wordpress/wp-content/uploads/2020/07/FSS-1-factsheet.pdf"
+        - type: Startracker
+          name: ST200
+          power: 0.6
+          accuracy_pitch: 0.00833333
+          accuracy_yaw: 0.00833333
+          accuracy_roll: 0.0555556
+          max_slew_tilt: 0.3
+          max_slew_roll: 0.6
+          sampling_rate: 5
+          half_angle: 30.45
+          mass: 0.042
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2015/07/HT_ST200_v2.1-flyer.pdf"
+        - type: Startracker
+          name: ST400
+          power: 0.7
+          accuracy_pitch: 0.00277778
+          accuracy_yaw: 0.00277778
+          accuracy_roll: 0.0333333
+          max_slew_tilt: 0.5
+          max_slew_roll: 1
+          sampling_rate: 5
+          half_angle: 40
+          mass: 0.28
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2019/11/HT_ST400.pdf"
+        - type: Startracker
+          name: "STAR-T3"
+          power: 1
+          accuracy_pitch: 0.00277778
+          accuracy_yaw: 0.00277778
+          accuracy_roll: 0.0333333
+          max_slew_tilt: 0.3
+          max_slew_roll: 0.3
+          half_angle: 37.5
+          mass: 0.35
+          source: "https://space-inventor.com/wordpress/wp-content/uploads/2019/11/STAR-T3-one-pager.pdf"
+    Integrated:
+      integrated:
+        - type: ACS
+          name: iACS200
+          aggregate:
+          torque:
+            max: 0.1
+          momentum_storage: 0.006
+          nom_mag_moment: 0.1
+          axis: 3
+          accuracy: 15
+          max_slew: 1.5
+          power: 1.3
+          mass: 0.41
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2019/11/HT_iACS200.pdf"
+        - type: ACS
+          name: iACS400
+          aggregate:
+          torque:
+            max: 2
+          momentum_storage: 0.05
+          nom_mag_moment: 0.4
+          axis: 3
+          accuracy: 1
+          max_slew: 1.5
+          power: 2
+          mass: 1.7
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2015/07/HT_iADCS400_v2.1-flyer.pdf"
+        - type: ACS
+          name: iADCS200
+          aggregate:
+          torque:
+            max: 0.087
+          momentum_storage: 0.006
+          nom_mag_moment: 0.1
+          axis: 3
+          accuracy: 1
+          max_slew: 1.5
+          power: 1.4
+          mass: 0.47
+          source: "https://hyperiontechnologies.nl/wp-content/uploads/2019/11/HT_iADCS200.pdf"
+        - type: ACS
+          name: "ADCS-R3"
+          aggregate:
+          torque:
+            max: 0.002
+          momentum_storage: 0.06
+          nom_mag_moment: 0.2
+          axis: 4
+          accuracy: 1
+          max_slew: 1.5
+          mass: 0.6
+          source: "https://space-inventor.com/wordpress/wp-content/uploads/2020/01/ADCS-R3_facts-sheet_p1.pdf"
+        - type: ACS
+          name: KU Leuven ADCS
+          aggregate:
+          torque:
+            max: 0.0005
+          momentum_storage: 0.004
+          nom_mag_moment: 0.13
+          axis: 3
+          accuracy: 0.11
+          max_slew:
+          power: 1.4
+          mass: 0.715
+          source: "https://www.cubesatshop.com/wp-content/uploads/2018/10/KULADCS-Datasheet_v2.pdf"
+  communication:
+    Laser:
+      laser:
+        type: Laser
+        name: CUBECAT
+        downlink: 1e+09
+        uplink: 200000
+        storage: 6.4e+10
+        pointing_deg: 0.5
+        pointing_knowledge_error: 0.0172
+        power: 15
+        mass: 1.33
+        source: "https://hyperiontechnologies.nl/wp-content/uploads/2019/11/HT_CubeCat.pdf"
