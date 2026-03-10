@@ -2890,6 +2890,118 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				<axis>4</axis>
 				<source>http://www.ati-space.com/ATI.files/11_index.files/MAI-101%20Specification%20ATI%203-18-11.pdf</source>
 			</actuator>
+			<!-- Vectronic Aerospace VRW series reaction wheels -->
+			<actuator>
+				<type>Reaction Wheel</type>
+				<name>VRW-B-02</name>
+				<torque unit="N·m">
+					<max>0.020</max>
+				</torque>
+				<momentum_storage unit="N·m·s">0.20</momentum_storage>
+				<power_nom unit="W">4.5</power_nom>
+				<power>
+					<max>45</max>
+				</power>
+				<mass unit="kg">1.0</mass>
+				<axis>1</axis>
+				<source>https://www.vectronic-aerospace.com/reaction-wheels/</source>
+			</actuator>
+			<actuator>
+				<type>Reaction Wheel</type>
+				<name>VRW-B-025</name>
+				<momentum_storage unit="N·m·s">0.29</momentum_storage>
+				<mass unit="kg">1.2</mass>
+				<axis>1</axis>
+				<source>https://www.vectronic-aerospace.com/reaction-wheels/</source>
+			</actuator>
+			<actuator>
+				<type>Reaction Wheel</type>
+				<name>VRW-C-03</name>
+				<momentum_storage unit="N·m·s">0.35</momentum_storage>
+				<mass unit="kg">0.9</mass>
+				<axis>1</axis>
+				<source>https://www.vectronic-aerospace.com/reaction-wheels/</source>
+			</actuator>
+			<actuator>
+				<type>Reaction Wheel</type>
+				<name>VRW-C-05</name>
+				<momentum_storage unit="N·m·s">0.60</momentum_storage>
+				<mass unit="kg">1.2</mass>
+				<axis>1</axis>
+				<source>https://www.vectronic-aerospace.com/reaction-wheels/</source>
+			</actuator>
+			<actuator>
+				<type>Reaction Wheel</type>
+				<name>VRW-C-1</name>
+				<momentum_storage unit="N·m·s">1.20</momentum_storage>
+				<mass unit="kg">2.3</mass>
+				<axis>1</axis>
+				<source>https://www.vectronic-aerospace.com/reaction-wheels/</source>
+			</actuator>
+			<actuator>
+				<type>Reaction Wheel</type>
+				<name>VRW-D-1</name>
+				<momentum_storage unit="N·m·s">1.20</momentum_storage>
+				<mass unit="kg">1.9</mass>
+				<axis>1</axis>
+				<source>https://www.vectronic-aerospace.com/reaction-wheels/</source>
+			</actuator>
+			<actuator>
+				<type>Reaction Wheel</type>
+				<name>VRW-D-16</name>
+				<momentum_storage unit="N·m·s">1.60</momentum_storage>
+				<mass unit="kg">1.8</mass>
+				<axis>1</axis>
+				<source>https://www.vectronic-aerospace.com/reaction-wheels/</source>
+			</actuator>
+			<actuator>
+				<type>Reaction Wheel</type>
+				<name>VRW-D-2</name>
+				<momentum_storage unit="N·m·s">2.00</momentum_storage>
+				<mass unit="kg">2.0</mass>
+				<axis>1</axis>
+				<source>https://www.vectronic-aerospace.com/reaction-wheels/</source>
+			</actuator>
+			<actuator>
+				<type>Reaction Wheel</type>
+				<name>VRW-D-4</name>
+				<momentum_storage unit="N·m·s">4.00</momentum_storage>
+				<mass unit="kg">2.5</mass>
+				<axis>1</axis>
+				<source>https://www.vectronic-aerospace.com/reaction-wheels/</source>
+			</actuator>
+			<actuator>
+				<type>Reaction Wheel</type>
+				<name>VRW-D-6</name>
+				<momentum_storage unit="N·m·s">6.00</momentum_storage>
+				<mass unit="kg">3.0</mass>
+				<axis>1</axis>
+				<source>https://www.vectronic-aerospace.com/reaction-wheels/</source>
+			</actuator>
+			<actuator>
+				<type>Reaction Wheel</type>
+				<name>VRW-D-8</name>
+				<momentum_storage unit="N·m·s">8.00</momentum_storage>
+				<mass unit="kg">3.5</mass>
+				<axis>1</axis>
+				<source>https://www.vectronic-aerospace.com/reaction-wheels/</source>
+			</actuator>
+			<actuator>
+				<type>Reaction Wheel</type>
+				<name>VRW-A-1</name>
+				<momentum_storage unit="N·m·s">1.25</momentum_storage>
+				<mass unit="kg">1.9</mass>
+				<axis>1</axis>
+				<source>https://www.vectronic-aerospace.com/reaction-wheels/</source>
+			</actuator>
+			<actuator>
+				<type>Reaction Wheel</type>
+				<name>VRW-A-05</name>
+				<momentum_storage unit="N·m·s">0.69</momentum_storage>
+				<mass unit="kg">1.3</mass>
+				<axis>1</axis>
+				<source>https://www.vectronic-aerospace.com/reaction-wheels/</source>
+			</actuator>
 		</ReactionWheel>
 		<Sensor>
 			<sensor>
