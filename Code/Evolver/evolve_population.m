@@ -8,10 +8,16 @@ function [generation_new, convergence] = evolve_population(input, db_data, confi
 
   for i=1:n_cases                                                               % Loop  over cases
     for j=1:n_seeds                                                             % Loop over seeds or lineages
+      if generation_data{end}(i,j).convergence == 1
+        population(i,j) = generation_data{end}(i,j);                            % keep converged lineages fixed
+        continue;
+      end
+
       n_successor = generation_data{end}(i,j).n_success;                        % Index of latest succesfull generation, i.e. ignore newer but worse generations
+      parent_individual = generation_data{n_successor}(i,j);
 
       %mutation handling is done here
-      population(i,j) = mutate_individual(input, db_data, config, generation_data{n_successor}(i,j));       % here all system mutations handled
+      population(i,j) = mutate_individual(input, db_data, config, parent_individual);       % here all system mutations handled
 
       %refresh other system data
       [population(i,j).subsystem_masses population(i,j).subsystem_powers]= SMAD_scalings(population(i,j));
@@ -110,9 +116,25 @@ function [generation_new, convergence] = evolve_population(input, db_data, confi
       % Reject individuals with NaN c_e or thrust — invalid propulsion solution.
       % Exception: sc_type==1 ('No Propulsion') where these fields are not applicable.
       sc_type_i = input.Satellite_parameters.input_case{i}.derived.sc_type;
+      mutation_valid = true;
       if sc_type_i ~= 1 && (isnan(population(i,j).c_e) || isnan(population(i,j).thrust))
         population(i,j).evolution_success = 0;
+        mutation_valid = false;
       end
+
+      % Ignore no-op mutations for convergence counting; they should not consume the fail budget.
+      mutation_changed = false;
+      if ~strcmp(population(i,j).propulsion_system, parent_individual.propulsion_system)
+        mutation_changed = true;
+      elseif ~strcmp(population(i,j).propellant, parent_individual.propellant)
+        mutation_changed = true;
+      elseif abs(population(i,j).c_e - parent_individual.c_e) > max(1, abs(parent_individual.c_e))*1e-12
+        mutation_changed = true;
+      elseif abs(population(i,j).thrust - parent_individual.thrust) > max(1, abs(parent_individual.thrust))*1e-12
+        mutation_changed = true;
+      end
+      population(i,j).count_for_convergence = mutation_valid && mutation_changed;
+      population(i,j).convergence_mode = 'active';
 
       %refresh the number of the last sucessful lineage member here
       if population(i,j).evolution_success== 1
@@ -120,7 +142,7 @@ function [generation_new, convergence] = evolve_population(input, db_data, confi
       end
 
        %test for convergence here, maybe add number of non convergence gere
-      population(i,j).convergence = test_lineage_convergence_simple(population(i,j), lineage, config);  % add a parmeter specific epsilon convergence test
+      [population(i,j).convergence, population(i,j).convergence_mode] = test_lineage_convergence_simple(population(i,j), lineage, config);  % add a parmeter specific epsilon convergence test
     end
   end
 
@@ -133,7 +155,16 @@ function [generation_new, convergence] = evolve_population(input, db_data, confi
 
 if ~mod(size(generation_data, 2), config.Simulation_parameters.output.CLI.n_verbosity)
     n_total = size(input.Satellite_parameters.input_case, 2) * config.Simulation_parameters.evolver.seed_points;
-    disp(sprintf('Converged lineages: %d / %d', n_convergence, n_total));
+    n_local_optimum = 0; n_stall = 0;
+    for cli_i = 1:size(population,1)
+      for cli_j = 1:size(population,2)
+        if isfield(population(cli_i,cli_j),'convergence_mode')
+          if strcmp(population(cli_i,cli_j).convergence_mode,'local_optimum'); n_local_optimum = n_local_optimum+1; end
+          if strcmp(population(cli_i,cli_j).convergence_mode,'stall');          n_stall  = n_stall+1;  end
+        end
+      end
+    end
+    disp(sprintf('Converged lineages: %d / %d  (local_optimum: %d, stall: %d)', n_convergence, n_total, n_local_optimum, n_stall));
     completed_percentage = floor(n_convergence / n_total * 100);
     if completed_percentage >= 100
       completed_percentage = 99;

@@ -17,11 +17,18 @@ function result = test_maximize_parameter(new_data, lineage_data, parameter_list
    value_list(j)=gen_val;
   end  
   
-  max_val = max(value_list); % get maximum of current list
+  finite_mask = isfinite(value_list);
+  if ~isfinite(new_val) || ~any(finite_mask)
+    result = 0;
+    return;
+  end
 
-    if new_val > max_val % TODO here should be a leq instead of eq .... but becomes a problem with convergence when declearing identity with success !
-      result = 1;
-    else
-      result = 0;
-    end
+  max_val = max(value_list(finite_mask)); % get maximum of current list, ignore NaN/Inf history values
+  tol = max(1, abs(max_val)) * 1e-12; % avoid false negatives from floating point roundoff
+
+  if new_val > (max_val + tol)
+    result = 1;
+  else
+    result = 0;
+  end
 end

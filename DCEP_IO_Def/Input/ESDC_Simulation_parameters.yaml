@@ -9,6 +9,7 @@ Simulation_parameters:
     minimal_step_size: 1e-05
     max_jump_range: 20
     n_fails_to_converge: 3
+    n_bad_seed_to_converge: 9
     n_verbosity: 10
   output:
     xml:

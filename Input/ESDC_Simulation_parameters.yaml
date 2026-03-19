@@ -15,7 +15,8 @@ Simulation_parameters:
     fitness_landscape_resolution: 50
     minimal_step_size: 1e-05
     max_jump_range: 20
-    n_fails_to_converge: 3
+    n_fails_to_converge: 10
+    n_bad_seed_to_converge: 30
     n_verbosity: 10
   output:
     CLI:

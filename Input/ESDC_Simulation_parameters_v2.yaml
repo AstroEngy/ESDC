@@ -121,6 +121,17 @@ Simulation_parameters:
         dcep_min_occurrence: 1
         dcep_max_occurrence: 1
         dcep_min_inclusive: 0
+    n_bad_seed_to_converge:
+      dcep_info:
+        dcep_name: Bad-seed stall threshold
+        dcep_unit: "-"
+        dcep_description: Number of generations without any successful mutation before a lineage is treated as a bad initial seed. Recommended value: 3 times n_fails_to_converge.
+        dcep_type: float
+        dcep_no_value: false
+        dcep_default: 150
+        dcep_min_occurrence: 1
+        dcep_max_occurrence: 1
+        dcep_min_inclusive: 0
   output:
     dcep_info:
       dcep_name: Output definition parameters

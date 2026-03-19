@@ -141,6 +141,19 @@
             				<dcep_min_inclusive>0</dcep_min_inclusive>
 					</dcep_info>				
 				</n_fails_to_converge>
+				<n_bad_seed_to_converge>
+					<dcep_info>
+					<dcep_name>Bad-seed stall threshold</dcep_name>
+					<dcep_unit>-</dcep_unit>
+					<dcep_description>Number of generations without any successful mutation before a lineage is treated as a bad initial seed. Recommended value: 3 times n_fails_to_converge.</dcep_description>
+            				<dcep_type>float</dcep_type>
+           				<dcep_no_value>false</dcep_no_value>
+           				<dcep_default>150</dcep_default>
+            				<dcep_min_occurrence>1</dcep_min_occurrence>
+            				<dcep_max_occurrence>1</dcep_max_occurrence>
+            				<dcep_min_inclusive>0</dcep_min_inclusive>
+					</dcep_info>
+				</n_bad_seed_to_converge>
 		</evolver>
 		<output>
 			<dcep_info>

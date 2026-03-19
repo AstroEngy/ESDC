@@ -21,6 +21,12 @@ function evolution_data = evolver(input, db_data, config,runID)
   n_gen             = 1;                                                        % Initialize generation number
   generation{n_gen} = make_population(input, db_data, config);                  % Create the first generation
 
+  max_generations = 500;
+  if isfield(config.Simulation_parameters.evolver, 'max_generations')
+    max_generations = config.Simulation_parameters.evolver.max_generations;
+  end
+  reached_max_generations = false;
+
   convergence       = 0;                                                        % Initialize all generations as not converged
   while ~convergence                                                          % Iterate until convergence is reached
     n_gen=n_gen+1;                                                              % Increment generation number
@@ -31,11 +37,20 @@ function evolution_data = evolver(input, db_data, config,runID)
       fprintf('Iterated generations: %d\n', n_gen);
       fflush(stdout);
     end
+
+    if n_gen >= max_generations
+      warning('evolver:max_generations_reached', 'Maximum generations (%d) reached before convergence.', max_generations);
+      reached_max_generations = true;
+      break;
+    end
   end
 
   % CLI output
-  % CLI output
-  fprintf('\nSuccess: Evolver has converged at %d generations\n', n_gen);
+  if reached_max_generations && ~convergence
+    fprintf('\nWarning: Evolver stopped at maximum generation limit (%d) before full convergence\n', n_gen);
+  else
+    fprintf('\nSuccess: Evolver has converged at %d generations\n', n_gen);
+  end
   fflush(stdout);
 
   % Collapse to best-per-lineage snapshot.

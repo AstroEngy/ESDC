@@ -86,6 +86,8 @@ for i = 1:numel(input.Satellite_parameters.input_case)
      population_member.evolution_success = 1; % if first - then 1 , else compare old to new , potentially reiterate over full lineage
      population_member.n_success = 1;
      population_member.convergence = 0;
+      population_member.count_for_convergence = 0; % baseline seed should not consume failure budget
+      population_member.convergence_mode = 'active';
       
      population_member.system.power = analysis_power_system(population_member, input.Satellite_parameters.input_case{i},  database_data, configuration);
      population_member.orbit = input.Satellite_parameters.input_case{i}.orbit;
