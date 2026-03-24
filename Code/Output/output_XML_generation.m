@@ -38,9 +38,9 @@ for i=1:size(unprocessed_data{end},1)
       fields= fieldnames(unprocessed_data{end}(i,j));
       for k=1: size(fields,1)
 
-       % if not(strcmp(fields{k,1},"subsystem_masses")) && not(strcmp(fields{k,1},"mission_parameters")) && not(strcmp(fields{k,1},"mass_fractions"))
+        % skip component_matches — already exported separately by select_components
+        if strcmp(fields{k,1}, 'component_matches'); continue; end
         unprocessed_data{end}(i,j).(fields{k,1}) = createAttributes(fields{k,1}, unprocessed_data{end}(i,j).(fields{k,1}),  attr_definitions);
-      %  end
 
       end
     end

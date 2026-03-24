@@ -39,23 +39,107 @@ function output_XML_best_candidates(config, evolution_data,runID)
    %optimal_solution.best_solutions.(strcat('case_',num2str(j))).dcep_info.dcep_show ="false";
    end
 
-    for k=1:config.Simulation_parameters.output.xml.optimal_candidates
+    n_out = config.Simulation_parameters.output.xml.optimal_candidates;
+    for k=1:n_out
       % evolution_data{end} is the best-per-lineage snapshot; read directly.
-      optimal_solution.best_solutions.(strcat('case_',num2str(j))).(strcat('best_',num2str(k))) =  evolution_data{end}(j,idx(k));
+      ind = evolution_data{end}(j,idx(k));
 
-        if k==1 && j==1
-         % optimal_solution.best_solutions.(strcat('case_',num2str(j))).(strcat('best_',num2str(k))).dcep_info.dcep_show ="false";
-        else
-         % optimal_solution.best_solutions.(strcat('case_',num2str(j))).(strcat('best_',num2str(k))).dcep_info.dcep_show ="false";
+      % Serialize component_matches (struct-array candidates) into a plain
+      % nested struct so struct2xml can write it alongside the design fields.
+      if isfield(ind, 'component_matches')
+        % Add a compact selected_thruster summary from the top propulsion candidate
+        if isfield(ind.component_matches, 'propulsion_system') && ...
+           isfield(ind.component_matches.propulsion_system, 'thruster_candidates') && ...
+           ~isempty(ind.component_matches.propulsion_system.thruster_candidates)
+          top = ind.component_matches.propulsion_system.thruster_candidates(1);
+          ind.selected_thruster.name         = top.name;
+          ind.selected_thruster.company      = top.company;
+          ind.selected_thruster.n_thrusters  = top.n_thrusters;
+          ind.selected_thruster.source       = top.source;
         end
+        % Add compact tank summary (best-fitting tank / cluster)
+        if isfield(ind.component_matches, 'propulsion_system') && ...
+           isfield(ind.component_matches.propulsion_system, 'tank_candidates') && ...
+           ~isempty(ind.component_matches.propulsion_system.tank_candidates)
+          top_tank = ind.component_matches.propulsion_system.tank_candidates(1);
+          ind.selected_tank.name         = top_tank.name;
+          ind.selected_tank.company      = top_tank.company;
+          ind.selected_tank.n_tanks      = top_tank.n_tanks;
+          ind.selected_tank.mass_cluster = top_tank.mass_cluster;
+          ind.selected_tank.source       = top_tank.source;
+        end
+        % Add compact PPU summary (best-matching PPU, if any)
+        if isfield(ind.component_matches, 'propulsion_system') && ...
+           isfield(ind.component_matches.propulsion_system, 'ppu_candidates') && ...
+           ~isempty(ind.component_matches.propulsion_system.ppu_candidates)
+          top_ppu = ind.component_matches.propulsion_system.ppu_candidates(1);
+          ind.selected_ppu.name    = top_ppu.name;
+          ind.selected_ppu.company = top_ppu.company;
+          ind.selected_ppu.mass    = top_ppu.mass;
+          ind.selected_ppu.power   = top_ppu.power;
+          ind.selected_ppu.source  = top_ppu.source;
+        end
+        ind.component_matches = serialize_component_matches(ind.component_matches, n_out);
+      end
 
+      optimal_solution.best_solutions.(strcat('case_',num2str(j))).(strcat('best_',num2str(k))) = ind;
     end
 
 end
 
   folderPath = strcat('Output/',num2str(runID));
   xml_FileName = fullfile(folderPath, 'ESDC_best_candidates');
-    struct2xml(optimal_solution,xml_FileName);
+  struct2xml(optimal_solution,xml_FileName);
+end
+
+
+% -------------------------------------------------------------------------
+% Serialize component_matches into a plain nested struct for struct2xml.
+% The propulsion_system subsystem now has three struct-array sub-fields
+% (thruster_candidates, tank_candidates, ppu_candidates) instead of a single
+% 'candidates' array.  All other subsystems still use 'candidates'.
+function out = serialize_component_matches(cm_raw, n_candidates_out)
+  out = struct();
+  if ~isstruct(cm_raw) || isempty(cm_raw); return; end
+
+  % Names of struct-array fields that must be serialized element-by-element
+  ARRAY_FIELDS = {'candidates', 'thruster_candidates', 'tank_candidates', 'ppu_candidates'};
+
+  subsystems = fieldnames(cm_raw);
+  for s = 1:numel(subsystems)
+    sys  = subsystems{s};
+    cm_s = cm_raw.(sys);
+
+    % Copy all scalar/string design-point fields (skip struct-array lists)
+    all_fields = fieldnames(cm_s);
+    for f = 1:numel(all_fields)
+      fname = all_fields{f};
+      if any(strcmp(fname, ARRAY_FIELDS)); continue; end
+      out.(sys).(fname) = cm_s.(fname);
+    end
+
+    % Serialize each struct-array candidate list
+    any_found = false;
+    for af = 1:numel(ARRAY_FIELDS)
+      aname = ARRAY_FIELDS{af};
+      if ~isfield(cm_s, aname) || isempty(cm_s.(aname)); continue; end
+      any_found = true;
+      arr = cm_s.(aname);
+      n = min(n_candidates_out, numel(arr));
+      for k = 1:n
+        cname   = strcat(aname, '_', num2str(k));
+        c       = arr(k);
+        cfields = fieldnames(c);
+        for ff = 1:numel(cfields)
+          out.(sys).(cname).(cfields{ff}) = c.(cfields{ff});
+        end
+      end
+    end
+
+    if ~any_found
+      out.(sys).note = 'No compatible components found';
+    end
+  end
 end
 
 ##
