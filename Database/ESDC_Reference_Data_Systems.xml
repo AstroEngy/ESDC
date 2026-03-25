@@ -998,7 +998,7 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 			<!-- SETS datasheets satsearch -->
 			<thruster>
 				<type>HET</type>
-				<name>ST40 (SETS)</name>
+				<name>ST40 (SETS) &#x2014; Xenon</name>
 				<thrust unit="N">
 					<min>0.014</min>
 					<max>0.028</max>
@@ -1026,7 +1026,73 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				<dimension_y unit="m">0.117</dimension_y>
 				<dimension_z unit="m">0.122</dimension_z>
 				<propellant>Xenon</propellant>
+				<cathode_type>Heaterless Hollow Cathode</cathode_type>
+				<source>SETS ST40 Hall-Effect Thruster Datasheet, satsearch.</source>
+				<!-- Evidence: 14-28 mN, 250-600 W, Isp up to 1850 s, mass 1.1 kg, 5000 h lifetime, 140x117x122 mm -->
+			</thruster>
+			<thruster>
+				<type>HET</type>
+				<name>ST40 (SETS) &#x2014; Argon</name>
+				<thrust unit="N">
+					<min>0.014</min>
+					<max>0.028</max>
+				</thrust>
+				<isp>
+					<max>1850</max>
+				</isp>
+				<c_e>
+					<max>18148.5</max>
+				</c_e>
+				<mass unit="kg">1.1</mass>
+				<power unit="W">
+					<min>250</min>
+					<max>600</max>
+				</power>
+				<discharge_voltage unit="V">
+					<min>250</min>
+					<max>300</max>
+				</discharge_voltage>
+				<efficiency>
+					<max>0.40</max>
+				</efficiency>
+				<lifetime unit="s">18000000</lifetime>
+				<dimension_x unit="m">0.140</dimension_x>
+				<dimension_y unit="m">0.117</dimension_y>
+				<dimension_z unit="m">0.122</dimension_z>
 				<propellant>Argon</propellant>
+				<cathode_type>Heaterless Hollow Cathode</cathode_type>
+				<source>SETS ST40 Hall-Effect Thruster Datasheet, satsearch.</source>
+				<!-- Evidence: 14-28 mN, 250-600 W, Isp up to 1850 s, mass 1.1 kg, 5000 h lifetime, 140x117x122 mm -->
+			</thruster>
+			<thruster>
+				<type>HET</type>
+				<name>ST40 (SETS) &#x2014; Krypton</name>
+				<thrust unit="N">
+					<min>0.014</min>
+					<max>0.028</max>
+				</thrust>
+				<isp>
+					<max>1850</max>
+				</isp>
+				<c_e>
+					<max>18148.5</max>
+				</c_e>
+				<mass unit="kg">1.1</mass>
+				<power unit="W">
+					<min>250</min>
+					<max>600</max>
+				</power>
+				<discharge_voltage unit="V">
+					<min>250</min>
+					<max>300</max>
+				</discharge_voltage>
+				<efficiency>
+					<max>0.40</max>
+				</efficiency>
+				<lifetime unit="s">18000000</lifetime>
+				<dimension_x unit="m">0.140</dimension_x>
+				<dimension_y unit="m">0.117</dimension_y>
+				<dimension_z unit="m">0.122</dimension_z>
 				<propellant>Krypton</propellant>
 				<cathode_type>Heaterless Hollow Cathode</cathode_type>
 				<source>SETS ST40 Hall-Effect Thruster Datasheet, satsearch.</source>
@@ -1034,7 +1100,7 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 			</thruster>
 			<thruster>
 				<type>HET</type>
-				<name>ST-25 (SETS)</name>
+				<name>ST-25 (SETS) &#x2014; Xenon</name>
 				<thrust unit="N">
 					<min>0.005</min>
 					<max>0.011</max>
@@ -1069,6 +1135,46 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				<dimension_y unit="m">0.107</dimension_y>
 				<dimension_z unit="m">0.0915</dimension_z>
 				<propellant>Xenon</propellant>
+				<cathode_type>Preheated Hollow Cathode</cathode_type>
+				<source>SETS ST-25 Hall-Effect Thruster Datasheet, satsearch.</source>
+				<!-- Evidence: 5-11 mN, 140-200 W, Isp 1100-1300 s, efficiency min 30%, no less than 3000 h lifetime -->
+			</thruster>
+			<thruster>
+				<type>HET</type>
+				<name>ST-25 (SETS) &#x2014; Krypton</name>
+				<thrust unit="N">
+					<min>0.005</min>
+					<max>0.011</max>
+				</thrust>
+				<isp unit="s">
+					<min>1100</min>
+					<max>1300</max>
+				</isp>
+				<c_e unit="m/s">
+					<min>10787.3</min>
+					<max>12748.6</max>
+				</c_e>
+				<mass unit="kg">0.95</mass>
+				<power unit="W">
+					<min>140</min>
+					<max>200</max>
+				</power>
+				<discharge_voltage unit="V">
+					<min>200</min>
+					<max>280</max>
+				</discharge_voltage>
+				<efficiency>
+					<min>0.30</min>
+				</efficiency>
+				<lifetime unit="s">
+					<min>10800000</min>
+				</lifetime>
+				<start_time>
+					<max>240</max>
+				</start_time>
+				<dimension_x unit="m">0.060</dimension_x>
+				<dimension_y unit="m">0.107</dimension_y>
+				<dimension_z unit="m">0.0915</dimension_z>
 				<propellant>Krypton</propellant>
 				<cathode_type>Preheated Hollow Cathode</cathode_type>
 				<source>SETS ST-25 Hall-Effect Thruster Datasheet, satsearch.</source>
@@ -1228,7 +1334,7 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 			<!-- Busek Co. Inc. datasheets satsearch -->
 			<thruster>
 				<type>HET</type>
-				<name>BHT-200 (Busek)</name>
+				<name>BHT-200 (Busek) &#x2014; Xenon</name>
 				<thrust unit="N">0.013</thrust>
 				<isp unit="s">1390</isp>
 				<c_e unit="m/s">13630.24</c_e>
@@ -1239,14 +1345,44 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				<cathode_location>External</cathode_location>
 				<cathode_mass unit="kg">0.12</cathode_mass>
 				<propellant>Xenon</propellant>
+				<source>Busek Co. Inc., BHT-200 Hall-Effect Thruster Datasheet, satsearch.</source>
+				<!-- Evidence: 13 mN, Isp 1390 s, 200 W nominal, 250 V, 0.98 kg thruster + 0.12 kg cathode BHC-1500 -->
+			</thruster>
+			<thruster>
+				<type>HET</type>
+				<name>BHT-200 (Busek) &#x2014; Iodine</name>
+				<thrust unit="N">0.013</thrust>
+				<isp unit="s">1390</isp>
+				<c_e unit="m/s">13630.24</c_e>
+				<power unit="W">200</power>
+				<discharge_voltage unit="V">250</discharge_voltage>
+				<mass unit="kg">0.98</mass>
+				<cathode>BHC-1500</cathode>
+				<cathode_location>External</cathode_location>
+				<cathode_mass unit="kg">0.12</cathode_mass>
 				<propellant>Iodine</propellant>
+				<source>Busek Co. Inc., BHT-200 Hall-Effect Thruster Datasheet, satsearch.</source>
+				<!-- Evidence: 13 mN, Isp 1390 s, 200 W nominal, 250 V, 0.98 kg thruster + 0.12 kg cathode BHC-1500 -->
+			</thruster>
+			<thruster>
+				<type>HET</type>
+				<name>BHT-200 (Busek) &#x2014; Krypton</name>
+				<thrust unit="N">0.013</thrust>
+				<isp unit="s">1390</isp>
+				<c_e unit="m/s">13630.24</c_e>
+				<power unit="W">200</power>
+				<discharge_voltage unit="V">250</discharge_voltage>
+				<mass unit="kg">0.98</mass>
+				<cathode>BHC-1500</cathode>
+				<cathode_location>External</cathode_location>
+				<cathode_mass unit="kg">0.12</cathode_mass>
 				<propellant>Krypton</propellant>
 				<source>Busek Co. Inc., BHT-200 Hall-Effect Thruster Datasheet, satsearch.</source>
 				<!-- Evidence: 13 mN, Isp 1390 s, 200 W nominal, 250 V, 0.98 kg thruster + 0.12 kg cathode BHC-1500 -->
 			</thruster>
 			<thruster>
 				<type>HET</type>
-				<name>BHT-600 (Busek)</name>
+				<name>BHT-600 (Busek) &#x2014; Xenon</name>
 				<thrust unit="N">0.039</thrust>
 				<isp unit="s">1500</isp>
 				<c_e unit="m/s">14709.98</c_e>
@@ -1261,14 +1397,52 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				<cathode_mass unit="kg">0.20</cathode_mass>
 				<TRL>6</TRL>
 				<propellant>Xenon</propellant>
+				<source>Busek Co. Inc., BHT-600 Hall-Effect Thruster Datasheet, satsearch.</source>
+				<!-- Evidence: 39 mN, Isp 1500 s, 600 W nominal, 300-800 W throttle, 2.6 kg, TRL 6 -->
+			</thruster>
+			<thruster>
+				<type>HET</type>
+				<name>BHT-600 (Busek) &#x2014; Iodine</name>
+				<thrust unit="N">0.039</thrust>
+				<isp unit="s">1500</isp>
+				<c_e unit="m/s">14709.98</c_e>
+				<power unit="W">600</power>
+				<power unit="W">
+					<min>300</min>
+					<max>800</max>
+				</power>
+				<mass unit="kg">2.6</mass>
+				<cathode>BHC-1500</cathode>
+				<cathode_location>External</cathode_location>
+				<cathode_mass unit="kg">0.20</cathode_mass>
+				<TRL>6</TRL>
 				<propellant>Iodine</propellant>
+				<source>Busek Co. Inc., BHT-600 Hall-Effect Thruster Datasheet, satsearch.</source>
+				<!-- Evidence: 39 mN, Isp 1500 s, 600 W nominal, 300-800 W throttle, 2.6 kg, TRL 6 -->
+			</thruster>
+			<thruster>
+				<type>HET</type>
+				<name>BHT-600 (Busek) &#x2014; Krypton</name>
+				<thrust unit="N">0.039</thrust>
+				<isp unit="s">1500</isp>
+				<c_e unit="m/s">14709.98</c_e>
+				<power unit="W">600</power>
+				<power unit="W">
+					<min>300</min>
+					<max>800</max>
+				</power>
+				<mass unit="kg">2.6</mass>
+				<cathode>BHC-1500</cathode>
+				<cathode_location>External</cathode_location>
+				<cathode_mass unit="kg">0.20</cathode_mass>
+				<TRL>6</TRL>
 				<propellant>Krypton</propellant>
 				<source>Busek Co. Inc., BHT-600 Hall-Effect Thruster Datasheet, satsearch.</source>
 				<!-- Evidence: 39 mN, Isp 1500 s, 600 W nominal, 300-800 W throttle, 2.6 kg, TRL 6 -->
 			</thruster>
 			<thruster>
 				<type>HET</type>
-				<name>BHT-1500 (Busek)</name>
+				<name>BHT-1500 (Busek) &#x2014; Xenon</name>
 				<thrust unit="N">
 					<min>0.058</min>
 					<max>0.179</max>
@@ -1290,14 +1464,66 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				<cathode_location>Internal Center Mounted</cathode_location>
 				<cathode_mass unit="kg">0.30</cathode_mass>
 				<propellant>Xenon</propellant>
+				<source>Busek Co. Inc., BHT-1500 Hall-Effect Thruster Datasheet, satsearch.</source>
+				<!-- Evidence: 58-179 mN, Isp 1615-2045 s, 1000-2700 W, 6.8 kg thruster + 0.3 kg BHC-2500 -->
+			</thruster>
+			<thruster>
+				<type>HET</type>
+				<name>BHT-1500 (Busek) &#x2014; Iodine</name>
+				<thrust unit="N">
+					<min>0.058</min>
+					<max>0.179</max>
+				</thrust>
+				<isp unit="s">
+					<min>1615</min>
+					<max>2045</max>
+				</isp>
+				<c_e unit="m/s">
+					<min>15837.74</min>
+					<max>20050.60</max>
+				</c_e>
+				<power unit="W">
+					<min>1000</min>
+					<max>2700</max>
+				</power>
+				<mass unit="kg">6.8</mass>
+				<cathode>BHC-2500</cathode>
+				<cathode_location>Internal Center Mounted</cathode_location>
+				<cathode_mass unit="kg">0.30</cathode_mass>
 				<propellant>Iodine</propellant>
+				<source>Busek Co. Inc., BHT-1500 Hall-Effect Thruster Datasheet, satsearch.</source>
+				<!-- Evidence: 58-179 mN, Isp 1615-2045 s, 1000-2700 W, 6.8 kg thruster + 0.3 kg BHC-2500 -->
+			</thruster>
+			<thruster>
+				<type>HET</type>
+				<name>BHT-1500 (Busek) &#x2014; Krypton</name>
+				<thrust unit="N">
+					<min>0.058</min>
+					<max>0.179</max>
+				</thrust>
+				<isp unit="s">
+					<min>1615</min>
+					<max>2045</max>
+				</isp>
+				<c_e unit="m/s">
+					<min>15837.74</min>
+					<max>20050.60</max>
+				</c_e>
+				<power unit="W">
+					<min>1000</min>
+					<max>2700</max>
+				</power>
+				<mass unit="kg">6.8</mass>
+				<cathode>BHC-2500</cathode>
+				<cathode_location>Internal Center Mounted</cathode_location>
+				<cathode_mass unit="kg">0.30</cathode_mass>
 				<propellant>Krypton</propellant>
 				<source>Busek Co. Inc., BHT-1500 Hall-Effect Thruster Datasheet, satsearch.</source>
 				<!-- Evidence: 58-179 mN, Isp 1615-2045 s, 1000-2700 W, 6.8 kg thruster + 0.3 kg BHC-2500 -->
 			</thruster>
 			<thruster>
 				<type>HET</type>
-				<name>BHT-8000 (Busek)</name>
+				<name>BHT-8000 (Busek) &#x2014; Xenon</name>
 				<thrust unit="N">
 					<min>0.325</min>
 					<max>0.449</max>
@@ -1324,7 +1550,69 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				<cathode_location>Internal Center Mounted</cathode_location>
 				<cathode_mass unit="kg">0.40</cathode_mass>
 				<propellant>Xenon</propellant>
+				<source>Busek Co. Inc., BHT-8000 Hall-Effect Thruster Datasheet, satsearch.</source>
+				<!-- Evidence: 325-449 mN, Isp 2210-3060 s, 8 kW nominal, 4-10 kW throttle, 400-800 V, 25 kg thruster -->
+			</thruster>
+			<thruster>
+				<type>HET</type>
+				<name>BHT-8000 (Busek) &#x2014; Iodine</name>
+				<thrust unit="N">
+					<min>0.325</min>
+					<max>0.449</max>
+				</thrust>
+				<isp unit="s">
+					<min>2210</min>
+					<max>3060</max>
+				</isp>
+				<c_e unit="m/s">
+					<min>21672.69</min>
+					<max>30005.35</max>
+				</c_e>
+				<power unit="W">8000</power>
+				<power unit="W">
+					<min>4000</min>
+					<max>10000</max>
+				</power>
+				<discharge_voltage unit="V">
+					<min>400</min>
+					<max>800</max>
+				</discharge_voltage>
+				<mass unit="kg">25</mass>
+				<cathode>BHC-5000</cathode>
+				<cathode_location>Internal Center Mounted</cathode_location>
+				<cathode_mass unit="kg">0.40</cathode_mass>
 				<propellant>Iodine</propellant>
+				<source>Busek Co. Inc., BHT-8000 Hall-Effect Thruster Datasheet, satsearch.</source>
+				<!-- Evidence: 325-449 mN, Isp 2210-3060 s, 8 kW nominal, 4-10 kW throttle, 400-800 V, 25 kg thruster -->
+			</thruster>
+			<thruster>
+				<type>HET</type>
+				<name>BHT-8000 (Busek) &#x2014; Krypton</name>
+				<thrust unit="N">
+					<min>0.325</min>
+					<max>0.449</max>
+				</thrust>
+				<isp unit="s">
+					<min>2210</min>
+					<max>3060</max>
+				</isp>
+				<c_e unit="m/s">
+					<min>21672.69</min>
+					<max>30005.35</max>
+				</c_e>
+				<power unit="W">8000</power>
+				<power unit="W">
+					<min>4000</min>
+					<max>10000</max>
+				</power>
+				<discharge_voltage unit="V">
+					<min>400</min>
+					<max>800</max>
+				</discharge_voltage>
+				<mass unit="kg">25</mass>
+				<cathode>BHC-5000</cathode>
+				<cathode_location>Internal Center Mounted</cathode_location>
+				<cathode_mass unit="kg">0.40</cathode_mass>
 				<propellant>Krypton</propellant>
 				<source>Busek Co. Inc., BHT-8000 Hall-Effect Thruster Datasheet, satsearch.</source>
 				<!-- Evidence: 325-449 mN, Isp 2210-3060 s, 8 kW nominal, 4-10 kW throttle, 400-800 V, 25 kg thruster -->
@@ -1670,7 +1958,7 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 			</thruster>
 			<thruster>
 				<type>HET</type>
-				<name>BHT-6000 (Busek)</name>
+				<name>BHT-6000 (Busek) &#x2014; Xenon</name>
 				<thrust unit="N">
 					<min>0.288</min>
 					<max>0.325</max>
@@ -1693,6 +1981,33 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				</total_impulse>
 				<efficiency>0.64</efficiency>
 				<propellant>Xenon</propellant>
+				<source>Busek Co. Inc., BHT-6000 Datasheet and Product Page, 2021; IEPC-2019-492 reference.</source>
+				<!-- Evidence: 288-325 mN, c_e 18639-26511 m/s, 5-6 kW, 13.5 kg, greater than 8.5 MNs total impulse, 64% efficiency -->
+			</thruster>
+			<thruster>
+				<type>HET</type>
+				<name>BHT-6000 (Busek) &#x2014; Krypton</name>
+				<thrust unit="N">
+					<min>0.288</min>
+					<max>0.325</max>
+				</thrust>
+				<isp unit="s">
+					<min>1900</min>
+					<max>2702</max>
+				</isp>
+				<c_e unit="m/s">
+					<min>18639</min>
+					<max>26511</max>
+				</c_e>
+				<power unit="W">
+					<min>5000</min>
+					<max>6000</max>
+				</power>
+				<mass unit="kg">13.5</mass>
+				<total_impulse unit="N·s">
+					<min>8500000</min>
+				</total_impulse>
+				<efficiency>0.64</efficiency>
 				<propellant>Krypton</propellant>
 				<source>Busek Co. Inc., BHT-6000 Datasheet and Product Page, 2021; IEPC-2019-492 reference.</source>
 				<!-- Evidence: 288-325 mN, c_e 18639-26511 m/s, 5-6 kW, 13.5 kg, greater than 8.5 MNs total impulse, 64% efficiency -->

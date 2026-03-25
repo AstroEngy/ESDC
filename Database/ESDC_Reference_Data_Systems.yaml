@@ -818,7 +818,7 @@ reference_data:
         # SETS datasheets (satsearch)
         # ----------------------------------------
         - type: HET
-          name: ST40 (SETS)
+          name: "ST40 (SETS) — Xenon"
           thrust:  # N
             min: 0.014
             max: 0.028
@@ -837,12 +837,60 @@ reference_data:
           dimension_x: 0.140  # m
           dimension_y: 0.117  # m
           dimension_z: 0.122  # m
-          propellant: Xenon, Argon, Krypton
+          propellant: Xenon
           cathode_type: Heaterless Hollow Cathode
           source: "SETS ST40 Hall-Effect Thruster Datasheet, satsearch."
           # Evidence: "14–28 mN, 250–600 W, Isp up to 1850 s, mass ~1.1 kg, 5000 h lifetime, 140×117×122 mm"
         - type: HET
-          name: ST-25 (SETS)
+          name: "ST40 (SETS) — Argon"
+          thrust:  # N
+            min: 0.014
+            max: 0.028
+          c_e:  # m/s
+            max: 18148.5
+          mass: 1.1  # kg
+          power:  # W
+            min: 250
+            max: 600
+          discharge_voltage:  # V
+            min: 250
+            max: 300
+          efficiency:
+            max: 0.40
+          lifetime: 18000000  # s
+          dimension_x: 0.140  # m
+          dimension_y: 0.117  # m
+          dimension_z: 0.122  # m
+          propellant: Argon
+          cathode_type: Heaterless Hollow Cathode
+          source: "SETS ST40 Hall-Effect Thruster Datasheet, satsearch."
+          # Evidence: "14–28 mN, 250–600 W, Isp up to 1850 s, mass ~1.1 kg, 5000 h lifetime, 140×117×122 mm"
+        - type: HET
+          name: "ST40 (SETS) — Krypton"
+          thrust:  # N
+            min: 0.014
+            max: 0.028
+          c_e:  # m/s
+            max: 18148.5
+          mass: 1.1  # kg
+          power:  # W
+            min: 250
+            max: 600
+          discharge_voltage:  # V
+            min: 250
+            max: 300
+          efficiency:
+            max: 0.40
+          lifetime: 18000000  # s
+          dimension_x: 0.140  # m
+          dimension_y: 0.117  # m
+          dimension_z: 0.122  # m
+          propellant: Krypton
+          cathode_type: Heaterless Hollow Cathode
+          source: "SETS ST40 Hall-Effect Thruster Datasheet, satsearch."
+          # Evidence: "14–28 mN, 250–600 W, Isp up to 1850 s, mass ~1.1 kg, 5000 h lifetime, 140×117×122 mm"
+        - type: HET
+          name: "ST-25 (SETS) — Xenon"
           thrust:  # N
             min: 0.005
             max: 0.011
@@ -865,7 +913,35 @@ reference_data:
           dimension_x: 0.060  # m
           dimension_y: 0.107  # m
           dimension_z: 0.0915  # m
-          propellant: Xenon, Krypton
+          propellant: Xenon
+          cathode_type: Preheated Hollow Cathode
+          source: "SETS ST-25 Hall-Effect Thruster Datasheet, satsearch."
+          # Evidence: "5–11 mN, 140–200 W, Isp 1100–1300 s, >30% efficiency, ≥3000 h lifetime"
+        - type: HET
+          name: "ST-25 (SETS) — Krypton"
+          thrust:  # N
+            min: 0.005
+            max: 0.011
+          c_e:  # m/s
+            min: 10787.3
+            max: 12748.6
+          mass: 0.95  # kg
+          power:  # W
+            min: 140
+            max: 200
+          discharge_voltage:  # V
+            min: 200
+            max: 280
+          efficiency:
+            min: 0.30
+          lifetime:  # s
+            min: 10800000
+          start_time:
+            max: 240
+          dimension_x: 0.060  # m
+          dimension_y: 0.107  # m
+          dimension_z: 0.0915  # m
+          propellant: Krypton
           cathode_type: Preheated Hollow Cathode
           source: "SETS ST-25 Hall-Effect Thruster Datasheet, satsearch."
           # Evidence: "5–11 mN, 140–200 W, Isp 1100–1300 s, >30% efficiency, ≥3000 h lifetime"
@@ -999,7 +1075,7 @@ reference_data:
         # Busek Co. Inc. datasheets (satsearch)
         # ----------------------------------------
         - type: HET
-          name: BHT-200 (Busek)
+          name: "BHT-200 (Busek) — Xenon"
           thrust: 0.013  # N
           c_e: 13630.24  # m/s
           isp: 1390  # s
@@ -1009,11 +1085,39 @@ reference_data:
           cathode: BHC-1500
           cathode_location: External
           cathode_mass: 0.12  # kg
-          propellant: Xenon, Iodine, Krypton
+          propellant: Xenon
           source: "Busek Co. Inc., BHT-200 Hall-Effect Thruster Datasheet, satsearch."
           # Evidence: "13 mN, Isp 1390 s, 200 W nominal, 250 V, 0.98 kg thruster + 0.12 kg cathode BHC-1500"
         - type: HET
-          name: BHT-600 (Busek)
+          name: "BHT-200 (Busek) — Iodine"
+          thrust: 0.013  # N
+          c_e: 13630.24  # m/s
+          isp: 1390  # s
+          power: 200  # W
+          discharge_voltage: 250  # V
+          mass: 0.98  # kg
+          cathode: BHC-1500
+          cathode_location: External
+          cathode_mass: 0.12  # kg
+          propellant: Iodine
+          source: "Busek Co. Inc., BHT-200 Hall-Effect Thruster Datasheet, satsearch."
+          # Evidence: "13 mN, Isp 1390 s, 200 W nominal, 250 V, 0.98 kg thruster + 0.12 kg cathode BHC-1500"
+        - type: HET
+          name: "BHT-200 (Busek) — Krypton"
+          thrust: 0.013  # N
+          c_e: 13630.24  # m/s
+          isp: 1390  # s
+          power: 200  # W
+          discharge_voltage: 250  # V
+          mass: 0.98  # kg
+          cathode: BHC-1500
+          cathode_location: External
+          cathode_mass: 0.12  # kg
+          propellant: Krypton
+          source: "Busek Co. Inc., BHT-200 Hall-Effect Thruster Datasheet, satsearch."
+          # Evidence: "13 mN, Isp 1390 s, 200 W nominal, 250 V, 0.98 kg thruster + 0.12 kg cathode BHC-1500"
+        - type: HET
+          name: "BHT-600 (Busek) — Xenon"
           thrust: 0.039  # N
           c_e: 14709.98  # m/s
           isp: 1500  # s
@@ -1026,11 +1130,45 @@ reference_data:
           cathode_location: External
           cathode_mass: 0.20  # kg
           TRL: 6
-          propellant: Xenon, Iodine, Krypton
+          propellant: Xenon
           source: "Busek Co. Inc., BHT-600 Hall-Effect Thruster Datasheet, satsearch."
           # Evidence: "39 mN, Isp 1500 s, 600 W nominal, 300–800 W throttle, 2.6 kg, TRL 6"
         - type: HET
-          name: BHT-1500 (Busek)
+          name: "BHT-600 (Busek) — Iodine"
+          thrust: 0.039  # N
+          c_e: 14709.98  # m/s
+          isp: 1500  # s
+          power: 600  # W
+          power:  # W
+            min: 300
+            max: 800
+          mass: 2.6  # kg
+          cathode: BHC-1500
+          cathode_location: External
+          cathode_mass: 0.20  # kg
+          TRL: 6
+          propellant: Iodine
+          source: "Busek Co. Inc., BHT-600 Hall-Effect Thruster Datasheet, satsearch."
+          # Evidence: "39 mN, Isp 1500 s, 600 W nominal, 300–800 W throttle, 2.6 kg, TRL 6"
+        - type: HET
+          name: "BHT-600 (Busek) — Krypton"
+          thrust: 0.039  # N
+          c_e: 14709.98  # m/s
+          isp: 1500  # s
+          power: 600  # W
+          power:  # W
+            min: 300
+            max: 800
+          mass: 2.6  # kg
+          cathode: BHC-1500
+          cathode_location: External
+          cathode_mass: 0.20  # kg
+          TRL: 6
+          propellant: Krypton
+          source: "Busek Co. Inc., BHT-600 Hall-Effect Thruster Datasheet, satsearch."
+          # Evidence: "39 mN, Isp 1500 s, 600 W nominal, 300–800 W throttle, 2.6 kg, TRL 6"
+        - type: HET
+          name: "BHT-1500 (Busek) — Xenon"
           thrust:  # N
             min: 0.058
             max: 0.179
@@ -1047,11 +1185,53 @@ reference_data:
           cathode: BHC-2500
           cathode_location: Internal Center Mounted
           cathode_mass: 0.30  # kg
-          propellant: Xenon, Iodine, Krypton
+          propellant: Xenon
           source: "Busek Co. Inc., BHT-1500 Hall-Effect Thruster Datasheet, satsearch."
           # Evidence: "58–179 mN, Isp 1615–2045 s, 1000–2700 W, 6.8 kg thruster + 0.3 kg BHC-2500"
         - type: HET
-          name: BHT-8000 (Busek)
+          name: "BHT-1500 (Busek) — Iodine"
+          thrust:  # N
+            min: 0.058
+            max: 0.179
+          c_e:  # m/s
+            min: 15837.74
+            max: 20050.60
+          isp:  # s
+            min: 1615
+            max: 2045
+          power:  # W
+            min: 1000
+            max: 2700
+          mass: 6.8  # kg
+          cathode: BHC-2500
+          cathode_location: Internal Center Mounted
+          cathode_mass: 0.30  # kg
+          propellant: Iodine
+          source: "Busek Co. Inc., BHT-1500 Hall-Effect Thruster Datasheet, satsearch."
+          # Evidence: "58–179 mN, Isp 1615–2045 s, 1000–2700 W, 6.8 kg thruster + 0.3 kg BHC-2500"
+        - type: HET
+          name: "BHT-1500 (Busek) — Krypton"
+          thrust:  # N
+            min: 0.058
+            max: 0.179
+          c_e:  # m/s
+            min: 15837.74
+            max: 20050.60
+          isp:  # s
+            min: 1615
+            max: 2045
+          power:  # W
+            min: 1000
+            max: 2700
+          mass: 6.8  # kg
+          cathode: BHC-2500
+          cathode_location: Internal Center Mounted
+          cathode_mass: 0.30  # kg
+          propellant: Krypton
+          source: "Busek Co. Inc., BHT-1500 Hall-Effect Thruster Datasheet, satsearch."
+          # Evidence: "58–179 mN, Isp 1615–2045 s, 1000–2700 W, 6.8 kg thruster + 0.3 kg BHC-2500"
+        - type: HET
+          name: "BHT-8000 (Busek) — Xenon"
           thrust:  # N
             min: 0.325
             max: 0.449
@@ -1072,7 +1252,57 @@ reference_data:
           cathode: BHC-5000
           cathode_location: Internal Center Mounted
           cathode_mass: 0.40  # kg
-          propellant: Xenon, Iodine, Krypton
+          propellant: Xenon
+          source: "Busek Co. Inc., BHT-8000 Hall-Effect Thruster Datasheet, satsearch."
+          # Evidence: "325–449 mN, Isp 2210–3060 s, 8 kW nominal, 4–10 kW throttle, 400–800 V, 25 kg thruster"
+        - type: HET
+          name: "BHT-8000 (Busek) — Iodine"
+          thrust:  # N
+            min: 0.325
+            max: 0.449
+          c_e:  # m/s
+            min: 21672.69
+            max: 30005.35
+          isp:  # s
+            min: 2210
+            max: 3060
+          power: 8000  # W
+          power:  # W
+            min: 4000
+            max: 10000
+          discharge_voltage:  # V
+            min: 400
+            max: 800
+          mass: 25  # kg
+          cathode: BHC-5000
+          cathode_location: Internal Center Mounted
+          cathode_mass: 0.40  # kg
+          propellant: Iodine
+          source: "Busek Co. Inc., BHT-8000 Hall-Effect Thruster Datasheet, satsearch."
+          # Evidence: "325–449 mN, Isp 2210–3060 s, 8 kW nominal, 4–10 kW throttle, 400–800 V, 25 kg thruster"
+        - type: HET
+          name: "BHT-8000 (Busek) — Krypton"
+          thrust:  # N
+            min: 0.325
+            max: 0.449
+          c_e:  # m/s
+            min: 21672.69
+            max: 30005.35
+          isp:  # s
+            min: 2210
+            max: 3060
+          power: 8000  # W
+          power:  # W
+            min: 4000
+            max: 10000
+          discharge_voltage:  # V
+            min: 400
+            max: 800
+          mass: 25  # kg
+          cathode: BHC-5000
+          cathode_location: Internal Center Mounted
+          cathode_mass: 0.40  # kg
+          propellant: Krypton
           source: "Busek Co. Inc., BHT-8000 Hall-Effect Thruster Datasheet, satsearch."
           # Evidence: "325–449 mN, Isp 2210–3060 s, 8 kW nominal, 4–10 kW throttle, 400–800 V, 25 kg thruster"
         # ----------------------------------------
@@ -1356,7 +1586,7 @@ reference_data:
           source: "Mullins et al., Development of a 5kW Class Hall Thruster, IEPC-2019-492, 36th IEPC, University of Vienna, Sept 2019."
           # Evidence: "310 mN+ thrust, c_e >19613 m/s, 3–6 kW, 61% efficiency"
         - type: HET
-          name: BHT-6000 (Busek)
+          name: "BHT-6000 (Busek) — Xenon"
           thrust:  # N
             min: 0.288
             max: 0.325
@@ -1370,7 +1600,25 @@ reference_data:
           total_impulse:  # N·s
             min: 8500000
           efficiency: 0.64
-          propellant: Xenon, Krypton
+          propellant: Xenon
+          source: "Busek Co. Inc., BHT-6000 Datasheet and Product Page, 2021; IEPC-2019-492 reference."
+          # Evidence: "288–325 mN, c_e 18639–26511 m/s, 5–6 kW, 13.5 kg, >8.5 MNs total impulse, 64% efficiency"
+        - type: HET
+          name: "BHT-6000 (Busek) — Krypton"
+          thrust:  # N
+            min: 0.288
+            max: 0.325
+          c_e:  # m/s
+            min: 18639
+            max: 26511
+          power:  # W
+            min: 5000
+            max: 6000
+          mass: 13.5  # kg
+          total_impulse:  # N·s
+            min: 8500000
+          efficiency: 0.64
+          propellant: Krypton
           source: "Busek Co. Inc., BHT-6000 Datasheet and Product Page, 2021; IEPC-2019-492 reference."
           # Evidence: "288–325 mN, c_e 18639–26511 m/s, 5–6 kW, 13.5 kg, >8.5 MNs total impulse, 64% efficiency"
         # ----------------------------------------
