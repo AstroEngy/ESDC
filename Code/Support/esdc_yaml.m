@@ -94,27 +94,18 @@ classdef esdc_yaml
                     [key, value_str] = esdc_yaml.parse_key_value(line);
                     
                     if isempty(value_str)
-                        % Check next line to determine if list or nested struct
-                        if i < length(lines)
-                            next_line_text = lines{i+1};
-                            next_trimmed = strtrim(next_line_text);
-                            next_indent = esdc_yaml.get_indent_level(next_line_text);
-                            
-                            if ~isempty(next_trimmed) && next_trimmed(1) ~= '#' && next_indent > indent
-                                if length(next_trimmed) >= 2 && strcmp(next_trimmed(1:2), '- ')
-                                    % It's a list
-                                    [result.(key), i] = esdc_yaml.parse_list(lines, i+1, indent);
-                                else
-                                    % It's a nested struct
-                                    [result.(key), i] = esdc_yaml.parse_block(lines, i+1, indent);
-                                end
+                        % Check ahead (skipping blank/comment lines) to detect list or struct
+                        [next_trimmed, next_indent] = esdc_yaml.peek_next_content(lines, i+1);
+                        if next_indent > indent
+                            if length(next_trimmed) >= 2 && strcmp(next_trimmed(1:2), '- ')
+                                % It's a list
+                                [result.(key), i] = esdc_yaml.parse_list(lines, i+1, indent);
                             else
-                                % Empty value
-                                result.(key) = struct();
-                                i = i + 1;
+                                % It's a nested struct
+                                [result.(key), i] = esdc_yaml.parse_block(lines, i+1, indent);
                             end
                         else
-                            % End of file
+                            % Empty value (nothing follows at deeper indent)
                             result.(key) = struct();
                             i = i + 1;
                         end
@@ -251,16 +242,13 @@ classdef esdc_yaml
                             result.(key2) = esdc_yaml.parse_value(value_str2);
                             i = i + 1;
                         else
-                            % Nested structure in list object
-                            if i < length(lines)
-                                next_line_text = lines{i+1};
-                                next_indent = esdc_yaml.get_indent_level(next_line_text);
-                                
-                                if next_indent > indent
-                                    [result.(key2), i] = esdc_yaml.parse_block(lines, i+1, indent);
+                            % Nested structure or list in list object — skip blanks/comments
+                            [next_trimmed2, next_indent2] = esdc_yaml.peek_next_content(lines, i+1);
+                            if next_indent2 > indent
+                                if length(next_trimmed2) >= 2 && strcmp(next_trimmed2(1:2), '- ')
+                                    [result.(key2), i] = esdc_yaml.parse_list(lines, i+1, indent);
                                 else
-                                    result.(key2) = struct();
-                                    i = i + 1;
+                                    [result.(key2), i] = esdc_yaml.parse_block(lines, i+1, indent);
                                 end
                             else
                                 result.(key2) = struct();
@@ -407,6 +395,23 @@ classdef esdc_yaml
         function result = str_contains(str, pattern)
             % Compatible alternative to contains() for Octave 4.x
             result = ~isempty(strfind(str, pattern));
+        end
+
+        function [next_trimmed, next_indent] = peek_next_content(lines, from_line)
+            % Scan forward from from_line, skipping blank lines and comment
+            % lines, and return the trimmed text and indent level of the
+            % first meaningful line found.  Returns ('', -1) if none found.
+            next_trimmed = '';
+            next_indent  = -1;
+            for k = from_line:length(lines)
+                t = strtrim(lines{k});
+                if isempty(t) || (length(t) > 0 && t(1) == '#')
+                    continue;
+                end
+                next_trimmed = t;
+                next_indent  = esdc_yaml.get_indent_level(lines{k});
+                return;
+            end
         end
         
         function write_recursive(fid, data, level, indent_size)
