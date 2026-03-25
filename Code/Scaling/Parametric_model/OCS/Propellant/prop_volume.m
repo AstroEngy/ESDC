@@ -24,5 +24,17 @@
 ## Created: 2021-07-05
 
 function V_p = prop_volume (m_p, rho_p)
-  V_p = m_p/rho_p
+% prop_volume — Propellant storage volume [m³] from mass and density.
+%
+%   V_p = m_p / rho_p
+%
+% Inputs:
+%   m_p   — propellant mass [kg]
+%   rho_p — propellant storage density [kg/m³] (from prop_density)
+%
+% Output:
+%   V_p   — propellant volume [m³]
+
+  V_p = m_p ./ rho_p;
+
 endfunction
