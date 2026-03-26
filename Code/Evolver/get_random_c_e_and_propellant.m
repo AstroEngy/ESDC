@@ -20,7 +20,11 @@ function [c_e propellant] = get_random_c_e_and_propellant(data, propulsion, mode
     for i=1:n_thrusters
         val = scalar_field(data.(propulsion).thruster{i}, 'c_e');
         c_e_list(end+1) = val;  % NaN if field missing or non-numeric
-        propellant_list{1,end+1} = data.(propulsion).thruster{i}.propellant;
+        if isfield(data.(propulsion).thruster{i}, 'propellant')
+          propellant_list{1,end+1} = data.(propulsion).thruster{i}.propellant;
+        else
+          propellant_list{1,end+1} = 'unknown';
+        end
     end
     
     % Remove entries without a valid c_e
@@ -28,6 +32,10 @@ function [c_e propellant] = get_random_c_e_and_propellant(data, propulsion, mode
     c_e_list = c_e_list(valid);
     propellant_list = propellant_list(valid);
     n_valid = numel(c_e_list);
+
+    if n_valid == 0
+      error('get_random_c_e_and_propellant: no thruster with valid c_e found for propulsion type "%s" — skipping this selection.', propulsion);
+    end
 
     % Apply mode filter
     c_e_median = median(c_e_list);

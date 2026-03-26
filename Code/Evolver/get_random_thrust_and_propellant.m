@@ -20,7 +20,11 @@ function [F propellant] = get_random_thrust_and_propellant(data, propulsion, mod
     for i=1:n_thrusters
         val = scalar_field(data.(propulsion).thruster{i}, 'thrust');
         F_list(end+1) = val;  % NaN if field missing or non-numeric
-        propellant_list{1,end+1} = data.(propulsion).thruster{i}.propellant;
+        if isfield(data.(propulsion).thruster{i}, 'propellant')
+          propellant_list{1,end+1} = data.(propulsion).thruster{i}.propellant;
+        else
+          propellant_list{1,end+1} = 'unknown';
+        end
     end
 
     % Remove entries without a valid thrust
