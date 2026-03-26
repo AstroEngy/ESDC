@@ -8,7 +8,7 @@ function [mass_epropulsion_power ] = mass_budget_propulsion(data, mass_propellan
   end
   
   mass_epropulsion_power = struct();                                                                                      %initialize structure
-  mass_epropulsion_power.tank           = m_scale_tank(mass_propellant, data.propellant);                                 % TODO rewrite function with correlates add margin to tank sizing
+  mass_epropulsion_power.tank           = m_scale_tank(mass_propellant, data.propellant, db_data);
   mass_epropulsion_power.thruster       = m_scale_thruster(data.power_thruster, data.propulsion_system, data.propellant, db_data); % Thruster mass estimation by correlation
   
   %only if PPU scaling exists, check for filename, if yes apply PPU scaling  
