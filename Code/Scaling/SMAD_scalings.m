@@ -66,12 +66,20 @@ endfunction
 
 
 function [m_dry] = determine_m_dry(data)
-    if isfield(data,'dv') && isfield(data,'c_e')
-      m_dry = exp(-data.dv/data.c_e)*data.mass;
+    % Support both 'dv' and 'deltav' field names (make_population stores 'deltav')
+    if isfield(data, 'dv')
+      dv = data.dv;
+    elseif isfield(data, 'deltav')
+      dv = data.deltav;
+    else
+      dv = NaN;
+    end
+    if ~isnan(dv) && isfield(data,'c_e') && dv > 0 && data.c_e > 0
+      m_dry = exp(-dv/data.c_e)*data.mass;
     elseif isfield(data,'mass_propellant')
       m_dry = data.mass - data.mass_propellant;
     else
-      m_dry = data.mass; %
+      m_dry = data.mass;
     endif
 endfunction
 
