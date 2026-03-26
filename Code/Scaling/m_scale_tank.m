@@ -69,7 +69,7 @@ function m_tank = m_scale_tank(m_prop, propellant, db_data)
             propellant, numel(vol_data));
   end
 
-  % 5. Build data matrix for scaling_linear:
+  % 5. Build data matrix for scaling_linear:  %TODO: adapt here for proper scaling law derivation and handling
   %      data(3,:) = mass values (output), data(4,:) = volume values (input)
   [vol_s, si] = sort(vol_data);
   mass_s      = mass_data(si);

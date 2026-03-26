@@ -33,12 +33,15 @@
 %         .source        DB source string
 %         + subsystem-specific performance fields
 
-function evolution_data = select_components(evolution_data, db_data)
+function evolution_data = select_components(evolution_data, db_data, verbose)
+  % verbose (optional, default false): set to true to print per-individual
+  % propulsion selection diagnostics to the CLI.
+  if nargin < 3; verbose = false; end
 
   disp('Component Selection ...');
   fflush(stdout);
-
-  evolution_data = select_propulsion_components(evolution_data, db_data);
+  verbose = true;
+  evolution_data = select_propulsion_components(evolution_data, db_data, verbose);
  # evolution_data = select_power_generation_components(evolution_data, db_data);
  # evolution_data = select_attitude_control_components(evolution_data, db_data);
  # evolution_data = select_thermal_components(evolution_data, db_data);

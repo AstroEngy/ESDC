@@ -27,8 +27,12 @@
 %   jet power is preferred.
 %
 % Piping:
-%   Piping mass is estimated as PIPING_FRACTION * (thruster_cluster_mass + tank_mass + ppu_mass).
-%   Default fraction: 0.05 (5 %).
+%   Per SMAD (3rd ed.): tank mass + feed system (piping, valves, lines) combined
+%   account for 10–20 % of the total propulsion system wet mass
+%   (wet mass = propellant + thruster cluster + tank cluster + PPU).
+%   Piping mass is therefore computed AFTER hardware selection using the
+%   top-ranked candidate masses, not reserved upfront from the dry budget.
+%   PIPING_FRACTION = 0.20 (worst-case upper bound of the 10–20 % SMAD range).
 %
 % Results are appended to:
 %   individual.component_matches.propulsion_system
@@ -39,16 +43,31 @@
 %     .design_power_jet         [W]
 %     .design_propellant_mass   [kg] (from subsystem_masses.mass_propellant)
 %     .design_mass_budget       [kg] (from subsystem_masses.mass_propulsion)
-%     .piping_fraction          dimensionless fraction used for piping estimate
+%     .piping_fraction          PIPING_FRACTION constant used (dimensionless)
+%     .piping_wet_mass          wet propulsion mass used as piping base [kg]
+%     .piping_mass_kg           estimated piping + feed system mass [kg]
+%     .hardware_mass_budget     = design_mass_budget (full dry budget; no upfront reservation)
 %     .no_solution_within_mass_budget   0/1 flag
 %     .thruster_candidates      struct array (best first)
 %     .tank_candidates          struct array (best first)
 %     .ppu_candidates           struct array (best first, empty if PPU not required)
 
-function evolution_data = select_propulsion_components(evolution_data, db_data)
+
+%TODO 20% margin on propellant volume , generally Per SMAD (3rd ed.): tank + 
+%TODO PPU scaling for clustering
+%TODO tank scaling for clustering
+%TODO: confidence calcing
+
+function evolution_data = select_propulsion_components(evolution_data, db_data, verbose)
+  % verbose (optional, default false): when true, prints per-individual
+  % propulsion selection diagnostics showing the lineage hint (scaling model
+  % starting point) and what was actually selected after DB cross-verification.
+  if nargin < 3; verbose = false; end
 
   EP_TYPES = {'arcjet','gridionthruster','HET','FEEP','electrospray','ion'};
-  PIPING_FRACTION = 0.05;
+
+  % Use worst-case 0.20; applied post-hoc to (propellant + selected hardware masses).
+  PIPING_FRACTION = 0.20;   % Per SMAD (3rd ed.): tank + feed system ≈ 10–20 % of total propulsion wet mass.
 
   if ~isfield(db_data, 'reference_data') || ...
      ~isfield(db_data.reference_data, 'propulsion_system')
@@ -61,18 +80,38 @@ function evolution_data = select_propulsion_components(evolution_data, db_data)
   for i = 1:n_cases
     for j = 1:n_seeds
 
-      ind = evolution_data{end}(i, j);
-      cm  = struct();         %component matches
+      ind = evolution_data{end}(i, j);  % individual: one design solution from the best generation
+      cm  = struct();                   % component matches
 
-      % Skip individuals without a valid propulsion design point
-      if ~isfield(ind, 'propulsion_system') || isempty(ind.propulsion_system) || ...
-         ~isfield(ind, 'c_e')   || ~isfield(ind, 'thrust') || ...
-         isnan(ind.c_e) || isnan(ind.thrust)
+      % Skip individuals that require no propulsion component selection:
+      %   - missing or empty propulsion_system field
+      %   - propulsion_system is 'No Propulsion' (sc_type 1)
+      %   - c_e or thrust is NaN (invalid / not yet computed)
+      %   - thrust is zero (no propulsion needed)
+      %   - no delta-v defined and thrust/c_e are both NaN
+      no_prop_reason = '';
+      if ~isfield(ind, 'propulsion_system') || isempty(ind.propulsion_system)
+        no_prop_reason = 'propulsion_system field missing or empty';
+      elseif strcmpi(strtrim(ind.propulsion_system), 'No Propulsion')
+        no_prop_reason = 'sc_type No Propulsion';
+      elseif ~isfield(ind, 'c_e') || ~isfield(ind, 'thrust') || ...
+             isnan(ind.c_e) || isnan(ind.thrust)
+        no_prop_reason = 'c_e or thrust is NaN';
+      elseif ind.thrust == 0
+        no_prop_reason = 'thrust is zero';
+      end
+
+      if ~isempty(no_prop_reason)
         cm.system_type = '';
+        cm.skip_reason  = no_prop_reason;
         cm.thruster_candidates = struct([]);
         cm.tank_candidates     = struct([]);
         cm.ppu_candidates      = struct([]);
         evolution_data{end}(i,j).component_matches.propulsion_system = cm;
+        if verbose
+          fprintf('  [PropSel] Case %d / Seed %d  skipped: %s\n', i, j, no_prop_reason);
+          fflush(stdout);
+        end
         continue;
       end
 
@@ -101,17 +140,10 @@ function evolution_data = select_propulsion_components(evolution_data, db_data)
       cm.design_power_jet        = d_power;
       cm.design_propellant_mass  = d_prop_mass;
       cm.design_mass_budget      = d_mass_budget;
-      cm.piping_fraction         = PIPING_FRACTION;
-
-      % Reserve piping mass upfront; hardware components must fit within the remainder.
-      piping_reserved = NaN;
-      hardware_mass_budget = d_mass_budget;
-      if ~isnan(d_mass_budget)
-        piping_reserved      = PIPING_FRACTION * d_mass_budget;
-        hardware_mass_budget = d_mass_budget - piping_reserved;
-      end
-      cm.piping_mass_reserved    = piping_reserved;
-      cm.hardware_mass_budget    = hardware_mass_budget;
+      cm.piping_fraction      = PIPING_FRACTION;
+      % Hardware competes for the full dry propulsion mass budget.
+      % Piping is computed post-hoc after hardware selection (see section 4 below).
+      cm.hardware_mass_budget = d_mass_budget;
 
       % Scaling-hint masses from the last successful lineage (subsystem mass model).
       % These are the component mass estimates the evolver converged on; they act as
@@ -144,7 +176,7 @@ function evolution_data = select_propulsion_components(evolution_data, db_data)
       % 1. THRUSTER SELECTION
       % ----------------------------------------------------------------
       [thruster_cands, thruster_cands_ob] = select_thrusters(ps_db, propellant, ...
-          d_thrust, d_c_e, d_power, hardware_mass_budget, hint_thruster_mass);
+          d_thrust, d_c_e, d_power, d_mass_budget, hint_thruster_mass);
 
       if ~isempty(thruster_cands)
         cm.no_solution_within_mass_budget = 0;
@@ -172,7 +204,123 @@ function evolution_data = select_propulsion_components(evolution_data, db_data)
         cm.ppu_candidates = struct([]);
       end
 
+      % ----------------------------------------------------------------
+      % 4. PIPING / FEED SYSTEM MASS  (post-hoc from wet propulsion mass)
+      % Per SMAD (3rd ed.): tank + feed system ≈ 10–20 % of wet propulsion mass.
+      % m_wet = propellant + thruster cluster + tank cluster + PPU
+      % m_piping = PIPING_FRACTION * m_wet
+      % Computed from top-ranked candidates; NaN if any mass is unknown.
+      % ----------------------------------------------------------------
+      m_sel_thruster = NaN;
+      if ~isempty(cm.thruster_candidates); m_sel_thruster = cm.thruster_candidates(1).mass_cluster; end
+      m_sel_tank = NaN;
+      if ~isempty(cm.tank_candidates);     m_sel_tank     = cm.tank_candidates(1).mass_cluster;    end
+      m_sel_ppu = 0;  % zero for chemical propulsion where PPU is not required
+      if ~isempty(cm.ppu_candidates);      m_sel_ppu      = cm.ppu_candidates(1).mass;              end
+
+      m_wet_prop = NaN;
+      m_piping   = NaN;
+      if ~isnan(d_prop_mass) && ~isnan(m_sel_thruster) && ~isnan(m_sel_tank)
+        m_wet_prop = d_prop_mass + m_sel_thruster + m_sel_tank + m_sel_ppu;
+        m_piping   = PIPING_FRACTION * m_wet_prop;
+      end
+      cm.piping_wet_mass = m_wet_prop;  % wet propulsion mass [kg] used as base
+      cm.piping_mass_kg  = m_piping;    % estimated piping + feed system mass [kg]
+
       evolution_data{end}(i,j).component_matches.propulsion_system = cm;
+
+      % ----------------------------------------------------------------
+      % VERBOSE DEBUG OUTPUT
+      % ----------------------------------------------------------------
+      if verbose
+        fprintf('\n  [PropSel] Case %d / Seed %d  |  %s + %s\n', i, j, prop_sys, propellant);
+        fprintf('    Design  : thrust=%.4g N  c_e=%.4g m/s  power=%.4g W  prop_mass=%.4g kg  budget=%.4g kg\n', ...
+                d_thrust, d_c_e, d_power, d_prop_mass, d_mass_budget);
+
+        % --- Lineage hint (scaling-model starting point) ---
+        fprintf('    Hint (lineage scaling model):\n');
+        if ~isnan(hint_thruster_mass)
+          fprintf('      Thruster cluster mass : %.4g kg\n', hint_thruster_mass);
+        else
+          fprintf('      Thruster cluster mass : (no hint)\n');
+        end
+        if ~isnan(hint_tank_mass)
+          fprintf('      Tank cluster mass     : %.4g kg\n', hint_tank_mass);
+        else
+          fprintf('      Tank cluster mass     : (no hint)\n');
+        end
+        if ~isnan(hint_ppu_mass)
+          fprintf('      PPU mass              : %.4g kg\n', hint_ppu_mass);
+        else
+          fprintf('      PPU mass              : (no hint / not required)\n');
+        end
+
+        % --- Final selection (top-ranked after DB cross-verification) ---
+        fprintf('    Selected (DB cross-verification):\n');
+        if ~isempty(cm.thruster_candidates)
+          t = cm.thruster_candidates(1);
+          hint_diff_t = '';
+          if ~isnan(hint_thruster_mass) && ~isnan(t.mass_cluster)
+            pct = 100 * (t.mass_cluster - hint_thruster_mass) / hint_thruster_mass;
+            if abs(pct) < 5
+              hint_diff_t = '  [~hint]';
+            else
+              hint_diff_t = sprintf('  [%+.1f%% vs hint]', pct);
+            end
+          end
+          fprintf('      Thruster : %s (%s)  n=%d  mass=%.4g kg  score=%.3f%s\n', ...
+                  t.name, t.company, t.n_thrusters, t.mass_cluster, t.score, hint_diff_t);
+          if numel(cm.thruster_candidates) > 1
+            t2 = cm.thruster_candidates(2);
+            fprintf('               runner-up: %s (%s)  n=%d  mass=%.4g kg  score=%.3f\n', ...
+                    t2.name, t2.company, t2.n_thrusters, t2.mass_cluster, t2.score);
+          end
+        else
+          fprintf('      Thruster : (none found)\n');
+        end
+        if ~isempty(cm.tank_candidates)
+          tk = cm.tank_candidates(1);
+          hint_diff_tk = '';
+          if ~isnan(hint_tank_mass) && ~isnan(tk.mass_cluster)
+            pct = 100 * (tk.mass_cluster - hint_tank_mass) / hint_tank_mass;
+            if abs(pct) < 5
+              hint_diff_tk = '  [~hint]';
+            else
+              hint_diff_tk = sprintf('  [%+.1f%% vs hint]', pct);
+            end
+          end
+          fprintf('      Tank     : %s (%s)  n=%d  mass=%.4g kg  score=%.3f%s\n', ...
+                  tk.name, tk.company, tk.n_tanks, tk.mass_cluster, tk.score, hint_diff_tk);
+        else
+          fprintf('      Tank     : (none found)\n');
+        end
+        if ~isempty(cm.ppu_candidates)
+          p = cm.ppu_candidates(1);
+          hint_diff_p = '';
+          if ~isnan(hint_ppu_mass) && ~isnan(p.mass)
+            pct = 100 * (p.mass - hint_ppu_mass) / hint_ppu_mass;
+            if abs(pct) < 5
+              hint_diff_p = '  [~hint]';
+            else
+              hint_diff_p = sprintf('  [%+.1f%% vs hint]', pct);
+            end
+          end
+          fprintf('      PPU      : %s (%s)  mass=%.4g kg  power=%.4g W  score=%.3f%s\n', ...
+                  p.name, p.company, p.mass, p.power, p.score, hint_diff_p);
+        elseif any(strcmpi(prop_sys, EP_TYPES))
+          fprintf('      PPU      : (none found in DB)\n');
+        end
+        if isfield(cm, 'no_solution_within_mass_budget') && cm.no_solution_within_mass_budget
+          fprintf('      ** NOTE: no thruster within mass budget — over-budget fallback used\n');
+        end
+        if ~isnan(cm.piping_mass_kg)
+          fprintf('    Piping   : %.4g kg  (%.0f %% × wet mass %.4g kg)\n', ...
+                  cm.piping_mass_kg, PIPING_FRACTION*100, cm.piping_wet_mass);
+        else
+          fprintf('    Piping   : (cannot compute — hardware mass unknown)\n');
+        end
+        fflush(stdout);
+      end  % verbose
 
     end  % seed loop
   end  % case loop
@@ -204,13 +352,21 @@ function [cands, cands_ob] = select_thrusters(ps_db, propellant, d_thrust, d_c_e
       end
     end
 
-    e_thrust = scalar_midpoint(entry, 'thrust');
-    e_c_e    = scalar_midpoint(entry, 'c_e');
-    e_power  = scalar_midpoint(entry, 'power_jet');
-    e_mass   = scalar_midpoint(entry, 'mass');
-    e_TRL    = scalar_midpoint(entry, 'TRL');
+    % Extract representative scalar values from the DB entry.
+    % scalar_midpoint returns the field value directly if it is a single number,
+    % or (min+max)/2 if the DB stores a range struct {min, max}.  Returns NaN if
+    % the field is absent or in an unrecognised format.
+    e_thrust = scalar_midpoint(entry, 'thrust');    % single-thruster thrust [N]  — used to compute cluster count n = ceil(d_thrust / e_thrust)
+    e_c_e    = scalar_midpoint(entry, 'c_e');       % effective exhaust velocity [m/s] — scored for proximity to design c_e
+    e_power  = scalar_midpoint(entry, 'power_jet'); % jet power of one thruster [W]  — scaled by n to check cluster stays within power budget
+    e_mass   = scalar_midpoint(entry, 'mass');      % dry mass of one thruster [kg]   — scaled by n for cluster mass; NaN entries are filtered out below
+    e_TRL    = scalar_midpoint(entry, 'TRL');       % Technology Readiness Level       — stored on candidate struct for informational output only
 
+    % Skip entries without a usable thrust value — cannot size a cluster without it.
     if isnan(e_thrust) || e_thrust <= 0; continue; end
+    % Skip entries without a mass value — cluster mass would be NaN, making mass-budget
+    % checks, hint scoring, and the over-budget fallback all meaningless.
+    if isnan(e_mass);                    continue; end
 
     % Cluster sizing
     n = ceil(d_thrust / e_thrust);

@@ -66,7 +66,11 @@ startTime = tic();                               % Reference timer for performan
     evolutionElapsedTime = toc(evolutionStartTime);          % Calculate elapsed time for evolution
     fprintf('Evolution completed in %.2f seconds (%.2f minutes)\n', evolutionElapsedTime, evolutionElapsedTime/60);
 
-    %Output
+
+    %Part Selector
+    evolution_data = select_components(evolution_data, db_data);
+
+    %Output Selection
     output_XML_generation(input, db_data, config, evolution_data,runID);
 
     %Visual Output   - old code needs revision and adaption
