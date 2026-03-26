@@ -515,7 +515,7 @@ reference_data:
         # RAFAEL Space Propulsion 2021 Catalog (chemical thrusters)
         # ----------------------------------------
         - type: chemical
-          name: "RAFAEL LT-1N-SP (Type 1)"
+          name: RAFAEL LT-1N-SP (Type 1)
           thrust:  # N
             min: 1.3
             max: 1.4
@@ -526,7 +526,7 @@ reference_data:
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.44/81."
           # Evidence: "Thrust BOL steady state 1.3÷1.4 N (Type 1), Isp >205 s @5.5 bar, mass ≤310 g, total impulse 100,000 Ns"
         - type: chemical
-          name: "RAFAEL LT-1N-SP (Type 2)"
+          name: RAFAEL LT-1N-SP (Type 2)
           thrust:  # N
             min: 1.0
             max: 1.1
@@ -537,7 +537,7 @@ reference_data:
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.44/81."
           # Evidence: "Thrust BOL steady state 1.0÷1.1 N (Type 2), Isp >205 s @5.5 bar, mass ≤310 g, total impulse 60,000 Ns"
         - type: chemical
-          name: "RAFAEL LT-5N-SP"
+          name: RAFAEL LT-5N-SP
           thrust:  # N
             min: 1.8
             max: 6.1
@@ -548,7 +548,7 @@ reference_data:
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.46/81."
           # Evidence: "Thrust 6.1 N @22 bar to 1.8 N @5.5 bar, Isp >210 s @5.5 bar, mass ≤310 g, total impulse 74,000 Ns"
         - type: chemical
-          name: "RAFAEL HT-25N-SP"
+          name: RAFAEL HT-25N-SP
           thrust:  # N
             min: 9.5
             max: 28.0
@@ -559,7 +559,7 @@ reference_data:
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.48/81."
           # Evidence: "Thrust 28 to 9.5 N, Isp >205 s @5.5 bar, mass ≤530 g, total impulse 100,000 Ns"
         - type: chemical
-          name: "RAFAEL AT-25N"
+          name: RAFAEL AT-25N
           thrust: 24.0  # N
           c_e: 2059.397  # m/s
           mass: 0.310  # kg
@@ -567,7 +567,7 @@ reference_data:
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.54/81."
           # Evidence: "Thrust steady state 24 N, Isp >210 s @6 bar, mass 310 g"
         - type: chemical
-          name: "RAFAEL ACT-45N"
+          name: RAFAEL ACT-45N
           thrust:  # N
             min: 16.0
             max: 45.0
@@ -578,7 +578,7 @@ reference_data:
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.56/81."
           # Evidence: "Thrust 45 to 16 N, Isp >190 s @6 bar, mass 500 g, total impulse SSF 60,000 Ns"
         - type: chemical
-          name: "RAFAEL ST-200N"
+          name: RAFAEL ST-200N
           thrust: 200.0  # N
           c_e: 2157.463  # m/s
           mass: 1.250  # kg
@@ -642,12 +642,12 @@ reference_data:
         # RAFAEL Space Propulsion 2021 Catalog (propellant tanks)
         # ----------------------------------------
         - type: tank
-          name: "RAFAEL PEPT-230"
+          name: RAFAEL PEPT-230
           mass: 1.3  # kg
           propellant:
             - Hydrazine
             - IPA
-            - distilled water
+            - Water
             - GN2
             - GHe
           pressure:  # Pa
@@ -657,12 +657,12 @@ reference_data:
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.24/81 + p.28/81."
           # Evidence: "mass <1.3 kg, operating 24 to 5.5 bar, qualified propellant capacity 4.5 L, compatible Hydrazine/IPA/distilled water/GN2/GHe"
         - type: tank
-          name: "RAFAEL PEPT-260"
+          name: RAFAEL PEPT-260
           mass: 1.7  # kg
           propellant:
             - Hydrazine
             - IPA
-            - distilled water
+            - Water
             - GN2
             - GHe
           pressure:  # Pa
@@ -672,11 +672,11 @@ reference_data:
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.24/81 + p.30/81."
           # Evidence: "mass <1.7 kg, operating 24 to 5.5 bar, qualified propellant capacity 6.9 L"
         - type: tank
-          name: "RAFAEL PEPT-330"
+          name: RAFAEL PEPT-330
           mass: 3.1  # kg
           propellant:
             - Hydrazine
-            - de-ionized water
+            - Water
             - IPA
             - GN2
             - GHe
@@ -685,11 +685,11 @@ reference_data:
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.24/81 + p.32/81."
           # Evidence: "mass ≤3.1 kg, MEOP 29 bar, qualified propellant capacity 15.4 L"
         - type: tank
-          name: "RAFAEL PEPT-420N"
+          name: RAFAEL PEPT-420N
           mass: 3.9  # kg
           propellant:
             - Hydrazine
-            - distilled water
+            - Water
             - IPA
             - GN2
             - GHe
@@ -700,12 +700,12 @@ reference_data:
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.24/81 + p.34/81."
           # Evidence: "mass 3.9 kg, operating 25.4 to 5.5 bar, qualified propellant capacity 30 L"
         - type: tank
-          name: "RAFAEL PEPT-590"
+          name: RAFAEL PEPT-590
           mass: 7.5  # kg
           propellant:
             - Hydrazine
             - IPA
-            - distilled water
+            - Water
             - GN2
             - GHe
           pressure:  # Pa
@@ -715,12 +715,12 @@ reference_data:
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.24/81 + p.36/81."
           # Evidence: "mass 7.5 kg, operating 24.6 to 5.5 bar, qualified propellant capacity 75 L"
         - type: tank
-          name: "RAFAEL PEPT-590GB"
+          name: RAFAEL PEPT-590GB
           mass: 17.5  # kg
           propellant:
             - Hydrazine
             - IPA
-            - distilled water
+            - Water
             - GN2
             - GHe
           pressure:  # Pa
@@ -729,6 +729,3151 @@ reference_data:
           volume: 0.154  # L
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.24/81 + p.39/81."
           # Evidence: "mass 17.5 kg, operating 27.4 to 5.5 bar, qualified propellant capacity 154 L"
+        # ----------------------------------------
+        # ArianeGroup "Propellant Tanks for Monopropellant and Bipropellant Systems",
+        # ArianeGroup Orbital Propulsion, Lampoldshausen, Germany, November 2021.
+        # URL: https://www.space-propulsion.com/brochures/propellant-tanks/propellant-tanks-brochure.pdf
+        # ----------------------------------------
+        - type: tank
+          name: ArianeGroup DT180
+          mass: 21.0  # kg
+          propellant:
+            - MON
+            - "MMH"
+            - "Hydrazine"
+          pressure: 3560000  # Pa  (MEOP 35.6 bar)
+          volume: 0.180  # m³  (180 L net)
+          source: "ArianeGroup, 'Propellant Tanks for Monopropellant and Bipropellant Systems,' Orbital Propulsion, Lampoldshausen, Germany, November 2021."
+          # Evidence: "Net Volume Range: 180 Litres, Propellants MON/MMH/hydrazine, MEOP 35.6 bar, Tank Mass 21.0 kg"
+        - type: tank
+          name: ArianeGroup OST 25/0
+          mass:  # kg
+            min: 21.0
+          propellant:
+            - MON
+            - "MMH"
+          pressure: 1860000  # Pa  (MEOP 18.6 bar)
+          volume:  # m³
+            min: 0.198
+            max: 0.331
+          source: "ArianeGroup, 'Propellant Tanks for Monopropellant and Bipropellant Systems,' Orbital Propulsion, Lampoldshausen, Germany, November 2021."
+          # Evidence: "Net Volume Range: 198/282/331 Litres, Propellants MON/MMH, MEOP 18.6 bar, Tank Mass 21.0 kg"
+        - type: tank
+          name: ArianeGroup OST 25/0 with Liquid CoG Control
+          mass: 27.0  # kg  (at 331 L)
+          propellant:
+            - "Hydrazine"
+            - MON
+            - "MMH"
+          pressure: 1860000  # Pa  (MEOP 18.6 bar)
+          volume:  # m³
+            min: 0.198
+            max: 0.331
+          source: "ArianeGroup, 'Propellant Tanks for Monopropellant and Bipropellant Systems,' Orbital Propulsion, Lampoldshausen, Germany, November 2021."
+          # Evidence: "Net Volume: 198/282/331 L, Propellants Hydrazine/MON/MMH, MEOP 18.6 bar, Tank Mass 27.0 kg (331L), CoG control <+/-5mm"
+        - type: tank
+          name: ArianeGroup T 11/0
+          mass: 11.0  # kg
+          propellant:
+            - MON
+            - "MMH"
+          pressure: 2200000  # Pa  (MEOP 22.0 bar)
+          volume: 0.218  # m³  (218 L)
+          source: "ArianeGroup, 'Propellant Tanks for Monopropellant and Bipropellant Systems,' Orbital Propulsion, Lampoldshausen, Germany, November 2021."
+          # Evidence: "Tank Net Volume 218 Litres, Propellants MON/MMH, MEOP 22.0 bar, Tank Mass 11 kg; MSG mission heritage"
+        - type: tank
+          name: ArianeGroup OST 21/0
+          mass: 16.0  # kg
+          propellant:
+            - MON
+            - "MMH"
+          pressure: 2200000  # Pa  (MEOP 22.0 bar)
+          volume: 0.235  # m³  (235 L)
+          source: "ArianeGroup, 'Propellant Tanks for Monopropellant and Bipropellant Systems,' Orbital Propulsion, Lampoldshausen, Germany, November 2021."
+          # Evidence: "Tank Net Volume 235 Litres, Propellants MON/MMH, MEOP 22.0 bar, Tank Mass 16 kg; Amos mission heritage"
+        - type: tank
+          name: ArianeGroup OST 01/X
+          mass:  # kg
+            min: 16.0
+            max: 29.0
+          propellant:
+            - MON
+            - "MMH"
+          volume:  # m³
+            min: 0.235
+            max: 0.516
+          source: "ArianeGroup, 'Propellant Tanks for Monopropellant and Bipropellant Systems,' Orbital Propulsion, Lampoldshausen, Germany, November 2021."
+          # Evidence: "Tank Net Volume Range 235 to 516 Litres, Propellants MON/MMH, Tank Mass 16 to 29 kg; heritage family (TV-Sat, TDF, Italsat etc.)"
+        - type: tank
+          name: ArianeGroup OST 22/X
+          mass:  # kg
+            min: 36.0
+            max: 49.0
+          propellant:
+            - MON
+            - "MMH"
+          pressure: 1950000  # Pa  (MEOP 19.5 bar)
+          volume:  # m³
+            min: 0.700
+            max: 1.108
+          source: "ArianeGroup, 'Propellant Tanks for Monopropellant and Bipropellant Systems,' Orbital Propulsion, Lampoldshausen, Germany, November 2021."
+          # Evidence: "Net Volume Range 700 to 1108 Litres, Propellants MON/MMH, MEOP 19.5 bar, Tank Mass Range 36 to 49 kg; Artemis/Arabsat/Sirius heritage"
+        - type: tank
+          name: ArianeGroup OST 23/0
+          mass: 31.7  # kg
+          propellant:
+            - MON
+            - "MMH"
+          pressure: 1750000  # Pa  (MEOP 17.5 bar)
+          volume: 0.769  # m³  (769 L)
+          source: "ArianeGroup, 'Propellant Tanks for Monopropellant and Bipropellant Systems,' Orbital Propulsion, Lampoldshausen, Germany, November 2021."
+          # Evidence: "Tank Net Volume 769 Litres, Propellants MON/MMH, MEOP 17.5 bar, Tank Mass 31.7 kg; Insat-2E heritage"
+        - type: tank
+          name: ArianeGroup OST 24/0
+          mass: 52.5  # kg
+          propellant:
+            - MON
+            - "MMH"
+          pressure: 1950000  # Pa  (MEOP 19.5 bar)
+          volume: 1.207  # m³  (1207 L)
+          source: "ArianeGroup, 'Propellant Tanks for Monopropellant and Bipropellant Systems,' Orbital Propulsion, Lampoldshausen, Germany, November 2021."
+          # Evidence: "Tank Net Volume 1207 Litres, Propellants MON/MMH, MEOP 19.5 bar, Tank Mass 52.5 kg; Astra 1K heritage"
+        - type: tank
+          name: ArianeGroup MPCV ESM Propellant Tank
+          mass: 110.0  # kg  (approximate)
+          propellant:
+            - MON
+            - "MMH"
+          pressure: 2500000  # Pa  (MEOP 25 bar)
+          volume: 2.100  # m³  (2100 L)
+          source: "ArianeGroup, 'Propellant Tanks for Monopropellant and Bipropellant Systems,' Orbital Propulsion, Lampoldshausen, Germany, November 2021."
+          # Evidence: "Net Volume Range: 2100 Litres, Propellants MON/MMH, MEOP 25 bar, Tank Mass ~110 kg; MPCV (Orion ESM) project"
+        - type: tank
+          name: ArianeGroup BT 01/0
+          mass: 8.5  # kg  (upper bound: <8.5 kg)
+          propellant: "Hydrazine"
+          pressure: 2600000  # Pa  (MEOP 26 bar)
+          volume: 0.039  # m³  (39 L max propellant)
+          source: "ArianeGroup, 'Propellant Tanks for Monopropellant and Bipropellant Systems,' Orbital Propulsion, Lampoldshausen, Germany, November 2021."
+          # Evidence: "Tank Net Volume 58 L, Max Propellant Volume 39 L, Hydrazine, MEOP 26 bar, mass <8.5 kg; Ariane 5 SCA heritage"
+        - type: tank
+          name: ArianeGroup OST 31/0
+          mass: 6.85  # kg  (upper bound: ≤6.85 kg)
+          propellant: "Hydrazine"
+          pressure: 2460000  # Pa  (MEOP 24.6 bar)
+          volume:  # m³
+            min: 0.104
+            max: 0.177
+          source: "ArianeGroup, 'Propellant Tanks for Monopropellant and Bipropellant Systems,' Orbital Propulsion, Lampoldshausen, Germany, November 2021."
+          # Evidence: "Tank Net Volume 104 to 177 L, Hydrazine, MEOP 24.6 bar, Tank Mass ≤6.85 kg; Globalstar heritage"
+        - type: tank
+          name: ArianeGroup OST 33/0
+          mass: 13.5  # kg
+          propellant: "Hydrazine"
+          pressure: 2463000  # Pa  (MEOP 24.63 bar)
+          volume: 0.1765  # m³  (176.5 L)
+          source: "ArianeGroup, 'Propellant Tanks for Monopropellant and Bipropellant Systems,' Orbital Propulsion, Lampoldshausen, Germany, November 2021."
+          # Evidence: "Net Volume Range 176.5 Litres, Hydrazine, MEOP 24.63 bar, Tank Mass Range 13.5 kg; CosmoSkyMed heritage"
+        # ============================================================
+        # Northrop Grumman (Orbital ATK) — Pressurant Tanks Data Sheets
+        # Sorted by Part Number
+        # Source: https://www.northropgrumman.com/what-we-do/space/
+        #         mission-enabling-products/pressurant-tanks/
+        #         data-sheets-sorted-by-part-number
+        # Capable propellants (per manufacturer): Hydrazine, MMH,
+        #   UDMH, Aerozine-50, NTO/MON (oxidiser), He, N2, Ar, Xe, Kr, Air
+        # All tanks are all-metal pressure vessels (Ti alloy).
+        # Section 1 – larger cylindrical / elongated vessels
+        # ============================================================
+        - type: tank
+          name: NG 80386-101
+          mass: 6.4  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 17200000  # Pa  (MEOP 172 bar = 2500 psi)
+          volume: 0.0321  # m³  (32.1 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 32.1 L, mass 6.4 kg, operating 172 bar, program HS-601, qualified Xenon"
+        - type: tank
+          name: NG 80400-1
+          mass: 10.0  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 31000000  # Pa  (MEOP 310 bar = 4500 psi)
+          volume: 0.0673  # m³  (67.3 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 67.3 L, mass 10 kg, operating 310 bar; A2100 program; P/N 80446 subsequently qualified"
+        - type: tank
+          name: NG 80402-1
+          mass: 10.0  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 31000000  # Pa  (MEOP 310 bar)
+          volume: 0.0673  # m³  (67.3 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 67.3 L, mass 10 kg, operating 310 bar; DRTS program; derivative of P/N 80400"
+        - type: tank
+          name: NG 80412-1
+          mass: 7.0  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 15000000  # Pa  (MEOP 150 bar = 2177 psi)
+          volume: 0.0500  # m³  (50 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 50 L, mass 7 kg, operating 150 bar; ETS-8 program; qualified Xenon"
+        - type: tank
+          name: NG 80436-1
+          mass: 12.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 33100000  # Pa  (MEOP 331 bar = 4800 psi)
+          volume: 0.0814  # m³  (81.4 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 81.4 L, mass 12.7 kg, operating 331 bar; ASTROLINK program"
+        - type: tank
+          name: NG 80445-1
+          mass: 10.5  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 31000000  # Pa  (MEOP 310 bar)
+          volume: 0.0673  # m³  (67.3 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 67.3 L, mass 10.5 kg, operating 310 bar; Messenger program; qualified under P/N 80446"
+        - type: tank
+          name: NG 80446-1
+          mass: 10.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 31000000  # Pa  (MEOP 310 bar)
+          volume: 0.0673  # m³  (67.3 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 67.3 L, mass 10.7 kg, operating 310 bar; A2100 program; primary qualification standard"
+        - type: tank
+          name: NG 80458-1
+          mass: 20.4  # kg
+          propellant:
+            - Xenon
+            - He
+            - N2
+            - Ar
+            - Kr
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+          pressure: 19800000  # Pa  (MEOP 198 bar = 2875 psi)
+          volume: 0.1328  # m³  (132.8 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 132.8 L, mass 20.4 kg, operating 198 bar; qualified Xenon"
+        - type: tank
+          name: NG 80458-101
+          mass: 19.1  # kg
+          propellant:
+            - Xenon
+            - He
+            - N2
+            - Ar
+            - Kr
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+          pressure: 19800000  # Pa  (MEOP 198 bar)
+          volume: 0.1197  # m³  (119.7 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 119.7 L, mass 19.1 kg, operating 198 bar; Xenon; derivative of 80458-1"
+        - type: tank
+          name: NG 80458-201
+          mass: 12.2  # kg
+          propellant:
+            - Xenon
+            - He
+            - N2
+            - Ar
+            - Kr
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+          pressure: 19800000  # Pa  (MEOP 198 bar)
+          volume: 0.0541  # m³  (54.1 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 54.1 L, mass 12.2 kg, operating 198 bar; Xenon; derivative of 80458-1"
+        - type: tank
+          name: NG 80459-1
+          mass: 10.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 31000000  # Pa  (MEOP 310 bar)
+          volume: 0.0673  # m³  (67.3 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 67.3 L, mass 10.7 kg, operating 310 bar; SELENE program; qualified under P/N 80446"
+        - type: tank
+          name: NG 80465-1
+          mass: 12.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 33100000  # Pa  (MEOP 331 bar)
+          volume: 0.0814  # m³  (81.4 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 81.4 L, mass 12.7 kg, operating 331 bar; WINDS program; qualified under P/N 80436"
+        - type: tank
+          name: NG 80475-1
+          mass: 16.8  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 31000000  # Pa  (MEOP 310 bar)
+          volume: 0.0870  # m³  (87.0 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 87.0 L, mass 16.8 kg, operating 310 bar; Vega program"
+        - type: tank
+          name: NG 80475-201
+          mass: 17.8  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 31000000  # Pa  (MEOP 310 bar)
+          volume: 0.0870  # m³  (87.0 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 87.0 L, mass 17.8 kg, operating 310 bar (465 bar proof)"
+        - type: tank
+          name: NG 80492-1
+          mass: 10.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 31000000  # Pa  (MEOP 310 bar)
+          volume: 0.0673  # m³  (67.3 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 67.3 L, mass 10.7 kg, operating 310 bar; DS2000 program; qualified under P/N 80446"
+        - type: tank
+          name: NG 80496-1
+          mass: 12.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 33100000  # Pa  (MEOP 331 bar)
+          volume: 0.0814  # m³  (81.4 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 81.4 L, mass 12.7 kg, operating 331 bar; DS2000 Pressurant Tank program"
+        - type: tank
+          name: NG 80525-1
+          mass: 10.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 31000000  # Pa  (MEOP 310 bar)
+          volume: 0.0673  # m³  (67.3 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 67.3 L, mass 10.7 kg, operating 310 bar; IRNSS program; qualified under P/N 80446"
+        - type: tank
+          name: NG 80530-1
+          mass: 12.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 33100000  # Pa  (MEOP 331 bar)
+          volume: 0.0814  # m³  (81.4 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 81.4 L, mass 12.7 kg, operating 331 bar; GPS III program"
+        - type: tank
+          name: NG 80536-1
+          mass: 10.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 31000000  # Pa  (MEOP 310 bar)
+          volume: 0.0673  # m³  (67.3 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 67.3 L, mass 10.7 kg, operating 310 bar; Himawari program; qualified under P/N 80446"
+        - type: tank
+          name: NG 80548-1
+          mass: 12.5  # kg  (actual mass lower per datasheet note)
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 31000000  # Pa  (MEOP 310 bar)
+          volume: 0.0514  # m³  (51.4 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 51.4 L, mass 12.5 kg (actual lower), operating 310 bar; Small GEO program; qualified under P/N 80446"
+        - type: tank
+          name: NG 80584-1
+          mass: 19.1  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 18620000  # Pa  (MEOP 186.2 bar = 2700 psi)
+          volume: 0.1196  # m³  (119.6 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 119.6 L, mass 19.1 kg, operating 186.2 bar"
+        - type: tank
+          name: NG 80586-1
+          mass: 7.98  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 31000000  # Pa  (MEOP 310 bar)
+          volume: 0.0400  # m³  (40 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 40 L, mass 7.98 kg, operating 310 bar; A2100 program; qualified under P/N 80446"
+        - type: tank
+          name: NG 80592-1
+          mass: 20.5  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 18510000  # Pa  (MEOP 185.1 bar = 2685 psi)
+          volume: 0.1298  # m³  (129.8 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 129.8 L, mass 20.5 kg, operating 185.1 bar"
+        - type: tank
+          name: NG 80603-1
+          mass: 12.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 33100000  # Pa  (MEOP 331 bar = 4800 psi)
+          volume: 0.0800  # m³  (80 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 80 L, mass 12.7 kg, operating 331 bar"
+        - type: tank
+          name: NG 80606-1
+          mass: 18.1  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 33100000  # Pa  (MEOP 331 bar = 4800 psi)
+          volume: 0.0814  # m³  (81.4 L; 4967 in³)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 4967 in³ (81.4 L), mass 40.0 lbm (18.1 kg), MEOP 331 bar; new tank design with 2:1 burst factor; ICD for 80606"
+        - type: tank
+          name: NG 80615-1
+          mass: 6.8  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 31030000  # Pa  (MEOP 310.3 bar = 4500 psi)
+          volume: 0.0280  # m³  (28.0 L; 1709 in³)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1709 in³ (28.0 L), mass 15.0 lbm (6.8 kg), MEOP 310.3 bar; QBS program"
+        # Section 2 – spherical all-metal pressure vessels (older heritage)
+        - type: tank
+          name: NG 80119-105
+          mass: 0.8  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 4140000  # Pa  (MEOP 41.4 bar = 600 psi)
+          volume: 0.007489  # m³  (457 in³ = 7.49 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 457 in³ (7.49 L), mass 0.8 kg, operating 41.4 bar; DSP-BLK program"
+        - type: tank
+          name: NG 80194-1
+          mass: 5.4  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 24800000  # Pa  (MEOP 248 bar = 3600 psi)
+          volume: 0.015650  # m³  (955 in³ = 15.65 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 955 in³ (15.65 L), mass 5.4 kg, operating 248 bar; OSO program"
+        - type: tank
+          name: NG 80195-1
+          mass: 5.4  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 18400000  # Pa  (MEOP 184 bar = 2665 psi)
+          volume: 0.009374  # m³  (572 in³ = 9.37 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 572 in³ (9.37 L), mass 5.4 kg, operating 184 bar; MARINER program"
+        - type: tank
+          name: NG 80218-1
+          mass: 35.8  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 23400000  # Pa  (MEOP 234 bar = 3400 psi)
+          volume: 0.1207  # m³  (120.7 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 120.7 L, mass 35.8 kg, operating 234 bar; Atlas-Centaur program"
+        - type: tank
+          name: NG 80221-1
+          mass: 24.9  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 20700000  # Pa  (MEOP 207 bar = 3000 psi)
+          volume: 0.0882  # m³  (88.2 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 88.2 L, mass 24.9 kg, operating 207 bar; P-95 program"
+        - type: tank
+          name: NG 80295-1
+          mass: 1.5  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 55200000  # Pa  (MEOP 552 bar = 8000 psi)
+          volume: 0.001639  # m³  (100 in³ = 1.64 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 100 in³ (1.64 L), mass 1.5 kg, operating 552 bar; ASAT program"
+        - type: tank
+          name: NG 80314-1
+          mass: 15.9  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 24800000  # Pa  (MEOP 248 bar)
+          volume: 0.0361  # m³  (36.1 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 36.1 L, mass 15.9 kg, operating 248 bar"
+        - type: tank
+          name: NG 80314-201
+          mass: 16.0  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 24800000  # Pa  (MEOP 248 bar)
+          volume: 0.0361  # m³  (36.1 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 36.1 L, mass 16.0 kg, operating 248 bar; TRMM program"
+        - type: tank
+          name: NG 80326-1
+          mass: 1.5  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 24800000  # Pa  (MEOP 248 bar)
+          volume: 0.003851  # m³  (235 in³ = 3.85 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 235 in³ (3.85 L), mass 1.5 kg, operating 248 bar; MAGELLAN program"
+        - type: tank
+          name: NG 80333-1
+          mass: 35.8  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 28000000  # Pa  (MEOP 280 bar = 4060 psi)
+          volume: 0.1057  # m³  (105.7 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 105.7 L, mass 35.8 kg, operating 280 bar; EURECA program"
+        - type: tank
+          name: NG 80345-1
+          mass: 3.4  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 31000000  # Pa  (MEOP 310 bar)
+          volume: 0.006555  # m³  (400 in³ = 6.55 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 400 in³ (6.55 L), mass 3.4 kg, operating 310 bar; DMSP/TIROS program"
+        - type: tank
+          name: NG 80383-1
+          mass: 16.0  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 24800000  # Pa  (MEOP 248 bar)
+          volume: 0.0361  # m³  (36.1 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 36.1 L, mass 16.0 kg, operating 248 bar; ETS-VII program"
+        - type: tank
+          name: NG 80448-1
+          mass: 2.2  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2860000  # Pa  (MEOP 28.6 bar = 415 psi)
+          volume: 0.0312  # m³  (31.2 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 31.2 L, mass 2.2 kg, operating 28.6 bar (415 psi); GPS II program"
+        - type: tank
+          name: NG 80499-1
+          mass: 1.5  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 24800000  # Pa  (MEOP 248 bar)
+          volume: 0.003736  # m³  (228 in³ = 3.74 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 228 in³ (3.74 L), mass 1.5 kg, operating 248 bar; PRISMA program"
+        - type: tank
+          name: NG 80509-1
+          mass: 23.1  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 33600000  # Pa  (MEOP 336 bar = 4870 psi)
+          volume: 0.1164  # m³  (116.4 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 116.4 L, mass 23.1 kg, operating 336 bar; Delta II program"
+        - type: tank
+          name: NG 80510-1
+          mass: 11.9  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 33580000  # Pa  (MEOP 335.8 bar = 4870 psi)
+          volume: 0.0366  # m³  (36.6 L)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 36.6 L, mass 11.9 kg, operating 335.8 bar"
+        - type: tank
+          name: NG 80541-1
+          mass: 1.5  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 24800000  # Pa  (MEOP 248 bar)
+          volume: 0.003851  # m³  (235 in³ = 3.85 L; note datasheet lists 4 L rounded)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 235 in³ (~4 L), mass 1.5 kg, operating 248 bar; LADEE program; derivative of P/N 80326"
+        - type: tank
+          name: NG 80558-1
+          mass: 5.99  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 17500000  # Pa  (MEOP 175 bar = 2538 psi)
+          volume: 0.015650  # m³  (955 in³ = 15.65 L; datasheet: 16 L rounded)
+          source: "Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 955 in³ (~16 L), mass 5.99 kg, operating 175 bar"
+        # ----------------------------------------
+        # Northrop Grumman PMD Tanks Data Sheets – Sorted by Part Number
+        # Source: Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,'
+        #         https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number
+        # ----------------------------------------
+        - type: tank
+          name: NG 80213-1
+          mass: 1.8  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2140000  # Pa  (MEOP 21.4 bar = 310 psi)
+          volume: 0.020200  # m3  (20.2 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 20.2 L, mass 1.8 kg, MEOP 21.4 bar (310 psi); Program: CLASSIFIED"
+        - type: tank
+          name: NG 80277-1
+          mass: 14.8  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1720000  # Pa  (MEOP 17.2 bar = 250 psi)
+          volume: 0.302500  # m3  (302.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 302.5 L, mass 14.8 kg, MEOP 17.2 bar (250 psi); Program: INSAT"
+        - type: tank
+          name: NG 80296-1
+          mass: 3.63  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2930000  # Pa  (MEOP 29.3 bar = 425 psi)
+          volume: 0.058600  # m3  (58.6 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 58.6 L, mass 3.63 kg, MEOP 29.3 bar (425 psi); Program: RCA SatCOM"
+        - type: tank
+          name: NG 80301-1
+          mass: 15.4  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1760000  # Pa  (MEOP 17.6 bar = 255 psi)
+          volume: 0.342600  # m3  (342.6 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 342.6 L, mass 15.4 kg, MEOP 17.6 bar (255 psi); Program: ARABSAT"
+        - type: tank
+          name: NG 80304-1
+          mass: 3.5  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2760000  # Pa  (MEOP 27.6 bar = 400 psi)
+          volume: 0.058600  # m3  (58.6 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 58.6 L, mass 3.5 kg, MEOP 27.6 bar (400 psi); Program: SPACENET"
+        - type: tank
+          name: NG 80309-1
+          mass: 8.1  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2190000  # Pa  (MEOP 21.9 bar = 318 psi)
+          volume: 0.151000  # m3  (151 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 151 L, mass 8.1 kg, MEOP 21.9 bar (318 psi); Program: CLASSIFIED"
+        - type: tank
+          name: NG 80310-5
+          mass: 15.4  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1760000  # Pa  (MEOP 17.6 bar = 255 psi)
+          volume: 0.225300  # m3  (225.3 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 225.3 L, mass 15.4 kg, MEOP 17.6 bar (255 psi); Program: EUROSTAR"
+        - type: tank
+          name: NG 80317-105
+          mass: 27.2  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2410000  # Pa  (MEOP 24.1 bar = 350 psi)
+          volume: 0.383600  # m3  (383.6 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 383.6 L, mass 27.2 kg, MEOP 24.1 bar (350 psi); Program: CLASSIFIED"
+        - type: tank
+          name: NG 80324-1
+          mass: 20.2  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2760000  # Pa  (MEOP 27.6 bar = 400 psi)
+          volume: 0.301500  # m3  (301.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 301.5 L, mass 20.2 kg, MEOP 27.6 bar (400 psi); Program: MILSTAR"
+        - type: tank
+          name: NG 80334-1
+          mass: 12.9  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1760000  # Pa  (MEOP 17.6 bar = 255 psi)
+          volume: 0.175100  # m3  (175.1 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 175.1 L, mass 12.9 kg, MEOP 17.6 bar (255 psi); Program: INMARSAT 2"
+        - type: tank
+          name: NG 80338-1
+          mass: 25.4  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1720000  # Pa  (MEOP 17.2 bar = 250 psi)
+          volume: 0.565600  # m3  (565.6 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 565.6 L, mass 25.4 kg, MEOP 17.2 bar (250 psi); Program: GOES"
+        - type: tank
+          name: NG 80339-1
+          mass: 13.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.255700  # m3  (255.7 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 255.7 L, mass 13.7 kg, MEOP 20.7 bar (300 psi); Program: S-5000"
+        - type: tank
+          name: NG 80340-1
+          mass: 17.1  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1900000  # Pa  (MEOP 19 bar = 276 psi)
+          volume: 0.503800  # m3  (503.8 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 503.8 L, mass 17.1 kg, MEOP 19 bar (276 psi); Program: S-5000"
+        - type: tank
+          name: NG 80348-1
+          mass: 19.5  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 3000000  # Pa  (MEOP 30 bar = 435 psi)
+          volume: 0.186100  # m3  (186.1 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 186.1 L, mass 19.5 kg, MEOP 30 bar (435 psi); Program: Unknown"
+        - type: tank
+          name: NG 80350-1
+          mass: 13.1  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1790000  # Pa  (MEOP 17.9 bar = 260 psi)
+          volume: 0.368000  # m3  (368 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 368 L, mass 13.1 kg, MEOP 17.9 bar (260 psi); Program: HS-601"
+        - type: tank
+          name: NG 80352-1
+          mass: 23.4  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.646600  # m3  (646.6 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 646.6 L, mass 23.4 kg, MEOP 20.7 bar (300 psi); Program: MO/TELSTAR/S7000"
+        - type: tank
+          name: NG 80353-1
+          mass: 3.9  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2760000  # Pa  (MEOP 27.6 bar = 400 psi)
+          volume: 0.058600  # m3  (58.6 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 58.6 L, mass 3.9 kg, MEOP 27.6 bar (400 psi); Program: MARS OBSERVER"
+        - type: tank
+          name: NG 80356-1
+          mass: 27.2  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2240000  # Pa  (MEOP 22.4 bar = 325 psi)
+          volume: 0.438500  # m3  (438.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 438.5 L, mass 27.2 kg, MEOP 22.4 bar (325 psi); Program: CLASSIFIED"
+        - type: tank
+          name: NG 80363-11
+          mass: 42.4  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1720000  # Pa  (MEOP 17.2 bar = 250 psi)
+          volume: 1.275400  # m3  (1275.4 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1275.4 L, mass 42.4 kg, MEOP 17.2 bar (250 psi); Program: INTELSAT VIIA"
+        - type: tank
+          name: NG 80364-1
+          mass: 5.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2760000  # Pa  (MEOP 27.6 bar = 400 psi)
+          volume: 0.091500  # m3  (91.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 91.5 L, mass 5.7 kg, MEOP 27.6 bar (400 psi); Program: INMARSAT 3"
+        - type: tank
+          name: NG 80366-1
+          mass: 33.2  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1720000  # Pa  (MEOP 17.2 bar = 250 psi)
+          volume: 1.000500  # m3  (1000.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1000.5 L, mass 33.2 kg, MEOP 17.2 bar (250 psi); Program: N-STAR"
+        - type: tank
+          name: NG 80367-11
+          mass: 42.4  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1720000  # Pa  (MEOP 17.2 bar = 250 psi)
+          volume: 1.275400  # m3  (1275.4 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1275.4 L, mass 42.4 kg, MEOP 17.2 bar (250 psi); Program: INTELSAT VIIA"
+        - type: tank
+          name: NG 80373-1
+          mass: 13.8  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.337400  # m3  (337.4 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 337.4 L, mass 13.8 kg, MEOP 20.7 bar (300 psi); Program: S7000"
+        - type: tank
+          name: NG 80375-1
+          mass: 8.6  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2900000  # Pa  (MEOP 29 bar = 420 psi)
+          volume: 0.161500  # m3  (161.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 161.5 L, mass 8.6 kg, MEOP 29 bar (420 psi); Program: IRIDIUM"
+        - type: tank
+          name: NG 80379-1
+          mass: 4.9  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2600000  # Pa  (MEOP 26 bar = 377 psi)
+          volume: 0.060000  # m3  (60 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 60 L, mass 4.9 kg, MEOP 26 bar (377 psi); Program: NEAR"
+        - type: tank
+          name: NG 80380-1
+          mass: 31.8  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1720000  # Pa  (MEOP 17.2 bar = 250 psi)
+          volume: 1.000500  # m3  (1000.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1000.5 L, mass 31.8 kg, MEOP 17.2 bar (250 psi); Program: TEMPO"
+        - type: tank
+          name: NG 80387-1
+          mass: 9.1  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2760000  # Pa  (MEOP 27.6 bar = 400 psi)
+          volume: 0.126200  # m3  (126.2 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 126.2 L, mass 9.1 kg, MEOP 27.6 bar (400 psi); Program: CLASSIFIED"
+        - type: tank
+          name: NG 80390-1
+          mass: 15.2  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.327500  # m3  (327.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 327.5 L, mass 15.2 kg, MEOP 20.7 bar (300 psi); Program: A2100 Ox Family"
+        - type: tank
+          name: NG 80391-1
+          mass: 55.3  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 1.512300  # m3  (1512.3 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1512.3 L, mass 55.3 kg, MEOP 20.7 bar (300 psi); Program: A2100 Fuel Family"
+        - type: tank
+          name: NG 80394-1
+          mass: 11.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.229000  # m3  (229 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 229 L, mass 11.7 kg, MEOP 20.7 bar (300 psi); Program: A2100 Ox Family"
+        - type: tank
+          name: NG 80395-1
+          mass: 42.3  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 1.057700  # m3  (1057.7 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1057.7 L, mass 42.3 kg, MEOP 20.7 bar (300 psi); Program: A2100 Fuel Family"
+        - type: tank
+          name: NG 80396-1
+          mass: 5.2  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 4140000  # Pa  (MEOP 41.4 bar = 600 psi)
+          volume: 0.061900  # m3  (61.9 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 61.9 L, mass 5.2 kg, MEOP 41.4 bar (600 psi); Program: LUNAR PROSPECTOR"
+        - type: tank
+          name: NG 80398-1
+          mass: 22.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2410000  # Pa  (MEOP 24.1 bar = 350 psi)
+          volume: 0.438500  # m3  (438.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 438.5 L, mass 22.7 kg, MEOP 24.1 bar (350 psi); Program: SPS-95/SPS-200"
+        - type: tank
+          name: NG 80399-1
+          mass: 18.6  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1790000  # Pa  (MEOP 17.9 bar = 260 psi)
+          volume: 0.534600  # m3  (534.6 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 534.6 L, mass 18.6 kg, MEOP 17.9 bar (260 psi); Program: HS-601 HP"
+        - type: tank
+          name: NG 80403-101
+          mass: 39.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1720000  # Pa  (MEOP 17.2 bar = 250 psi)
+          volume: 1.275500  # m3  (1275.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1275.5 L, mass 39.7 kg, MEOP 17.2 bar (250 psi); Program: EXTENDED TEMPO"
+        - type: tank
+          name: NG 80405-1
+          mass: 15.2  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.327600  # m3  (327.6 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 327.6 L, mass 15.2 kg, MEOP 20.7 bar (300 psi); Program: A2100 Ox Family"
+        - type: tank
+          name: NG 80406-1
+          mass: 11.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.229200  # m3  (229.2 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 229.2 L, mass 11.7 kg, MEOP 20.7 bar (300 psi); Program: A2100 Ox Family"
+        - type: tank
+          name: NG 80411-1
+          mass: 45  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1720000  # Pa  (MEOP 17.2 bar = 250 psi)
+          volume: 1.435700  # m3  (1435.7 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1435.7 L, mass 45 kg, MEOP 17.2 bar (250 psi); Program: ETS-8"
+        - type: tank
+          name: NG 80415-1
+          mass: 13.1  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1790000  # Pa  (MEOP 17.9 bar = 260 psi)
+          volume: 0.368000  # m3  (368 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 368 L, mass 13.1 kg, MEOP 17.9 bar (260 psi); Program: HS-601"
+        - type: tank
+          name: NG 80420-1
+          mass: 8.1  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2190000  # Pa  (MEOP 21.9 bar = 318 psi)
+          volume: 0.151000  # m3  (151 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 151 L, mass 8.1 kg, MEOP 21.9 bar (318 psi); Program: BSAT"
+        - type: tank
+          name: NG 80421-1
+          mass: 1.93  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2760000  # Pa  (MEOP 27.6 bar = 400 psi)
+          volume: 0.008550  # m3  (8.55 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 8.55 L, mass 1.93 kg, MEOP 27.6 bar (400 psi); Program: SBD/TOMS"
+        - type: tank
+          name: NG 80422-1
+          mass: 39.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1720000  # Pa  (MEOP 17.2 bar = 250 psi)
+          volume: 1.275500  # m3  (1275.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1275.5 L, mass 39.7 kg, MEOP 17.2 bar (250 psi); Program: EXTENDED TEMPO"
+        - type: tank
+          name: NG 80425-1
+          mass: 30.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.938000  # m3  (938 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 938 L, mass 30.7 kg, MEOP 20.7 bar (300 psi); Program: STAR-2"
+        - type: tank
+          name: NG 80425-101
+          mass: 33.1  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.938000  # m3  (938 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 938 L, mass 33.1 kg, MEOP 20.7 bar (300 psi); Program: STAR-2"
+        - type: tank
+          name: NG 80426-1
+          mass: 9.1  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2170000  # Pa  (MEOP 21.7 bar = 315 psi)
+          volume: 0.159200  # m3  (159.2 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 159.2 L, mass 9.1 kg, MEOP 21.7 bar (315 psi); Program: STAR-2"
+        - type: tank
+          name: NG 80430-1
+          mass: 21.8  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2280000  # Pa  (MEOP 22.8 bar = 330 psi)
+          volume: 0.565300  # m3  (565.3 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 565.3 L, mass 21.8 kg, MEOP 22.8 bar (330 psi); Program: Unknown"
+        - type: tank
+          name: NG 80432-1
+          mass: 30.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.858000  # m3  (858 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 858 L, mass 30.7 kg, MEOP 20.7 bar (300 psi); Program: STAR-2"
+        - type: tank
+          name: NG 80433-1
+          mass: 9.1  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2240000  # Pa  (MEOP 22.4 bar = 325 psi)
+          volume: 0.199200  # m3  (199.2 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 199.2 L, mass 9.1 kg, MEOP 22.4 bar (325 psi); Program: MESSENGER"
+        - type: tank
+          name: NG 80434-1
+          mass: 94.3  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 1.920600  # m3  (1920.6 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1920.6 L, mass 94.3 kg, MEOP 20.7 bar (300 psi); Program: ASTROLINK"
+        - type: tank
+          name: NG 80435-1
+          mass: 29.3  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.431900  # m3  (431.9 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 431.9 L, mass 29.3 kg, MEOP 20.7 bar (300 psi); Program: ASTROLINK"
+        - type: tank
+          name: NG 80440-1
+          mass: 31.8  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1720000  # Pa  (MEOP 17.2 bar = 250 psi)
+          volume: 1.000500  # m3  (1000.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1000.5 L, mass 31.8 kg, MEOP 17.2 bar (250 psi); Program: PSA"
+        - type: tank
+          name: NG 80441-1
+          mass: 41.3  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1720000  # Pa  (MEOP 17.2 bar = 250 psi)
+          volume: 1.275500  # m3  (1275.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1275.5 L, mass 41.3 kg, MEOP 17.2 bar (250 psi); Program: EXTENDED TEMPO"
+        - type: tank
+          name: NG 80442-1
+          mass: 45.6  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1720000  # Pa  (MEOP 17.2 bar = 250 psi)
+          volume: 1.435700  # m3  (1435.7 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1435.7 L, mass 45.6 kg, MEOP 17.2 bar (250 psi); Program: EXTENDED TEMPO"
+        - type: tank
+          name: NG 80443-1
+          mass: 50.3  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1970000  # Pa  (MEOP 19.7 bar = 285 psi)
+          volume: 1.410700  # m3  (1410.7 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1410.7 L, mass 50.3 kg, MEOP 19.7 bar (285 psi); Program: A2100 Fuel Family"
+        - type: tank
+          name: NG 80454-1
+          mass: 5.2  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.037400  # m3  (37.4 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 37.4 L, mass 5.2 kg, MEOP 20.7 bar (300 psi); Program: Orbital Express"
+        - type: tank
+          name: NG 80456-1
+          mass: 45.6  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1720000  # Pa  (MEOP 17.2 bar = 250 psi)
+          volume: 1.435700  # m3  (1435.7 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1435.7 L, mass 45.6 kg, MEOP 17.2 bar (250 psi); Program: MRO Oxidizer"
+        - type: tank
+          name: NG 80462-1
+          mass: 10  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2900000  # Pa  (MEOP 29 bar = 420 psi)
+          volume: 0.161500  # m3  (161.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 161.5 L, mass 10 kg, MEOP 29 bar (420 psi); Program: NFIRE"
+        - type: tank
+          name: NG 80466-1
+          mass: 21.8  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2280000  # Pa  (MEOP 22.8 bar = 330 psi)
+          volume: 0.565300  # m3  (565.3 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 565.3 L, mass 21.8 kg, MEOP 22.8 bar (330 psi); Program: GLAST"
+        - type: tank
+          name: NG 80470-1
+          mass: 27.2  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2340000  # Pa  (MEOP 23.4 bar = 340 psi)
+          volume: 0.740400  # m3  (740.4 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 740.4 L, mass 27.2 kg, MEOP 23.4 bar (340 psi); Program: Unknown"
+        - type: tank
+          name: NG 80471-1
+          mass: 94.3  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 1.920600  # m3  (1920.6 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1920.6 L, mass 94.3 kg, MEOP 20.7 bar (300 psi); Program: SBIRS"
+        - type: tank
+          name: NG 80474-1
+          mass: 8.4  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1720000  # Pa  (MEOP 17.2 bar = 250 psi)
+          volume: 0.225400  # m3  (225.4 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 225.4 L, mass 8.4 kg, MEOP 17.2 bar (250 psi); Program: Unknown"
+        - type: tank
+          name: NG 80476-1
+          mass: 28.9  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.858000  # m3  (858 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 858 L, mass 28.9 kg, MEOP 20.7 bar (300 psi); Program: Optus"
+        - type: tank
+          name: NG 80480-1
+          mass: 3.6  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.058600  # m3  (58.6 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 58.6 L, mass 3.6 kg, MEOP 20.7 bar (300 psi); Program: CLASSIFIED"
+        - type: tank
+          name: NG 80481-1
+          mass: 1.8  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.020200  # m3  (20.2 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 20.2 L, mass 1.8 kg, MEOP 20.7 bar (300 psi); Program: CLASSIFIED"
+        - type: tank
+          name: NG 80482-1
+          mass: 45  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1720000  # Pa  (MEOP 17.2 bar = 250 psi)
+          volume: 1.435700  # m3  (1435.7 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1435.7 L, mass 45 kg, MEOP 17.2 bar (250 psi); Program: DS2000"
+        - type: tank
+          name: NG 80484-1
+          mass: 23.4  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.646600  # m3  (646.6 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 646.6 L, mass 23.4 kg, MEOP 20.7 bar (300 psi); Program: SDO"
+        - type: tank
+          name: NG 80495-1
+          mass: 117.94  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2171800  # Pa  (MEOP 21.718 bar = 315 psi)
+          volume: 0.466630  # m3  (466.63 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 466.63 L, mass 117.94 kg, MEOP 21.718 bar (315 psi); Program: Unknown"
+        - type: tank
+          name: NG 80501-1
+          mass: 35.4  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1600000  # Pa  (MEOP 16 bar = 235 psi)
+          volume: 1.025400  # m3  (1025.4 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1025.4 L, mass 35.4 kg, MEOP 16 bar (235 psi); Program: TEMPO Spherical"
+        - type: tank
+          name: NG 80503-1
+          mass: 42.28  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2068000  # Pa  (MEOP 20.68 bar = 300 psi)
+          volume: 1.057220  # m3  (1057.22 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1057.22 L, mass 42.28 kg, MEOP 20.68 bar (300 psi); Program: AEHF"
+        - type: tank
+          name: NG 80504-1
+          mass: 15.2  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2068000  # Pa  (MEOP 20.68 bar = 300 psi)
+          volume: 0.327480  # m3  (327.48 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 327.48 L, mass 15.2 kg, MEOP 20.68 bar (300 psi); Program: BSAT-3A"
+        - type: tank
+          name: NG 80506-1
+          mass: 16.4  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1770000  # Pa  (MEOP 17.7 bar = 256 psi)
+          volume: 0.277400  # m3  (277.4 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 277.4 L, mass 16.4 kg, MEOP 17.7 bar (256 psi); Program: Commercial GEO"
+        - type: tank
+          name: NG 80506-2
+          mass: 18.9  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1770000  # Pa  (MEOP 17.7 bar = 256 psi)
+          volume: 0.333500  # m3  (333.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 333.5 L, mass 18.9 kg, MEOP 17.7 bar (256 psi); Program: Commercial GEO"
+        - type: tank
+          name: NG 80506-3
+          mass: 21  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1770000  # Pa  (MEOP 17.7 bar = 256 psi)
+          volume: 0.389500  # m3  (389.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 389.5 L, mass 21 kg, MEOP 17.7 bar (256 psi); Program: Commercial GEO"
+        - type: tank
+          name: NG 80506-4
+          mass: 22.4  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1770000  # Pa  (MEOP 17.7 bar = 256 psi)
+          volume: 0.445600  # m3  (445.6 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 445.6 L, mass 22.4 kg, MEOP 17.7 bar (256 psi); Program: Commercial GEO"
+        - type: tank
+          name: NG 80506-5
+          mass: 24.2  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1770000  # Pa  (MEOP 17.7 bar = 256 psi)
+          volume: 0.501700  # m3  (501.7 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 501.7 L, mass 24.2 kg, MEOP 17.7 bar (256 psi); Program: Commercial GEO"
+        - type: tank
+          name: NG 80506-6
+          mass: 25.6  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1770000  # Pa  (MEOP 17.7 bar = 256 psi)
+          volume: 0.548400  # m3  (548.4 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 548.4 L, mass 25.6 kg, MEOP 17.7 bar (256 psi); Program: Commercial GEO"
+        - type: tank
+          name: NG 80506-7
+          mass: 27  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1770000  # Pa  (MEOP 17.7 bar = 256 psi)
+          volume: 0.595100  # m3  (595.1 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 595.1 L, mass 27 kg, MEOP 17.7 bar (256 psi); Program: Commercial GEO"
+        - type: tank
+          name: NG 80507-1
+          mass: 30.31  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1790000  # Pa  (MEOP 17.9 bar = 260 psi)
+          volume: 0.673700  # m3  (673.7 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 673.7 L, mass 30.31 kg, MEOP 17.9 bar (260 psi); Program: Commercial GEO"
+        - type: tank
+          name: NG 80507-2
+          mass: 34.81  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1790000  # Pa  (MEOP 17.9 bar = 260 psi)
+          volume: 0.832100  # m3  (832.1 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 832.1 L, mass 34.81 kg, MEOP 17.9 bar (260 psi); Program: Commercial GEO"
+        - type: tank
+          name: NG 80507-3
+          mass: 38.07  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1790000  # Pa  (MEOP 17.9 bar = 260 psi)
+          volume: 0.990500  # m3  (990.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 990.5 L, mass 38.07 kg, MEOP 17.9 bar (260 psi); Program: Commercial GEO"
+        - type: tank
+          name: NG 80507-4
+          mass: 41.52  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1790000  # Pa  (MEOP 17.9 bar = 260 psi)
+          volume: 1.148900  # m3  (1148.9 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1148.9 L, mass 41.52 kg, MEOP 17.9 bar (260 psi); Program: Commercial GEO"
+        - type: tank
+          name: NG 80507-5
+          mass: 43.82  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1790000  # Pa  (MEOP 17.9 bar = 260 psi)
+          volume: 1.254500  # m3  (1254.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1254.5 L, mass 43.82 kg, MEOP 17.9 bar (260 psi); Program: Commercial GEO"
+        - type: tank
+          name: NG 80511-1
+          mass: 24.9  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2280000  # Pa  (MEOP 22.8 bar = 330 psi)
+          volume: 0.327700  # m3  (327.7 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 327.7 L, mass 24.9 kg, MEOP 22.8 bar (330 psi); Program: Proprietary Hydrazine"
+        - type: tank
+          name: NG 80517-1
+          mass: 59  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1720000  # Pa  (MEOP 17.2 bar = 250 psi)
+          volume: 1.710600  # m3  (1710.6 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1710.6 L, mass 59 kg, MEOP 17.2 bar (250 psi); Program: Commercial Oxidizer"
+        - type: tank
+          name: NG 80518-1
+          mass: 30.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.858000  # m3  (858 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 858 L, mass 30.7 kg, MEOP 20.7 bar (300 psi); Program: STAR-2"
+        - type: tank
+          name: NG 80520-1
+          mass: 59  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2330000  # Pa  (MEOP 23.3 bar = 338 psi)
+          volume: 1.254500  # m3  (1254.5 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1254.5 L, mass 59 kg, MEOP 23.3 bar (338 psi); Program: Proprietary All-Metal"
+        - type: tank
+          name: NG 80527-1
+          mass: 28.1  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2170000  # Pa  (MEOP 21.7 bar = 315 psi)
+          volume: 0.374600  # m3  (374.6 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 374.6 L, mass 28.1 kg, MEOP 21.7 bar (315 psi); Program: COTS/CRS Hydrazine"
+        - type: tank
+          name: NG 80528-1
+          mass: 55.34  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 1.511680  # m3  (1511.68 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1511.68 L, mass 55.34 kg, MEOP 20.7 bar (300 psi); Program: GPS"
+        - type: tank
+          name: NG 80529-1
+          mass: 15.2  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.327480  # m3  (327.48 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 327.48 L, mass 15.2 kg, MEOP 20.7 bar (300 psi); Program: GPS"
+        - type: tank
+          name: NG 80535-1
+          mass: 35.2  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1730000  # Pa  (MEOP 17.3 bar = 251 psi)
+          volume: 1.024900  # m3  (1024.9 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1024.9 L, mass 35.2 kg, MEOP 17.3 bar (251 psi); Program: Himawari"
+        - type: tank
+          name: NG 80540-1
+          mass: 2.45  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1720000  # Pa  (MEOP 17.2 bar = 250 psi)
+          volume: 0.031000  # m3  (31 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 31 L, mass 2.45 kg, MEOP 17.2 bar (250 psi); Program: LADEE"
+        - type: tank
+          name: NG 80545-1
+          mass: 16.5  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2400000  # Pa  (MEOP 24 bar = 350 psi)
+          volume: 0.257000  # m3  (257 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 257 L, mass 16.5 kg, MEOP 24 bar (350 psi); Program: JWST"
+        - type: tank
+          name: NG 80546-1
+          mass: 11  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2400000  # Pa  (MEOP 24 bar = 350 psi)
+          volume: 0.131000  # m3  (131 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 131 L, mass 11 kg, MEOP 24 bar (350 psi); Program: JWST"
+        - type: tank
+          name: NG 80554-1
+          mass: 61.2  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1720000  # Pa  (MEOP 17.2 bar = 250 psi)
+          volume: 1.754000  # m3  (1754 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1754 L, mass 61.2 kg, MEOP 17.2 bar (250 psi); Program: MAVEN"
+        - type: tank
+          name: NG 80560-1
+          mass: 64.27  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 1.697000  # m3  (1697 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1697 L, mass 64.27 kg, MEOP 20.7 bar (300 psi); Program: GOES"
+        - type: tank
+          name: NG 80561-1
+          mass: 15.88  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.311000  # m3  (311 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 311 L, mass 15.88 kg, MEOP 20.7 bar (300 psi); Program: GOES"
+        - type: tank
+          name: NG 80563-1
+          mass: 64.2  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 1.671400  # m3  (1671.4 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1671.4 L, mass 64.2 kg, MEOP 20.7 bar (300 psi); Program: ComSat GEO"
+        - type: tank
+          name: NG 80564-1
+          mass: 41.3  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2070000  # Pa  (MEOP 20.7 bar = 300 psi)
+          volume: 0.714400  # m3  (714.4 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 714.4 L, mass 41.3 kg, MEOP 20.7 bar (300 psi); Program: ComSat GEO"
+        - type: tank
+          name: NG 80568-1
+          mass: 1.36  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2400000  # Pa  (MEOP 24 bar = 348 psi)
+          volume: 0.003800  # m3  (3.8 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 3.8 L, mass 1.36 kg, MEOP 24 bar (348 psi); Program: Unknown (LMP-103 HPGP)"
+        - type: tank
+          name: NG 80570-1
+          mass: 78.6  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2068000  # Pa  (MEOP 20.68 bar = 300 psi)
+          volume: 2.194000  # m3  (2194 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 2194 L, mass 78.6 kg, MEOP 20.68 bar (300 psi); Program: Proprietary GEO Commercial"
+        - type: tank
+          name: NG 80570-2
+          mass: 67.9  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2068000  # Pa  (MEOP 20.68 bar = 300 psi)
+          volume: 1.828730  # m3  (1828.73 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1828.73 L, mass 67.9 kg, MEOP 20.68 bar (300 psi); Program: Proprietary GEO Commercial"
+        - type: tank
+          name: NG 80570-3
+          mass: 58.8  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2068000  # Pa  (MEOP 20.68 bar = 300 psi)
+          volume: 1.514310  # m3  (1514.31 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1514.31 L, mass 58.8 kg, MEOP 20.68 bar (300 psi); Program: Proprietary GEO Commercial"
+        - type: tank
+          name: NG 80570-4
+          mass: 46.8  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2068000  # Pa  (MEOP 20.68 bar = 300 psi)
+          volume: 1.095990  # m3  (1095.99 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1095.99 L, mass 46.8 kg, MEOP 20.68 bar (300 psi); Program: Proprietary GEO Commercial"
+        - type: tank
+          name: NG 80570-5
+          mass: 34  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2068000  # Pa  (MEOP 20.68 bar = 300 psi)
+          volume: 0.674540  # m3  (674.54 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 674.54 L, mass 34 kg, MEOP 20.68 bar (300 psi); Program: Proprietary GEO Commercial"
+        - type: tank
+          name: NG 80571-1
+          mass: 36.5  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1965000  # Pa  (MEOP 19.65 bar = 285 psi)
+          volume: 0.912000  # m3  (912 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 912 L, mass 36.5 kg, MEOP 19.65 bar (285 psi); Program: Proprietary"
+        - type: tank
+          name: NG 80576-1
+          mass: 60.6  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1790000  # Pa  (MEOP 17.9 bar = 260 psi)
+          volume: 2.151000  # m3  (2151 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 2151 L, mass 60.6 kg, MEOP 17.9 bar (260 psi); Program: GEO Commercial"
+        - type: tank
+          name: NG 80576-2
+          mass: 63.9  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1790000  # Pa  (MEOP 17.9 bar = 260 psi)
+          volume: 2.310000  # m3  (2310 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 2310 L, mass 63.9 kg, MEOP 17.9 bar (260 psi); Program: GEO Commercial"
+        - type: tank
+          name: NG 80577-1
+          mass: 22.7  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2340000  # Pa  (MEOP 23.4 bar = 340 psi)
+          volume: 0.438400  # m3  (438.4 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 438.4 L, mass 22.7 kg, MEOP 23.4 bar (340 psi); Program: Upgrade of NG 80398-1"
+        - type: tank
+          name: NG 80589-1
+          mass: 28.1  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2170000  # Pa  (MEOP 21.7 bar = 315 psi)
+          volume: 0.374400  # m3  (374.4 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 374.4 L, mass 28.1 kg, MEOP 21.7 bar (315 psi); Program: Unknown"
+        - type: tank
+          name: NG 80599-1
+          mass: 6.6  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2200000  # Pa  (MEOP 22 bar = 320 psi)
+          volume: 0.094600  # m3  (94.6 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 94.6 L, mass 6.6 kg, MEOP 22 bar (320 psi); Program: Lunar Lander"
+        - type: tank
+          name: NG 80601-1
+          mass: 52.12  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1620000  # Pa  (MEOP 16.2 bar = 235 psi)
+          volume: 1.709910  # m3  (1709.91 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1709.91 L, mass 52.12 kg, MEOP 16.2 bar (235 psi); Program: DS2000"
+        - type: tank
+          name: NG 80602-1
+          mass: 37.51  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 1700000  # Pa  (MEOP 17 bar = 250 psi)
+          volume: 1.153000  # m3  (1153 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 1153 L, mass 37.51 kg, MEOP 17 bar (250 psi); Program: Unknown"
+        - type: tank
+          name: NG 80612-1
+          mass: 17.01  # kg
+          propellant:
+            - Hydrazine
+            - MMH
+            - UDMH
+            - Aerozine-50
+            - NTO
+            - MON
+            - He
+            - N2
+            - Ar
+            - Xenon
+            - Kr
+          pressure: 2068000  # Pa  (MEOP 20.68 bar = 300 psi)
+          volume: 0.275800  # m3  (275.8 L)
+          source: "Northrop Grumman, 'PMD Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pmd-tanks/data-sheets-sorted-by-part-number"
+          # Evidence: "Vol 275.8 L, mass 17.01 kg, MEOP 20.68 bar (300 psi); Program: Unknown"
     HET:
       thruster:
         # ----------------------------------------
@@ -4349,4 +7494,4 @@ reference_data:
             min: +10
             max: 45
           battery_holding_charge: "6–8 months typ, up to 12 months (by analysis; intermediate check recommended >8 months) at -20 to +20 °C"
-          source: "Innovative Solutions In Space (ISIS) B.V. 'ICEPS2 Integrated CubeSat EPS Datasheet,' Doc. No. ISIS-ICEPS2-DSH-0001, Issue 1.2, 2024."
+          source: "Innovative Solutions In Space (ISIS) B.V. 'ICEPS2 Integrated CubeSat EPS Datasheet,' Doc. No. ISIS-ICEPS2-DSH-0001, Issue 1.2, 2024.
