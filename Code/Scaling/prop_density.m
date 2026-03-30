@@ -1,5 +1,7 @@
 function rho_p = prop_density(p_max, propellant)
 % TODO: Rework to config files
+% TODO: Rework for pressure dependency, currently fixed to set point
+
 % prop_density — Nominal storage density for spacecraft propellants [kg/m³].
 %
 % Returns the bulk storage density at typical spacecraft tank operating conditions.

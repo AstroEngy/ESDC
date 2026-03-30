@@ -1,22 +1,29 @@
 function m_tank = m_scale_tank(m_prop, propellant, db_data)
+% TODO prop_density() support is required for the following propellants to enable
+%      volume-based scaling (currently falling back to the 25 % mass margin below):
+%   Solid sublimable:          Iodine
+%   Liquid metals (FEEP/LMIS): Indium, Bismuth
+%   Ionic liquids (electrospray): EMI-Im
+%   Liquefied gases:           NH3, Dimethyl Ether (DME)
+%   Compressed/cryogenic gas:  Hydrogen (H2), H2/N2 mixtures (simulated NH3/N2H4 decomposition products)
+
 % m_scale_tank — Estimate propellant tank dry mass [kg] from propellant mass and type.
 %
-% Derives a scaling law on-the-fly from tank entries in the reference database
-% (db_data.reference_data.propulsion_system.tank.vessel) that are compatible
-% with the specified propellant.  The propellant storage volume is computed from
-% m_prop and the storage density returned by prop_density().
+% Follows the same pattern as m_scale_thruster: a polynomial scaling law is
+% derived from database entries (mass vs. storage volume) and cached as a CSV
+% file in Database/Scaling/.  On subsequent calls the CSV is read directly.
+%
+% CSV filename convention:
+%   Propellant-specific:
+%     Database/Scaling/scaling_propulsion_system_tank_vessel_with_propellant_<P>_mass_to_volume.csv
+%   Generic (null-propellant entries only):
+%     Database/Scaling/scaling_propulsion_system_tank_vessel_mass_to_volume.csv
 %
 % Propellant-compatibility filtering rules (applied in order):
-%   1. Tank entries whose propellant field is absent or empty are GENERIC vessels
-%      and are only used when no propellant-specific entries exist.
-%   2. Tank entries with a propellant string are compatible when the string
-%      matches any alias of the requested propellant (case-insensitive).
-%   3. Tank entries with a propellant list (cell array) are compatible when any
-%      element of the list matches an alias of the requested propellant.
-%   4. Selection priority:
-%        a. If ≥2 propellant-specific entries found → use those only.
-%        b. Else if ≥2 generic (null-propellant) entries found → use those.
-%        c. Else fall back to all entries combined (with a warning).
+%   1. Tank entries whose propellant field is absent or empty are GENERIC vessels.
+%   2. Propellant-specific entries are tried first (≥2 required for a fit).
+%   3. If fewer than 2 specific entries exist, generic entries are used.
+%   4. If still fewer than 2, all entries are combined with a warning.
 %
 % Tank `volume` values in the database are in m³.
 % rho_p is obtained from prop_density(); see that function for supported
@@ -29,55 +36,108 @@ function m_tank = m_scale_tank(m_prop, propellant, db_data)
 %                disk if omitted or empty
 %
 % Output:
-%   m_tank — estimated dry tank mass [kg], same size as m_prop
+%   m_tank — estimated dry tank dry mass [kg], same size as m_prop
 
   if nargin < 3 || isempty(db_data) || ~isstruct(db_data) || ~isfield(db_data, 'reference_data')
     db_data = read_reference_data();
   end
 
-  % 1. Propellant storage density and volume
+  % Fallback for propellants whose storage density is not yet modelled:
+  % apply a 25 % tank-mass / propellant-mass ratio  as a worst case fall back
+  % Source: Benfield & Belcher (2004), "Modeling of Spacecraft Advanced Chemical
+  %         Propulsion Systems", NASA MSFC, NTRS 20050000113.
+  if is_unsupported_propellant(propellant)
+   % warning('m_scale_tank: prop_density not available for "%s"; using 25%% mass margin (Benfield & Belcher 2004).', propellant);
+    m_tank = 0.25 .* m_prop;
+    return;
+  end
+
+  % 1. Propellant storage density and required volume
   rho_p  = prop_density([], propellant);
   V_prop = m_prop ./ rho_p;   % [m³]
 
-  % 2. Load tank vessel list from database
+  % 2. Determine which CSV to use (propellant-specific preferred)
+  aliases  = get_propellant_aliases(propellant);
+  csv_spec = strcat('Database/Scaling/scaling_propulsion_system_tank_vessel_with_propellant_', ...
+                    propellant, '_mass_to_volume.csv');
+  csv_gen  = 'Database/Scaling/scaling_propulsion_system_tank_vessel_mass_to_volume.csv';
+
+  % Check counts to decide which CSV level is appropriate
   vessels = db_data.reference_data.propulsion_system.tank.vessel;
-  if isstruct(vessels)
-    vessels = {vessels};
-  end
+  if isstruct(vessels); vessels = {vessels}; end
+  [~, ms] = collect_tank_pairs(vessels, aliases, false);
+  [~, mg] = collect_tank_pairs(vessels, aliases, true);
+  n_spec = numel(ms);
+  n_gen  = numel(mg);
 
-  % 3. Resolve propellant aliases for matching
-  aliases = get_propellant_aliases(propellant);
-
-  % 4. Collect specific and generic entries separately
-  [vol_spec,  mass_spec]  = collect_tank_pairs(vessels, aliases, false);
-  [vol_gen,   mass_gen]   = collect_tank_pairs(vessels, aliases, true);
-
-  if numel(vol_spec) >= 2
-    vol_data  = vol_spec;
-    mass_data = mass_spec;
-  elseif numel(vol_gen) >= 2
-    vol_data  = vol_gen;
-    mass_data = mass_gen;
-    if numel(vol_spec) > 0
-      warning('m_scale_tank: only %d propellant-specific tank entries for "%s"; using %d generic entries.', ...
-              numel(vol_spec), propellant, numel(vol_gen));
+  if n_spec >= 2
+    filename = csv_spec;
+  elseif n_gen >= 2
+    filename = csv_gen;
+    if n_spec > 0
+      warning('m_scale_tank: only %d propellant-specific entries for "%s"; using generic CSV.', n_spec, propellant);
     end
   else
-    % Fallback: use all entries combined
-    [vol_data, mass_data] = collect_tank_pairs(vessels, {}, false);
-    warning('m_scale_tank: fewer than 2 suitable tank entries for propellant "%s"; using all %d database entries.', ...
-            propellant, numel(vol_data));
+    filename = csv_gen;
+    warning('m_scale_tank: fewer than 2 suitable entries for "%s"; using generic CSV with all entries.', propellant);
   end
 
-  % 5. Build data matrix for scaling_linear:  %TODO: adapt here for proper scaling law derivation and handling
-  %      data(3,:) = mass values (output), data(4,:) = volume values (input)
-  [vol_s, si] = sort(vol_data);
-  mass_s      = mass_data(si);
-  data        = [mass_s; vol_s; mass_s; vol_s];   % rows: raw-y, raw-x, fit-y, fit-x
+  % 3. Generate CSV from DB if it does not yet exist
+  if ~exist(filename, 'file')
+    create_tank_scaling_csv(filename, vessels, aliases, n_spec);
+  end
 
-  % 6. Interpolate / extrapolate
+  % 4. Load the fitted scaling law and interpolate
+  data = dlmread(filename, ',');
+  % CSV layout (same as thruster CSVs):
+  %   row 1: raw y (mass),  row 2: raw x (volume)
+  %   row 3: fit y (mass),  row 4: fit x (volume)
+  % scaling_linear expects data(3,:)=y, data(4,:)=x
+  data(1:2, :) = [data(2,:); data(1,:)];
+  data(3:4, :) = [data(4,:); data(3,:)];
+
   m_tank = scaling_linear(V_prop, data);
 
+end
+
+
+% ---------------------------------------------------------------------------
+function create_tank_scaling_csv(filename, vessels, aliases, n_spec)
+% Collect (volume, mass) pairs, fit a polynomial, and write the CSV.
+  if n_spec >= 2
+    % propellant-specific entries
+    [vols, masses] = collect_tank_pairs(vessels, aliases, false);
+  else
+    % generic (null-propellant) entries, or all if still insufficient
+    [vols, masses] = collect_tank_pairs(vessels, aliases, true);
+    if numel(vols) < 2
+      [vols, masses] = collect_tank_pairs(vessels, {}, false);
+    end
+  end
+
+  if isempty(vols)
+    warning('m_scale_tank: no valid tank entries found; using dummy scaling.');
+    vols   = [0.001, 0.002];
+    masses = [1.0,   2.0  ];
+  elseif numel(vols) == 1
+    vols   = [vols,   vols(1)*2  ];
+    masses = [masses, masses(1)*2];
+  end
+
+  % Sort by volume
+  [vols, si] = sort(vols);
+  masses = masses(si);
+
+  % Deduplicate: average masses at identical volumes
+  [vols_u, ia] = unique(vols, 'stable');
+  masses_u = zeros(size(vols_u));
+  for k = 1:numel(vols_u)
+    masses_u(k) = mean(masses(vols == vols_u(k)));
+  end
+
+  % write_selected_data_to_file fits a polynomial (via data_fitting) and
+  % writes both the raw data and the fitted curve to the CSV.
+  write_selected_data_to_file(masses_u, vols_u, filename, 0);
 end
 
 
@@ -100,7 +160,7 @@ function aliases = get_propellant_aliases(propellant)
   elseif any(strcmp(pl, {'h2', 'hydrogen'}))
     aliases = {'H2', 'Hydrogen', 'hydrogen'};
   elseif any(strcmp(pl, {'water', 'h2o'}))
-    aliases = {'Water', 'water', 'H2O', 'h2o'};
+    aliases = {'Water', 'water', 'H2O', 'h2o', 'distilled water', 'de-ionized water', 'deionized water'};
   elseif any(strcmp(pl, {'dme', 'dimethyl ether (dme)', 'dimethyl ether'}))
     aliases = {'DME', 'dme', 'Dimethyl Ether (DME)', 'Dimethyl ether'};
   elseif any(strcmp(pl, {'iodine'}))
@@ -203,4 +263,29 @@ function val = tank_scalar(x)
   else
     val = NaN;
   end
+end
+
+
+% ---------------------------------------------------------------------------
+function result = is_unsupported_propellant(propellant)
+% True for propellants whose storage density is not yet modelled in prop_density().
+% These receive the 25 % mass-margin fallback (Benfield & Belcher 2004, NTRS 20050000113).
+%   Solid sublimable:             Iodine
+%   Liquid metals (FEEP/LMIS):    Indium, Bismuth
+%   Ionic liquids (electrospray): EMI-Im
+%   Liquefied gases:              NH3, Dimethyl Ether (DME)
+%   Compressed/cryogenic gas:     Hydrogen (H2), H2/N2 mixtures
+  unsupported = { ...
+    'iodine', ...
+    'indium', ...
+    'bi', 'bismuth', ...
+    'emi-im', 'emi-tf', 'emi im', 'emi tf', ...
+    'nh3', 'ammonia', ...
+    'dme', 'dimethyl ether (dme)', 'dimethyl ether', ...
+    'h2', 'hydrogen' ...
+  };
+  pl = lower(strtrim(propellant));
+  % Exact match for most entries; prefix match for 'h2/n2' to catch long
+  % variants like "H2/N2 mixtures (simulated NH3/N2H4 decomposition products)".
+  result = any(strcmp(pl, unsupported)) || strncmp(pl, 'h2/n2', 5);
 end
