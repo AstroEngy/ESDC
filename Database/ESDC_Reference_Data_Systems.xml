@@ -5523,6 +5523,8 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 					<min>55</min>
 				</total_impulse>
 				<propellant>Water</propellant>
+				<c_e unit="m/s">686.47</c_e>
+				<!-- Assumption: Isp = 70 s → c_e = Isp × g₀; source: https://arc.aiaa.org/doi/10.2514/1.A34407 -->
 				<source>Pale Blue PBH Water Hall Effect Thruster Datasheet, satsearch (z98e6q).</source>
 				<!-- Evidence: Thrust 1 mN, 6 W, max 0.6 kg, min 55 Ns total impulse, water propellant -->
 			</thruster>
@@ -5538,6 +5540,8 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 					<min>220</min>
 				</total_impulse>
 				<propellant>Water</propellant>
+				<c_e unit="m/s">686.47</c_e>
+				<!-- Assumption: Isp = 70 s → c_e = Isp × g₀; source: https://arc.aiaa.org/doi/10.2514/1.A34407 -->
 				<source>Pale Blue PBH Water Hall Effect Thruster Datasheet, satsearch (z98e6q).</source>
 				<!-- Evidence: Thrust 1 mN, 20 W, max 1.5 kg, min 220 Ns total impulse, water propellant -->
 			</thruster>
@@ -5549,6 +5553,8 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				<mass unit="kg">13.4</mass>
 				<total_impulse unit="N·s">4400</total_impulse>
 				<propellant>Water</propellant>
+				<c_e unit="m/s">686.47</c_e>
+				<!-- Assumption: Isp = 70 s → c_e = Isp × g₀; source: https://arc.aiaa.org/doi/10.2514/1.A34407 -->
 				<source>Pale Blue PBH Water Hall Effect Thruster Datasheet, satsearch (z98e6q).</source>
 				<!-- Evidence: Thrust 10 mN, 50 W, 13.4 kg, 4400 Ns total impulse, water propellant -->
 			</thruster>

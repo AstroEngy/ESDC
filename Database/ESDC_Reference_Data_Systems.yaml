@@ -4913,6 +4913,7 @@ reference_data:
           total_impulse:  # N·s
             min: 55
           propellant: Water
+          c_e: 686.47  # m/s — assumption: Isp = 70 s (c_e = Isp × g₀); source: https://arc.aiaa.org/doi/10.2514/1.A34407
           source: "Pale Blue PBH Water Hall Effect Thruster Datasheet, satsearch (z98e6q)."
           # Evidence: "Thrust 1 mN, 6 W, max 0.6 kg, min 55 Ns total impulse, water propellant"
         - type: resistojet
@@ -4924,6 +4925,7 @@ reference_data:
           total_impulse:  # N·s
             min: 220
           propellant: Water
+          c_e: 686.47  # m/s — assumption: Isp = 70 s (c_e = Isp × g₀); source: https://arc.aiaa.org/doi/10.2514/1.A34407
           source: "Pale Blue PBH Water Hall Effect Thruster Datasheet, satsearch (z98e6q)."
           # Evidence: "Thrust 1 mN, 20 W, max 1.5 kg, min 220 Ns total impulse, water propellant"
         - type: resistojet
@@ -4933,6 +4935,7 @@ reference_data:
           mass: 13.4  # kg
           total_impulse: 4400  # N·s
           propellant: Water
+          c_e: 686.47  # m/s — assumption: Isp = 70 s (c_e = Isp × g₀); source: https://arc.aiaa.org/doi/10.2514/1.A34407
           source: "Pale Blue PBH Water Hall Effect Thruster Datasheet, satsearch (z98e6q)."
           # Evidence: "Thrust 10 mN, 50 W, 13.4 kg, 4400 Ns total impulse, water propellant"
   power_generation:
