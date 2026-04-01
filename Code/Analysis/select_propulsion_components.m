@@ -275,8 +275,13 @@ function evolution_data = select_propulsion_components(evolution_data, db_data, 
             pwr_str = sprintf('each: thrust=%.4g N  power=%.4g W  mass=%.4g kg  |  cluster (n=%d): thrust=%.4g N  power=%.4g W  mass=%.4g kg', ...
                               t.thrust_single, t.power_jet_single, t.mass_single, t.n_thrusters, t.thrust_cluster, t.power_jet_cluster, t.mass_cluster);
           end
-          fprintf('      Thruster : %dx %s (%s)  %s  score=%.3f%s\n', ...
+          fprintf('      Thruster : %dx %s (%s)  %s  score=%.3f%s', ...
                   t.n_thrusters, t.name, t.company, pwr_str, t.score, hint_diff_t);
+          if isfield(t, 'mass_exceeds_budget') && t.mass_exceeds_budget
+            fprintf('  [FALLBACK: %.4g kg over]\n', t.mass_overage_kg);
+          else
+            fprintf('\n');
+          end
           if numel(cm.thruster_candidates) > 1
             t2 = cm.thruster_candidates(2);
             if isfield(t2, 'power_derived') && t2.power_derived
@@ -284,8 +289,13 @@ function evolution_data = select_propulsion_components(evolution_data, db_data, 
             else
               ru_pwr = sprintf('power=%.4g W', t2.power_jet_single);
             end
-            fprintf('               runner-up: %dx %s (%s)  each: thrust=%.4g N  %s  mass=%.4g kg  |  cluster (n=%d): thrust=%.4g N  mass=%.4g kg  score=%.3f\n', ...
+            fprintf('               runner-up: %dx %s (%s)  each: thrust=%.4g N  %s  mass=%.4g kg  |  cluster (n=%d): thrust=%.4g N  mass=%.4g kg  score=%.3f', ...
                     t2.n_thrusters, t2.name, t2.company, t2.thrust_single, ru_pwr, t2.mass_single, t2.n_thrusters, t2.thrust_cluster, t2.mass_cluster, t2.score);
+            if isfield(t2, 'mass_exceeds_budget') && t2.mass_exceeds_budget
+              fprintf('  [FALLBACK: %.4g kg over]\n', t2.mass_overage_kg);
+            else
+              fprintf('\n');
+            end
           end
         else
           fprintf('      Thruster : (none found)\n');
@@ -325,7 +335,7 @@ function evolution_data = select_propulsion_components(evolution_data, db_data, 
           fprintf('      PPU      : (none found in DB)\n');
         end
         if isfield(cm, 'no_solution_within_mass_budget') && cm.no_solution_within_mass_budget
-          fprintf('      ** NOTE: no thruster within mass budget — over-budget fallback used\n');
+          fprintf('      ** FALLBACK: no thruster within mass budget; using best-scoring over-budget option\n');
         end
         if ~isnan(cm.piping_mass_kg)
           fprintf('    Piping   : %.4g kg  (%.0f %% × wet mass %.4g kg)\n', ...
@@ -413,8 +423,12 @@ function [cands, cands_ob] = select_thrusters(ps_db, propellant, d_thrust, d_c_e
 
     % Soft constraint: mass
     mass_exceeds_budget = false;
+    mass_overage_kg = 0;
     if ~isnan(cluster_mass) && ~isnan(d_mass_budget) && d_mass_budget > 0
-      mass_exceeds_budget = cluster_mass > d_mass_budget;
+      if cluster_mass > d_mass_budget
+        mass_exceeds_budget = true;
+        mass_overage_kg = cluster_mass - d_mass_budget;
+      end
     end
 
     % Score
@@ -443,6 +457,13 @@ function [cands, cands_ob] = select_thrusters(ps_db, propellant, d_thrust, d_c_e
       total_score = 0;
     end
 
+    % Penalty for over-budget candidates: multiply score by 0.5 (strong disincentive).
+    % Over-budget candidates only used as fallback; should always rank below in-budget.
+    SCORE_PENALTY_OVER_BUDGET = 0.5; % TO THINK: is this too harsh? Too lenient? Should it be a function of how much the mass exceeds the budget?
+    if mass_exceeds_budget
+      total_score = total_score * SCORE_PENALTY_OVER_BUDGET;
+    end
+
     c.name                = get_str_field(entry, 'name', '(unnamed)');
     c.company             = get_str_field(entry, 'company', '');
     c.score               = total_score;
@@ -458,6 +479,7 @@ function [cands, cands_ob] = select_thrusters(ps_db, propellant, d_thrust, d_c_e
     c.TRL                 = e_TRL;
     c.source              = get_str_field(entry, 'source', '');
     c.mass_exceeds_budget = double(mass_exceeds_budget);
+    c.mass_overage_kg     = mass_overage_kg;  % overage above design budget [kg]
     c.power_derived       = double(power_derived); % 1 when Pjet was computed analytically (not in DB)
     c.power_derive_method = power_derive_method; % formula used, e.g. '0.5*T*ve'
 
@@ -473,7 +495,10 @@ function [cands, cands_ob] = select_thrusters(ps_db, propellant, d_thrust, d_c_e
     cands = cands(idx);
   end
   if ~isempty(cands_ob)
-    [~, idx] = sort([cands_ob.mass_cluster], 'ascend');
+    scores_ob = [cands_ob.score];
+    masses_ob = [cands_ob.mass_cluster];
+    masses_ob(isnan(masses_ob)) = Inf;
+    [~, idx] = sortrows([-scores_ob(:), masses_ob(:)]);
     cands_ob = cands_ob(idx);
   end
 end
