@@ -55,8 +55,8 @@
 
 %TODO 20% margin on propellant volume , generally Per SMAD (3rd ed.): tank + 
 %TODO PPU scaling for clustering
-%TODO tank scaling for clustering
 %TODO: confidence calcing
+%TODO: how to handle fallback when no candidate for propellant is available
 
 function evolution_data = select_propulsion_components(evolution_data, db_data, verbose)
   % verbose (optional, default false): when true, prints per-individual
@@ -268,12 +268,12 @@ function evolution_data = select_propulsion_components(evolution_data, db_data, 
               hint_diff_t = sprintf('  [%+.1f%% vs hint]', pct);
             end
           end
-          fprintf('      Thruster : %s (%s)  n=%d  mass=%.4g kg  score=%.3f%s\n', ...
-                  t.name, t.company, t.n_thrusters, t.mass_cluster, t.score, hint_diff_t);
+          fprintf('      Thruster : %dx %s (%s)  each: thrust=%.4g N  power=%.4g W  mass=%.4g kg  |  cluster (n=%d): thrust=%.4g N  power=%.4g W  mass=%.4g kg  score=%.3f%s\n', ...
+                  t.n_thrusters, t.name, t.company, t.thrust_single, t.power_jet_single, t.mass_single, t.n_thrusters, t.thrust_cluster, t.power_jet_cluster, t.mass_cluster, t.score, hint_diff_t);
           if numel(cm.thruster_candidates) > 1
             t2 = cm.thruster_candidates(2);
-            fprintf('               runner-up: %s (%s)  n=%d  mass=%.4g kg  score=%.3f\n', ...
-                    t2.name, t2.company, t2.n_thrusters, t2.mass_cluster, t2.score);
+            fprintf('               runner-up: %dx %s (%s)  each: thrust=%.4g N  mass=%.4g kg  |  cluster (n=%d): thrust=%.4g N  mass=%.4g kg  score=%.3f\n', ...
+                    t2.n_thrusters, t2.name, t2.company, t2.thrust_single, t2.mass_single, t2.n_thrusters, t2.thrust_cluster, t2.mass_cluster, t2.score);
           end
         else
           fprintf('      Thruster : (none found)\n');
@@ -289,8 +289,10 @@ function evolution_data = select_propulsion_components(evolution_data, db_data, 
               hint_diff_tk = sprintf('  [%+.1f%% vs hint]', pct);
             end
           end
-          fprintf('      Tank     : %s (%s)  n=%d  mass=%.4g kg  score=%.3f%s\n', ...
-                  tk.name, tk.company, tk.n_tanks, tk.mass_cluster, tk.score, hint_diff_tk);
+          n_tanks_str = '?';
+          if ~isnan(tk.n_tanks); n_tanks_str = num2str(tk.n_tanks); end
+          fprintf('      Tank     : %sx %s (%s)  each: cap=%.4g kg  mass=%.4g kg  |  cluster (n=%s): cap=%.4g kg  mass=%.4g kg  score=%.3f  [%s]%s\n', ...
+                  n_tanks_str, tk.name, tk.company, tk.capacity_kg_single, tk.mass_single, n_tanks_str, tk.capacity_kg_cluster, tk.mass_cluster, tk.score, tk.filter_mode, hint_diff_tk);
         else
           fprintf('      Tank     : (none found)\n');
         end
@@ -448,23 +450,25 @@ end
 
 % =========================================================================
 % TANK SELECTION
-% Selects from the top-level tank.vessel list in the propulsion_system DB.
-% A tank must hold >= d_prop_mass of propellant (if known).
-% Candidates are sorted by ascending tank mass (lightest sufficient tank first).
-% =========================================================================
-% =========================================================================
-% TANK SELECTION
-% Selects from the top-level tank.vessel list in the propulsion_system DB.
-% A single tank or a cluster of identical tanks (n_tanks) must together hold
-% >= d_prop_mass of propellant.  n_tanks = ceil(d_prop_mass / e_prop_cap).
-% Candidates are sorted by ascending cluster mass (lightest sufficient first).
+% Selects from the top-level propulsion_system.tank.vessel list.
+%
+% Propellant-compatibility filtering (mirrors m_scale_tank logic):
+%   1. Propellant-specific entries (propellant field matches) are tried first.
+%   2. If none found, generic entries (no propellant field) are used as fallback.
+%   3. If still none, all entries are used with a warning.
+%
+% Tank capacity [kg] is derived from the `mass_propellant` field when present;
+% otherwise from `volume` [m³] × prop_density(propellant) [kg/m³].
+% Note: volume values in the DB are stored in m³ (the unit attribute "L" is incorrect).
+%
+% Cluster sizing:  n_tanks = ceil(d_prop_mass / e_prop_cap)  (minimum 1).
+% Sorted by score descending, then by cluster mass ascending as tiebreak.
 % =========================================================================
 function cands = select_tanks(db_data, propellant, d_prop_mass, hint_mass)
   % hint_mass: scaling-model tank cluster mass from last successful lineage (NaN = no hint).
   if nargin < 4; hint_mass = NaN; end
   cands = struct([]);
 
-  % Tank data lives at propulsion_system.tank.vessel (not per-type)
   ps_db = db_data.reference_data.propulsion_system;
   if ~isfield(ps_db, 'tank') || ~isfield(ps_db.tank, 'vessel')
     return;
@@ -472,41 +476,63 @@ function cands = select_tanks(db_data, propellant, d_prop_mass, hint_mass)
   tank_data = ps_db.tank.vessel;
   if ~iscell(tank_data); tank_data = {tank_data}; end
 
-  for k = 1:numel(tank_data)
+  % Propellant density for volume-based capacity derivation [kg/m³]
+  rho_p = NaN;
+  try
+    rho_p = prop_density([], propellant);
+  catch
+  end
+
+  % Two-pass propellant filtering
+  spec_idx = tank_specific_indices(tank_data, propellant);
+  if ~isempty(spec_idx)
+    use_idx     = spec_idx;
+    filter_mode = 'specific';
+  else
+    gen_idx = tank_generic_indices(tank_data);
+    if ~isempty(gen_idx)
+      if numel(spec_idx) == 0  % no specific entries found
+        % no warning needed — generic fallback is the expected path for many propellants
+      end
+      use_idx     = gen_idx;
+      filter_mode = 'generic';
+    else
+      use_idx     = 1:numel(tank_data);
+      filter_mode = 'all';
+      warning('select_tanks: no compatible vessel for "%s"; using all DB entries as fallback.', propellant);
+    end
+  end
+
+  for k = use_idx
     entry = tank_data{k};
 
-    % Propellant compatibility filter (skip if propellant field known and mismatches)
-    if isfield(entry, 'propellant') && ~isempty(entry.propellant)
-      if ~propellant_match(entry.propellant, propellant)
-        continue;
-      end
+    e_mass     = scalar_midpoint(entry, 'mass');
+    e_volume   = scalar_midpoint(entry, 'volume');   % m³ (DB unit tag "L" is incorrect)
+    e_pressure = scalar_midpoint(entry, 'pressure');
+
+    % Capacity: explicit mass_propellant field preferred; derive from volume otherwise
+    e_prop_cap = scalar_midpoint(entry, 'mass_propellant');
+    if isnan(e_prop_cap) && ~isnan(e_volume) && e_volume > 0 && ~isnan(rho_p) && rho_p > 0
+      e_prop_cap = e_volume * rho_p;
     end
 
-    e_mass      = scalar_midpoint(entry, 'mass');
-    e_prop_cap  = scalar_midpoint(entry, 'mass_propellant');  % capacity [kg]
-    e_volume    = scalar_midpoint(entry, 'volume');
-    e_pressure  = scalar_midpoint(entry, 'pressure');
-
-    % Determine number of tanks needed to cover the required propellant mass
+    % Cluster sizing: how many identical tanks are needed to hold d_prop_mass?
     n_tanks = 1;
     if ~isnan(e_prop_cap) && e_prop_cap > 0 && ~isnan(d_prop_mass) && d_prop_mass > 0
       n_tanks = ceil(d_prop_mass / e_prop_cap);
     elseif isnan(e_prop_cap) && ~isnan(d_prop_mass) && d_prop_mass > 0
-      % No capacity data — cannot verify coverage; keep but flag
-      n_tanks = NaN;
+      n_tanks = NaN;  % capacity unknown — keep entry but flag
     end
 
-    cluster_mass     = n_tanks * e_mass;     % NaN if e_mass or n_tanks NaN
-    cluster_cap      = n_tanks * e_prop_cap; % NaN if either NaN
+    cluster_mass = n_tanks * e_mass;
+    cluster_cap  = n_tanks * e_prop_cap;
 
-    % Score: how closely the cluster capacity matches the required propellant mass
-    % (excess capacity penalised; a perfect fit scores 1)
+    % Score: capacity-fit proximity (excess penalised; perfect fit = 1)
     score = 0;
     if ~isnan(cluster_cap) && ~isnan(d_prop_mass) && d_prop_mass > 0
       score = 1 / (1 + (cluster_cap - d_prop_mass) / d_prop_mass);
     end
-    % Lineage-hint mass proximity: promotes tanks whose cluster mass matches the
-    % scaling-model prediction; geometric mean with capacity-fit score.
+    % Lineage-hint mass proximity: geometric mean with capacity-fit score
     score_mass_hint = 0;
     if ~isnan(hint_mass) && hint_mass > 0 && ~isnan(cluster_mass)
       score_mass_hint = 1 / (1 + abs(cluster_mass - hint_mass) / hint_mass);
@@ -517,7 +543,7 @@ function cands = select_tanks(db_data, propellant, d_prop_mass, hint_mass)
       score = score_mass_hint;
     end
 
-    % Propellant field as a readable string for output
+    % Propellant field as a readable string
     if isfield(entry, 'propellant')
       if ischar(entry.propellant)
         prop_str = entry.propellant;
@@ -527,32 +553,31 @@ function cands = select_tanks(db_data, propellant, d_prop_mass, hint_mass)
         prop_str = '';
       end
     else
-      prop_str = '';
+      prop_str = '(generic)';
     end
 
-    c.name             = get_str_field(entry, 'name', '(unnamed)');
-    c.company          = get_str_field(entry, 'company', '');
-    c.type             = get_str_field(entry, 'type', 'tank');
-    c.score            = score;
-    c.n_tanks          = n_tanks;
-    c.mass_single      = e_mass;
-    c.mass_cluster     = cluster_mass;
-    c.capacity_kg_single = e_prop_cap;
+    c.name                = get_str_field(entry, 'name', '(unnamed)');
+    c.company             = get_str_field(entry, 'company', '');
+    c.type                = get_str_field(entry, 'type', 'tank');
+    c.filter_mode         = filter_mode;
+    c.score               = score;
+    c.n_tanks             = n_tanks;
+    c.mass_single         = e_mass;
+    c.mass_cluster        = cluster_mass;
+    c.capacity_kg_single  = e_prop_cap;
     c.capacity_kg_cluster = cluster_cap;
-    c.volume_L         = e_volume;
-    c.pressure_Pa      = e_pressure;
-    c.propellant       = prop_str;
-    c.source           = get_str_field(entry, 'source', '');
+    c.volume_m3           = e_volume;
+    c.pressure_Pa         = e_pressure;
+    c.propellant          = prop_str;
+    c.source              = get_str_field(entry, 'source', '');
 
     if isempty(cands); cands = c; else; cands(end+1) = c; end
   end
 
-  % Sort by score descending (best fit first), then by cluster mass ascending as tiebreak
   if ~isempty(cands)
-    scores  = [cands.score];
-    masses  = [cands.mass_cluster];
+    scores = [cands.score];
+    masses = [cands.mass_cluster];
     masses(isnan(masses)) = Inf;
-    % Combined sort: primary descending score, secondary ascending mass
     [~, idx] = sortrows([-scores(:), masses(:)]);
     cands = cands(idx);
   end
@@ -641,6 +666,30 @@ end
 % =========================================================================
 % HELPERS
 % =========================================================================
+
+% Returns indices of vessels whose propellant field explicitly matches the target.
+function idx = tank_specific_indices(tank_data, propellant)
+  idx = [];
+  for k = 1:numel(tank_data)
+    entry = tank_data{k};
+    if isfield(entry, 'propellant') && ~isempty(entry.propellant)
+      if propellant_match(entry.propellant, propellant)
+        idx(end+1) = k;
+      end
+    end
+  end
+end
+
+% Returns indices of vessels with no propellant field (generic vessels).
+function idx = tank_generic_indices(tank_data)
+  idx = [];
+  for k = 1:numel(tank_data)
+    entry = tank_data{k};
+    if ~isfield(entry, 'propellant') || isempty(entry.propellant)
+      idx(end+1) = k;
+    end
+  end
+end
 
 % Returns true if the DB propellant field (string or cell) matches the target.
 function ok = propellant_match(db_prop, target)
