@@ -539,7 +539,13 @@ function cands = select_tanks(db_data, propellant, d_prop_mass, hint_mass)
   catch
   end
 
-  % Two-pass propellant filtering
+  % Minimum MEOP [Pa] that qualifies a vessel as «high-pressure» — suitable for
+  % storing compressed or supercritical gases (Xe, Kr, Ar, H2, He, …).
+  % Value chosen to sit between the low-pressure propellant-tank cluster (~35 bar)
+  % and the lowest high-pressure xenon/gas tank in the DB (~88 bar).
+  HIGH_PRESSURE_THRESHOLD_Pa = 5e6;   % 50 bar
+
+  % Three-pass propellant filtering
   spec_idx = tank_specific_indices(tank_data, propellant);
   if ~isempty(spec_idx)
     use_idx     = spec_idx;
@@ -547,15 +553,36 @@ function cands = select_tanks(db_data, propellant, d_prop_mass, hint_mass)
   else
     gen_idx = tank_generic_indices(tank_data);
     if ~isempty(gen_idx)
-      if numel(spec_idx) == 0  % no specific entries found
-        % no warning needed — generic fallback is the expected path for many propellants
-      end
+      % Generic (no propellant tag) vessels are the expected fallback for most propellants.
       use_idx     = gen_idx;
       filter_mode = 'generic';
     else
-      use_idx     = 1:numel(tank_data);
-      filter_mode = 'all';
-      warning('select_tanks: no compatible vessel for "%s"; using all DB entries as fallback.', propellant);
+      % No specific or generic vessel found — apply propellant-class-aware fallback.
+      if is_gas_propellant(propellant)
+        % Gaseous propellants (He, Xe, Kr, Ar, H2, H2/N2 blends, …) must be stored
+        % at high pressure; only vessels rated at or above HIGH_PRESSURE_THRESHOLD_Pa
+        % are physically suitable.  Use those as a targeted fallback.
+        hp_idx = tank_highpressure_indices(tank_data, HIGH_PRESSURE_THRESHOLD_Pa);
+        if ~isempty(hp_idx)
+          use_idx     = hp_idx;
+          filter_mode = 'high_pressure';
+          warning('select_tanks: no compatible vessel for "%s"; using high-pressure DB entries (>= %.0f MPa MEOP) as fallback.', propellant, HIGH_PRESSURE_THRESHOLD_Pa / 1e6);
+        else
+          % No high-pressure vessel in DB at all — last resort: all entries.
+          use_idx     = 1:numel(tank_data);
+          filter_mode = 'all';
+          warning('select_tanks: no compatible vessel for "%s"; no high-pressure vessels found either; using all DB entries as fallback.', propellant);
+        end
+      else
+        % Liquid and liquid-metal propellants (hydrazine, water, ammonia, indium,
+        % bismuth, iodine, ionic liquids, etc.) exert only low ullage pressure in
+        % the tank; any structurally rated pressure vessel can physically contain
+        % them.  All DB entries are therefore acceptable candidates.
+        % No warning is emitted because using all tanks is a valid and expected
+        % path for propellants that have no dedicated vessel in the database.
+        use_idx     = 1:numel(tank_data);
+        filter_mode = 'all';
+      end
     end
   end
 
@@ -741,6 +768,39 @@ function idx = tank_generic_indices(tank_data)
     entry = tank_data{k};
     if ~isfield(entry, 'propellant') || isempty(entry.propellant)
       idx(end+1) = k;
+    end
+  end
+end
+
+% Returns indices of vessels whose MEOP is at or above threshold_Pa.
+% Used as a fallback for gaseous propellants that require high-pressure storage.
+function idx = tank_highpressure_indices(tank_data, threshold_Pa)
+  idx = [];
+  for k = 1:numel(tank_data)
+    p = scalar_midpoint(tank_data{k}, 'pressure');
+    if ~isnan(p) && p >= threshold_Pa
+      idx(end+1) = k;
+    end
+  end
+end
+
+% Returns true when propellant is a compressed or supercritical gas that must
+% be stored in a high-pressure vessel.  Liquids, liquid metals, solids, and
+% low-pressure-liquefied gases are treated as non-gas for the purpose of tank
+% fallback selection.
+function tf = is_gas_propellant(propellant)
+  prop_lc = lower(strtrim(propellant));
+  gas_keywords = {'xe', 'xenon', 'kr', 'krypton', 'ar', 'argon', ...
+                  'he', 'helium', ...
+                  'hydrogen', 'h2', ...
+                  'nitrogen', 'n2', ...
+                  'oxygen', 'o2', ...
+                  'h2/n2', 'nh3/n2h4 decomposition'};
+  tf = false;
+  for i = 1:numel(gas_keywords)
+    if ~isempty(strfind(prop_lc, gas_keywords{i}))
+      tf = true;
+      return;
     end
   end
 end
