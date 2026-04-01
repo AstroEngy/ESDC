@@ -193,7 +193,7 @@ function evolution_data = select_propulsion_components(evolution_data, db_data, 
       % ----------------------------------------------------------------
       % 2. TANK SELECTION
       % ----------------------------------------------------------------
-      cm.tank_candidates = select_tanks(db_data, propellant, d_prop_mass, hint_tank_mass);
+      cm.tank_candidates = select_tanks(db_data, propellant, d_prop_mass, hint_tank_mass, verbose);
 
       % ----------------------------------------------------------------
       % 3. PPU SELECTION
@@ -521,14 +521,11 @@ end
 % Cluster sizing:  n_tanks = ceil(d_prop_mass / e_prop_cap)  (minimum 1).
 % Sorted by score descending, then by cluster mass ascending as tiebreak.
 % =========================================================================
-function cands = select_tanks(db_data, propellant, d_prop_mass, hint_mass)
+function cands = select_tanks(db_data, propellant, d_prop_mass, hint_mass, verbose)
   % hint_mass: scaling-model tank cluster mass from last successful lineage (NaN = no hint).
   if nargin < 4; hint_mass = NaN; end
+  if nargin < 5; verbose = false; end
   cands = struct([]);
-
-  % Suppress backtrace for fallback-path warnings (cleaner output)
-  orig_backtrace = warning('query', 'backtrace');
-  warning('off', 'backtrace');
 
   ps_db = db_data.reference_data.propulsion_system;
   if ~isfield(ps_db, 'tank') || ~isfield(ps_db.tank, 'vessel')
@@ -571,12 +568,16 @@ function cands = select_tanks(db_data, propellant, d_prop_mass, hint_mass)
         if ~isempty(hp_idx)
           use_idx     = hp_idx;
           filter_mode = 'high_pressure';
-          warning('select_tanks: no compatible vessel for "%s"; using high-pressure DB entries (>= %.0f MPa MEOP) as fallback.', propellant, HIGH_PRESSURE_THRESHOLD_Pa / 1e6);
+          if verbose
+            fprintf('    [TankSel] no compatible vessel for "%s"; using high-pressure DB entries (>= %.0f MPa MEOP) as fallback.\n', propellant, HIGH_PRESSURE_THRESHOLD_Pa / 1e6);
+          end
         else
           % No high-pressure vessel in DB at all — last resort: all entries.
           use_idx     = 1:numel(tank_data);
           filter_mode = 'all';
-          warning('select_tanks: no compatible vessel for "%s"; no high-pressure vessels found either; using all DB entries as fallback.', propellant);
+          if verbose
+            fprintf('    [TankSel] no compatible vessel for "%s"; no high-pressure vessels found either; using all DB entries as fallback.\n', propellant);
+          end
         end
       else
         % Liquid and liquid-metal propellants (hydrazine, water, ammonia, indium,
@@ -669,9 +670,6 @@ function cands = select_tanks(db_data, propellant, d_prop_mass, hint_mass)
     [~, idx] = sortrows([-scores(:), masses(:)]);
     cands = cands(idx);
   end
-
-  % Restore original backtrace state
-  warning(orig_backtrace.state, 'backtrace');
 end
 
 
