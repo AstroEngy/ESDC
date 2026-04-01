@@ -42,7 +42,7 @@ function evolution_data = select_components(evolution_data, db_data, verbose)
   fflush(stdout);
   verbose = true;
   evolution_data = select_propulsion_components(evolution_data, db_data, verbose);
- # evolution_data = select_power_generation_components(evolution_data, db_data);
+  evolution_data = select_power_generation_components(evolution_data, db_data, verbose);
  # evolution_data = select_attitude_control_components(evolution_data, db_data);
  # evolution_data = select_thermal_components(evolution_data, db_data);
  # evolution_data = select_structure_components(evolution_data, db_data);

@@ -103,7 +103,7 @@ function out = serialize_component_matches(cm_raw, n_candidates_out)
   if ~isstruct(cm_raw) || isempty(cm_raw); return; end
 
   % Names of struct-array fields that must be serialized element-by-element
-  ARRAY_FIELDS = {'candidates', 'thruster_candidates', 'tank_candidates', 'ppu_candidates'};
+  ARRAY_FIELDS = {'candidates', 'thruster_candidates', 'tank_candidates', 'ppu_candidates', 'pv_candidates', 'battery_candidates'};
 
   subsystems = fieldnames(cm_raw);
   for s = 1:numel(subsystems)
