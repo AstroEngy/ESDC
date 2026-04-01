@@ -23,8 +23,9 @@
 %   require a PPU unless the thruster entry already contains one (detected by a
 %   'PPU_included' flag or the type string containing 'system').
 %   PPU is selected from db_data.reference_data.propulsion_system.<type>.ppu.
-%   The PPU whose input power most closely matches (and does not exceed) the design
-%   jet power is preferred.
+%   The PPU must be rated for at least the design jet power (can throttle down in
+%   underrating mode). Among candidates, lower mass is preferred (lighter PPU when
+%   throttling); power margin and lineage-hint mass are secondary scoring factors.
 %
 % Piping:
 %   Per SMAD (3rd ed.): tank mass + feed system (piping, valves, lines) combined
@@ -525,6 +526,10 @@ function cands = select_tanks(db_data, propellant, d_prop_mass, hint_mass)
   if nargin < 4; hint_mass = NaN; end
   cands = struct([]);
 
+  % Suppress backtrace for fallback-path warnings (cleaner output)
+  orig_backtrace = warning('query', 'backtrace');
+  warning('off', 'backtrace');
+
   ps_db = db_data.reference_data.propulsion_system;
   if ~isfield(ps_db, 'tank') || ~isfield(ps_db.tank, 'vessel')
     return;
@@ -664,13 +669,17 @@ function cands = select_tanks(db_data, propellant, d_prop_mass, hint_mass)
     [~, idx] = sortrows([-scores(:), masses(:)]);
     cands = cands(idx);
   end
+
+  % Restore original backtrace state
+  warning(orig_backtrace.state, 'backtrace');
 end
 
 
 % =========================================================================
 % PPU SELECTION
-% Selects from ps_db.ppu.  PPU input power must not exceed design jet power.
-% Sorted by power proximity (closest without exceeding d_power first).
+% Selects from ps_db.ppu.  PPU must be rated for at least design jet power
+% (can throttle down in underrating mode). Sorted by mass (lightest first),
+% then by power margin and lineage-hint proximity as tiebreakers.
 % =========================================================================
 function cands = select_ppu(ppu_db, prop_sys, d_power, hint_mass)
   % hint_mass: scaling-model PPU mass from last successful lineage (NaN = no hint).
@@ -705,26 +714,43 @@ function cands = select_ppu(ppu_db, prop_sys, d_power, hint_mass)
     e_eff   = scalar_midpoint(entry, 'efficiency');
     e_TRL   = scalar_midpoint(entry, 'TRL');
 
-    % PPU power must not exceed design jet power
+    % PPU capability constraint: must be rated for at least the design jet power
+    % (can throttle down to d_power in underrating/throttling mode).
     if ~isnan(e_power) && ~isnan(d_power) && d_power > 0
-      if e_power > d_power; continue; end
+      if e_power < d_power; continue; end
     end
 
-    % Score: power utilisation (closer to d_power is better)
-    score = 0;
+    % Score: prioritise low mass (advantageous when throttling) and power margin
+    % score_mass_inv: lower mass scores higher (inverse normalisation)
+    score_mass_inv = 0;
+    if ~isnan(e_mass)
+      % Invert: 1 / (1 + mass) — lower mass gets higher score
+      score_mass_inv = 1 / (1 + e_mass / 10);  % normalise by typical PPU mass ~10 kg
+    end
+    % score_power_margin: how much headroom above d_power (higher margin = lower score, so cap excess)
+    score_power_margin = 0;
     if ~isnan(e_power) && ~isnan(d_power) && d_power > 0
-      score = e_power / d_power;
+      margin_factor = e_power / d_power;
+      % Score penalises excess power: 1 / (1 + excess_ratio)
+      % At margin_factor=1.0 (min capable), score = 1
+      % At margin_factor=2.0 (2x capable), score = 0.5
+      score_power_margin = 1 / (1 + (margin_factor - 1));
     end
     % Lineage-hint mass proximity: promotes PPUs whose mass matches the
-    % scaling-model prediction; geometric mean with power-utilisation score.
+    % scaling-model prediction; geometric mean with other scores.
     score_mass_hint = 0;
     if ~isnan(hint_mass) && hint_mass > 0 && ~isnan(e_mass)
       score_mass_hint = 1 / (1 + abs(e_mass - hint_mass) / hint_mass);
     end
-    if score > 0 && score_mass_hint > 0
-      score = sqrt(score * score_mass_hint);
-    elseif score_mass_hint > 0
-      score = score_mass_hint;
+    % Geometric mean of available scores
+    score_factors = [];
+    if score_mass_inv > 0;         score_factors(end+1) = score_mass_inv;     end
+    if score_power_margin > 0;    score_factors(end+1) = score_power_margin; end
+    if score_mass_hint > 0;        score_factors(end+1) = score_mass_hint;    end
+    if ~isempty(score_factors)
+      score = prod(score_factors)^(1/numel(score_factors));
+    else
+      score = 0;
     end
 
     c.name        = get_str_field(entry, 'name', '(unnamed)');
