@@ -176,7 +176,7 @@ function evolution_data = select_propulsion_components(evolution_data, db_data, 
       % 1. THRUSTER SELECTION
       % ----------------------------------------------------------------
       [thruster_cands, thruster_cands_ob] = select_thrusters(ps_db, propellant, ...
-          d_thrust, d_c_e, d_power, d_mass_budget, hint_thruster_mass);
+          d_thrust, d_c_e, d_power, d_mass_budget, hint_thruster_mass, any(strcmpi(prop_sys, EP_TYPES)));
 
       if ~isempty(thruster_cands)
         cm.no_solution_within_mass_budget = 0;
@@ -268,12 +268,24 @@ function evolution_data = select_propulsion_components(evolution_data, db_data, 
               hint_diff_t = sprintf('  [%+.1f%% vs hint]', pct);
             end
           end
-          fprintf('      Thruster : %dx %s (%s)  each: thrust=%.4g N  power=%.4g W  mass=%.4g kg  |  cluster (n=%d): thrust=%.4g N  power=%.4g W  mass=%.4g kg  score=%.3f%s\n', ...
-                  t.n_thrusters, t.name, t.company, t.thrust_single, t.power_jet_single, t.mass_single, t.n_thrusters, t.thrust_cluster, t.power_jet_cluster, t.mass_cluster, t.score, hint_diff_t);
+          if isfield(t, 'power_derived') && t.power_derived
+            pwr_str = sprintf('each: thrust=%.4g N  power=%.4g W(%s)  mass=%.4g kg  |  cluster (n=%d): thrust=%.4g N  power=%.4g W(%s)  mass=%.4g kg', ...
+                              t.thrust_single, t.power_jet_single, t.power_derive_method, t.mass_single, t.n_thrusters, t.thrust_cluster, t.power_jet_cluster, t.power_derive_method, t.mass_cluster);
+          else
+            pwr_str = sprintf('each: thrust=%.4g N  power=%.4g W  mass=%.4g kg  |  cluster (n=%d): thrust=%.4g N  power=%.4g W  mass=%.4g kg', ...
+                              t.thrust_single, t.power_jet_single, t.mass_single, t.n_thrusters, t.thrust_cluster, t.power_jet_cluster, t.mass_cluster);
+          end
+          fprintf('      Thruster : %dx %s (%s)  %s  score=%.3f%s\n', ...
+                  t.n_thrusters, t.name, t.company, pwr_str, t.score, hint_diff_t);
           if numel(cm.thruster_candidates) > 1
             t2 = cm.thruster_candidates(2);
-            fprintf('               runner-up: %dx %s (%s)  each: thrust=%.4g N  mass=%.4g kg  |  cluster (n=%d): thrust=%.4g N  mass=%.4g kg  score=%.3f\n', ...
-                    t2.n_thrusters, t2.name, t2.company, t2.thrust_single, t2.mass_single, t2.n_thrusters, t2.thrust_cluster, t2.mass_cluster, t2.score);
+            if isfield(t2, 'power_derived') && t2.power_derived
+              ru_pwr = sprintf('power=%.4g W(%s)', t2.power_jet_single, t2.power_derive_method);
+            else
+              ru_pwr = sprintf('power=%.4g W', t2.power_jet_single);
+            end
+            fprintf('               runner-up: %dx %s (%s)  each: thrust=%.4g N  %s  mass=%.4g kg  |  cluster (n=%d): thrust=%.4g N  mass=%.4g kg  score=%.3f\n', ...
+                    t2.n_thrusters, t2.name, t2.company, t2.thrust_single, ru_pwr, t2.mass_single, t2.n_thrusters, t2.thrust_cluster, t2.mass_cluster, t2.score);
           end
         else
           fprintf('      Thruster : (none found)\n');
@@ -334,9 +346,12 @@ end
 % THRUSTER SELECTION
 % Returns [within_budget_cands, over_budget_cands] sorted by score / mass.
 % =========================================================================
-function [cands, cands_ob] = select_thrusters(ps_db, propellant, d_thrust, d_c_e, d_power, d_mass_budget, hint_mass)
+function [cands, cands_ob] = select_thrusters(ps_db, propellant, d_thrust, d_c_e, d_power, d_mass_budget, hint_mass, is_ep)
   % hint_mass: scaling-model thruster cluster mass from last successful lineage (NaN = no hint).
+  % is_ep: true for electric propulsion types — used to flag candidates where power_jet is absent
+  %        even after derivation (power constraint silently skipped).
   if nargin < 7; hint_mass = NaN; end
+  if nargin < 8; is_ep = false; end
   cands    = struct([]);
   cands_ob = struct([]);
 
@@ -364,11 +379,24 @@ function [cands, cands_ob] = select_thrusters(ps_db, propellant, d_thrust, d_c_e
     e_mass   = scalar_midpoint(entry, 'mass');      % dry mass of one thruster [kg]   — scaled by n for cluster mass; NaN entries are filtered out below
     e_TRL    = scalar_midpoint(entry, 'TRL');       % Technology Readiness Level       — stored on candidate struct for informational output only
 
+    % If power_jet is absent from the DB, derive it via derive_jet_power().
+    % That function tries (in order): 0.5*T*ve, T^2/(2*mdot), 0.5*mdot*ve^2.
+    power_derived = false;
+    power_derive_method = '';
+    if isnan(e_power)
+      e_mdot = scalar_midpoint(entry, 'mass_flow');
+      [e_power, power_derive_method] = derive_jet_power(e_thrust, e_c_e, e_mdot);
+      power_derived = ~isnan(e_power);
+    end
+
     % Skip entries without a usable thrust value — cannot size a cluster without it.
     if isnan(e_thrust) || e_thrust <= 0; continue; end
     % Skip entries without a mass value — cluster mass would be NaN, making mass-budget
     % checks, hint scoring, and the over-budget fallback all meaningless.
     if isnan(e_mass);                    continue; end
+    % Skip entries where jet power cannot be determined (not in DB and no derivation
+    % succeeded) — the power-budget constraint is mandatory and cannot be skipped.
+    if isnan(e_power);                   continue; end
 
     % Cluster sizing
     n = ceil(d_thrust / e_thrust);
@@ -377,8 +405,9 @@ function [cands, cands_ob] = select_thrusters(ps_db, propellant, d_thrust, d_c_e
     cluster_power  = n * e_power;
     cluster_mass   = n * e_mass;
 
-    % Hard constraint: power
-    if ~isnan(cluster_power) && ~isnan(d_power) && d_power > 0
+    % Hard constraint: power (cluster jet power must not exceed design power budget).
+    % e_power is guaranteed non-NaN here (candidates without power were skipped above).
+    if ~isnan(d_power) && d_power > 0
       if cluster_power > d_power; continue; end
     end
 
@@ -429,6 +458,8 @@ function [cands, cands_ob] = select_thrusters(ps_db, propellant, d_thrust, d_c_e
     c.TRL                 = e_TRL;
     c.source              = get_str_field(entry, 'source', '');
     c.mass_exceeds_budget = double(mass_exceeds_budget);
+    c.power_derived       = power_derived;      % true when Pjet was computed analytically (not in DB)
+    c.power_derive_method = power_derive_method; % formula used, e.g. '0.5*T*ve'
 
     if mass_exceeds_budget
       if isempty(cands_ob); cands_ob = c; else; cands_ob(end+1) = c; end
@@ -666,8 +697,6 @@ end
 % =========================================================================
 % HELPERS
 % =========================================================================
-
-% Returns indices of vessels whose propellant field explicitly matches the target.
 function idx = tank_specific_indices(tank_data, propellant)
   idx = [];
   for k = 1:numel(tank_data)
