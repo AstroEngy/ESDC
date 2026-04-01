@@ -458,7 +458,7 @@ function [cands, cands_ob] = select_thrusters(ps_db, propellant, d_thrust, d_c_e
     c.TRL                 = e_TRL;
     c.source              = get_str_field(entry, 'source', '');
     c.mass_exceeds_budget = double(mass_exceeds_budget);
-    c.power_derived       = power_derived;      % true when Pjet was computed analytically (not in DB)
+    c.power_derived       = double(power_derived); % 1 when Pjet was computed analytically (not in DB)
     c.power_derive_method = power_derive_method; % formula used, e.g. '0.5*T*ve'
 
     if mass_exceeds_budget
