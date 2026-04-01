@@ -390,7 +390,7 @@ function [cands, cands_ob] = select_thrusters(ps_db, propellant, d_thrust, d_c_e
     e_TRL    = scalar_midpoint(entry, 'TRL');       % Technology Readiness Level       — stored on candidate struct for informational output only
 
     % If power_jet is absent from the DB, derive it via derive_jet_power().
-    % That function tries (in order): 0.5*T*ve, T^2/(2*mdot), 0.5*mdot*ve^2.
+    % That function tries (in order): 0.5*F*ve, F^2/(2*mdot), 0.5*mdot*ve^2.
     power_derived = false;
     power_derive_method = '';
     if isnan(e_power)
@@ -481,7 +481,7 @@ function [cands, cands_ob] = select_thrusters(ps_db, propellant, d_thrust, d_c_e
     c.mass_exceeds_budget = double(mass_exceeds_budget);
     c.mass_overage_kg     = mass_overage_kg;  % overage above design budget [kg]
     c.power_derived       = double(power_derived); % 1 when Pjet was computed analytically (not in DB)
-    c.power_derive_method = power_derive_method; % formula used, e.g. '0.5*T*ve'
+    c.power_derive_method = power_derive_method; % formula used, e.g. '0.5*F*ve'
 
     if mass_exceeds_budget
       if isempty(cands_ob); cands_ob = c; else; cands_ob(end+1) = c; end
