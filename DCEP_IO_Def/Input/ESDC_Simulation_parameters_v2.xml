@@ -90,6 +90,19 @@
 				<dcep_min_occurrence>1</dcep_min_occurrence>
 				<dcep_no_value>true</dcep_no_value>
 				</dcep_info>
+				<fitness_criterion>
+					<dcep_info>
+					<dcep_name>Fitness criterion</dcep_name>
+					<dcep_unit>-</dcep_unit>
+					<dcep_description>Objective function used by the evolver. Options: maximize_mass_margin (maximise dry mass margin), maximize_payload_mass (maximise payload mass at constant total mass), minimize_total_mass (minimise total spacecraft mass).</dcep_description>
+					<dcep_type>string</dcep_type>
+					<dcep_no_value>false</dcep_no_value>
+					<dcep_default>maximize_mass_margin</dcep_default>
+					<dcep_min_occurrence>0</dcep_min_occurrence>
+					<dcep_max_occurrence>1</dcep_max_occurrence>
+					<dcep_allowed_values>maximize_mass_margin maximize_payload_mass minimize_total_mass</dcep_allowed_values>
+					</dcep_info>
+				</fitness_criterion>
 				<seed_points>
 					<dcep_info>
 					<dcep_name>Seed point number</dcep_name>

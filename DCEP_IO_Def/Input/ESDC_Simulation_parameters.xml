@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Simulation_parameters dcep_version="20192023">
 	<evolver>
+		<fitness_criterion>maximize_mass_margin</fitness_criterion>
 		<seed_points> 18 </seed_points>
 		<fitness_landscape_resolution> 50 </fitness_landscape_resolution>
 		<minimal_step_size>0.00001</minimal_step_size>

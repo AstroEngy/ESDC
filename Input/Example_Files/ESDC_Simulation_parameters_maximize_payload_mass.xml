@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Simulation_parameters dcep_version="20192023">
 	<defaults>
 		<orbit_min>350</orbit_min>
@@ -10,7 +10,7 @@
 		</orbit>
 	</defaults>
 	<evolver>
-		<fitness_criterion>maximize_mass_margin</fitness_criterion>
+		<fitness_criterion>maximize_payload_mass</fitness_criterion>
 		<seed_points> 18 </seed_points>
 		<fitness_landscape_resolution> 50 </fitness_landscape_resolution>
 		<minimal_step_size>0.00001</minimal_step_size>
@@ -33,4 +33,3 @@
 		</plots>
 	</output>
 </Simulation_parameters>
-

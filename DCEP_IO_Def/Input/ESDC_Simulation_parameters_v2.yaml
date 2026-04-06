@@ -78,6 +78,17 @@ Simulation_parameters:
       dcep_description: Default orbit heights to be used if none are given
       dcep_min_occurrence: 1
       dcep_no_value: true
+    fitness_criterion:
+      dcep_info:
+        dcep_name: Fitness criterion
+        dcep_unit: "-"
+        dcep_description: "Objective function used by the evolver. Options: maximize_mass_margin (maximise dry mass margin), maximize_payload_mass (maximise payload mass at constant total mass), minimize_total_mass (minimise total spacecraft mass)."
+        dcep_type: string
+        dcep_no_value: false
+        dcep_default: maximize_mass_margin
+        dcep_min_occurrence: 0
+        dcep_max_occurrence: 1
+        dcep_allowed_values: [maximize_mass_margin, maximize_payload_mass, minimize_total_mass]
     seed_points:
       dcep_info:
         dcep_name: Seed point number

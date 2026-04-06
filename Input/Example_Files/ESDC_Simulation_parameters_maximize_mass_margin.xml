@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Simulation_parameters dcep_version="20192023">
 	<defaults>
 		<orbit_min>350</orbit_min>
@@ -33,4 +33,3 @@
 		</plots>
 	</output>
 </Simulation_parameters>
-

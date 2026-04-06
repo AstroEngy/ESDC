@@ -106,12 +106,36 @@ function [generation_new, convergence] = evolve_population(input, db_data, confi
       population(i,j).subsystem_masses.m_margin = population(i,j).subsystem_masses.m_dry_nomargin-population(i,j).subsystem_masses.m_dry_margin;
       %population(i,j).mass_fractions= mass_fractions(population(i,j));
 
+      % Fitness criterion: selectable via Simulation_parameters.evolver.fitness_criterion
+      % Options: 'maximize_mass_margin' | 'maximize_payload_mass' | 'minimize_total_mass'
+      if isfield(config.Simulation_parameters.evolver, 'fitness_criterion')
+        fitness_criterion = config.Simulation_parameters.evolver.fitness_criterion;
+      else
+        fitness_criterion = 'maximize_mass_margin';
+      end
+
+      % For minimize_total_mass: retain 20% of m_dry_nomargin as minimum margin;
+      % shed anything above that so total mass reflects propulsion efficiency gains.
+      if strcmp(fitness_criterion, 'minimize_total_mass')
+        min_margin = 0.20 * population(i,j).subsystem_masses.m_dry_nomargin;
+        excess_margin = population(i,j).subsystem_masses.m_margin - min_margin;
+        if excess_margin > 0
+          population(i,j).mass = population(i,j).mass - excess_margin;
+          population(i,j).subsystem_masses.m_margin = min_margin;
+        end
+      end
+
       population(i,j).mission_parameters = mission_parameters(population(i,j));
 
       %test for improvement of pop member
       lineage = get_lineage(generation_data, i, j);
-      population(i,j).evolution_success = test_maximize_parameter(population(i,j), lineage, {'subsystem_masses','m_margin'}); % add this to sim parameter options
-      %population(i,j).evolution_success = test_minimize_parameter(population(i,j), lineage, {'mass'});                        % does not work properly!!
+      if strcmp(fitness_criterion, 'maximize_payload_mass')
+        population(i,j).evolution_success = test_maximize_parameter(population(i,j), lineage, {'subsystem_masses','mass_payload'});
+      elseif strcmp(fitness_criterion, 'minimize_total_mass')
+        population(i,j).evolution_success = test_minimize_parameter(population(i,j), lineage, {'mass'});
+      else  % default: 'maximize_mass_margin'
+        population(i,j).evolution_success = test_maximize_parameter(population(i,j), lineage, {'subsystem_masses','m_margin'});
+      end
 
       % Reject individuals with NaN c_e or thrust — invalid propulsion solution.
       % Exception: sc_type==1 ('No Propulsion') where these fields are not applicable.

@@ -1,5 +1,4 @@
 # ESDC YAML Data File
-# Generated: 2025-10-30 14:16:55
 # Octave 9.1.0
 
 Simulation_parameters:
@@ -11,7 +10,7 @@ Simulation_parameters:
       Low_Earth: 1000
       High_Earth: 35786
   evolver:
-    fitness_criterion: maximize_mass_margin
+    fitness_criterion: minimize_total_mass
     seed_points: 18
     fitness_landscape_resolution: 50
     minimal_step_size: 1e-05
