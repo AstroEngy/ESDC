@@ -37,10 +37,6 @@ variable_attributes:
     dcep_name: total payload mass
     dcep_unit: kg
     dcep_description: total payload mass. based on statistics.
-  m_structure:
-    dcep_name: total structural mass
-    dcep_unit: kg
-    dcep_description: total structural mass. based on statistics.
   mass_thermal:
     dcep_name: total thermal system mass
     dcep_unit: kg
@@ -49,38 +45,14 @@ variable_attributes:
     dcep_name: total power system mass
     dcep_unit: kg
     dcep_description: total power system mass. based on statistics.
-  m_ttc:
-    dcep_name: total ttc mass
-    dcep_unit: kg
-    dcep_description: total telemetry, tracking and control system mass. based on statistics.
-  m_adc:
-    dcep_name: total adc mass
-    dcep_unit: kg
-    dcep_description: total attitude determination and control system mass. based on statistics.
   mass_propulsion:
     dcep_name: total propulsion system mass
     dcep_unit: kg
     dcep_description: total propulsion system mass. based on statistics, refined by additional modelling.
-  m_misc:
-    dcep_name: total miscellaneous mass
-    dcep_unit: kg
-    dcep_description: accounting for other minor masses, could be considered an additional margin.
   mass_other:
     dcep_name: total other mass
     dcep_unit: kg
     dcep_description: accounting for other minor masses, could be considered an additional margin.
-  m_tank:
-    dcep_name: estimated tank mass
-    dcep_unit: kg
-    dcep_description: tank mass required for system solution
-  m_thruster:
-    dcep_name: estimated thruster mass
-    dcep_unit: kg
-    dcep_description: thruster mass required for system solution
-  m_PPU:
-    dcep_name: estimated PPU mass
-    dcep_unit: kg
-    dcep_description: power processing mass required for electric propulsion system
   mass_fractions:
     dcep_name: Subsystem mass fractions
     dcep_unit: "-"
@@ -105,10 +77,6 @@ variable_attributes:
     dcep_name: total payload mass fraction
     dcep_unit: "-"
     dcep_description: total payload mass to total mass fraction
-  frac_m_structure:
-    dcep_name: total structural mass  fraction
-    dcep_unit: "-"
-    dcep_description: total structural mass to total mass fraction
   frac_mass_thermal:
     dcep_name: total thermal system mass fraction
     dcep_unit: "-"
@@ -117,34 +85,14 @@ variable_attributes:
     dcep_name: total power system mass fraction
     dcep_unit: "-"
     dcep_description: total power system mass to total mass fraction
-  frac_m_ttc:
-    dcep_name: total ttc mass fraction
-    dcep_unit: "-"
-    dcep_description: total telemetry, tracking and control system mass to total mass fraction 
-  frac_m_adc:
-    dcep_name: total adc mass fraction
-    dcep_unit: "-"
-    dcep_description: total attitude determination and control system mass to total mass fraction
   frac_mass_propulsion:
     dcep_name: total propulsion system mass fraction
     dcep_unit: "-"
     dcep_description: total propulsion system mass to total mass fraction 
-  frac_m_misc:
-    dcep_name: total miscelleanous mass  fraction
-    dcep_unit: "-"
-    dcep_description: misscellameous to total mass fraction
   frac_mass_other:
     dcep_name: total other system mass fraction
     dcep_unit: "-"
     dcep_description: misscellameous to total mass fraction, can be considered to be a margin
-  dv:
-    dcep_name: delta v
-    dcep_unit: m/s
-    dcep_description: "Input: Total velocity increment of the mission"
-  power_propulsion:
-    dcep_name: Propulsion system power
-    dcep_unit: W
-    dcep_description: "Input: Total propulsion system electric power"
   power_jet:
     dcep_name: Jet exhaust power
     dcep_unit: W
@@ -209,10 +157,6 @@ variable_attributes:
     dcep_name: power payload
     dcep_unit: W
     dcep_description: power demand of the payload
-  p_structure:
-    dcep_name: power structure and mechanisms
-    dcep_unit: W
-    dcep_description: power demand for operation structures and mechanisms
   power_thermal:
     dcep_name: power thermal system
     dcep_unit: W
@@ -221,57 +165,45 @@ variable_attributes:
     dcep_name: power for power system
     dcep_unit: W
     dcep_description: power demand for power conditioning
-  p_ttc:
-    dcep_name: power TTC
-    dcep_unit: W
-    dcep_description: power demand for tracking telemetry and command
-  p_obc:
-    dcep_name: power OBC
-    dcep_unit: W
-    dcep_description: "power demand for on-board computer"
-  p_adc:
-    dcep_name: power ADC
-    dcep_unit: W
-    dcep_description: power demand for attitude determination and control
   propulsion_power:
     dcep_name: power propulsion
     dcep_unit: W
     dcep_description: power demand for propulsion systems
   frac_power_total:
     dcep_name: fraction power total
-    dcep_unit: W
+    dcep_unit: "-"
     dcep_description: total power demand fraction spacecraft
   frac_power_payload:
     dcep_name: fraction power payload
-    dcep_unit: W
+    dcep_unit: "-"
     dcep_description: power demand fraction of the payload
   frac_p_structure:
     dcep_name: fraction power structure and mechanisms
-    dcep_unit: W
+    dcep_unit: "-"
     dcep_description: power demand fraction for operation structures and mechanisms
   frac_power_thermal:
     dcep_name: fraction power thermal system
-    dcep_unit: W
+    dcep_unit: "-"
     dcep_description: power demand fraction for thermal control
   frac_power_power:
     dcep_name: fraction power for power system
-    dcep_unit: W
+    dcep_unit: "-"
     dcep_description: power demand fraction for power conditioning
   frac_p_ttc:
     dcep_name: fraction power TTC
-    dcep_unit: W
+    dcep_unit: "-"
     dcep_description: power demand fraction for tracking telemetry and command
   frac_p_obc:
     dcep_name: fraction power OBC
-    dcep_unit: W
-    dcep_description: "power demand fraction for on-board computer"
+    dcep_unit: "-"
+    dcep_description: power demand fraction for on-board computer
   frac_p_adc:
     dcep_name: fraction power ADC
-    dcep_unit: W
+    dcep_unit: "-"
     dcep_description: power demand fraction for attitude determination and control
   frac_propulsion_power:
     dcep_name: fraction power propulsion
-    dcep_unit: W
+    dcep_unit: "-"
     dcep_description: power demand fraction for propulsion systems
   convergence:
     dcep_name: Lineage convergence
@@ -421,3 +353,95 @@ variable_attributes:
     dcep_name: Earth magnetic field
     dcep_unit: T
     dcep_description: Earth equatorial magnetic field strength at nominal orbit height
+  system_geometry:
+    dcep_name: System geometry
+    dcep_unit: "-"
+    dcep_description: Estimated bounding-box geometry of the spacecraft derived from statistical scaling laws
+  size_x:
+    dcep_name: Bounding box width
+    dcep_unit: m
+    dcep_description: Estimated spacecraft bounding box width (x-dimension) from mass scaling law
+  size_y:
+    dcep_name: Bounding box depth
+    dcep_unit: m
+    dcep_description: Estimated spacecraft bounding box depth (y-dimension) from mass scaling law
+  size_h:
+    dcep_name: Bounding box height
+    dcep_unit: m
+    dcep_description: Estimated spacecraft bounding box height (h-dimension) from mass scaling law
+  volume_box:
+    dcep_name: Bounding box volume
+    dcep_unit: "m³"
+    dcep_description: Estimated spacecraft bounding box volume (size_x * size_y * size_h). Statistical estimate based on historical spacecraft data.
+  volume_box_scaled:
+    dcep_name: Bounding box volume (direct scaling)
+    dcep_unit: "m³"
+    dcep_description: Independent cross-check bounding box volume estimated directly from total mass via mass-to-volume_box scaling law
+  totalimpulse:
+    dcep_name: Total impulse
+    dcep_unit: Ns
+    dcep_description: Total impulse of the propulsion system
+  deltav:
+    dcep_name: delta v
+    dcep_unit: m/s
+    dcep_description: Total velocity increment of the mission
+  thrust_mode:
+    dcep_name: Thrust mode
+    dcep_unit: "-"
+    dcep_description: Thrust mode of the propulsion system (e.g. continuous or pulsed)
+  mass_structmech:
+    dcep_name: total structural and mechanisms mass
+    dcep_unit: kg
+    dcep_description: total structural and mechanisms mass. based on statistics.
+  mass_ttc:
+    dcep_name: total ttc mass
+    dcep_unit: kg
+    dcep_description: total telemetry, tracking and control system mass. based on statistics.
+  mass_adc:
+    dcep_name: total adc mass
+    dcep_unit: kg
+    dcep_description: total attitude determination and control system mass. based on statistics.
+  power_structmech:
+    dcep_name: power structures and mechanisms
+    dcep_unit: W
+    dcep_description: power demand for operation of structures and mechanisms
+  power_ttc:
+    dcep_name: power TTC
+    dcep_unit: W
+    dcep_description: power demand for tracking telemetry and command
+  power_adc:
+    dcep_name: power ADC
+    dcep_unit: W
+    dcep_description: power demand for attitude determination and control
+  frac_mass_structmech:
+    dcep_name: total structural and mechanisms mass fraction
+    dcep_unit: "-"
+    dcep_description: total structural and mechanisms mass to total mass fraction
+  frac_mass_ttc:
+    dcep_name: total ttc mass fraction
+    dcep_unit: "-"
+    dcep_description: total telemetry, tracking and control system mass to total mass fraction
+  frac_mass_adc:
+    dcep_name: total adc mass fraction
+    dcep_unit: "-"
+    dcep_description: total attitude determination and control system mass to total mass fraction
+  count_for_convergence:
+    dcep_name: Convergence counter
+    dcep_unit: "-"
+    dcep_description: Counter tracking how many successive generations have met the convergence criterion
+  convergence_mode:
+    dcep_name: Convergence mode
+    dcep_unit: "-"
+    dcep_description: Current convergence state of the lineage evolution (active or converged)
+  PDU_efficiency:
+    dcep_name: PDU efficiency
+    dcep_unit: "-"
+    dcep_description: Assumed power distribution unit efficiency for power budgeting
+  orbit_power_parameters:
+    dcep_name: Orbital power parameters
+    dcep_unit: "-"
+    dcep_description: Derived orbital parameters used for power system sizing (solar irradiance, power consumption, margin)
+  shadow_total:
+    dcep_name: Total shadow time
+    dcep_unit: s
+    dcep_description: Total shadow time per orbit (umbra plus penumbra)
