@@ -125,6 +125,7 @@ function [generation_new, convergence] = evolve_population(input, db_data, confi
         end
       end
 
+      population(i,j).system_geometry = volume_scalings(population(i,j));
       population(i,j).mission_parameters = mission_parameters(population(i,j));
 
       %test for improvement of pop member

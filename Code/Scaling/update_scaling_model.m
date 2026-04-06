@@ -248,7 +248,20 @@ function [] =  update_generic_spacecraft_scaling_model(data)
       error('update_generic_spacecraft_scaling_model: unexpected spacecraft data type');
     end
 
-    % === Collect metadata for correlation generation ===
+    % === Compute derived geometry field: volume_box = size_x * size_y * size_h ===
+    % Adds volume_box to each entry that has all three size dimensions so that
+    % the scaling loop below can generate a mass_total → volume_box CSV automatically.
+    for i = 1:numel(rawEntries)
+      if isempty(rawEntries{i}); continue; end
+      e = rawEntries{i};
+      if isfield(e,'size_x') && isfield(e,'size_y') && isfield(e,'size_h') && ...
+         ~isempty(e.size_x) && ~isempty(e.size_y) && ~isempty(e.size_h)
+        vx = e.size_x; vy = e.size_y; vh = e.size_h;
+        if isnumeric(vx) && isnumeric(vy) && isnumeric(vh)
+          rawEntries{i}.volume_box = vx * vy * vh;
+        end
+      end
+    end
     % Determine which fields are available across all spacecraft entries
     allFieldNames = {};
     for i = 1:numel(rawEntries)
