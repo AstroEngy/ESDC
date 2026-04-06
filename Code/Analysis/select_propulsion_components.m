@@ -85,13 +85,16 @@ function evolution_data = select_propulsion_components(evolution_data, db_data, 
       cm  = struct();                   % component matches
 
       % Skip individuals that require no propulsion component selection:
+      %   - sc_type == 1 (No Propulsion): evolver assigns a random type but it is irrelevant
       %   - missing or empty propulsion_system field
-      %   - propulsion_system is 'No Propulsion' (sc_type 1)
+      %   - propulsion_system is 'No Propulsion' (legacy string check)
       %   - c_e or thrust is NaN (invalid / not yet computed)
       %   - thrust is zero (no propulsion needed)
       %   - no delta-v defined and thrust/c_e are both NaN
       no_prop_reason = '';
-      if ~isfield(ind, 'propulsion_system') || isempty(ind.propulsion_system)
+      if isfield(ind, 'sc_type') && isnumeric(ind.sc_type) && ind.sc_type == 1
+        no_prop_reason = 'sc_type=1 No Propulsion';
+      elseif ~isfield(ind, 'propulsion_system') || isempty(ind.propulsion_system)
         no_prop_reason = 'propulsion_system field missing or empty';
       elseif strcmpi(strtrim(ind.propulsion_system), 'No Propulsion')
         no_prop_reason = 'sc_type No Propulsion';

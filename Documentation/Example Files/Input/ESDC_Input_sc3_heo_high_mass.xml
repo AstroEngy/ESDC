@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Example: HEO-GEO / High Mass
+     orbit_height=35786 km GEO (sc_type=3 via priority chain), 4400 kg (upper DB quartile: 5698 - 0.25*(5698-458))
+     Large GEO telecommunications satellite class. High power budget for
+     all-electric orbit raising and 15-year station keeping. -->
+<Satellite_parameters dcep_version="20191026" dcep_show="False">
+	<input_case dcep_show="False">
+		<orbit_height dcep_name="Orbit altitude" dcep_unit="km" dcep_description="GEO altitude; altitude above 2000 km classified as HEO/GEO (sc_type=3)">35786</orbit_height>
+		<mass_total dcep_name="Satellite Mass" dcep_unit="kg" dcep_description="Total wet mass">4400</mass_total>
+		<deltav dcep_name="Required Delta v" dcep_unit="m/s" dcep_description="GEO station-keeping and end-of-life re-orbit budget">3000</deltav>
+		<propulsion_power dcep_name="Available Power" dcep_unit="W" dcep_description="Power available for propulsion system">13000</propulsion_power>
+		<mission_duration dcep_name="Total Mission Duration" dcep_unit="years" dcep_description="Total mission lifetime">15</mission_duration>
+		<propulsion_time_fraction dcep_name="Propulsion Time Fraction" dcep_unit="-" dcep_description="Fraction of mission duration allowed for propulsion burns">0.10</propulsion_time_fraction>
+	</input_case>
+</Satellite_parameters>

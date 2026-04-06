@@ -33,7 +33,8 @@ function [c_e power_thruster power_jet eff_ppu eff_thruster] = get_propulsion_sy
   
   [c_e_min c_e_max] = search_min_max(data.(propulsion).thruster, dummy_struct, 'c_e', 'propellant');
 
-  if c_e > c_e_max
+  % Only clamp when a valid DB range exists (c_e_max=0 means no match was found).
+  if c_e_max > 0 && c_e > c_e_max
       c_e = c_e_max;
   endif
 end

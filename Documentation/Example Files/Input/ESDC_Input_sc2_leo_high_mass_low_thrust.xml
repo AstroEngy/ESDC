@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Example: LEO / High Mass / Low Thrust  (thrust_mode=low)
+     orbit_height=500 km (sc_type=2 via priority chain)
+     Mass 12000 kg = upper quartile of LEO database (min=25 kg, max=16221 kg).
+     thrust_mode=low constrains the evolver to low-thrust / high-Isp EP technologies.
+     Long mission (7 yr) + relaxed duty cycle (15%) allows very low thrust_min.
+     Representative of a large LEO platform with continuous EP station keeping. -->
+<Satellite_parameters dcep_version="20191026" dcep_show="False">
+	<input_case dcep_show="False">
+		<orbit_height dcep_name="Orbit altitude" dcep_unit="km" dcep_description="Orbit altitude above Earth surface. Determines sc_type via priority chain: LEO if altitude &lt;= 2000 km.">500</orbit_height>
+		<thrust_mode dcep_name="Thrust mode" dcep_unit="-" dcep_description="high: restricts evolver to high-thrust/low-Isp technologies. low: restricts to low-thrust/high-Isp (EP). any or empty: no restriction.">low</thrust_mode>
+		<mass_total dcep_name="Satellite Mass" dcep_unit="kg" dcep_description="Total wet mass. Upper quartile of LEO database: min=25 kg, max=16221 kg, high=12000 kg.">12000</mass_total>
+		<deltav dcep_name="Required Delta v" dcep_unit="m/s" dcep_description="Station keeping and end-of-life disposal budget">200</deltav>
+		<propulsion_power dcep_name="Available Power" dcep_unit="W" dcep_description="Power available for propulsion system (1 kW/tonne typical continuous EP)">12000</propulsion_power>
+		<mission_duration dcep_name="Total Mission Duration" dcep_unit="years" dcep_description="Total mission lifetime">7</mission_duration>
+		<propulsion_time_fraction dcep_name="Propulsion Time Fraction" dcep_unit="-" dcep_description="15% duty cycle: continuous low-thrust EP station keeping">0.15</propulsion_time_fraction>
+	</input_case>
+</Satellite_parameters>

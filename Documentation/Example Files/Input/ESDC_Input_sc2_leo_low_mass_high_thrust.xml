@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Example: LEO / Low Mass / High Thrust  (thrust_mode=high)
+     orbit_height=500 km (sc_type=2 via priority chain)
+     Mass 4000 kg = lower quartile of LEO database (min=25 kg, max=16221 kg).
+     thrust_mode=high constrains the evolver to high-thrust / low-Isp technologies.
+     Short mission (2 yr) + tight duty cycle (1%) forces a high thrust_min,
+     selecting Hall-thruster or chemical-class propulsion. -->
+<Satellite_parameters dcep_version="20191026" dcep_show="False">
+	<input_case dcep_show="False">
+		<orbit_height dcep_name="Orbit altitude" dcep_unit="km" dcep_description="Orbit altitude above Earth surface. Determines sc_type via priority chain: LEO if altitude &lt;= 2000 km.">500</orbit_height>
+		<thrust_mode dcep_name="Thrust mode" dcep_unit="-" dcep_description="high: restricts evolver to high-thrust/low-Isp technologies. low: restricts to low-thrust/high-Isp (EP). any or empty: no restriction.">high</thrust_mode>
+		<mass_total dcep_name="Satellite Mass" dcep_unit="kg" dcep_description="Total wet mass. Lower quartile of LEO database: min=25 kg, max=16221 kg, low=4000 kg.">4000</mass_total>
+		<deltav dcep_name="Required Delta v" dcep_unit="m/s" dcep_description="Orbit maintenance, collision avoidance and disposal budget">400</deltav>
+		<propulsion_power dcep_name="Available Power" dcep_unit="W" dcep_description="Power available for propulsion system (5 kW/tonne typical Hall EP)">20000</propulsion_power>
+		<mission_duration dcep_name="Total Mission Duration" dcep_unit="years" dcep_description="Total mission lifetime">2</mission_duration>
+		<propulsion_time_fraction dcep_name="Propulsion Time Fraction" dcep_unit="-" dcep_description="1% duty cycle: short aggressive burns, drives high thrust_min">0.01</propulsion_time_fraction>
+	</input_case>
+</Satellite_parameters>

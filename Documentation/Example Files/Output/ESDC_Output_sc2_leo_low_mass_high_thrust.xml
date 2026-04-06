@@ -1,0 +1,1406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<best_solutions>
+    <case_1>
+        <best_1>
+            <mass>4000<dcep_info>
+                    <dcep_name>total system mass</dcep_name>
+                    <dcep_unit>kg</dcep_unit>
+                    <dcep_description>Input: Total system mass wet including margins</dcep_description>
+                </dcep_info>
+            </mass>
+            <totalimpulse>
+                <dcep_info>
+                    <dcep_name>Total impulse</dcep_name>
+                    <dcep_unit>Ns</dcep_unit>
+                    <dcep_description>Total impulse of the propulsion system</dcep_description>
+                </dcep_info>
+            </totalimpulse>
+            <deltav>400<dcep_info>
+                    <dcep_name>delta v</dcep_name>
+                    <dcep_unit>m/s</dcep_unit>
+                    <dcep_description>Total velocity increment of the mission</dcep_description>
+                </dcep_info>
+            </deltav>
+            <propulsion_power>20000<dcep_info>
+                    <dcep_name>power propulsion</dcep_name>
+                    <dcep_unit>W</dcep_unit>
+                    <dcep_description>power demand for propulsion systems</dcep_description>
+                </dcep_info>
+            </propulsion_power>
+            <thrust_mode>high<dcep_info>
+                    <dcep_name>Thrust mode</dcep_name>
+                    <dcep_unit>-</dcep_unit>
+                    <dcep_description>Thrust mode of the propulsion system (e.g. continuous or pulsed)</dcep_description>
+                </dcep_info>
+            </thrust_mode>
+            <sc_type>2<dcep_info>
+                    <none>no attributes defined</none>
+                </dcep_info>
+            </sc_type>
+            <mission_duration>2<dcep_info>
+                    <dcep_name>Total mission duration</dcep_name>
+                    <dcep_unit>years</dcep_unit>
+                    <dcep_description>User-specified total mission lifetime. Combined with propulsion_time_fraction to derive the maximum allowable burn time and thus the minimum required thrust.</dcep_description>
+                </dcep_info>
+            </mission_duration>
+            <maneuver_duration_max>
+                <dcep_info>
+                    <dcep_name>Maximum maneuver burn time</dcep_name>
+                    <dcep_unit>s</dcep_unit>
+                    <dcep_description>User-specified upper limit on total propulsion burn time. Directly constrains minimum required thrust via F_min = m_prop * c_e / t_burn_max.</dcep_description>
+                </dcep_info>
+            </maneuver_duration_max>
+            <propulsion_time_fraction>0.01<dcep_info>
+                    <dcep_name>Propulsion time fraction</dcep_name>
+                    <dcep_unit>-</dcep_unit>
+                    <dcep_description>Fraction of mission duration allocated for propulsion burns. Default 0.10 (10%), based on SMAD 2011 p.693 ff., typical EP duty cycles of 5-20% of mission lifetime.</dcep_description>
+                </dcep_info>
+            </propulsion_time_fraction>
+            <required_mass_payload>
+                <dcep_info>
+                    <dcep_name>Required payload mass (user constraint)</dcep_name>
+                    <dcep_unit>kg</dcep_unit>
+                    <dcep_description>User-specified minimum payload mass. When provided, mutations that reduce mass_payload below this floor are hard-rejected. Empty when payload mass is a free variable.</dcep_description>
+                </dcep_info>
+            </required_mass_payload>
+            <required_power_payload>
+                <dcep_info>
+                    <dcep_name>Required payload power (user constraint)</dcep_name>
+                    <dcep_unit>W</dcep_unit>
+                    <dcep_description>User-specified minimum payload power. When provided, mutations that reduce power_payload below this floor are hard-rejected. Empty when payload power is a free variable.</dcep_description>
+                </dcep_info>
+            </required_power_payload>
+            <propulsion_system>HET<dcep_info>
+                    <dcep_name>Propulsion system type</dcep_name>
+                    <dcep_unit>-</dcep_unit>
+                    <dcep_description>Describes the current propulsion system</dcep_description>
+                </dcep_info>
+            </propulsion_system>
+            <propellant>Krypton<dcep_info>
+                    <dcep_name>Propellant</dcep_name>
+                    <dcep_unit>-</dcep_unit>
+                    <dcep_description>Describes the current propellant used by the propulsion system</dcep_description>
+                </dcep_info>
+            </propellant>
+            <c_e>9192.1309<dcep_info>
+                    <dcep_name>Effective exhaust velocity</dcep_name>
+                    <dcep_unit>m/s</dcep_unit>
+                    <dcep_description>Effective exhaust velocity of the propulsion system</dcep_description>
+                </dcep_info>
+            </c_e>
+            <thrust>2.5182<dcep_info>
+                    <dcep_name>Thrust</dcep_name>
+                    <dcep_unit>N</dcep_unit>
+                    <dcep_description>Thrust of the propulsion system</dcep_description>
+                </dcep_info>
+            </thrust>
+            <power_thruster>20000<dcep_info>
+                    <dcep_name>Thruster power</dcep_name>
+                    <dcep_unit>W</dcep_unit>
+                    <dcep_description>Total electric power consumption of the propulsion system</dcep_description>
+                </dcep_info>
+            </power_thruster>
+            <power_jet>11573.9248<dcep_info>
+                    <dcep_name>Jet exhaust power</dcep_name>
+                    <dcep_unit>W</dcep_unit>
+                    <dcep_description>Total jet output power of the propulsion system</dcep_description>
+                </dcep_info>
+            </power_jet>
+            <eff_PPU>1<dcep_info>
+                    <dcep_name>PPU efficiency</dcep_name>
+                    <dcep_unit>-</dcep_unit>
+                    <dcep_description>Power conversion efficiency of the Power Propulsion Unit (PPU)</dcep_description>
+                </dcep_info>
+            </eff_PPU>
+            <eff_thruster>0.5787<dcep_info>
+                    <dcep_name>Thruster efficiency</dcep_name>
+                    <dcep_unit>-</dcep_unit>
+                    <dcep_description>El. power to jet power conversion efficiency of the thruster</dcep_description>
+                </dcep_info>
+            </eff_thruster>
+            <subsystem_masses>
+                <dcep_info>
+                    <dcep_name>Subsystem masses</dcep_name>
+                    <dcep_unit>-</dcep_unit>
+                    <dcep_description>Masses of all spacecraft subsystems</dcep_description>
+                </dcep_info>
+                <m_dry_nomargin>3829.6709<dcep_info>
+                        <dcep_name>total dry mass</dcep_name>
+                        <dcep_unit>kg</dcep_unit>
+                        <dcep_description>total dry mass including all margins</dcep_description>
+                    </dcep_info>
+                </m_dry_nomargin>
+                <m_margin>1499.2228<dcep_info>
+                        <dcep_name>total margin mass</dcep_name>
+                        <dcep_unit>kg</dcep_unit>
+                        <dcep_description>total mass of all margins. based on statistics.</dcep_description>
+                    </dcep_info>
+                </m_margin>
+                <m_dry_margin>2330.4481<dcep_info>
+                        <dcep_name>total marginless dry mass </dcep_name>
+                        <dcep_unit>kg</dcep_unit>
+                        <dcep_description>total dry mass without margin</dcep_description>
+                    </dcep_info>
+                </m_dry_margin>
+                <mass_propellant>170.3291<dcep_info>
+                        <dcep_name>total propellant mass</dcep_name>
+                        <dcep_unit>kg</dcep_unit>
+                        <dcep_description>propellant mass calculated by tsiolkosvky of inputs</dcep_description>
+                    </dcep_info>
+                </mass_propellant>
+                <mass_payload>986.5679<dcep_info>
+                        <dcep_name>total payload mass</dcep_name>
+                        <dcep_unit>kg</dcep_unit>
+                        <dcep_description>total payload mass. based on statistics.</dcep_description>
+                    </dcep_info>
+                </mass_payload>
+                <mass_structmech>734.4284<dcep_info>
+                        <dcep_name>total structural and mechanisms mass</dcep_name>
+                        <dcep_unit>kg</dcep_unit>
+                        <dcep_description>total structural and mechanisms mass. based on statistics.</dcep_description>
+                    </dcep_info>
+                </mass_structmech>
+                <mass_thermal>71.6091<dcep_info>
+                        <dcep_name>total thermal system mass</dcep_name>
+                        <dcep_unit>kg</dcep_unit>
+                        <dcep_description>total thermal system mass. based on statistics.</dcep_description>
+                    </dcep_info>
+                </mass_thermal>
+                <mass_power>0<dcep_info>
+                        <dcep_name>total power system mass</dcep_name>
+                        <dcep_unit>kg</dcep_unit>
+                        <dcep_description>total power system mass. based on statistics.</dcep_description>
+                    </dcep_info>
+                </mass_power>
+                <mass_ttc>46.2345<dcep_info>
+                        <dcep_name>total ttc mass</dcep_name>
+                        <dcep_unit>kg</dcep_unit>
+                        <dcep_description>total telemetry, tracking and control system mass. based on statistics.</dcep_description>
+                    </dcep_info>
+                </mass_ttc>
+                <mass_adc>146.2838<dcep_info>
+                        <dcep_name>total adc mass</dcep_name>
+                        <dcep_unit>kg</dcep_unit>
+                        <dcep_description>total attitude determination and control system mass. based on statistics.</dcep_description>
+                    </dcep_info>
+                </mass_adc>
+                <mass_propulsion>105.3575<dcep_info>
+                        <dcep_name>total propulsion system mass</dcep_name>
+                        <dcep_unit>kg</dcep_unit>
+                        <dcep_description>total propulsion system mass. based on statistics, refined by additional modelling.</dcep_description>
+                    </dcep_info>
+                </mass_propulsion>
+                <mass_other>69.6377<dcep_info>
+                        <dcep_name>total other mass</dcep_name>
+                        <dcep_unit>kg</dcep_unit>
+                        <dcep_description>accounting for other minor masses, could be considered an additional margin.</dcep_description>
+                    </dcep_info>
+                </mass_other>
+                <propulsion>
+                    <dcep_info>
+                        <none>no attributes defined</none>
+                    </dcep_info>
+                    <m_tank>12.471<dcep_info>
+                            <none>no attributes defined</none>
+                        </dcep_info>
+                    </m_tank>
+                    <m_thruster>92.8865<dcep_info>
+                            <none>no attributes defined</none>
+                        </dcep_info>
+                    </m_thruster>
+                </propulsion>
+            </subsystem_masses>
+            <subsystem_powers>
+                <dcep_info>
+                    <dcep_name>Subsystem powers</dcep_name>
+                    <dcep_unit>-</dcep_unit>
+                    <dcep_description>Power requirement of all spacecraft subsystems</dcep_description>
+                </dcep_info>
+                <power_total>20968.587<dcep_info>
+                        <dcep_name>power total</dcep_name>
+                        <dcep_unit>W</dcep_unit>
+                        <dcep_description>total power demand spacecraft</dcep_description>
+                    </dcep_info>
+                </power_total>
+                <power_payload>593.039<dcep_info>
+                        <dcep_name>power payload</dcep_name>
+                        <dcep_unit>W</dcep_unit>
+                        <dcep_description>power demand of the payload</dcep_description>
+                    </dcep_info>
+                </power_payload>
+                <power_structmech>7.7795<dcep_info>
+                        <dcep_name>power structures and mechanisms</dcep_name>
+                        <dcep_unit>W</dcep_unit>
+                        <dcep_description>power demand for operation of structures and mechanisms</dcep_description>
+                    </dcep_info>
+                </power_structmech>
+                <power_thermal>110.6552<dcep_info>
+                        <dcep_name>power thermal system</dcep_name>
+                        <dcep_unit>W</dcep_unit>
+                        <dcep_description>power demand for thermal control</dcep_description>
+                    </dcep_info>
+                </power_thermal>
+                <power_power>74.8987<dcep_info>
+                        <dcep_name>power for power system</dcep_name>
+                        <dcep_unit>W</dcep_unit>
+                        <dcep_description>power demand for power conditioning</dcep_description>
+                    </dcep_info>
+                </power_power>
+                <power_ttc>45.7829<dcep_info>
+                        <dcep_name>power TTC</dcep_name>
+                        <dcep_unit>W</dcep_unit>
+                        <dcep_description>power demand for tracking telemetry and command</dcep_description>
+                    </dcep_info>
+                </power_ttc>
+                <power_adc>136.4316<dcep_info>
+                        <dcep_name>power ADC</dcep_name>
+                        <dcep_unit>W</dcep_unit>
+                        <dcep_description>power demand for attitude determination and control</dcep_description>
+                    </dcep_info>
+                </power_adc>
+                <propulsion_power>20000<dcep_info>
+                        <dcep_name>power propulsion</dcep_name>
+                        <dcep_unit>W</dcep_unit>
+                        <dcep_description>power demand for propulsion systems</dcep_description>
+                    </dcep_info>
+                </propulsion_power>
+            </subsystem_powers>
+            <system_geometry>
+                <dcep_info>
+                    <dcep_name>System geometry</dcep_name>
+                    <dcep_unit>-</dcep_unit>
+                    <dcep_description>Estimated bounding-box geometry of the spacecraft derived from statistical scaling laws</dcep_description>
+                </dcep_info>
+                <size_x>2.7446<dcep_info>
+                        <dcep_name>Bounding box width</dcep_name>
+                        <dcep_unit>m</dcep_unit>
+                        <dcep_description>Estimated spacecraft bounding box width (x-dimension) from mass scaling law</dcep_description>
+                    </dcep_info>
+                </size_x>
+                <size_y>3.4905<dcep_info>
+                        <dcep_name>Bounding box depth</dcep_name>
+                        <dcep_unit>m</dcep_unit>
+                        <dcep_description>Estimated spacecraft bounding box depth (y-dimension) from mass scaling law</dcep_description>
+                    </dcep_info>
+                </size_y>
+                <size_h>6.3891<dcep_info>
+                        <dcep_name>Bounding box height</dcep_name>
+                        <dcep_unit>m</dcep_unit>
+                        <dcep_description>Estimated spacecraft bounding box height (h-dimension) from mass scaling law</dcep_description>
+                    </dcep_info>
+                </size_h>
+                <volume_box>61.2075<dcep_info>
+                        <dcep_name>Bounding box volume</dcep_name>
+                        <dcep_unit>m³</dcep_unit>
+                        <dcep_description>Estimated spacecraft bounding box volume: size_x * size_y * size_h. Statistical estimate based on historical spacecraft data.</dcep_description>
+                    </dcep_info>
+                </volume_box>
+                <volume_box_scaled>152.8751<dcep_info>
+                        <dcep_name>Bounding box volume (direct scaling)</dcep_name>
+                        <dcep_unit>m³</dcep_unit>
+                        <dcep_description>Independent cross-check: bounding box volume estimated directly from total mass via mass-to-volume_box scaling law</dcep_description>
+                    </dcep_info>
+                </volume_box_scaled>
+            </system_geometry>
+            <thrust_min>2.4807<dcep_info>
+                    <dcep_name>Minimum required thrust</dcep_name>
+                    <dcep_unit>N</dcep_unit>
+                    <dcep_description>Minimum thrust to complete the maneuver within the allowed burn time: F_min = m_prop * c_e / t_burn_max. Hard constraint in the evolutionary search.</dcep_description>
+                </dcep_info>
+            </thrust_min>
+            <mission_parameters>
+                <dcep_info>
+                    <dcep_name>Mission parameters</dcep_name>
+                    <dcep_unit>-</dcep_unit>
+                    <dcep_description>Mission specific parameters</dcep_description>
+                </dcep_info>
+                <maneuver_duration>621742.4579<dcep_info>
+                        <dcep_name>Total maneuvre duration</dcep_name>
+                        <dcep_unit>s</dcep_unit>
+                        <dcep_description>Total time to perform the full dv of all maneuvres.</dcep_description>
+                    </dcep_info>
+                </maneuver_duration>
+            </mission_parameters>
+            <mass_fractions>
+                <dcep_info>
+                    <dcep_name>Subsystem mass fractions</dcep_name>
+                    <dcep_unit>-</dcep_unit>
+                    <dcep_description>Ratios of all subsystem masses in relation to the total system mass</dcep_description>
+                </dcep_info>
+                <frac_m_dry_nomargin>0.98676<dcep_info>
+                        <dcep_name>total dry mass fraction</dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>total dry mass including all margins to total mass fraction</dcep_description>
+                    </dcep_info>
+                </frac_m_dry_nomargin>
+                <frac_m_margin>0.32959<dcep_info>
+                        <dcep_name>total margin mass fraction </dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>total mass of all margins to total mass fraction</dcep_description>
+                    </dcep_info>
+                </frac_m_margin>
+                <frac_m_dry_margin>0.65716<dcep_info>
+                        <dcep_name>total marginless dry mass fraction</dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>total dry mass without margin to total mass fraction</dcep_description>
+                    </dcep_info>
+                </frac_m_dry_margin>
+                <frac_mass_propellant>0.013242<dcep_info>
+                        <dcep_name>total propellant mass fraction</dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>propellant mass to total mass fraction</dcep_description>
+                    </dcep_info>
+                </frac_mass_propellant>
+                <frac_mass_payload>0.25608<dcep_info>
+                        <dcep_name>total payload mass fraction</dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>total payload mass to total mass fraction</dcep_description>
+                    </dcep_info>
+                </frac_mass_payload>
+                <frac_mass_structmech>0.18895<dcep_info>
+                        <dcep_name>total structural and mechanisms mass fraction</dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>total structural and mechanisms mass to total mass fraction</dcep_description>
+                    </dcep_info>
+                </frac_mass_structmech>
+                <frac_mass_thermal>0.018402<dcep_info>
+                        <dcep_name>total thermal system mass fraction</dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>total thermal system mass to total mass fraction</dcep_description>
+                    </dcep_info>
+                </frac_mass_thermal>
+                <frac_mass_power>0.10944<dcep_info>
+                        <dcep_name>total power system mass fraction</dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>total power system mass to total mass fraction</dcep_description>
+                    </dcep_info>
+                </frac_mass_power>
+                <frac_mass_ttc>0.011849<dcep_info>
+                        <dcep_name>total ttc mass fraction</dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>total telemetry, tracking and control system mass to total mass fraction</dcep_description>
+                    </dcep_info>
+                </frac_mass_ttc>
+                <frac_mass_adc>0.036986<dcep_info>
+                        <dcep_name>total adc mass fraction</dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>total attitude determination and control system mass to total mass fraction</dcep_description>
+                    </dcep_info>
+                </frac_mass_adc>
+                <frac_mass_propulsion>0.017259<dcep_info>
+                        <dcep_name>total propulsion system mass fraction</dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>total propulsion system mass to total mass fraction </dcep_description>
+                    </dcep_info>
+                </frac_mass_propulsion>
+                <frac_mass_other>0.018197<dcep_info>
+                        <dcep_name>total other system mass fraction</dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>misscellameous to total mass fraction, can be considered to be a margin</dcep_description>
+                    </dcep_info>
+                </frac_mass_other>
+            </mass_fractions>
+            <evolution_success>1<dcep_info>
+                    <dcep_name>Flag for Evolution sucess</dcep_name>
+                    <dcep_unit>-</dcep_unit>
+                    <dcep_description>Flags the sucess of the recent generation. Relevant for algorithm analysis and debugging.</dcep_description>
+                </dcep_info>
+            </evolution_success>
+            <n_success>2<dcep_info>
+                    <dcep_name>Success counter</dcep_name>
+                    <dcep_unit>-</dcep_unit>
+                    <dcep_description>Counter for convergence of lineage. Relevant for algorithm analysis and debugging.</dcep_description>
+                </dcep_info>
+            </n_success>
+            <convergence>0<dcep_info>
+                    <dcep_name>Lineage convergence</dcep_name>
+                    <dcep_unit>-</dcep_unit>
+                    <dcep_description>Indicator of lineage has converged, should always be 1 </dcep_description>
+                </dcep_info>
+            </convergence>
+            <count_for_convergence>
+                <dcep_info>
+                    <dcep_name>Convergence counter</dcep_name>
+                    <dcep_unit>-</dcep_unit>
+                    <dcep_description>Counter tracking how many successive generations have met the convergence criterion</dcep_description>
+                </dcep_info>
+            </count_for_convergence>
+            <convergence_mode>active<dcep_info>
+                    <dcep_name>Convergence mode</dcep_name>
+                    <dcep_unit>-</dcep_unit>
+                    <dcep_description>Current convergence state of the lineage evolution (active or converged)</dcep_description>
+                </dcep_info>
+            </convergence_mode>
+            <system>
+                <dcep_info>
+                    <dcep_name>System solutions</dcep_name>
+                    <dcep_unit>-</dcep_unit>
+                    <dcep_description>Parametric modelled system parameters are listed here</dcep_description>
+                </dcep_info>
+                <power>
+                    <dcep_info>
+                        <dcep_name>Power systems</dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>Power system parameters are listed here</dcep_description>
+                    </dcep_info>
+                    <PV>
+                        <dcep_info>
+                            <dcep_name>Photovoltaics</dcep_name>
+                            <dcep_unit>-</dcep_unit>
+                            <dcep_description>Photovoltaic system parameters are listed here</dcep_description>
+                        </dcep_info>
+                        <PV_power_output_required>28915.4336<dcep_info>
+                                <dcep_name>Photovoltaics output</dcep_name>
+                                <dcep_unit>W</dcep_unit>
+                                <dcep_description>Photovoltaic cells worst case output required power</dcep_description>
+                            </dcep_info>
+                        </PV_power_output_required>
+                        <PV_efficiency>0.4<dcep_info>
+                                <dcep_name>Photovoltaics efficiency</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Photovoltaic assumption on efficiency</dcep_description>
+                            </dcep_info>
+                        </PV_efficiency>
+                        <PV_eff_area_required>53.1221<dcep_info>
+                                <dcep_name>Photovoltaics area</dcep_name>
+                                <dcep_unit>m²</dcep_unit>
+                                <dcep_description>Photovoltaic required total area for worst case power assumption</dcep_description>
+                            </dcep_info>
+                        </PV_eff_area_required>
+                        <heat>
+                            <dcep_info>
+                                <dcep_name>Generated heat</dcep_name>
+                                <dcep_unit>W</dcep_unit>
+                                <dcep_description>Worst case generated heat of this component</dcep_description>
+                            </dcep_info>
+                            <Q_PV_solar_irradiance>43373.1504<dcep_info>
+                                    <dcep_name>PV heat on solar</dcep_name>
+                                    <dcep_unit>W</dcep_unit>
+                                    <dcep_description>Worst case heat on photovoltaic cells created by solar irradiance</dcep_description>
+                                </dcep_info>
+                            </Q_PV_solar_irradiance>
+                        </heat>
+                    </PV>
+                    <battery>
+                        <dcep_info>
+                            <dcep_name>battery system</dcep_name>
+                            <dcep_unit>-</dcep_unit>
+                            <dcep_description>Parameters of the required battery system are listed here</dcep_description>
+                        </dcep_info>
+                        <E_battery_required_max>47743152.2573<dcep_info>
+                                <dcep_name>battery energy</dcep_name>
+                                <dcep_unit>J</dcep_unit>
+                                <dcep_description>Maximum to be stored electrical energy</dcep_description>
+                            </dcep_info>
+                        </E_battery_required_max>
+                        <P_batt_max>22207.053<dcep_info>
+                                <dcep_name>battery power</dcep_name>
+                                <dcep_unit>W</dcep_unit>
+                                <dcep_description>Maximum battery output power</dcep_description>
+                            </dcep_info>
+                        </P_batt_max>
+                        <heat>
+                            <dcep_info>
+                                <dcep_name>Generated heat</dcep_name>
+                                <dcep_unit>W</dcep_unit>
+                                <dcep_description>Worst case generated heat of this component</dcep_description>
+                            </dcep_info>
+                            <Q_batt_max>1110.3526<dcep_info>
+                                    <dcep_name>battery heat</dcep_name>
+                                    <dcep_unit>W</dcep_unit>
+                                    <dcep_description>Maximum battery heat</dcep_description>
+                                </dcep_info>
+                            </Q_batt_max>
+                        </heat>
+                        <voltage>28<dcep_info>
+                                <dcep_name>Nominal voltage</dcep_name>
+                                <dcep_unit>V</dcep_unit>
+                                <dcep_description>Nominalvoltage of satellite bus</dcep_description>
+                            </dcep_info>
+                        </voltage>
+                        <current_max>793.109<dcep_info>
+                                <dcep_name>Battery maxixmum current</dcep_name>
+                                <dcep_unit>A</dcep_unit>
+                                <dcep_description>Battery maxixmum current</dcep_description>
+                            </dcep_info>
+                        </current_max>
+                        <n_cycles_per_year>5568<dcep_info>
+                                <dcep_name>Batt cycles</dcep_name>
+                                <dcep_unit>yearly</dcep_unit>
+                                <dcep_description>Number of battery cycles required for a full year stay in nominal orbit</dcep_description>
+                            </dcep_info>
+                        </n_cycles_per_year>
+                        <batt_efficiency>0.95<dcep_info>
+                                <dcep_name>battery efficiency</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Assumed battery effiency</dcep_description>
+                            </dcep_info>
+                        </batt_efficiency>
+                    </battery>
+                    <converter>
+                        <dcep_info>
+                            <dcep_name>power conversion</dcep_name>
+                            <dcep_unit>-</dcep_unit>
+                            <dcep_description>parameters of the power conversion system listed here</dcep_description>
+                        </dcep_info>
+                        <I_PDU_in>1032.6941<dcep_info>
+                                <dcep_name>PDU input current</dcep_name>
+                                <dcep_unit>A</dcep_unit>
+                                <dcep_description>Maximum input current of PV to batt</dcep_description>
+                            </dcep_info>
+                        </I_PDU_in>
+                        <I_PDU_out>761.3847<dcep_info>
+                                <dcep_name>PDU output current</dcep_name>
+                                <dcep_unit>A</dcep_unit>
+                                <dcep_description>Maximum output current of batt to sat</dcep_description>
+                            </dcep_info>
+                        </I_PDU_out>
+                        <heat>
+                            <dcep_info>
+                                <dcep_name>Generated heat</dcep_name>
+                                <dcep_unit>W</dcep_unit>
+                                <dcep_description>Worst case generated heat of this component</dcep_description>
+                            </dcep_info>
+                            <Q_conv_max>888.2821<dcep_info>
+                                    <dcep_name>PDU heat</dcep_name>
+                                    <dcep_unit>W</dcep_unit>
+                                    <dcep_description>Maximum PDU heat</dcep_description>
+                                </dcep_info>
+                            </Q_conv_max>
+                        </heat>
+                        <PDU_efficiency>0.96<dcep_info>
+                                <dcep_name>PDU efficiency</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Assumed power distribution unit efficiency for power budgeting</dcep_description>
+                            </dcep_info>
+                        </PDU_efficiency>
+                    </converter>
+                    <orbit_power_parameters>
+                        <dcep_info>
+                            <dcep_name>Orbital power parameters</dcep_name>
+                            <dcep_unit>-</dcep_unit>
+                            <dcep_description>Derived orbital parameters used for power system sizing (solar irradiance, power consumption, margin)</dcep_description>
+                        </dcep_info>
+                        <p_a_mean>1360.8<dcep_info>
+                                <dcep_name>Solar power orbit mean</dcep_name>
+                                <dcep_unit>W/m²</dcep_unit>
+                                <dcep_description>Mean solar irradiance constant of nominal orbit</dcep_description>
+                            </dcep_info>
+                        </p_a_mean>
+                        <p_a_min>1360.675<dcep_info>
+                                <dcep_name>Solar power orbit min</dcep_name>
+                                <dcep_unit>W/m²</dcep_unit>
+                                <dcep_description>Minimum solar irradiance constant of nominal orbit</dcep_description>
+                            </dcep_info>
+                        </p_a_min>
+                        <p_a_max>1360.925<dcep_info>
+                                <dcep_name>Solar power orbit max</dcep_name>
+                                <dcep_unit>W/m²</dcep_unit>
+                                <dcep_description>Maximum solar irradiance constant of nominal orbit</dcep_description>
+                            </dcep_info>
+                        </p_a_max>
+                        <p_consumed_max>21096.7003<dcep_info>
+                                <dcep_name>Power consumption max</dcep_name>
+                                <dcep_unit>W</dcep_unit>
+                                <dcep_description>Maximum output power to be consumed from batteries in worst case</dcep_description>
+                            </dcep_info>
+                        </p_consumed_max>
+                        <power_margin>1.25<dcep_info>
+                                <dcep_name>Power margin</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Reference standard power margin applied for system design.</dcep_description>
+                            </dcep_info>
+                        </power_margin>
+                    </orbit_power_parameters>
+                </power>
+            </system>
+            <orbit>
+                <dcep_info>
+                    <dcep_name>Orbit time</dcep_name>
+                    <dcep_unit>s</dcep_unit>
+                    <dcep_description>Time to complete full orbit revolution</dcep_description>
+                </dcep_info>
+                <orbit>
+                    <dcep_info>
+                        <dcep_name>Orbit time</dcep_name>
+                        <dcep_unit>s</dcep_unit>
+                        <dcep_description>Time to complete full orbit revolution</dcep_description>
+                    </dcep_info>
+                    <height>6871008.4<dcep_info>
+                            <dcep_name>Orbit height</dcep_name>
+                            <dcep_unit>m</dcep_unit>
+                            <dcep_description>Reference orbit height above Earrth center for circular nominal orbit</dcep_description>
+                        </dcep_info>
+                    </height>
+                    <velocity>7616.6846<dcep_info>
+                            <dcep_name>Orbit velocity</dcep_name>
+                            <dcep_unit>m/s</dcep_unit>
+                            <dcep_description>Mean velocity for circular nominal orbit</dcep_description>
+                        </dcep_info>
+                    </velocity>
+                    <time>
+                        <dcep_info>
+                            <dcep_name>Orbit times</dcep_name>
+                            <dcep_unit>s</dcep_unit>
+                            <dcep_description>Orbit times are listed here</dcep_description>
+                        </dcep_info>
+                        <orbit>5668.0591<dcep_info>
+                                <dcep_name>Orbit time</dcep_name>
+                                <dcep_unit>s</dcep_unit>
+                                <dcep_description>Time to complete full orbit revolution</dcep_description>
+                            </dcep_info>
+                        </orbit>
+                        <shadow>
+                            <dcep_info>
+                                <dcep_name>Orbit shadow times</dcep_name>
+                                <dcep_unit>s</dcep_unit>
+                                <dcep_description>Orbit shadow times are listed here</dcep_description>
+                            </dcep_info>
+                            <umbra>2133.1778<dcep_info>
+                                    <dcep_name>Umbra time</dcep_name>
+                                    <dcep_unit>s</dcep_unit>
+                                    <dcep_description>Time spacecraft in core shadow umbra for nominal orbit</dcep_description>
+                                </dcep_info>
+                            </umbra>
+                            <penumbra>16.7316<dcep_info>
+                                    <dcep_name>Penumbra time</dcep_name>
+                                    <dcep_unit>s</dcep_unit>
+                                    <dcep_description>Time spacecraft in partial shadow penumbra for nominal orbit</dcep_description>
+                                </dcep_info>
+                            </penumbra>
+                            <shadow_total>2149.9094<dcep_info>
+                                    <dcep_name>Total shadow time</dcep_name>
+                                    <dcep_unit>s</dcep_unit>
+                                    <dcep_description>Total shadow time per orbit (umbra plus penumbra)</dcep_description>
+                                </dcep_info>
+                            </shadow_total>
+                        </shadow>
+                        <average_light>3526.5155<dcep_info>
+                                <dcep_name>Average light time</dcep_name>
+                                <dcep_unit>s</dcep_unit>
+                                <dcep_description>Averaged time spacecraft in illumination for nominal orbit</dcep_description>
+                            </dcep_info>
+                        </average_light>
+                        <full_light>3518.1497<dcep_info>
+                                <dcep_name>Full light time</dcep_name>
+                                <dcep_unit>s</dcep_unit>
+                                <dcep_description>Time spacecraft in full light for nominal orbit</dcep_description>
+                            </dcep_info>
+                        </full_light>
+                        <comm_max>692.5382<dcep_info>
+                                <dcep_name>Maximum communication time</dcep_name>
+                                <dcep_unit>s</dcep_unit>
+                                <dcep_description>Time spacecraft in possible communication with groundstation with direct overpass, passing from horizon to horizon</dcep_description>
+                            </dcep_info>
+                        </comm_max>
+                    </time>
+                    <magneticfield>1.8009e-05<dcep_info>
+                            <dcep_name>Earth magnetic field</dcep_name>
+                            <dcep_unit>T</dcep_unit>
+                            <dcep_description>Earth equatorial magnetic field strength at nominal orbit height</dcep_description>
+                        </dcep_info>
+                    </magneticfield>
+                </orbit>
+            </orbit>
+            <scaling_quality>
+                <dcep_info>
+                    <dcep_name>Scaling confidence summary</dcep_name>
+                    <dcep_unit>-</dcep_unit>
+                    <dcep_description>Per-parameter and aggregate confidence metrics for all SMAD statistical scaling evaluations. Quantifies how well the source database supports each estimate.</dcep_description>
+                </dcep_info>
+                <mass>
+                    <dcep_info>
+                        <dcep_name>total system mass</dcep_name>
+                        <dcep_unit>kg</dcep_unit>
+                        <dcep_description>Input: Total system mass wet including margins</dcep_description>
+                    </dcep_info>
+                    <mass_payload>
+                        <dcep_info>
+                            <dcep_name>total payload mass</dcep_name>
+                            <dcep_unit>kg</dcep_unit>
+                            <dcep_description>total payload mass. based on statistics.</dcep_description>
+                        </dcep_info>
+                        <n_source_points>19<dcep_info>
+                                <dcep_name>Number of source data points (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Count of original (non-interpolated) data points in the scaling CSV for this parameter. Used in the n_factor penalty: n_factor=min(1,(n-1)/4). Ref: Stone (1974), JRSS-B 36(2):111.</dcep_description>
+                            </dcep_info>
+                        </n_source_points>
+                        <regime>interpolation<dcep_info>
+                                <dcep_name>Scaling regime (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>interpolation: query x is within the source data range. extrapolation: query x is outside the source data range. Ref: Draper &amp; Smith, Applied Regression Analysis, 3rd ed., Wiley 1998, s3.8.</dcep_description>
+                            </dcep_info>
+                        </regime>
+                        <gap_fraction>0.042846<dcep_info>
+                                <dcep_name>Normalised gap fraction (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Span of the bracketing source-data interval (or extrapolation extent) divided by the total source data range. 0=query is at a data point, 1=maximally far from all source points.</dcep_description>
+                            </dcep_info>
+                        </gap_fraction>
+                        <score>0.95715<dcep_info>
+                                <dcep_name>Scaling confidence score (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Confidence score in [0,1] for a single scaling evaluation. Interpolation: n_factor*(1-gap_fraction), clamped [0.30,1.00]. Extrapolation: 0.30*(1-extrap_fraction), max 0.30.</dcep_description>
+                            </dcep_info>
+                        </score>
+                        <label>high<dcep_info>
+                                <dcep_name>Confidence label (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>high (score 0.70 and above), medium (score 0.40 to 0.70), or low (score below 0.40). Traffic-light colour scheme as requested by REQ-MOST-FUNC-0140.</dcep_description>
+                            </dcep_info>
+                        </label>
+                    </mass_payload>
+                    <mass_structmech>
+                        <dcep_info>
+                            <dcep_name>total structural and mechanisms mass</dcep_name>
+                            <dcep_unit>kg</dcep_unit>
+                            <dcep_description>total structural and mechanisms mass. based on statistics.</dcep_description>
+                        </dcep_info>
+                        <n_source_points>19<dcep_info>
+                                <dcep_name>Number of source data points (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Count of original (non-interpolated) data points in the scaling CSV for this parameter. Used in the n_factor penalty: n_factor=min(1,(n-1)/4). Ref: Stone (1974), JRSS-B 36(2):111.</dcep_description>
+                            </dcep_info>
+                        </n_source_points>
+                        <regime>interpolation<dcep_info>
+                                <dcep_name>Scaling regime (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>interpolation: query x is within the source data range. extrapolation: query x is outside the source data range. Ref: Draper &amp; Smith, Applied Regression Analysis, 3rd ed., Wiley 1998, s3.8.</dcep_description>
+                            </dcep_info>
+                        </regime>
+                        <gap_fraction>0.042846<dcep_info>
+                                <dcep_name>Normalised gap fraction (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Span of the bracketing source-data interval (or extrapolation extent) divided by the total source data range. 0=query is at a data point, 1=maximally far from all source points.</dcep_description>
+                            </dcep_info>
+                        </gap_fraction>
+                        <score>0.95715<dcep_info>
+                                <dcep_name>Scaling confidence score (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Confidence score in [0,1] for a single scaling evaluation. Interpolation: n_factor*(1-gap_fraction), clamped [0.30,1.00]. Extrapolation: 0.30*(1-extrap_fraction), max 0.30.</dcep_description>
+                            </dcep_info>
+                        </score>
+                        <label>high<dcep_info>
+                                <dcep_name>Confidence label (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>high (score 0.70 and above), medium (score 0.40 to 0.70), or low (score below 0.40). Traffic-light colour scheme as requested by REQ-MOST-FUNC-0140.</dcep_description>
+                            </dcep_info>
+                        </label>
+                    </mass_structmech>
+                    <mass_thermal>
+                        <dcep_info>
+                            <dcep_name>total thermal system mass</dcep_name>
+                            <dcep_unit>kg</dcep_unit>
+                            <dcep_description>total thermal system mass. based on statistics.</dcep_description>
+                        </dcep_info>
+                        <n_source_points>19<dcep_info>
+                                <dcep_name>Number of source data points (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Count of original (non-interpolated) data points in the scaling CSV for this parameter. Used in the n_factor penalty: n_factor=min(1,(n-1)/4). Ref: Stone (1974), JRSS-B 36(2):111.</dcep_description>
+                            </dcep_info>
+                        </n_source_points>
+                        <regime>interpolation<dcep_info>
+                                <dcep_name>Scaling regime (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>interpolation: query x is within the source data range. extrapolation: query x is outside the source data range. Ref: Draper &amp; Smith, Applied Regression Analysis, 3rd ed., Wiley 1998, s3.8.</dcep_description>
+                            </dcep_info>
+                        </regime>
+                        <gap_fraction>0.042846<dcep_info>
+                                <dcep_name>Normalised gap fraction (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Span of the bracketing source-data interval (or extrapolation extent) divided by the total source data range. 0=query is at a data point, 1=maximally far from all source points.</dcep_description>
+                            </dcep_info>
+                        </gap_fraction>
+                        <score>0.95715<dcep_info>
+                                <dcep_name>Scaling confidence score (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Confidence score in [0,1] for a single scaling evaluation. Interpolation: n_factor*(1-gap_fraction), clamped [0.30,1.00]. Extrapolation: 0.30*(1-extrap_fraction), max 0.30.</dcep_description>
+                            </dcep_info>
+                        </score>
+                        <label>high<dcep_info>
+                                <dcep_name>Confidence label (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>high (score 0.70 and above), medium (score 0.40 to 0.70), or low (score below 0.40). Traffic-light colour scheme as requested by REQ-MOST-FUNC-0140.</dcep_description>
+                            </dcep_info>
+                        </label>
+                    </mass_thermal>
+                    <mass_power>
+                        <dcep_info>
+                            <dcep_name>total power system mass</dcep_name>
+                            <dcep_unit>kg</dcep_unit>
+                            <dcep_description>total power system mass. based on statistics.</dcep_description>
+                        </dcep_info>
+                        <n_source_points>19<dcep_info>
+                                <dcep_name>Number of source data points (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Count of original (non-interpolated) data points in the scaling CSV for this parameter. Used in the n_factor penalty: n_factor=min(1,(n-1)/4). Ref: Stone (1974), JRSS-B 36(2):111.</dcep_description>
+                            </dcep_info>
+                        </n_source_points>
+                        <regime>interpolation<dcep_info>
+                                <dcep_name>Scaling regime (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>interpolation: query x is within the source data range. extrapolation: query x is outside the source data range. Ref: Draper &amp; Smith, Applied Regression Analysis, 3rd ed., Wiley 1998, s3.8.</dcep_description>
+                            </dcep_info>
+                        </regime>
+                        <gap_fraction>0.042846<dcep_info>
+                                <dcep_name>Normalised gap fraction (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Span of the bracketing source-data interval (or extrapolation extent) divided by the total source data range. 0=query is at a data point, 1=maximally far from all source points.</dcep_description>
+                            </dcep_info>
+                        </gap_fraction>
+                        <score>0.95715<dcep_info>
+                                <dcep_name>Scaling confidence score (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Confidence score in [0,1] for a single scaling evaluation. Interpolation: n_factor*(1-gap_fraction), clamped [0.30,1.00]. Extrapolation: 0.30*(1-extrap_fraction), max 0.30.</dcep_description>
+                            </dcep_info>
+                        </score>
+                        <label>high<dcep_info>
+                                <dcep_name>Confidence label (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>high (score 0.70 and above), medium (score 0.40 to 0.70), or low (score below 0.40). Traffic-light colour scheme as requested by REQ-MOST-FUNC-0140.</dcep_description>
+                            </dcep_info>
+                        </label>
+                    </mass_power>
+                    <mass_ttc>
+                        <dcep_info>
+                            <dcep_name>total ttc mass</dcep_name>
+                            <dcep_unit>kg</dcep_unit>
+                            <dcep_description>total telemetry, tracking and control system mass. based on statistics.</dcep_description>
+                        </dcep_info>
+                        <n_source_points>19<dcep_info>
+                                <dcep_name>Number of source data points (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Count of original (non-interpolated) data points in the scaling CSV for this parameter. Used in the n_factor penalty: n_factor=min(1,(n-1)/4). Ref: Stone (1974), JRSS-B 36(2):111.</dcep_description>
+                            </dcep_info>
+                        </n_source_points>
+                        <regime>interpolation<dcep_info>
+                                <dcep_name>Scaling regime (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>interpolation: query x is within the source data range. extrapolation: query x is outside the source data range. Ref: Draper &amp; Smith, Applied Regression Analysis, 3rd ed., Wiley 1998, s3.8.</dcep_description>
+                            </dcep_info>
+                        </regime>
+                        <gap_fraction>0.042846<dcep_info>
+                                <dcep_name>Normalised gap fraction (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Span of the bracketing source-data interval (or extrapolation extent) divided by the total source data range. 0=query is at a data point, 1=maximally far from all source points.</dcep_description>
+                            </dcep_info>
+                        </gap_fraction>
+                        <score>0.95715<dcep_info>
+                                <dcep_name>Scaling confidence score (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Confidence score in [0,1] for a single scaling evaluation. Interpolation: n_factor*(1-gap_fraction), clamped [0.30,1.00]. Extrapolation: 0.30*(1-extrap_fraction), max 0.30.</dcep_description>
+                            </dcep_info>
+                        </score>
+                        <label>high<dcep_info>
+                                <dcep_name>Confidence label (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>high (score 0.70 and above), medium (score 0.40 to 0.70), or low (score below 0.40). Traffic-light colour scheme as requested by REQ-MOST-FUNC-0140.</dcep_description>
+                            </dcep_info>
+                        </label>
+                    </mass_ttc>
+                    <mass_adc>
+                        <dcep_info>
+                            <dcep_name>total adc mass</dcep_name>
+                            <dcep_unit>kg</dcep_unit>
+                            <dcep_description>total attitude determination and control system mass. based on statistics.</dcep_description>
+                        </dcep_info>
+                        <n_source_points>19<dcep_info>
+                                <dcep_name>Number of source data points (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Count of original (non-interpolated) data points in the scaling CSV for this parameter. Used in the n_factor penalty: n_factor=min(1,(n-1)/4). Ref: Stone (1974), JRSS-B 36(2):111.</dcep_description>
+                            </dcep_info>
+                        </n_source_points>
+                        <regime>interpolation<dcep_info>
+                                <dcep_name>Scaling regime (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>interpolation: query x is within the source data range. extrapolation: query x is outside the source data range. Ref: Draper &amp; Smith, Applied Regression Analysis, 3rd ed., Wiley 1998, s3.8.</dcep_description>
+                            </dcep_info>
+                        </regime>
+                        <gap_fraction>0.042846<dcep_info>
+                                <dcep_name>Normalised gap fraction (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Span of the bracketing source-data interval (or extrapolation extent) divided by the total source data range. 0=query is at a data point, 1=maximally far from all source points.</dcep_description>
+                            </dcep_info>
+                        </gap_fraction>
+                        <score>0.95715<dcep_info>
+                                <dcep_name>Scaling confidence score (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Confidence score in [0,1] for a single scaling evaluation. Interpolation: n_factor*(1-gap_fraction), clamped [0.30,1.00]. Extrapolation: 0.30*(1-extrap_fraction), max 0.30.</dcep_description>
+                            </dcep_info>
+                        </score>
+                        <label>high<dcep_info>
+                                <dcep_name>Confidence label (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>high (score 0.70 and above), medium (score 0.40 to 0.70), or low (score below 0.40). Traffic-light colour scheme as requested by REQ-MOST-FUNC-0140.</dcep_description>
+                            </dcep_info>
+                        </label>
+                    </mass_adc>
+                    <mass_propulsion>
+                        <dcep_info>
+                            <dcep_name>total propulsion system mass</dcep_name>
+                            <dcep_unit>kg</dcep_unit>
+                            <dcep_description>total propulsion system mass. based on statistics, refined by additional modelling.</dcep_description>
+                        </dcep_info>
+                        <n_source_points>19<dcep_info>
+                                <dcep_name>Number of source data points (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Count of original (non-interpolated) data points in the scaling CSV for this parameter. Used in the n_factor penalty: n_factor=min(1,(n-1)/4). Ref: Stone (1974), JRSS-B 36(2):111.</dcep_description>
+                            </dcep_info>
+                        </n_source_points>
+                        <regime>interpolation<dcep_info>
+                                <dcep_name>Scaling regime (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>interpolation: query x is within the source data range. extrapolation: query x is outside the source data range. Ref: Draper &amp; Smith, Applied Regression Analysis, 3rd ed., Wiley 1998, s3.8.</dcep_description>
+                            </dcep_info>
+                        </regime>
+                        <gap_fraction>0.042846<dcep_info>
+                                <dcep_name>Normalised gap fraction (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Span of the bracketing source-data interval (or extrapolation extent) divided by the total source data range. 0=query is at a data point, 1=maximally far from all source points.</dcep_description>
+                            </dcep_info>
+                        </gap_fraction>
+                        <score>0.95715<dcep_info>
+                                <dcep_name>Scaling confidence score (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Confidence score in [0,1] for a single scaling evaluation. Interpolation: n_factor*(1-gap_fraction), clamped [0.30,1.00]. Extrapolation: 0.30*(1-extrap_fraction), max 0.30.</dcep_description>
+                            </dcep_info>
+                        </score>
+                        <label>high<dcep_info>
+                                <dcep_name>Confidence label (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>high (score 0.70 and above), medium (score 0.40 to 0.70), or low (score below 0.40). Traffic-light colour scheme as requested by REQ-MOST-FUNC-0140.</dcep_description>
+                            </dcep_info>
+                        </label>
+                    </mass_propulsion>
+                    <mass_other>
+                        <dcep_info>
+                            <dcep_name>total other mass</dcep_name>
+                            <dcep_unit>kg</dcep_unit>
+                            <dcep_description>accounting for other minor masses, could be considered an additional margin.</dcep_description>
+                        </dcep_info>
+                        <n_source_points>19<dcep_info>
+                                <dcep_name>Number of source data points (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Count of original (non-interpolated) data points in the scaling CSV for this parameter. Used in the n_factor penalty: n_factor=min(1,(n-1)/4). Ref: Stone (1974), JRSS-B 36(2):111.</dcep_description>
+                            </dcep_info>
+                        </n_source_points>
+                        <regime>interpolation<dcep_info>
+                                <dcep_name>Scaling regime (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>interpolation: query x is within the source data range. extrapolation: query x is outside the source data range. Ref: Draper &amp; Smith, Applied Regression Analysis, 3rd ed., Wiley 1998, s3.8.</dcep_description>
+                            </dcep_info>
+                        </regime>
+                        <gap_fraction>0.042846<dcep_info>
+                                <dcep_name>Normalised gap fraction (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Span of the bracketing source-data interval (or extrapolation extent) divided by the total source data range. 0=query is at a data point, 1=maximally far from all source points.</dcep_description>
+                            </dcep_info>
+                        </gap_fraction>
+                        <score>0.95715<dcep_info>
+                                <dcep_name>Scaling confidence score (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Confidence score in [0,1] for a single scaling evaluation. Interpolation: n_factor*(1-gap_fraction), clamped [0.30,1.00]. Extrapolation: 0.30*(1-extrap_fraction), max 0.30.</dcep_description>
+                            </dcep_info>
+                        </score>
+                        <label>high<dcep_info>
+                                <dcep_name>Confidence label (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>high (score 0.70 and above), medium (score 0.40 to 0.70), or low (score below 0.40). Traffic-light colour scheme as requested by REQ-MOST-FUNC-0140.</dcep_description>
+                            </dcep_info>
+                        </label>
+                    </mass_other>
+                </mass>
+                <power>
+                    <dcep_info>
+                        <dcep_name>Power systems</dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>Power system parameters are listed here</dcep_description>
+                    </dcep_info>
+                    <power_payload>
+                        <dcep_info>
+                            <dcep_name>power payload</dcep_name>
+                            <dcep_unit>W</dcep_unit>
+                            <dcep_description>power demand of the payload</dcep_description>
+                        </dcep_info>
+                        <n_source_points>13<dcep_info>
+                                <dcep_name>Number of source data points (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Count of original (non-interpolated) data points in the scaling CSV for this parameter. Used in the n_factor penalty: n_factor=min(1,(n-1)/4). Ref: Stone (1974), JRSS-B 36(2):111.</dcep_description>
+                            </dcep_info>
+                        </n_source_points>
+                        <regime>interpolation<dcep_info>
+                                <dcep_name>Scaling regime (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>interpolation: query x is within the source data range. extrapolation: query x is outside the source data range. Ref: Draper &amp; Smith, Applied Regression Analysis, 3rd ed., Wiley 1998, s3.8.</dcep_description>
+                            </dcep_info>
+                        </regime>
+                        <gap_fraction>0.27327<dcep_info>
+                                <dcep_name>Normalised gap fraction (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Span of the bracketing source-data interval (or extrapolation extent) divided by the total source data range. 0=query is at a data point, 1=maximally far from all source points.</dcep_description>
+                            </dcep_info>
+                        </gap_fraction>
+                        <score>0.72673<dcep_info>
+                                <dcep_name>Scaling confidence score (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Confidence score in [0,1] for a single scaling evaluation. Interpolation: n_factor*(1-gap_fraction), clamped [0.30,1.00]. Extrapolation: 0.30*(1-extrap_fraction), max 0.30.</dcep_description>
+                            </dcep_info>
+                        </score>
+                        <label>high<dcep_info>
+                                <dcep_name>Confidence label (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>high (score 0.70 and above), medium (score 0.40 to 0.70), or low (score below 0.40). Traffic-light colour scheme as requested by REQ-MOST-FUNC-0140.</dcep_description>
+                            </dcep_info>
+                        </label>
+                    </power_payload>
+                    <power_structmech>
+                        <dcep_info>
+                            <dcep_name>power structures and mechanisms</dcep_name>
+                            <dcep_unit>W</dcep_unit>
+                            <dcep_description>power demand for operation of structures and mechanisms</dcep_description>
+                        </dcep_info>
+                        <n_source_points>12<dcep_info>
+                                <dcep_name>Number of source data points (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Count of original (non-interpolated) data points in the scaling CSV for this parameter. Used in the n_factor penalty: n_factor=min(1,(n-1)/4). Ref: Stone (1974), JRSS-B 36(2):111.</dcep_description>
+                            </dcep_info>
+                        </n_source_points>
+                        <regime>interpolation<dcep_info>
+                                <dcep_name>Scaling regime (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>interpolation: query x is within the source data range. extrapolation: query x is outside the source data range. Ref: Draper &amp; Smith, Applied Regression Analysis, 3rd ed., Wiley 1998, s3.8.</dcep_description>
+                            </dcep_info>
+                        </regime>
+                        <gap_fraction>0.27327<dcep_info>
+                                <dcep_name>Normalised gap fraction (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Span of the bracketing source-data interval (or extrapolation extent) divided by the total source data range. 0=query is at a data point, 1=maximally far from all source points.</dcep_description>
+                            </dcep_info>
+                        </gap_fraction>
+                        <score>0.72673<dcep_info>
+                                <dcep_name>Scaling confidence score (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Confidence score in [0,1] for a single scaling evaluation. Interpolation: n_factor*(1-gap_fraction), clamped [0.30,1.00]. Extrapolation: 0.30*(1-extrap_fraction), max 0.30.</dcep_description>
+                            </dcep_info>
+                        </score>
+                        <label>high<dcep_info>
+                                <dcep_name>Confidence label (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>high (score 0.70 and above), medium (score 0.40 to 0.70), or low (score below 0.40). Traffic-light colour scheme as requested by REQ-MOST-FUNC-0140.</dcep_description>
+                            </dcep_info>
+                        </label>
+                    </power_structmech>
+                    <power_thermal>
+                        <dcep_info>
+                            <dcep_name>power thermal system</dcep_name>
+                            <dcep_unit>W</dcep_unit>
+                            <dcep_description>power demand for thermal control</dcep_description>
+                        </dcep_info>
+                        <n_source_points>12<dcep_info>
+                                <dcep_name>Number of source data points (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Count of original (non-interpolated) data points in the scaling CSV for this parameter. Used in the n_factor penalty: n_factor=min(1,(n-1)/4). Ref: Stone (1974), JRSS-B 36(2):111.</dcep_description>
+                            </dcep_info>
+                        </n_source_points>
+                        <regime>interpolation<dcep_info>
+                                <dcep_name>Scaling regime (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>interpolation: query x is within the source data range. extrapolation: query x is outside the source data range. Ref: Draper &amp; Smith, Applied Regression Analysis, 3rd ed., Wiley 1998, s3.8.</dcep_description>
+                            </dcep_info>
+                        </regime>
+                        <gap_fraction>0.27327<dcep_info>
+                                <dcep_name>Normalised gap fraction (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Span of the bracketing source-data interval (or extrapolation extent) divided by the total source data range. 0=query is at a data point, 1=maximally far from all source points.</dcep_description>
+                            </dcep_info>
+                        </gap_fraction>
+                        <score>0.72673<dcep_info>
+                                <dcep_name>Scaling confidence score (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Confidence score in [0,1] for a single scaling evaluation. Interpolation: n_factor*(1-gap_fraction), clamped [0.30,1.00]. Extrapolation: 0.30*(1-extrap_fraction), max 0.30.</dcep_description>
+                            </dcep_info>
+                        </score>
+                        <label>high<dcep_info>
+                                <dcep_name>Confidence label (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>high (score 0.70 and above), medium (score 0.40 to 0.70), or low (score below 0.40). Traffic-light colour scheme as requested by REQ-MOST-FUNC-0140.</dcep_description>
+                            </dcep_info>
+                        </label>
+                    </power_thermal>
+                    <power_power>
+                        <dcep_info>
+                            <dcep_name>power for power system</dcep_name>
+                            <dcep_unit>W</dcep_unit>
+                            <dcep_description>power demand for power conditioning</dcep_description>
+                        </dcep_info>
+                        <n_source_points>12<dcep_info>
+                                <dcep_name>Number of source data points (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Count of original (non-interpolated) data points in the scaling CSV for this parameter. Used in the n_factor penalty: n_factor=min(1,(n-1)/4). Ref: Stone (1974), JRSS-B 36(2):111.</dcep_description>
+                            </dcep_info>
+                        </n_source_points>
+                        <regime>interpolation<dcep_info>
+                                <dcep_name>Scaling regime (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>interpolation: query x is within the source data range. extrapolation: query x is outside the source data range. Ref: Draper &amp; Smith, Applied Regression Analysis, 3rd ed., Wiley 1998, s3.8.</dcep_description>
+                            </dcep_info>
+                        </regime>
+                        <gap_fraction>0.27327<dcep_info>
+                                <dcep_name>Normalised gap fraction (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Span of the bracketing source-data interval (or extrapolation extent) divided by the total source data range. 0=query is at a data point, 1=maximally far from all source points.</dcep_description>
+                            </dcep_info>
+                        </gap_fraction>
+                        <score>0.72673<dcep_info>
+                                <dcep_name>Scaling confidence score (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Confidence score in [0,1] for a single scaling evaluation. Interpolation: n_factor*(1-gap_fraction), clamped [0.30,1.00]. Extrapolation: 0.30*(1-extrap_fraction), max 0.30.</dcep_description>
+                            </dcep_info>
+                        </score>
+                        <label>high<dcep_info>
+                                <dcep_name>Confidence label (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>high (score 0.70 and above), medium (score 0.40 to 0.70), or low (score below 0.40). Traffic-light colour scheme as requested by REQ-MOST-FUNC-0140.</dcep_description>
+                            </dcep_info>
+                        </label>
+                    </power_power>
+                    <power_ttc>
+                        <dcep_info>
+                            <dcep_name>power TTC</dcep_name>
+                            <dcep_unit>W</dcep_unit>
+                            <dcep_description>power demand for tracking telemetry and command</dcep_description>
+                        </dcep_info>
+                        <n_source_points>9<dcep_info>
+                                <dcep_name>Number of source data points (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Count of original (non-interpolated) data points in the scaling CSV for this parameter. Used in the n_factor penalty: n_factor=min(1,(n-1)/4). Ref: Stone (1974), JRSS-B 36(2):111.</dcep_description>
+                            </dcep_info>
+                        </n_source_points>
+                        <regime>interpolation<dcep_info>
+                                <dcep_name>Scaling regime (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>interpolation: query x is within the source data range. extrapolation: query x is outside the source data range. Ref: Draper &amp; Smith, Applied Regression Analysis, 3rd ed., Wiley 1998, s3.8.</dcep_description>
+                            </dcep_info>
+                        </regime>
+                        <gap_fraction>0.38092<dcep_info>
+                                <dcep_name>Normalised gap fraction (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Span of the bracketing source-data interval (or extrapolation extent) divided by the total source data range. 0=query is at a data point, 1=maximally far from all source points.</dcep_description>
+                            </dcep_info>
+                        </gap_fraction>
+                        <score>0.61908<dcep_info>
+                                <dcep_name>Scaling confidence score (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Confidence score in [0,1] for a single scaling evaluation. Interpolation: n_factor*(1-gap_fraction), clamped [0.30,1.00]. Extrapolation: 0.30*(1-extrap_fraction), max 0.30.</dcep_description>
+                            </dcep_info>
+                        </score>
+                        <label>medium<dcep_info>
+                                <dcep_name>Confidence label (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>high (score 0.70 and above), medium (score 0.40 to 0.70), or low (score below 0.40). Traffic-light colour scheme as requested by REQ-MOST-FUNC-0140.</dcep_description>
+                            </dcep_info>
+                        </label>
+                    </power_ttc>
+                    <power_adc>
+                        <dcep_info>
+                            <dcep_name>power ADC</dcep_name>
+                            <dcep_unit>W</dcep_unit>
+                            <dcep_description>power demand for attitude determination and control</dcep_description>
+                        </dcep_info>
+                        <n_source_points>12<dcep_info>
+                                <dcep_name>Number of source data points (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Count of original (non-interpolated) data points in the scaling CSV for this parameter. Used in the n_factor penalty: n_factor=min(1,(n-1)/4). Ref: Stone (1974), JRSS-B 36(2):111.</dcep_description>
+                            </dcep_info>
+                        </n_source_points>
+                        <regime>interpolation<dcep_info>
+                                <dcep_name>Scaling regime (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>interpolation: query x is within the source data range. extrapolation: query x is outside the source data range. Ref: Draper &amp; Smith, Applied Regression Analysis, 3rd ed., Wiley 1998, s3.8.</dcep_description>
+                            </dcep_info>
+                        </regime>
+                        <gap_fraction>0.27327<dcep_info>
+                                <dcep_name>Normalised gap fraction (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Span of the bracketing source-data interval (or extrapolation extent) divided by the total source data range. 0=query is at a data point, 1=maximally far from all source points.</dcep_description>
+                            </dcep_info>
+                        </gap_fraction>
+                        <score>0.72673<dcep_info>
+                                <dcep_name>Scaling confidence score (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Confidence score in [0,1] for a single scaling evaluation. Interpolation: n_factor*(1-gap_fraction), clamped [0.30,1.00]. Extrapolation: 0.30*(1-extrap_fraction), max 0.30.</dcep_description>
+                            </dcep_info>
+                        </score>
+                        <label>high<dcep_info>
+                                <dcep_name>Confidence label (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>high (score 0.70 and above), medium (score 0.40 to 0.70), or low (score below 0.40). Traffic-light colour scheme as requested by REQ-MOST-FUNC-0140.</dcep_description>
+                            </dcep_info>
+                        </label>
+                    </power_adc>
+                    <propulsion_power>
+                        <dcep_info>
+                            <dcep_name>power propulsion</dcep_name>
+                            <dcep_unit>W</dcep_unit>
+                            <dcep_description>power demand for propulsion systems</dcep_description>
+                        </dcep_info>
+                        <n_source_points>13<dcep_info>
+                                <dcep_name>Number of source data points (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Count of original (non-interpolated) data points in the scaling CSV for this parameter. Used in the n_factor penalty: n_factor=min(1,(n-1)/4). Ref: Stone (1974), JRSS-B 36(2):111.</dcep_description>
+                            </dcep_info>
+                        </n_source_points>
+                        <regime>interpolation<dcep_info>
+                                <dcep_name>Scaling regime (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>interpolation: query x is within the source data range. extrapolation: query x is outside the source data range. Ref: Draper &amp; Smith, Applied Regression Analysis, 3rd ed., Wiley 1998, s3.8.</dcep_description>
+                            </dcep_info>
+                        </regime>
+                        <gap_fraction>0.27327<dcep_info>
+                                <dcep_name>Normalised gap fraction (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Span of the bracketing source-data interval (or extrapolation extent) divided by the total source data range. 0=query is at a data point, 1=maximally far from all source points.</dcep_description>
+                            </dcep_info>
+                        </gap_fraction>
+                        <score>0.72673<dcep_info>
+                                <dcep_name>Scaling confidence score (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>Confidence score in [0,1] for a single scaling evaluation. Interpolation: n_factor*(1-gap_fraction), clamped [0.30,1.00]. Extrapolation: 0.30*(1-extrap_fraction), max 0.30.</dcep_description>
+                            </dcep_info>
+                        </score>
+                        <label>high<dcep_info>
+                                <dcep_name>Confidence label (per parameter)</dcep_name>
+                                <dcep_unit>-</dcep_unit>
+                                <dcep_description>high (score 0.70 and above), medium (score 0.40 to 0.70), or low (score below 0.40). Traffic-light colour scheme as requested by REQ-MOST-FUNC-0140.</dcep_description>
+                            </dcep_info>
+                        </label>
+                    </propulsion_power>
+                </power>
+                <mass_score>0.95715<dcep_info>
+                        <dcep_name>Mass scaling confidence score</dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>Minimum confidence score over all SMAD mass-fraction scaling parameters (mass_payload through mass_other).</dcep_description>
+                    </dcep_info>
+                </mass_score>
+                <power_score>0.61908<dcep_info>
+                        <dcep_name>Power scaling confidence score</dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>Minimum confidence score over all SMAD power-fraction scaling parameters (power_payload through propulsion_power).</dcep_description>
+                    </dcep_info>
+                </power_score>
+                <total_score>0.61908<dcep_info>
+                        <dcep_name>Total scaling confidence score</dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>Aggregate confidence score in [0,1] derived as the minimum over all mass and power scaling parameters. Score 0.70 and above: high (green); 0.40 to 0.70: medium (yellow); below 0.40: low (red).</dcep_description>
+                    </dcep_info>
+                </total_score>
+                <total_regime>interpolation<dcep_info>
+                        <dcep_name>Total scaling regime</dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>interpolation when all parameters are within the source data range; extrapolation when at least one parameter is outside the source data range.</dcep_description>
+                    </dcep_info>
+                </total_regime>
+                <total_label>medium<dcep_info>
+                        <dcep_name>Total scaling confidence label</dcep_name>
+                        <dcep_unit>-</dcep_unit>
+                        <dcep_description>Human-readable confidence class: high (score 0.70 and above), medium (score 0.40 to 0.70), or low (score below 0.40). Corresponds to green/yellow/red traffic-light scheme.</dcep_description>
+                    </dcep_info>
+                </total_label>
+            </scaling_quality>
+            <component_matches>
+                <propulsion_system>
+                    <system_type>HET</system_type>
+                    <propellant>Krypton</propellant>
+                    <design_thrust>2.5182</design_thrust>
+                    <design_c_e>9192.1309</design_c_e>
+                    <design_power_jet>11573.9248</design_power_jet>
+                    <design_propellant_mass>170.3291</design_propellant_mass>
+                    <design_mass_budget>105.3575</design_mass_budget>
+                    <piping_fraction>0.2</piping_fraction>
+                    <hardware_mass_budget>105.3575</hardware_mass_budget>
+                    <hint_thruster_mass>92.8865</hint_thruster_mass>
+                    <hint_tank_mass>12.471</hint_tank_mass>
+                    <hint_ppu_mass>NaN</hint_ppu_mass>
+                    <no_solution_within_mass_budget>1</no_solution_within_mass_budget>
+                    <selected_thruster_idx>1</selected_thruster_idx>
+                    <piping_wet_mass>NaN</piping_wet_mass>
+                    <piping_mass_kg>NaN</piping_mass_kg>
+                    <tank_candidates_1>
+                        <name>NG 80386-101</name>
+                        <company/>
+                        <type>tank</type>
+                        <filter_mode>high_pressure</filter_mode>
+                        <score>0.97845</score>
+                        <n_tanks>2</n_tanks>
+                        <mass_single>6.4</mass_single>
+                        <mass_cluster>12.8</mass_cluster>
+                        <capacity_kg_single>86.67</capacity_kg_single>
+                        <capacity_kg_cluster>173.34</capacity_kg_cluster>
+                        <volume_m3>0.0321</volume_m3>
+                        <pressure_Pa>17200000</pressure_Pa>
+                        <propellant>Hydrazine, MMH, UDMH, Aerozine-50, NTO, MON, He, N2, Ar, Xenon, Kr</propellant>
+                        <source>Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number</source>
+                    </tank_candidates_1>
+                </propulsion_system>
+                <power_generation>
+                    <design_pv_power_required>28915.4336</design_pv_power_required>
+                    <design_battery_energy_wh>13261.9867</design_battery_energy_wh>
+                    <design_mass_budget>0</design_mass_budget>
+                    <design_n_cycles_per_year>5568</design_n_cycles_per_year>
+                    <harness_fraction>0.25</harness_fraction>
+                    <no_pv_within_budget>0</no_pv_within_budget>
+                    <no_battery_within_budget>0</no_battery_within_budget>
+                    <harness_hardware_mass>861.231</harness_hardware_mass>
+                    <harness_mass_kg>215.3077</harness_mass_kg>
+                    <pv_candidates_1>
+                        <name>Solar Panels 6U</name>
+                        <manufacturer/>
+                        <filter_mode>all</filter_mode>
+                        <score>0.0012939</score>
+                        <score_power_fit>0.99955</score_power_fit>
+                        <n_panels>2042</n_panels>
+                        <power_max_single>17</power_max_single>
+                        <power_max_cluster>34714</power_max_cluster>
+                        <mass_single>0.3</mass_single>
+                        <mass_cluster>771.876</mass_cluster>
+                        <mass_modules_kg>612.6</mass_modules_kg>
+                        <mass_structural_kg>159.276</mass_structural_kg>
+                        <area_single_m2>0.06</area_single_m2>
+                        <area_cluster_m2>122.52</area_cluster_m2>
+                        <efficiency>0.3</efficiency>
+                        <mass_exceeds_budget>0</mass_exceeds_budget>
+                        <mass_overage_kg>0</mass_overage_kg>
+                        <source>https://www.isispace.nl/wp-content/uploads/2016/02/Solar-Panels-Brochure-v1.pdf</source>
+                    </pv_candidates_1>
+                    <battery_candidates_1>
+                        <name>BA01/S</name>
+                        <manufacturer>EXA</manufacturer>
+                        <filter_mode>all</filter_mode>
+                        <score>0.99949</score>
+                        <score_energy_fit>0.99949</score_energy_fit>
+                        <score_life_fit>0</score_life_fit>
+                        <n_batteries>777</n_batteries>
+                        <energy_wh_single>22.2</energy_wh_single>
+                        <energy_wh_cluster>17249.4</energy_wh_cluster>
+                        <mass_single>0.115</mass_single>
+                        <mass_cluster>89.355</mass_cluster>
+                        <specific_energy>NaN</specific_energy>
+                        <cycle_life>NaN</cycle_life>
+                        <expected_life_yr>NaN</expected_life_yr>
+                        <mass_exceeds_budget>0</mass_exceeds_budget>
+                        <mass_overage_kg>0</mass_overage_kg>
+                        <source>EXA Corporation. 'BA01/S Space Battery Datasheet.'</source>
+                    </battery_candidates_1>
+                </power_generation>
+            </component_matches>
+            <selected_tank>
+                <name>NG 80386-101</name>
+                <company/>
+                <n_tanks>2</n_tanks>
+                <mass_cluster>12.8</mass_cluster>
+                <source>Northrop Grumman, 'Pressurant Tanks Data Sheets – Sorted by Part Number,' https://www.northropgrumman.com/what-we-do/space/mission-enabling-products/pressurant-tanks/data-sheets-sorted-by-part-number</source>
+            </selected_tank>
+        </best_1>
+    </case_1>
+</best_solutions>

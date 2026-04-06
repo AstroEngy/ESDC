@@ -382,7 +382,7 @@
 					<massflow unit="kg/s">0.00000050968399592253</massflow>
 					<mass unit="kg">1.8</mass>
 					<efficiency>0.35316</efficiency>
-					<propellant>Xe</propellant>
+					<propellant>Xenon</propellant>
 					<structure_mass unit="kg">5</structure_mass>
 					<source> Ariane Group - ARCLIGHT
 ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-propulsion.com/brochures/electric-propulsion/arclight-electric-space-propulsion.pdf</source>
@@ -412,7 +412,7 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 						<nominal>0.507413793103448275</nominal>
 						<max>0.516315789</max>
 					</efficiency>
-					<propellant>Xe</propellant>
+					<propellant>Xenon</propellant>
 					<structure_mass unit="kg">5</structure_mass>
 					<source> Ariane Group - http://www.space-propulsion.com/spacecraft-propulsion/propulsion-systems/electric-propulsion/images/rit-thruster-family-performance-data.jpg</source>
 			</thruster>
@@ -430,7 +430,7 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 					<power_jet unit="W">0.73575</power_jet>
 					<mass unit="kg">0.44</mass>
 					<efficiency>0.014715</efficiency>
-					<propellant>Xe</propellant>
+					<propellant>Xenon</propellant>
 					<structure_mass unit="kg">5</structure_mass>
 					<source> Ariane Group - http://www.space-propulsion.com/spacecraft-propulsion/propulsion-systems/electric-propulsion/images/rit-thruster-family-performance-data.jpg</source>
 			</thruster>
@@ -5354,7 +5354,7 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				</power>
 				<mass unit="kg">1.6</mass>
 				<impulse_tot unit="N·s">135000</impulse_tot>
-				<propellant>Xe</propellant>
+				<propellant>Xenon</propellant>
 				<source>Rafael Space Propulsion 2021 Catalog (PDF), p.49/81.</source>
 				<!-- Evidence: Thrust @300W greater than 14.3 mN, Isp @300W greater than 1200 s, power 250-600 W, mass 1.6 kg, total impulse greater than 135 kNs -->
 			</thruster>
@@ -5379,7 +5379,7 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				</power>
 				<mass unit="kg">2.0</mass>
 				<impulse_tot unit="N·s">75000</impulse_tot>
-				<propellant>Xe</propellant>
+				<propellant>Xenon</propellant>
 				<source>Rafael Space Propulsion 2021 Catalog (PDF), p.50/81.</source>
 				<!-- Evidence: Thrust (Xe) 5-14 mN, Isp 800-1300 s, 100-300 W, mass 2 kg, total impulse greater than 75 kNs -->
 			</thruster>
@@ -5404,7 +5404,7 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				</power>
 				<mass unit="kg">1.5</mass>
 				<impulse_tot unit="N·s">600000</impulse_tot>
-				<propellant>Xe</propellant>
+				<propellant>Xenon</propellant>
 				<source>Rafael Space Propulsion 2021 Catalog (PDF), p.51/81.</source>
 				<!-- Evidence: Thrust (Xe) 23-53 mN, Isp 1300-1550 s, 450-900 W, mass 1.5 kg, total impulse greater than 600 kNs -->
 			</thruster>
@@ -5427,7 +5427,7 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				<total_impulse unit="N·s">
 					<min>150000</min>
 				</total_impulse>
-				<propellant>Xe</propellant>
+				<propellant>Xenon</propellant>
 				<source>Electric Propulsion Systems, Rafael Space. Source file: Electric_Propulsion_Systems_extracted_propulsion.xml.</source>
 				<!-- Evidence: 2x Thruster Units + PPU + Propellant Tank + Feed System, thrust 5-14 mN, Isp 800-1300 s -->
 			</thruster>
@@ -5449,7 +5449,7 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				<total_impulse unit="N·s">
 					<min>1200000</min>
 				</total_impulse>
-				<propellant>Xe</propellant>
+				<propellant>Xenon</propellant>
 				<source>Electric Propulsion Systems, Rafael Space. Source file: Electric_Propulsion_Systems_extracted_propulsion.xml.</source>
 				<!-- Evidence: 2x Thruster Units + PPU + Propellant Tank + Feed System, thrust 23-53 mN, Isp 1300-1550 s -->
 			</thruster>

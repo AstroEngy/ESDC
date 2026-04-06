@@ -307,7 +307,7 @@ reference_data:
           massflow: 5.09684e-07  # kg/s
           mass: 1.8  # kg
           efficiency: 0.35316
-          propellant: Xe
+          propellant: Xenon
           structure_mass: 5  # kg
           source: "Ariane Group - ARCLIGHT ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-propulsion.com/brochures/electric-propulsion/arclight-electric-space-propulsion.pdf"
         - type: gridionthruster
@@ -330,7 +330,7 @@ reference_data:
             min: 0.321366
             nominal: 0.507414
             max: 0.516316
-          propellant: Xe
+          propellant: Xenon
           structure_mass: 5  # kg
           source: "Ariane Group - http://www.space-propulsion.com/spacecraft-propulsion/propulsion-systems/electric-propulsion/images/rit-thruster-family-performance-data.jpg"
         - type: gridionthruster
@@ -344,7 +344,7 @@ reference_data:
           power_jet: 0.73575  # W
           mass: 0.44  # kg
           efficiency: 0.014715
-          propellant: Xe
+          propellant: Xenon
           structure_mass: 5  # kg
           source: "Ariane Group - http://www.space-propulsion.com/spacecraft-propulsion/propulsion-systems/electric-propulsion/images/rit-thruster-family-performance-data.jpg"
         # ----------------------------------------
@@ -4779,7 +4779,7 @@ reference_data:
             max: 600
           mass: 1.6  # kg
           impulse_tot: 135000  # N·s
-          propellant: Xe
+          propellant: Xenon
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.49/81."
           # Evidence: "Thrust @300W >14.3 mN, Isp @300W >1200 s, power 250–600 W, mass 1.6 kg, total impulse >135 kNs"
         - type: HET
@@ -4795,7 +4795,7 @@ reference_data:
             max: 300
           mass: 2.0  # kg
           impulse_tot: 75000  # N·s
-          propellant: Xe
+          propellant: Xenon
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.50/81."
           # Evidence: "Thrust (Xe) 5–14 mN, Isp 800–1300 s, 100–300 W, mass 2 kg, total impulse >75 kNs"
         - type: HET
@@ -4811,7 +4811,7 @@ reference_data:
             max: 900
           mass: 1.5  # kg
           impulse_tot: 600000  # N·s
-          propellant: Xe
+          propellant: Xenon
           source: "Rafael Space Propulsion 2021 Catalog (PDF), p.51/81."
           # Evidence: "Thrust (Xe) 23–53 mN, Isp 1300–1550 s, 450–900 W, mass 1.5 kg, total impulse >600 kNs"
         # ----------------------------------------
@@ -4830,7 +4830,7 @@ reference_data:
             max: 350
           total_impulse:  # N·s
             min: 150000
-          propellant: Xe
+          propellant: Xenon
           source: "Electric Propulsion Systems, Rafael Space. Source file: Electric_Propulsion_Systems_extracted_propulsion.xml."
           # Evidence: "2x Thruster Units + PPU + Propellant Tank + Feed System, thrust 5–14 mN, Isp 800–1300 s"
         - type: HET
@@ -4846,7 +4846,7 @@ reference_data:
             max: 1000
           total_impulse:  # N·s
             min: 1200000
-          propellant: Xe
+          propellant: Xenon
           source: "Electric Propulsion Systems, Rafael Space. Source file: Electric_Propulsion_Systems_extracted_propulsion.xml."
           # Evidence: "2x Thruster Units + PPU + Propellant Tank + Feed System, thrust 23–53 mN, Isp 1300–1550 s"
       ppu:

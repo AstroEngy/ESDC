@@ -5,5 +5,9 @@ function thrust = refresh_thrust(individual_data)
   if size(c_e,2)>1    % this might catch a bug to resolve, rarely error here because c_e is large i.e. 88
     c_e
   end
+  if isnan(c_e) || c_e <= 0
+    thrust = NaN;
+    return;
+  end
   thrust      = 2*power_jet/c_e; 
 end

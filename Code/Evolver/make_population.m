@@ -57,6 +57,12 @@ for i = 1:numel(input.Satellite_parameters.input_case)
         population_member.deltav = get_field_safe(case_parameters, 'deltav');
         population_member.propulsion_power = get_field_safe(case_parameters, 'propulsion_power');
         thrust_mode = get_field_safe(case_parameters, 'thrust_mode');
+        % xml2struct returns elements with attributes as struct(Attributes=..., Text='value').
+        % typeset_struct only unwraps when Text is the first field; if Attributes comes first
+        % the struct is left intact. Extract the text explicitly to get a plain string.
+        if isstruct(thrust_mode) && isfield(thrust_mode, 'Text')
+          thrust_mode = thrust_mode.Text;
+        end
         if isempty(thrust_mode)
           thrust_mode = '';
         end
@@ -94,11 +100,17 @@ for i = 1:numel(input.Satellite_parameters.input_case)
 
       % Derive minimum thrust from mission/maneuver time constraint
       population_member.thrust_min = derive_thrust_min_from_time(population_member, case_parameters, configuration);
-      % Clamp initial thrust upward if it falls below the time-derived lower bound
-      if ~isnan(population_member.thrust_min) && population_member.thrust_min > 0 ...
-          && ~isnan(population_member.thrust) && population_member.thrust < population_member.thrust_min
-        population_member.thrust = population_member.thrust_min;
-      end
+
+      % Validate the initial seed against the thrust_min constraint.
+      % If a seed (e.g. HET with low propulsion_power) cannot produce enough thrust
+      % to meet the maneuver-time constraint, mark it infeasible: zero its mass margin
+      % and set evolution_success=0 so the first valid mutation (chemical) beats it
+      % in the fitness comparison.  Do NOT clamp thrust upward — the evolver must find
+      % a technology that genuinely satisfies the constraint.
+      thrust_min_val = population_member.thrust_min;
+      seed_violates_thrust_min = population_member.sc_type ~= 1 ...
+        && ~isnan(thrust_min_val) && thrust_min_val > 0 ...
+        && ~isnan(population_member.thrust) && population_member.thrust < thrust_min_val;
 
      population_member.mission_parameters = mission_parameters(population_member);
       
@@ -106,7 +118,13 @@ for i = 1:numel(input.Satellite_parameters.input_case)
      population_member.mass_fractions= mass_fractions(population_member);
       
       % calculate evolution relevant parameters  
-     population_member.evolution_success = 1; % if first - then 1 , else compare old to new , potentially reiterate over full lineage
+     if seed_violates_thrust_min
+       population_member.evolution_success = 0;
+       population_member.subsystem_masses.m_margin = 0;
+       population_member.subsystem_masses.mass_payload = 0;
+     else
+       population_member.evolution_success = 1;
+     end
      population_member.n_success = 1;
      population_member.convergence = 0;
       population_member.count_for_convergence = 0; % baseline seed should not consume failure budget

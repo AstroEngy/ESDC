@@ -44,10 +44,25 @@ end
 %update efficiency of thruster for new propellant
 individual_data.eff_thruster = get_thruster_eff(db_data.reference_data.propulsion_system.(individual_data.propulsion_system).thruster, individual_data.propellant, NaN, individual_data.propulsion_system);
 
-% update jet power
-individual_data.power_jet = refresh_power_jet(individual_data);
-
-%calculate thrust for new propellant
-individual_data.thrust = refresh_thrust(individual_data);
+% update jet power and thrust.
+% Chemical propulsion: thrust is thermochemical (enthalpy-based), not derived from
+% electrical power.  refresh_thrust = 2*P_jet/c_e applies only to EP technologies.
+% For chemical, read thrust directly from the DB average for this propellant so that
+% the individual has a physically representative thrust from the first generation onwards.
+if strcmp(individual_data.propulsion_system, 'chemical')
+  dummy_prop = struct('propellant', individual_data.propellant);
+  [F_lo, F_hi] = search_min_max(db_data.reference_data.propulsion_system.chemical.thruster, ...
+    dummy_prop, 'thrust', 'propellant');
+  if isnan(F_lo) || isnan(F_hi) || F_hi <= 0
+    individual_data.thrust = 1;  % last-resort fallback [N]
+  else
+    individual_data.thrust = (F_lo + F_hi) / 2;
+  end
+  % Power jet is enthalpy-based: P_jet = 0.5 * F * c_e (kinetic power, no PPU involved).
+  individual_data.power_jet = 0.5 * individual_data.thrust * individual_data.c_e;
+else
+  individual_data.power_jet = refresh_power_jet(individual_data);
+  individual_data.thrust = refresh_thrust(individual_data);
+end
 
 end

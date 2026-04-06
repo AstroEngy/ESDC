@@ -10,6 +10,9 @@ function [convergence, convergence_mode] = test_lineage_convergence_simple(new_d
 
   % Stall convergence: if no successful mutation happened for a long time,
   % treat the lineage as a bad initial seed and stop stalling it.
+  % Also handles seeds that never found any valid solution (last_success_idx==0):
+  % if the lineage has grown longer than n_bad_seed_to_converge with no success ever,
+  % declare stall so the lineage doesn't waste max_generations on an infeasible seed.
   last_success_idx = 0;
   for idx = numel(lineage_data):-1:1
     if lineage_data{idx}.evolution_success
@@ -25,6 +28,11 @@ function [convergence, convergence_mode] = test_lineage_convergence_simple(new_d
       convergence_mode = 'stall';
       return;
     end
+  elseif numel(lineage_data) + 1 >= n_bad_seed_to_converge
+    % Seed never found a valid solution; stall after n_bad_seed_to_converge attempts.
+    convergence = 1;
+    convergence_mode = 'stall';
+    return;
   end
 
   % Current candidate must be a counted failed mutation to contribute.

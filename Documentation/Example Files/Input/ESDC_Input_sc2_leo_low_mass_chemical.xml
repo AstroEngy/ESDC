@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Example: LEO / Low Mass / Chemical propulsion
+     orbit_height=500 km (sc_type=2), mass_total=4000 kg (DB lower quartile)
+
+     How chemical propulsion is selected without any technology lock:
+
+     1. thrust_mode='high' removes low-thrust-only EP technologies (FEEP, gridded-ion,
+        electrospray, RF_plasma) from the DOF search space.  Remaining candidates:
+        chemical, resistojet, arcjet (high-thrust DOF), HET (high-thrust DOF).
+
+     2. maneuver_duration_max = 72000 s (20-hour burn window) drives the hard
+        thrust constraint inside the evolver:
+          thrust_min = m_prop * c_e / t_burn_max  ~  m * dv / t_burn_max
+                     = 4000 * 200 / 72000  ~  11 N
+
+        The evolver hard-rejects any individual with thrust < thrust_min
+        (see evolve_population.m: "Hard-reject mutations that violate the
+        mission time constraint") ; this is the correct, physics-based mechanism.
+
+     3. Impact on each technology with the ~11 N constraint:
+        - HET (SPT-140 max 0.30 N, 5 kW) : 0.30 &lt;&lt; 11 N  =&gt; hard-rejected
+        - arcjet NH3/He (DB max 2 N)       : 2 N  &lt;&lt; 11 N  =&gt; hard-rejected
+        - arcjet H2     (DB max 3.34 N)    : 3.34 &lt;&lt; 11 N  =&gt; hard-rejected
+        - chemical Hydrazine [9.5-28 N]    : 18.8 N > 11 N =&gt; accepted
+        - chemical Hydrazine 24 N, [16-45], 200 N          =&gt; accepted
+
+     4. Among surviving chemical candidates the evolver maximises mass margin:
+        higher c_e (higher Isp) => less propellant => more margin.  The chemical
+        entry with the highest c_e is selected. -->
+<Satellite_parameters dcep_version="20191026" dcep_show="False">
+<input_case dcep_show="False">
+<orbit_height dcep_name="Orbit altitude" dcep_unit="km" dcep_description="LEO altitude; altitude below 2000 km classified as LEO (sc_type=2)">500</orbit_height>
+<mass_total dcep_name="Satellite Mass" dcep_unit="kg" dcep_description="Total wet mass -- DB lower quartile for LEO spacecraft">4000</mass_total>
+<deltav dcep_name="Required Delta v" dcep_unit="m/s" dcep_description="Orbit maintenance and deorbit delta-v budget">200</deltav>
+<propulsion_power dcep_name="Available Power" dcep_unit="W" dcep_description="Electrical power budget for the propulsion subsystem">2000</propulsion_power>
+<mission_duration dcep_name="Total Mission Duration" dcep_unit="years" dcep_description="Total mission lifetime">5</mission_duration>
+<maneuver_duration_max dcep_name="Maximum Maneuver Duration" dcep_unit="s" dcep_description="Maximum single-burn duration; drives thrust_min = m*dv/t ~11 N, excluding all EP and arcjet, requiring chemical">72000</maneuver_duration_max>
+<thrust_mode dcep_name="Thrust Mode" dcep_unit="-" dcep_description="high: removes EP-only technologies from DOF (FEEP, gridded-ion, electrospray). Within the high regime the hard thrust_min constraint (from maneuver_duration_max) naturally selects chemical.">high</thrust_mode>
+</input_case>
+</Satellite_parameters>
