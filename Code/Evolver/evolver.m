@@ -67,6 +67,18 @@ function evolution_data = evolver(input, db_data, config,runID)
     end
   end
 
+  % Attach scaling confidence to each best candidate.
+  % Computed here (post-evolution) so the inner evolution loop carries no overhead.
+  for ev_i = 1:n_cases_ev
+    for ev_j = 1:n_seeds_ev
+      try
+        [~, ~, best_gen(ev_i, ev_j).scaling_quality] = SMAD_scalings(best_gen(ev_i, ev_j));
+      catch
+        % Malformed individual (e.g. no-propulsion edge case): skip silently.
+      end
+    end
+  end
+
   if config.Simulation_parameters.output.xml.full_history
     generation{end+1} = best_gen;                                               % full history mode: keep all generations, append best as final entry
     evolution_data = generation;

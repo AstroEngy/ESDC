@@ -477,3 +477,48 @@ variable_attributes:
     dcep_name: Required payload power (user constraint)
     dcep_unit: W
     dcep_description: User-specified minimum payload power. When provided, mutations that reduce power_payload below this floor are hard-rejected. Empty when payload power is a free variable.
+  # Scaling confidence fields (issue 1.3)
+  scaling_quality:
+    dcep_name: Scaling confidence summary
+    dcep_unit: "-"
+    dcep_description: Per-parameter and aggregate confidence metrics for all SMAD statistical scaling evaluations. Quantifies how well the source database supports each estimate.
+  total_score:
+    dcep_name: Total scaling confidence score
+    dcep_unit: "-"
+    dcep_description: "Aggregate confidence score in [0,1] as the minimum over all mass and power scaling parameters. Score 0.70 and above: high (green), 0.40 to 0.70: medium (yellow), below 0.40: low (red)."
+  total_label:
+    dcep_name: Total scaling confidence label
+    dcep_unit: "-"
+    dcep_description: "Human-readable confidence class: high (score 0.70 and above), medium (score 0.40 to 0.70), or low (score below 0.40). Corresponds to green/yellow/red traffic-light scheme."
+  total_regime:
+    dcep_name: Total scaling regime
+    dcep_unit: "-"
+    dcep_description: interpolation when all parameters are within source data range; extrapolation when any parameter is outside the source data range.
+  mass_score:
+    dcep_name: Mass scaling confidence score
+    dcep_unit: "-"
+    dcep_description: Minimum confidence score over all SMAD mass-fraction scaling parameters (mass_payload through mass_other).
+  power_score:
+    dcep_name: Power scaling confidence score
+    dcep_unit: "-"
+    dcep_description: Minimum confidence score over all SMAD power-fraction scaling parameters (power_payload through propulsion_power).
+  score:
+    dcep_name: Scaling confidence score (per parameter)
+    dcep_unit: "-"
+    dcep_description: "Confidence score in [0,1] for a single scaling evaluation. Interpolation: n_factor*(1-gap_fraction), clamped [0.30,1.00]. Extrapolation: 0.30*(1-extrap_fraction), max 0.30."
+  regime:
+    dcep_name: Scaling regime (per parameter)
+    dcep_unit: "-"
+    dcep_description: "interpolation: query x within source data range. extrapolation: outside. Ref: Draper & Smith, Applied Regression Analysis, 3rd ed., Wiley 1998, s3.8."
+  label:
+    dcep_name: Confidence label (per parameter)
+    dcep_unit: "-"
+    dcep_description: "high (score 0.70 and above), medium (score 0.40 to 0.70), or low (score below 0.40). Traffic-light scheme per REQ-MOST-FUNC-0140."
+  gap_fraction:
+    dcep_name: Normalised gap fraction (per parameter)
+    dcep_unit: "-"
+    dcep_description: Span of bracketing source-data interval (or extrapolation extent) divided by total source data range. 0=at a data point, 1=maximally far from all source points.
+  n_source_points:
+    dcep_name: Number of source data points (per parameter)
+    dcep_unit: "-"
+    dcep_description: "Count of original data points in the scaling CSV. Used in n_factor=min(1,(n-1)/4) penalty. Ref: Stone (1974), JRSS-B 36(2):111."
