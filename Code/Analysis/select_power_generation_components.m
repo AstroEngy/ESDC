@@ -440,7 +440,7 @@ end
 % Returns [within_budget_cands, over_budget_cands] sorted by score / mass.
 %
 % Design goal: lightest battery cluster that provides >= (d_energy_wh * CAPACITY_MARGIN)
-%   AND fits within the mass budget.  CAPACITY_MARGIN = 1.30 (30%) per NASA/TM-2009-215751
+%   AND fits within the mass budget.  CAPACITY_MARGIN = 1.30 (30%) per NASA/TM-2009-215751 https://ntrs.nasa.gov/api/citations/20090023862/downloads/20090023862.pdf
 %   guidelines for lithium-ion batteries in space.
 %
 % Cluster sizing: n = ceil(d_energy_wh * CAPACITY_MARGIN / e_energy_wh) — parallel packs
