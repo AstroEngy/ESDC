@@ -62,6 +62,11 @@ for i = 1:numel(input.Satellite_parameters.input_case)
         end
         population_member.thrust_mode = thrust_mode;
 
+        % Carry the derived sc_type (orbit_height > dv priority, resolved at input_processing)
+        % so that SMAD_scalings, volume_scalings, and derive_thrust_min_from_time all use the
+        % same classification without re-inferring from delta-v alone.
+        population_member.sc_type = case_parameters.derived.sc_type;
+
         % Mission time constraint fields
         population_member.mission_duration         = get_field_safe(case_parameters, 'mission_duration');        % [years]
         population_member.maneuver_duration_max    = get_field_safe(case_parameters, 'maneuver_duration_max');   % [s]

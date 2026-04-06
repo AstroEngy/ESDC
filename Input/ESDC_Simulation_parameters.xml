@@ -24,6 +24,17 @@
 			<sc_type_4>10</sc_type_4>
 		</mission_duration_years>
 		<propulsion_time_fraction>0.10</propulsion_time_fraction>
+		<!-- sc_type classification thresholds.
+		     Priority: explicit sc_type > orbit_height inference > delta_v inference.
+		     orbit_height_leo_max [km]: altitude boundary separating LEO (sc_type 2) from GEO/HEO (sc_type 3).
+		       Source: SMAD 2011 p.131, standard LEO ceiling at 2000 km.
+		     dv_geo_min [m/s]: minimum delta-v classifying a mission as GEO/HEO (sc_type 3).
+		     dv_escape_min [m/s]: minimum delta-v classifying a mission as Planetary (sc_type 4). -->
+		<sc_type_thresholds>
+			<orbit_height_leo_max>2000</orbit_height_leo_max>
+			<dv_geo_min>2000</dv_geo_min>
+			<dv_escape_min>4300</dv_escape_min>
+		</sc_type_thresholds>
 	</defaults>
 	<evolver>
 		<fitness_criterion>maximize_mass_margin</fitness_criterion>

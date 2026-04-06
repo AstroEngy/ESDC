@@ -22,7 +22,7 @@ function [mission_parameters database simulation_parameters]= input_processing()
     %TODO add loop for multiple cases
     input_cases = mission_parameters.Satellite_parameters.input_case;
     for i= 1:size(input_cases,2)
-      mission_parameters.Satellite_parameters.input_case{i}(1,1).derived = system_completion_estimation(mission_parameters.Satellite_parameters.input_case{i}(1,1));
+      mission_parameters.Satellite_parameters.input_case{i}(1,1).derived = system_completion_estimation(mission_parameters.Satellite_parameters.input_case{i}(1,1), simulation_parameters);
       mission_parameters.Satellite_parameters.input_case{i}(1,1).orbit = orbit_initialize(mission_parameters.Satellite_parameters.input_case{i}(1,1), simulation_parameters);
     end
     
@@ -30,7 +30,7 @@ function [mission_parameters database simulation_parameters]= input_processing()
     %disp(mission_parameters.Satellite_parameters)
 end
 
-function [derived_parameters]   = system_completion_estimation(inputs)
+function [derived_parameters]   = system_completion_estimation(inputs, sim)
   %disp(inputs)
   %disp(inputs.mass_total) // field accessing example
   derived_parameters = struct;
@@ -85,13 +85,24 @@ function [derived_parameters]   = system_completion_estimation(inputs)
 
    %disp(known)
   
-% spacecraft type derivation 
+% spacecraft type derivation — priority: explicit sc_type > orbit_height > delta_v
+  sc_data = struct();
+  if isfield(inputs, 'sc_type')
+    sc_data.sc_type = inputs.sc_type;
+  end
+  if isfield(inputs, 'orbit_height') && inputs.orbit_height > 0
+    sc_data.orbit_height = inputs.orbit_height;
+  end
   if isfield(inputs, 'deltav')
-    data.dv=inputs.deltav;
-    sc_type =  determine_sc_type(data);
-  else
-    sc_type =1;
-  endif
+    sc_data.dv = inputs.deltav;
+  end
+  sc_thresholds = struct();
+  if isstruct(sim) && isfield(sim, 'Simulation_parameters') ...
+      && isfield(sim.Simulation_parameters, 'defaults') ...
+      && isfield(sim.Simulation_parameters.defaults, 'sc_type_thresholds')
+    sc_thresholds = sim.Simulation_parameters.defaults.sc_type_thresholds;
+  end
+  sc_type = determine_sc_type(sc_data, sc_thresholds);
   derived_parameters.sc_type= sc_type;
   
   %if no knowns, nothing to do

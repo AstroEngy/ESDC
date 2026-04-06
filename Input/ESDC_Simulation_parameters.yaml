@@ -23,6 +23,13 @@ Simulation_parameters:
       sc_type_3: 15
       sc_type_4: 10
     propulsion_time_fraction: 0.10
+    # sc_type classification thresholds — priority: explicit sc_type > orbit_height > delta_v
+    # orbit_height_leo_max [km]: LEO/GEO-HEO altitude boundary (SMAD 2011 p.131)
+    # dv_geo_min / dv_escape_min [m/s]: delta-v boundaries for sc_type inference
+    sc_type_thresholds:
+      orbit_height_leo_max: 2000
+      dv_geo_min: 2000
+      dv_escape_min: 4300
   evolver:
     fitness_criterion: maximize_mass_margin
     random_seed: 42
