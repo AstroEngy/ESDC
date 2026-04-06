@@ -89,6 +89,17 @@ Simulation_parameters:
         dcep_min_occurrence: 0
         dcep_max_occurrence: 1
         dcep_allowed_values: [maximize_mass_margin, maximize_payload_mass, minimize_total_mass]
+    random_seed:
+      dcep_info:
+        dcep_name: Random seed
+        dcep_unit: "-"
+        dcep_description: "Fixed integer seed for the random number generator. Set to a positive integer for deterministic/reproducible runs (debugging). Set to 0 (default) for non-deterministic seeding."
+        dcep_type: float
+        dcep_no_value: false
+        dcep_default: 0
+        dcep_min_occurrence: 0
+        dcep_max_occurrence: 1
+        dcep_min_inclusive: 0
     seed_points:
       dcep_info:
         dcep_name: Seed point number

@@ -5,6 +5,7 @@
 Simulation_parameters:
   evolver:
     fitness_criterion: maximize_mass_margin
+    random_seed: 0
     seed_points: 18
     fitness_landscape_resolution: 50
     minimal_step_size: 1e-05

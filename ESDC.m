@@ -61,6 +61,14 @@ startTime = tic();                               % Reference timer for performan
     %Evolve
     evolutionStartTime = tic();                              % Reference timer for evolution process
 
+    % Apply deterministic random seed if configured (for reproducible/debug runs).
+    % Set Simulation_parameters.evolver.random_seed to a positive integer to enable.
+    % Leave unset or set to 0 to use the default non-deterministic seeding.
+    if isfield(config.Simulation_parameters.evolver, 'random_seed') && config.Simulation_parameters.evolver.random_seed > 0
+      rng(config.Simulation_parameters.evolver.random_seed);
+      fprintf('RNG seeded with %d for deterministic run\n', config.Simulation_parameters.evolver.random_seed);
+    end
+
     evolution_data = evolver(input, db_data, config,runID); % Main solver performance here
 
     evolutionElapsedTime = toc(evolutionStartTime);          % Calculate elapsed time for evolution

@@ -11,6 +11,7 @@
 	</defaults>
 	<evolver>
 		<fitness_criterion>maximize_mass_margin</fitness_criterion>
+		<random_seed>42</random_seed>
 		<seed_points> 18 </seed_points>
 		<fitness_landscape_resolution> 50 </fitness_landscape_resolution>
 		<minimal_step_size>0.00001</minimal_step_size>
