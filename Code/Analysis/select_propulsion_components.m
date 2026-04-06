@@ -219,6 +219,40 @@ function evolution_data = select_propulsion_components(evolution_data, db_data, 
       m_sel_ppu = 0;  % zero for chemical propulsion where PPU is not required
       if ~isempty(cm.ppu_candidates);      m_sel_ppu      = cm.ppu_candidates(1).mass;              end
 
+      % ----------------------------------------------------------------
+      % Mission-time thruster override:
+      % If thrust_min is defined, walk the ranked candidate list and promote
+      % the first one whose cluster thrust satisfies F_cluster >= thrust_min.
+      % The full ranked list is preserved; selected_thruster_idx records which
+      % candidate was actually chosen so piping and duration use the same one.
+      % If no candidate satisfies the constraint, fall back to rank-1 and flag.
+      % ----------------------------------------------------------------
+      t_min_req = NaN;
+      if isfield(evolution_data{end}(i,j), 'thrust_min')
+        t_min_req = evolution_data{end}(i,j).thrust_min;
+      end
+      selected_thruster_idx = 1;
+      if ~isempty(cm.thruster_candidates) && ~isnan(t_min_req) && t_min_req > 0
+        for t_idx = 1:numel(cm.thruster_candidates)
+          if cm.thruster_candidates(t_idx).thrust_cluster >= t_min_req
+            selected_thruster_idx = t_idx;
+            break;
+          end
+        end
+        % If we had to promote beyond rank-1, update the mass used for piping.
+        if selected_thruster_idx > 1
+          m_sel_thruster = cm.thruster_candidates(selected_thruster_idx).mass_cluster;
+          if verbose
+            fprintf('  [PropSel] Case %d / Seed %d  thrust_min=%.4g N: promoted candidate %d (%.4g N) over rank-1 (%.4g N)\n', ...
+                    i, j, t_min_req, selected_thruster_idx, ...
+                    cm.thruster_candidates(selected_thruster_idx).thrust_cluster, ...
+                    cm.thruster_candidates(1).thrust_cluster);
+            fflush(stdout);
+          end
+        end
+      end
+      cm.selected_thruster_idx = selected_thruster_idx;
+
       m_wet_prop = NaN;
       m_piping   = NaN;
       if ~isnan(d_prop_mass) && ~isnan(m_sel_thruster) && ~isnan(m_sel_tank)
@@ -229,6 +263,26 @@ function evolution_data = select_propulsion_components(evolution_data, db_data, 
       cm.piping_mass_kg  = m_piping;    % estimated piping + feed system mass [kg]
 
       evolution_data{end}(i,j).component_matches.propulsion_system = cm;
+
+      % ----------------------------------------------------------------
+      % Recompute maneuver_duration using actual selected cluster thrust.
+      % The design variable 'thrust' is continuous; the selected hardware
+      % delivers thrust_cluster = n_thrusters * thrust_single, which may
+      % differ.  c_e is an intensive property — unchanged by clustering.
+      %   t_man = m_prop / (F_cluster / c_e)  = m_prop * c_e / F_cluster
+      % This value is stored alongside the design-based maneuver_duration
+      % so both are available in the output for comparison.
+      % ----------------------------------------------------------------
+      if ~isempty(cm.thruster_candidates) && ~isnan(d_prop_mass) && ~isnan(d_c_e)
+        F_cluster = cm.thruster_candidates(selected_thruster_idx).thrust_cluster;
+        if ~isnan(F_cluster) && F_cluster > 0
+          t_man_actual = d_prop_mass * d_c_e / F_cluster;
+          evolution_data{end}(i,j).mission_parameters.maneuver_duration_actual = t_man_actual;
+          if ~isnan(t_min_req) && t_min_req > 0
+            evolution_data{end}(i,j).mission_parameters.thrust_min_satisfied = double(F_cluster >= t_min_req);
+          end
+        end
+      end
 
       % ----------------------------------------------------------------
       % VERBOSE DEBUG OUTPUT

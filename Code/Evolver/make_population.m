@@ -62,6 +62,11 @@ for i = 1:numel(input.Satellite_parameters.input_case)
         end
         population_member.thrust_mode = thrust_mode;
 
+        % Mission time constraint fields
+        population_member.mission_duration         = get_field_safe(case_parameters, 'mission_duration');        % [years]
+        population_member.maneuver_duration_max    = get_field_safe(case_parameters, 'maneuver_duration_max');   % [s]
+        population_member.propulsion_time_fraction = get_field_safe(case_parameters, 'propulsion_time_fraction'); % [-]
+
       
 
       % determine respective random case DOF parameters
@@ -76,8 +81,15 @@ for i = 1:numel(input.Satellite_parameters.input_case)
 
       [population_member.subsystem_masses,population_member.subsystem_powers] = SMAD_scalings(population_member);
       population_member.system_geometry = volume_scalings(population_member);
-      
-      
+
+      % Derive minimum thrust from mission/maneuver time constraint
+      population_member.thrust_min = derive_thrust_min_from_time(population_member, case_parameters, configuration);
+      % Clamp initial thrust upward if it falls below the time-derived lower bound
+      if ~isnan(population_member.thrust_min) && population_member.thrust_min > 0 ...
+          && ~isnan(population_member.thrust) && population_member.thrust < population_member.thrust_min
+        population_member.thrust = population_member.thrust_min;
+      end
+
      population_member.mission_parameters = mission_parameters(population_member);
       
       % add mission scenario parameter calculations

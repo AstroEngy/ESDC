@@ -7,6 +7,10 @@ Satellite_parameters:
     - mass_total: 155
       deltav: 685.97
       propulsion_power: 202.9
+      mission_duration: 5
+      propulsion_time_fraction: 0.10
     - mass_total: 155
       deltav: 526.25
       propulsion_power: 202.9
+      mission_duration: 5
+      propulsion_time_fraction: 0.10

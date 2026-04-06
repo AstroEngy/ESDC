@@ -128,7 +128,10 @@ function [generation_new, convergence] = evolve_population(input, db_data, confi
       population(i,j).system_geometry = volume_scalings(population(i,j));
       population(i,j).mission_parameters = mission_parameters(population(i,j));
 
-      %test for improvement of pop member
+      % Recompute minimum thrust from mission/maneuver time constraint
+      % (mass_propellant and c_e may have changed since the parent was seeded)
+      population(i,j).thrust_min = derive_thrust_min_from_time(population(i,j), input.Satellite_parameters.input_case{i}, config);
+
       lineage = get_lineage(generation_data, i, j);
       if strcmp(fitness_criterion, 'maximize_payload_mass')
         population(i,j).evolution_success = test_maximize_parameter(population(i,j), lineage, {'subsystem_masses','mass_payload'});
@@ -143,6 +146,15 @@ function [generation_new, convergence] = evolve_population(input, db_data, confi
       sc_type_i = input.Satellite_parameters.input_case{i}.derived.sc_type;
       mutation_valid = true;
       if sc_type_i ~= 1 && (isnan(population(i,j).c_e) || isnan(population(i,j).thrust))
+        population(i,j).evolution_success = 0;
+        mutation_valid = false;
+      end
+
+      % Hard-reject mutations that violate the mission time constraint.
+      % F_min = m_prop * c_e / t_burn_max ensures maneuver fits within allowed burn time.
+      thrust_min_req = population(i,j).thrust_min;
+      if sc_type_i ~= 1 && ~isnan(thrust_min_req) && thrust_min_req > 0 ...
+          && population(i,j).thrust < thrust_min_req
         population(i,j).evolution_success = 0;
         mutation_valid = false;
       end

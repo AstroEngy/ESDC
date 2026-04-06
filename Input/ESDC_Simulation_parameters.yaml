@@ -10,6 +10,19 @@ Simulation_parameters:
       no_propulsion: 550
       Low_Earth: 1000
       High_Earth: 35786
+    # Default mission lifetimes applied when no mission_duration or maneuver_duration_max
+    # is specified in the input case. Sources:
+    #   sc_type 1 (No Propulsion / LEO passive): SMAD (Wertz 2011), typical CubeSat 2-5 yr
+    #   sc_type 2 (LEO, dv <= 2000 m/s)        : SMAD Table 1-3, median LEO operational lifetime
+    #   sc_type 3 (GEO/HEO, dv <= 4300 m/s)    : ECSS-E-ST-10-04C, GEO commercial design life
+    #   sc_type 4 (Planetary, dv > 4300 m/s)    : representative of Cassini 13yr, Rosetta/New Horizons 10yr
+    # propulsion_time_fraction: SMAD 2011 p.693 ff., typical EP duty cycles 5-20%; 10% used.
+    mission_duration_years:
+      sc_type_1: 3
+      sc_type_2: 5
+      sc_type_3: 15
+      sc_type_4: 10
+    propulsion_time_fraction: 0.10
   evolver:
     fitness_criterion: maximize_mass_margin
     random_seed: 42

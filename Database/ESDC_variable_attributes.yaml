@@ -445,3 +445,27 @@ variable_attributes:
     dcep_name: Total shadow time
     dcep_unit: s
     dcep_description: Total shadow time per orbit (umbra plus penumbra)
+  mission_duration:
+    dcep_name: Total mission duration
+    dcep_unit: years
+    dcep_description: User-specified total mission lifetime. Combined with propulsion_time_fraction to derive the maximum allowable burn time and thus the minimum required thrust.
+  maneuver_duration_max:
+    dcep_name: Maximum maneuver burn time
+    dcep_unit: s
+    dcep_description: User-specified upper limit on total propulsion burn time. Directly constrains minimum required thrust via F_min = m_prop * c_e / t_burn_max.
+  propulsion_time_fraction:
+    dcep_name: Propulsion time fraction
+    dcep_unit: "-"
+    dcep_description: Fraction of mission duration allocated for propulsion burns. Default 0.10 (10%), based on SMAD 2011 p.693 ff., typical EP duty cycles of 5-20% of mission lifetime.
+  thrust_min:
+    dcep_name: Minimum required thrust
+    dcep_unit: N
+    dcep_description: "Minimum thrust to complete the maneuver within the allowed burn time: F_min = m_prop * c_e / t_burn_max. Hard constraint in the evolutionary search."
+  maneuver_duration_actual:
+    dcep_name: Actual maneuver burn time (hardware)
+    dcep_unit: s
+    dcep_description: "Maneuver duration computed from the selected thruster cluster: t = m_prop * c_e / F_cluster. May differ from maneuver_duration (design variable) when the discrete hardware thrust differs from the continuous optimised thrust."
+  thrust_min_satisfied:
+    dcep_name: Mission time constraint satisfied by hardware
+    dcep_unit: "-"
+    dcep_description: 1 if the selected thruster cluster thrust meets the minimum thrust requirement derived from the mission time constraint, 0 otherwise.

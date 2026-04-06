@@ -47,11 +47,16 @@ function output_XML_best_candidates(config, evolution_data,runID)
       % Serialize component_matches (struct-array candidates) into a plain
       % nested struct so struct2xml can write it alongside the design fields.
       if isfield(ind, 'component_matches')
-        % Add a compact selected_thruster summary from the top propulsion candidate
+        % Add a compact selected_thruster summary from the selected candidate
+        % (may be promoted beyond rank-1 to satisfy the mission-time thrust constraint)
         if isfield(ind.component_matches, 'propulsion_system') && ...
            isfield(ind.component_matches.propulsion_system, 'thruster_candidates') && ...
            ~isempty(ind.component_matches.propulsion_system.thruster_candidates)
-          top = ind.component_matches.propulsion_system.thruster_candidates(1);
+          sel_idx = 1;
+          if isfield(ind.component_matches.propulsion_system, 'selected_thruster_idx')
+            sel_idx = ind.component_matches.propulsion_system.selected_thruster_idx;
+          end
+          top = ind.component_matches.propulsion_system.thruster_candidates(sel_idx);
           ind.selected_thruster.name         = top.name;
           ind.selected_thruster.company      = top.company;
           ind.selected_thruster.n_thrusters  = top.n_thrusters;

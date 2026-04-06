@@ -4,10 +4,14 @@
 		<mass_total dcep_name="Satellite Mass" dcep_unit="kg" dcep_description="Currently estimated mass of satellite">155</mass_total>
 		<deltav dcep_name="Required Delta v" dcep_unit="m/s" dcep_description="Minimum Delta v to be delivered by propulsion system">685.97</deltav>
 		<propulsion_power dcep_name="Available Power" dcep_unit="W" dcep_description="Power available for propulsion system">202.9</propulsion_power>
+		<mission_duration dcep_name="Total Mission Duration" dcep_unit="years" dcep_description="Total mission lifetime. Used with propulsion_time_fraction to derive maximum allowable burn time and thus minimum required thrust.">5</mission_duration>
+		<propulsion_time_fraction dcep_name="Propulsion Time Fraction" dcep_unit="-" dcep_description="Fraction of mission duration allowed for propulsion burns (default 0.10, i.e. 10%). Based on SMAD 2011 p.693 ff., typical EP duty cycles 5-20%.">0.10</propulsion_time_fraction>
 	</input_case>
 	<input_case dcep_show="False">
 		<mass_total dcep_show="False">155</mass_total>
 		<deltav dcep_show="False">526.25</deltav>
-		<propulsion_power dcep_show="False">202.9</propulsion_power>	
+		<propulsion_power dcep_show="False">202.9</propulsion_power>
+		<mission_duration dcep_show="False">5</mission_duration>
+		<propulsion_time_fraction dcep_show="False">0.10</propulsion_time_fraction>
 	</input_case>
 </Satellite_parameters>
