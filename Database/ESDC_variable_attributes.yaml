@@ -469,3 +469,11 @@ variable_attributes:
     dcep_name: Mission time constraint satisfied by hardware
     dcep_unit: "-"
     dcep_description: 1 if the selected thruster cluster thrust meets the minimum thrust requirement derived from the mission time constraint, 0 otherwise.
+  required_mass_payload:
+    dcep_name: Required payload mass (user constraint)
+    dcep_unit: kg
+    dcep_description: User-specified minimum payload mass. When provided, mutations that reduce mass_payload below this floor are hard-rejected. Empty when payload mass is a free variable.
+  required_power_payload:
+    dcep_name: Required payload power (user constraint)
+    dcep_unit: W
+    dcep_description: User-specified minimum payload power. When provided, mutations that reduce power_payload below this floor are hard-rejected. Empty when payload power is a free variable.

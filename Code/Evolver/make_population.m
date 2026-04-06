@@ -67,6 +67,11 @@ for i = 1:numel(input.Satellite_parameters.input_case)
         population_member.maneuver_duration_max    = get_field_safe(case_parameters, 'maneuver_duration_max');   % [s]
         population_member.propulsion_time_fraction = get_field_safe(case_parameters, 'propulsion_time_fraction'); % [-]
 
+        % Payload constraints — only set when explicitly given by the user.
+        % When empty, payload mass/power are treated as free variables by SMAD_scalings.
+        population_member.required_mass_payload  = get_field_safe(case_parameters, 'mass_payload');   % [kg], [] if not given
+        population_member.required_power_payload = get_field_safe(case_parameters, 'power_payload');  % [W],  [] if not given
+
       
 
       % determine respective random case DOF parameters

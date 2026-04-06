@@ -150,6 +150,26 @@ function [generation_new, convergence] = evolve_population(input, db_data, confi
         mutation_valid = false;
       end
 
+      % Hard-reject mutations that violate a user-given payload mass floor.
+      % Only enforced when required_mass_payload was explicitly provided as input;
+      % when empty (payload is a free variable) no constraint is applied.
+      req_m_pl = population(i,j).required_mass_payload;
+      if ~isempty(req_m_pl) && ~isnan(req_m_pl) && req_m_pl > 0
+        if population(i,j).subsystem_masses.mass_payload < req_m_pl
+          population(i,j).evolution_success = 0;
+          mutation_valid = false;
+        end
+      end
+
+      % Hard-reject mutations that violate a user-given payload power floor.
+      req_p_pl = population(i,j).required_power_payload;
+      if ~isempty(req_p_pl) && ~isnan(req_p_pl) && req_p_pl > 0
+        if population(i,j).subsystem_powers.power_payload < req_p_pl
+          population(i,j).evolution_success = 0;
+          mutation_valid = false;
+        end
+      end
+
       % Hard-reject mutations that violate the mission time constraint.
       % F_min = m_prop * c_e / t_burn_max ensures maneuver fits within allowed burn time.
       thrust_min_req = population(i,j).thrust_min;
