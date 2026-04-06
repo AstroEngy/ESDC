@@ -522,4 +522,34 @@
 		<dcep_unit>T</dcep_unit>
 		<dcep_description>Earth equatorial magnetic field strength at nominal orbit height</dcep_description>
         </magneticfield>      
+	<system_geometry>
+		<dcep_name>System geometry</dcep_name>
+		<dcep_unit>-</dcep_unit>
+		<dcep_description>Estimated bounding-box geometry of the spacecraft derived from statistical scaling laws</dcep_description>
+	</system_geometry>
+	<size_x>
+		<dcep_name>Bounding box width</dcep_name>
+		<dcep_unit>m</dcep_unit>
+		<dcep_description>Estimated spacecraft bounding box width (x-dimension) from mass scaling law</dcep_description>
+	</size_x>
+	<size_y>
+		<dcep_name>Bounding box depth</dcep_name>
+		<dcep_unit>m</dcep_unit>
+		<dcep_description>Estimated spacecraft bounding box depth (y-dimension) from mass scaling law</dcep_description>
+	</size_y>
+	<size_h>
+		<dcep_name>Bounding box height</dcep_name>
+		<dcep_unit>m</dcep_unit>
+		<dcep_description>Estimated spacecraft bounding box height (h-dimension) from mass scaling law</dcep_description>
+	</size_h>
+	<volume_box>
+		<dcep_name>Bounding box volume</dcep_name>
+		<dcep_unit>m³</dcep_unit>
+		<dcep_description>Estimated spacecraft bounding box volume: size_x * size_y * size_h. Statistical estimate based on historical spacecraft data.</dcep_description>
+	</volume_box>
+	<volume_box_scaled>
+		<dcep_name>Bounding box volume (direct scaling)</dcep_name>
+		<dcep_unit>m³</dcep_unit>
+		<dcep_description>Independent cross-check: bounding box volume estimated directly from total mass via mass-to-volume_box scaling law</dcep_description>
+	</volume_box_scaled>
 </variable_attributes>

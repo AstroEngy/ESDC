@@ -75,6 +75,7 @@ for i = 1:numel(input.Satellite_parameters.input_case)
       
 
       [population_member.subsystem_masses,population_member.subsystem_powers] = SMAD_scalings(population_member);
+      population_member.system_geometry = volume_scalings(population_member);
       
       
      population_member.mission_parameters = mission_parameters(population_member);

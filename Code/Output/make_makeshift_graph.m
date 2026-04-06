@@ -74,4 +74,12 @@ function unit = define_graph_unit(input)
   if strcmp(input,'s')
     unit = ' / m';
   endif
+  
+  if strcmp(input,'v')
+    unit = ' / m³';
+  endif
+
+  if ~exist('unit','var')
+    unit = '';
+  endif
 endfunction

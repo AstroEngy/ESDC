@@ -421,3 +421,27 @@ variable_attributes:
     dcep_name: Earth magnetic field
     dcep_unit: T
     dcep_description: Earth equatorial magnetic field strength at nominal orbit height
+  system_geometry:
+    dcep_name: System geometry
+    dcep_unit: "-"
+    dcep_description: Estimated bounding-box geometry of the spacecraft derived from statistical scaling laws
+  size_x:
+    dcep_name: Bounding box width
+    dcep_unit: m
+    dcep_description: Estimated spacecraft bounding box width (x-dimension) from mass scaling law
+  size_y:
+    dcep_name: Bounding box depth
+    dcep_unit: m
+    dcep_description: Estimated spacecraft bounding box depth (y-dimension) from mass scaling law
+  size_h:
+    dcep_name: Bounding box height
+    dcep_unit: m
+    dcep_description: Estimated spacecraft bounding box height (h-dimension) from mass scaling law
+  volume_box:
+    dcep_name: Bounding box volume
+    dcep_unit: m³
+    dcep_description: Estimated spacecraft bounding box volume (size_x * size_y * size_h). Statistical estimate based on historical spacecraft data.
+  volume_box_scaled:
+    dcep_name: Bounding box volume (direct scaling)
+    dcep_unit: m³
+    dcep_description: Independent cross-check bounding box volume estimated directly from total mass via mass-to-volume_box scaling law
