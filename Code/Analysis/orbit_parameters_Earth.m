@@ -18,7 +18,7 @@ function [orbit_parameter] = orbit_parameters_Earth(height_above_ground_km) %Pro
   orbit_parameter.velocity                                            = orbital_velocity(mu_g, orbit_height);                                                    % orbital velocity at given height
   orbit_parameter.time.orbit                                          = orbital_time(mu_g, orbit_height);                                                        % time for a single circular orbit
   [orbit_parameter.time.shadow orbit_parameter.time.average_light]    = orbital_time_shadow(r_Earth, r_Sun, au, orbit_parameter.time.orbit, orbit_height) ;      % times of shadow phases, umbra, penumbra, total, averaged 
-  orbit_parameter.time.full_light                                     = orbit_parameter.time.orbit - orbit_parameter.time.shadow.total;                          % time of pure light
+  orbit_parameter.time.full_light                                     = orbit_parameter.time.orbit - orbit_parameter.time.shadow.shadow_total;                          % time of pure light
   orbit_parameter.time.comm_max                                       = orbital_time_comm(orbit_parameter.time.orbit, orbit_height, r_Earth);                    % time of maximum possible communication
   orbit_parameter.magneticfield                                       = orbit_magnetic_field(orbit_height, r_Earth);
 end
@@ -62,9 +62,9 @@ function [time time_average_light] = orbital_time_shadow( r_Earth, r_Sun, au, or
   end
   time.penumbra = 2*gamma_penumbra/(2*pi)*orbit_time;                                % two times for the penumbra angle for a circular orbit 
   
-  time.total = time.penumbra;                                                        % calculate time where not total light is available
+  time.shadow_total = time.penumbra;                                                   % calculate time where not total light is available
   if isfield(time,'umbra')
-  time.total = time.total + time.umbra;                                              % add shadow times
+  time.shadow_total = time.shadow_total + time.umbra;                                % add shadow times
 end
   
   if (xi_u> orbit_height)                                                            % if orbit is near enough

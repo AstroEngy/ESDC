@@ -627,14 +627,14 @@
 		<dcep_unit>-</dcep_unit>
 		<dcep_description>Assumed power distribution unit efficiency for power budgeting</dcep_description>
 	</PDU_efficiency>
-	<parameter>
-		<dcep_name>Orbital parameters</dcep_name>
+	<orbit_power_parameters>
+		<dcep_name>Orbital power parameters</dcep_name>
 		<dcep_unit>-</dcep_unit>
-		<dcep_description>Derived orbital parameters used for power system sizing</dcep_description>
-	</parameter>
-	<total>
+		<dcep_description>Derived orbital parameters used for power system sizing (solar irradiance, power consumption, margin)</dcep_description>
+	</orbit_power_parameters>
+	<shadow_total>
 		<dcep_name>Total shadow time</dcep_name>
 		<dcep_unit>s</dcep_unit>
 		<dcep_description>Total shadow time per orbit (umbra plus penumbra)</dcep_description>
-	</total>
-</variable_attributes>
+	</shadow_total>
+</variable_attributes> 

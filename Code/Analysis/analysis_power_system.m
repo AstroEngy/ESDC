@@ -9,7 +9,7 @@ function [PSS_system] = analysis_power_system(design, input, db_data, config) % 
   PSS_system.PV = struct;                                                       % data on photovoltaics
   PSS_system.battery = struct;                                                  % data on batteries
   PSS_system.converter = struct;                                                % data on power conversion units
-  PSS_system.parameter = struct;                                                % data on general system parameters
+  PSS_system.orbit_power_parameters = struct;                                     % data on orbital parameters for power system sizing
   
   orbit =  input.orbit.orbit;
   height = orbit.height;
@@ -49,7 +49,7 @@ function [PSS_system] = analysis_power_system(design, input, db_data, config) % 
   
   % batteries                                                                                     
                                                                                                      % dependency on peak power maneuvre time is critical here 
-  t_shadow = orbit.time.shadow.total;
+  t_shadow = orbit.time.shadow.shadow_total;
   %worst case battery charge to be stored
 
   E_battery_required_max = p_consumed_max*t_shadow/eff_battery;
@@ -79,11 +79,11 @@ function [PSS_system] = analysis_power_system(design, input, db_data, config) % 
   %m_PPS = m_PPS+m_harness
   
   
-  PSS_system.parameter.p_a_mean       = p_a_mean;
-  PSS_system.parameter.p_a_min        = p_a_min;
-  PSS_system.parameter.p_a_max        = p_a_max;
-  PSS_system.parameter.p_consumed_max = p_consumed_max;
-  PSS_system.parameter.power_margin   = power_margin;
+  PSS_system.orbit_power_parameters.p_a_mean       = p_a_mean;
+  PSS_system.orbit_power_parameters.p_a_min        = p_a_min;
+  PSS_system.orbit_power_parameters.p_a_max        = p_a_max;
+  PSS_system.orbit_power_parameters.p_consumed_max = p_consumed_max;
+  PSS_system.orbit_power_parameters.power_margin   = power_margin;
 
   PSS_system.PV.PV_power_output_required = PV_power_output_required;
   PSS_system.PV.PV_efficiency            = eff_PV ;
