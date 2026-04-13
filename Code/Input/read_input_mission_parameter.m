@@ -1,10 +1,10 @@
-function [mission_parameters] = read_input_mission_parameter()
+function [mission_parameters] = read_input_mission_parameter(prefer_xml)
+  if nargin < 1; prefer_xml = false; end
 % Select the mission parameter input file to use.
 % Uncomment exactly one line. All paths are relative to the ESDC root.
 %
 %   Default input (active):
     input_path = 'Input/ESDC_Input';
-%
 %   Example files — No Propulsion (sc_type=1, explicit):
 %   No Propulsion DB range: min=125 kg, max=11866 kg.
 %   low mass = lower quartile: 125 + 0.25*(11866-125) = 3100 kg
@@ -44,7 +44,7 @@ function [mission_parameters] = read_input_mission_parameter()
     disp(['Reading Mission Parameter Input File: ' input_path]);
     
     try
-        mission_parameters = read_file_auto(input_path);
+        mission_parameters = read_file_auto(input_path, prefer_xml);
         
         % Handle single input_case (works for both XML and YAML)
         if isfield(mission_parameters, 'Satellite_parameters') && ...

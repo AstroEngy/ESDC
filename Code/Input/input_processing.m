@@ -1,14 +1,26 @@
 function [mission_parameters database simulation_parameters]= input_processing()
  %InputReading
+    % Simulation Parameters — read first so prefer_xml flag is available
+    % for all subsequent file reads.
+    [simulation_parameters] = read_input_simulation_parameter();
+
+    % Extract prefer_xml flag (default false if not set)
+    prefer_xml = false;
+    if isfield(simulation_parameters, 'Simulation_parameters') && ...
+       isfield(simulation_parameters.Simulation_parameters, 'io') && ...
+       isfield(simulation_parameters.Simulation_parameters.io, 'prefer_xml')
+      prefer_xml = logical(simulation_parameters.Simulation_parameters.io.prefer_xml);
+    end
+    if prefer_xml
+      disp('IO mode: XML preferred (YAML used as fallback)');
+    end
+
     % Mission Parameters
-    [mission_parameters] =  read_input_mission_parameter();
+    [mission_parameters] =  read_input_mission_parameter(prefer_xml);
     
     % Database     
-    [database]    =  read_reference_data();
-    database.DOF  =  read_DOF();
-    
-    % Simulation Parameters
-    [simulation_parameters] = read_input_simulation_parameter();
+    [database]    =  read_reference_data(prefer_xml);
+    database.DOF  =  read_DOF(prefer_xml);
     
     disp(' ')
     disp('Input Reading complete')

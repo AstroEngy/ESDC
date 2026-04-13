@@ -1,8 +1,9 @@
-function [spacecraft_parameters] = read_reference_spacecraft_data()
+function [spacecraft_parameters] = read_reference_spacecraft_data(prefer_xml)
+    if nargin < 1; prefer_xml = false; end
     disp('Reading Spacecraft Reference Database');
     
     try
-        spacecraft_parameters = read_file_auto('Database/ESDC_Reference_Data_Spacecrafts');
+        spacecraft_parameters = read_file_auto('Database/ESDC_Reference_Data_Spacecrafts', prefer_xml);
         
         % Handle singular entry (works for both XML and YAML)
         if isfield(spacecraft_parameters, 'reference_data_spracecraft') && ...

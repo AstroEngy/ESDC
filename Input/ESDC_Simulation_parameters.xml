@@ -36,6 +36,12 @@
 			<dv_escape_min>4300</dv_escape_min>
 		</sc_type_thresholds>
 	</defaults>
+	<io>
+		<!-- prefer_xml: when 1, XML database/input files take precedence over YAML.
+		     Set to 1 to force XML-only reads (e.g. for testing the XML path without
+		     renaming or deleting YAML files).  Default: 0 (YAML preferred). -->
+		<prefer_xml>0</prefer_xml>
+	</io>
 	<evolver>
 		<fitness_criterion>maximize_mass_margin</fitness_criterion>
 		<random_seed>42</random_seed>

@@ -30,6 +30,11 @@ Simulation_parameters:
       orbit_height_leo_max: 2000
       dv_geo_min: 2000
       dv_escape_min: 4300
+  io:
+    # prefer_xml: when true, XML database/input files take precedence over YAML.
+    # Set to true to force XML-only reads (e.g. for testing the XML path without
+    # renaming or deleting YAML files).  Default: false (YAML preferred).
+    prefer_xml: false
   evolver:
     fitness_criterion: maximize_mass_margin
     random_seed: 42
