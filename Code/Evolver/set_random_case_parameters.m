@@ -41,15 +41,33 @@ function [propulsion propellant c_e F p_thr p_jet eff_ppu eff_thruster] = set_ra
     case 'thrust'
       %disp('Considering thrust variation')
       %propulsion type already defined
-      [F propellant]= get_random_thrust_and_propellant(db_data.reference_data.propulsion_system, propulsion);
+      try
+        [F propellant]= get_random_thrust_and_propellant(db_data.reference_data.propulsion_system, propulsion);
+      catch e
+        warning(e.message);
+        [propulsion propellant c_e F p_thr p_jet eff_ppu eff_thruster] = set_random_case_parameters(db_data, power_propulsion, thrust_mode);
+        return;
+      end
       % calculate c_e and propulsion system performance data 
       [c_e p_thr p_jet eff_ppu eff_thruster] = get_propulsion_system_performance_data_wo_c_e(db_data.reference_data.propulsion_system, propulsion, propellant, F, power_propulsion); 
       % TODO: likely inconsistent results?
     case 'thrust_high'
-      [F propellant]= get_random_thrust_and_propellant(db_data.reference_data.propulsion_system, propulsion, 'high');
+      try
+        [F propellant]= get_random_thrust_and_propellant(db_data.reference_data.propulsion_system, propulsion, 'high');
+      catch e
+        warning(e.message);
+        [propulsion propellant c_e F p_thr p_jet eff_ppu eff_thruster] = set_random_case_parameters(db_data, power_propulsion, thrust_mode);
+        return;
+      end
       [c_e p_thr p_jet eff_ppu eff_thruster] = get_propulsion_system_performance_data_wo_c_e(db_data.reference_data.propulsion_system, propulsion, propellant, F, power_propulsion);
     case 'thrust_low'
-      [F propellant]= get_random_thrust_and_propellant(db_data.reference_data.propulsion_system, propulsion, 'low');
+      try
+        [F propellant]= get_random_thrust_and_propellant(db_data.reference_data.propulsion_system, propulsion, 'low');
+      catch e
+        warning(e.message);
+        [propulsion propellant c_e F p_thr p_jet eff_ppu eff_thruster] = set_random_case_parameters(db_data, power_propulsion, thrust_mode);
+        return;
+      end
       [c_e p_thr p_jet eff_ppu eff_thruster] = get_propulsion_system_performance_data_wo_c_e(db_data.reference_data.propulsion_system, propulsion, propellant, F, power_propulsion);
     case 'c_e'
       %disp('Considering c_e variation') %maybe redundant

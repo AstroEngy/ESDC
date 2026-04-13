@@ -33,6 +33,10 @@ function [F propellant] = get_random_thrust_and_propellant(data, propulsion, mod
     propellant_list = propellant_list(valid);
     n_valid = numel(F_list);
 
+    if n_valid == 0
+      error('get_random_thrust_and_propellant: no thruster with valid thrust found for propulsion type "%s" — skipping this selection.', propulsion);
+    end
+
     % Apply mode filter
     F_median = median(F_list);
     if strcmp(mode, 'high')
@@ -53,13 +57,31 @@ function [F propellant] = get_random_thrust_and_propellant(data, propulsion, mod
 end
 
 function val = scalar_field(s, fname)
-  % Extract a scalar from a field that may be a scalar, a min/max struct, or absent.
+  % Extract a scalar from a field that may be a scalar, a min/max struct, or a
+  % cell array (from duplicate XML tags). In the cell case, recurse on the first
+  % element that resolves to a finite scalar.
   if ~isfield(s, fname)
     val = NaN;
+  elseif iscell(s.(fname))
+    val = NaN;
+    for _ci = 1:numel(s.(fname))
+      tmp_s.(fname) = s.(fname){_ci};
+      candidate = scalar_field(tmp_s, fname);
+      if isnumeric(candidate) && isscalar(candidate) && isfinite(candidate)
+        val = candidate;
+        break;
+      end
+    end
   elseif isstruct(s.(fname))
-    % Range given as struct with min/max - use mean
-    if isfield(s.(fname), 'min') && isfield(s.(fname), 'max')
+    % Range given as struct with nominal/min/max
+    if isfield(s.(fname), 'nominal')
+      val = s.(fname).nominal;
+    elseif isfield(s.(fname), 'min') && isfield(s.(fname), 'max')
       val = (s.(fname).min + s.(fname).max) / 2;
+    elseif isfield(s.(fname), 'min')
+      val = s.(fname).min;
+    elseif isfield(s.(fname), 'max')
+      val = s.(fname).max;
     else
       val = NaN;
     end

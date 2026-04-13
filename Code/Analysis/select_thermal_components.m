@@ -123,8 +123,24 @@ function val = scalar_midpoint(entry, field)
   v = entry.(field);
   if isnumeric(v) && isscalar(v)
     val = v;
-  elseif isstruct(v) && isfield(v, 'min') && isfield(v, 'max')
-    val = (v.min + v.max) / 2;
+  elseif iscell(v)
+    for _ci = 1:numel(v)
+      tmp.x = v{_ci};
+      candidate = scalar_midpoint(tmp, 'x');
+      if isnumeric(candidate) && isscalar(candidate) && isfinite(candidate)
+        val = candidate; return;
+      end
+    end
+  elseif isstruct(v)
+    if isfield(v, 'nominal')
+      val = v.nominal;
+    elseif isfield(v, 'min') && isfield(v, 'max')
+      val = (v.min + v.max) / 2;
+    elseif isfield(v, 'min')
+      val = v.min;
+    elseif isfield(v, 'max')
+      val = v.max;
+    end
   end
 end
 

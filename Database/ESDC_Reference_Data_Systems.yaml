@@ -4266,8 +4266,8 @@ reference_data:
           thrust: 0.039  # N
           c_e: 14709.98  # m/s
           isp: 1500  # s
-          power: 600  # W
           power:  # W
+            nominal: 600
             min: 300
             max: 800
           mass: 2.6  # kg
@@ -4283,8 +4283,8 @@ reference_data:
           thrust: 0.039  # N
           c_e: 14709.98  # m/s
           isp: 1500  # s
-          power: 600  # W
           power:  # W
+            nominal: 600
             min: 300
             max: 800
           mass: 2.6  # kg
@@ -4300,8 +4300,8 @@ reference_data:
           thrust: 0.039  # N
           c_e: 14709.98  # m/s
           isp: 1500  # s
-          power: 600  # W
           power:  # W
+            nominal: 600
             min: 300
             max: 800
           mass: 2.6  # kg
@@ -4386,8 +4386,8 @@ reference_data:
           isp:  # s
             min: 2210
             max: 3060
-          power: 8000  # W
           power:  # W
+            nominal: 8000
             min: 4000
             max: 10000
           discharge_voltage:  # V
@@ -4411,8 +4411,8 @@ reference_data:
           isp:  # s
             min: 2210
             max: 3060
-          power: 8000  # W
           power:  # W
+            nominal: 8000
             min: 4000
             max: 10000
           discharge_voltage:  # V
@@ -4436,8 +4436,8 @@ reference_data:
           isp:  # s
             min: 2210
             max: 3060
-          power: 8000  # W
           power:  # W
+            nominal: 8000
             min: 4000
             max: 10000
           discharge_voltage:  # V
@@ -4569,12 +4569,12 @@ reference_data:
           thrust: 0.457  # N
           isp: 3400  # s
           c_e: 33342.61  # m/s
-          power: 10000  # W
           power:  # W
+            nominal: 10000
             max: 20000
           steady_state_power: 15000  # W
-          discharge_voltage: 800  # V
           discharge_voltage:  # V
+            nominal: 800
             min: 150
             max: 800
           efficiency: 0.76
@@ -4590,8 +4590,8 @@ reference_data:
           thrust: 0.088  # N
           c_e: 29419.95  # m/s
           isp: 3000  # s
-          power_jet: 2300  # W
           power_jet:  # W
+            nominal: 2300
             min: 200
             max: 2500
           discharge_voltage:  # V
@@ -4604,8 +4604,8 @@ reference_data:
           thrust: 0.088  # N
           c_e: 32361.945  # m/s
           isp: 3300  # s
-          power_jet: 2300  # W
           power_jet:  # W
+            nominal: 2300
             min: 200
             max: 2500
           discharge_voltage:  # V

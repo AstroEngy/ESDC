@@ -57,13 +57,31 @@ function [c_e propellant] = get_random_c_e_and_propellant(data, propulsion, mode
 end
 
 function val = scalar_field(s, fname)
-  % Extract a scalar from a field that may be a scalar, a min/max struct, or absent.
+  % Extract a scalar from a field that may be a scalar, a min/max struct, or a
+  % cell array (from duplicate XML tags). In the cell case, recurse on the first
+  % element that resolves to a finite scalar.
   if ~isfield(s, fname)
     val = NaN;
+  elseif iscell(s.(fname))
+    val = NaN;
+    for _ci = 1:numel(s.(fname))
+      tmp_s.(fname) = s.(fname){_ci};
+      candidate = scalar_field(tmp_s, fname);
+      if isnumeric(candidate) && isscalar(candidate) && isfinite(candidate)
+        val = candidate;
+        break;
+      end
+    end
   elseif isstruct(s.(fname))
-    % Range given as struct with min/max - use mean
-    if isfield(s.(fname), 'min') && isfield(s.(fname), 'max')
+    % Range given as struct with nominal/min/max
+    if isfield(s.(fname), 'nominal')
+      val = s.(fname).nominal;
+    elseif isfield(s.(fname), 'min') && isfield(s.(fname), 'max')
       val = (s.(fname).min + s.(fname).max) / 2;
+    elseif isfield(s.(fname), 'min')
+      val = s.(fname).min;
+    elseif isfield(s.(fname), 'max')
+      val = s.(fname).max;
     else
       val = NaN;
     end

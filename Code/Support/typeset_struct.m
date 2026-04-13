@@ -32,7 +32,7 @@ function [in_struct] = typeset_struct(in_struct)
           in_struct.(fields_1{i}) = typeset_struct(in_struct.(fields_1{i})); 
         end
      
-      else                                  %if type is cell descent deeper in cell array
+      elseif iscell(in_struct.(fields_1{i}))  %if type is cell descent deeper in cell array
         %disp("cell case")
         for j=1:size(in_struct.(fields_1{i}),2)
         fields_2 =fieldnames(in_struct.(fields_1{i}){1,j});

@@ -4709,8 +4709,8 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				<thrust unit="N">0.039</thrust>
 				<isp unit="s">1500</isp>
 				<c_e unit="m/s">14709.98</c_e>
-				<power unit="W">600</power>
 				<power unit="W">
+					<nominal>600</nominal>
 					<min>300</min>
 					<max>800</max>
 				</power>
@@ -4729,8 +4729,8 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				<thrust unit="N">0.039</thrust>
 				<isp unit="s">1500</isp>
 				<c_e unit="m/s">14709.98</c_e>
-				<power unit="W">600</power>
 				<power unit="W">
+					<nominal>600</nominal>
 					<min>300</min>
 					<max>800</max>
 				</power>
@@ -4749,8 +4749,8 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				<thrust unit="N">0.039</thrust>
 				<isp unit="s">1500</isp>
 				<c_e unit="m/s">14709.98</c_e>
-				<power unit="W">600</power>
 				<power unit="W">
+					<nominal>600</nominal>
 					<min>300</min>
 					<max>800</max>
 				</power>
@@ -4859,8 +4859,8 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 					<min>21672.69</min>
 					<max>30005.35</max>
 				</c_e>
-				<power unit="W">8000</power>
 				<power unit="W">
+					<nominal>8000</nominal>
 					<min>4000</min>
 					<max>10000</max>
 				</power>
@@ -4891,8 +4891,8 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 					<min>21672.69</min>
 					<max>30005.35</max>
 				</c_e>
-				<power unit="W">8000</power>
 				<power unit="W">
+					<nominal>8000</nominal>
 					<min>4000</min>
 					<max>10000</max>
 				</power>
@@ -4906,7 +4906,7 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				<cathode_mass unit="kg">0.40</cathode_mass>
 				<propellant>Iodine</propellant>
 				<source>Busek Co. Inc., BHT-8000 Hall-Effect Thruster Datasheet, satsearch.</source>
-				<!-- Evidence: 325-449 mN, Isp 2210-3060 s, 8 kW nominal, 4-10 kW throttle, 400-800 V, 25 kg thruster -->
+				<!-- Evidence: 325-449 mN, Isp 2210-3060 s, 8 kW nominal, 4-10 kW throttle, 400-800 V, 25 kg thruster (Iodine) -->
 			</thruster>
 			<thruster>
 				<type>HET</type>
@@ -4923,8 +4923,8 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 					<min>21672.69</min>
 					<max>30005.35</max>
 				</c_e>
-				<power unit="W">8000</power>
 				<power unit="W">
+					<nominal>8000</nominal>
 					<min>4000</min>
 					<max>10000</max>
 				</power>
@@ -5079,13 +5079,13 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				<thrust unit="N">0.457</thrust>
 				<isp unit="s">3400</isp>
 				<c_e unit="m/s">33342.61</c_e>
-				<power unit="W">10000</power>
-				<power>
+				<power unit="W">
+					<nominal>10000</nominal>
 					<max>20000</max>
 				</power>
 				<steady_state_power unit="W">15000</steady_state_power>
-				<discharge_voltage unit="V">800</discharge_voltage>
 				<discharge_voltage unit="V">
+					<nominal>800</nominal>
 					<min>150</min>
 					<max>800</max>
 				</discharge_voltage>
@@ -5102,8 +5102,8 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				<thrust unit="N">0.088</thrust>
 				<isp unit="s">3000</isp>
 				<c_e unit="m/s">29419.95</c_e>
-				<power_jet unit="W">2300</power_jet>
 				<power_jet unit="W">
+					<nominal>2300</nominal>
 					<min>200</min>
 					<max>2500</max>
 				</power_jet>
@@ -5120,8 +5120,8 @@ ELECTRIC PROPULSION SYSTEM DESIGNED FOR SMALL SATELLITES6, http://www.space-prop
 				<thrust unit="N">0.088</thrust>
 				<isp unit="s">3300</isp>
 				<c_e unit="m/s">32361.945</c_e>
-				<power_jet unit="W">2300</power_jet>
 				<power_jet unit="W">
+					<nominal>2300</nominal>
 					<min>200</min>
 					<max>2500</max>
 				</power_jet>

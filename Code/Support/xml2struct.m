@@ -84,7 +84,7 @@ function [children,ptext,textflag] = parseChildNodes(theNode)
                     index = length(children.(name))+1;
                     %add new element
                     children.(name){index} = childs;
-                    if(~isempty(fieldnames(text)))
+                    if(isfield(text, 'Text') || isfield(text, 'CDATA'))
                         children.(name){index} = text; 
                     end
                     if(~isempty(attr)) 
@@ -93,7 +93,7 @@ function [children,ptext,textflag] = parseChildNodes(theNode)
                 else
                     %add previously unknown (new) element to the structure
                     children.(name) = childs;
-                    if(~isempty(text) && ~isempty(fieldnames(text)))
+                    if(isfield(text, 'Text') || isfield(text, 'CDATA'))
                         children.(name) = text; 
                     end
                     if(~isempty(attr)) 
