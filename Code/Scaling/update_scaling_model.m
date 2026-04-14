@@ -52,14 +52,15 @@
 ## @seealso{update_system_scaling, update_SC_scaling, read_reference_data, read_reference_spacecraft_data}
 ## @end deftypefn
 
-function [scaling_model_struct] = update_scaling_model(force_update_flag)
+function [scaling_model_struct] = update_scaling_model(force_update_flag, prefer_xml)
+  if nargin < 2; prefer_xml = false; end
   disp('Database check:');
   
   % System/component scaling: generates CSV lookup tables from component database
-  update_system_scaling(force_update_flag);
+  update_system_scaling(force_update_flag, prefer_xml);
   
   % Spacecraft scaling: generates CSV lookup tables from spacecraft database
-  update_SC_scaling(force_update_flag);
+  update_SC_scaling(force_update_flag, prefer_xml);
 
 end
 
@@ -103,7 +104,8 @@ end
 ## @seealso{update_generic_spacecraft_scaling_model, read_reference_spacecraft_data}
 ## @end deftypefn
 
-function[] = update_SC_scaling(force_update)
+function[] = update_SC_scaling(force_update, prefer_xml)
+    if nargin < 2; prefer_xml = false; end
 
     make_update = 0;
     
@@ -120,7 +122,7 @@ function[] = update_SC_scaling(force_update)
       else
       disp('Updates to spacecraft database detected.');
         % Load spacecraft data and regenerate scaling laws
-        [data] = read_reference_spacecraft_data();
+        [data] = read_reference_spacecraft_data(prefer_xml);
         
         % Update hash file with new database state
         hash_file= fopen('Database/ESDC_Reference_Data_Spacecrafts_hash', "w");
@@ -318,7 +320,8 @@ end
 
 
 
-function [] = update_system_scaling(force_update)
+function [] = update_system_scaling(force_update, prefer_xml)
+  if nargin < 2; prefer_xml = false; end
   make_update = 0;
 
   % Check if hash file exists for change detection
@@ -349,7 +352,7 @@ function [] = update_system_scaling(force_update)
   % Perform update if needed (first run or forced)
   % Hash file is only written after a successful update
   if (make_update | force_update)
-    [data] = read_reference_data();
+    [data] = read_reference_data(prefer_xml);
     update_generic_component_scaling_model(data);
     % Update succeeded - now persist the new hash
     disp('Writing database hash file');

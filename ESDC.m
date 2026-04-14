@@ -52,11 +52,16 @@ startTime = tic();                               % Reference timer for performan
     startup();                              % Display startup messages, licenses etc.
     appendToLogFileDCEP('DCEP_STATUS: RUNNING_0%',1,runID)
 
-    %Update Scaling Data Base
-    update_scaling_model(force_db_update);                 % Checks for changes in the data bases and derives changed scaling laws unless forced by flag
-
     %Input
     [input db_data config] = input_processing();   %Reads input files for the specific simulaton at hand
+
+    %Update Scaling Data Base (after input so prefer_xml flag is known)
+    prefer_xml = false;
+    if isfield(config, 'Simulation_parameters') && isfield(config.Simulation_parameters, 'io') && ...
+       isfield(config.Simulation_parameters.io, 'prefer_xml')
+      prefer_xml = logical(config.Simulation_parameters.io.prefer_xml);
+    end
+    update_scaling_model(force_db_update, prefer_xml);     % Checks for changes in the data bases and derives changed scaling laws unless forced by flag
 
     %Evolve
     evolutionStartTime = tic();                              % Reference timer for evolution process
