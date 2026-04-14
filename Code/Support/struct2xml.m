@@ -137,10 +137,19 @@ function [] = parseStruct(s,docNode,curNode,pName)
           else
               %Sub-element
               if (isstruct(s.(curfield)))
-                  %single element
-                  curElement = docNode.createElement(curfield_sc);
-                  curNode.appendChild(curElement);
-                  parseStruct(s.(curfield),docNode,curElement,[pName curfield '.'])
+                  if (numel(s.(curfield)) == 1)
+                      %single element
+                      curElement = docNode.createElement(curfield_sc);
+                      curNode.appendChild(curElement);
+                      parseStruct(s.(curfield),docNode,curElement,[pName curfield '.'])
+                  else
+                      %struct array - multiple elements
+                      for c = 1:numel(s.(curfield))
+                          curElement = docNode.createElement(curfield_sc);
+                          curNode.appendChild(curElement);
+                          parseStruct(s.(curfield)(c),docNode,curElement,[pName curfield '(' num2str(c) ').'])
+                      end
+                  end
               elseif (iscell(s.(curfield)))
                   %multiple elements
                   for c = 1:length(s.(curfield))
