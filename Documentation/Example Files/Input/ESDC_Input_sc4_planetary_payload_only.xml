@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Example: Planetary / Payload Mass and Power Only (no mass_total)
+     sc_type=4 (explicit).  mass_total is NOT provided; the evolver derives
+     total mass from the payload mass fraction scaling.
+     mass_payload=500 kg with power_payload=7500 W is representative of a
+     Mars/Venus-class science probe (~1700 kg platform class).
+     High delta-v for interplanetary transfer; moderate EP cruise power. -->
+<Satellite_parameters dcep_version="20191026" dcep_show="False">
+	<input_case dcep_show="False">
+		<sc_type dcep_name="Spacecraft type" dcep_unit="-" dcep_description="1=No propulsion, 2=LEO, 3=HEO/GEO, 4=Planetary">4</sc_type>
+		<mass_payload dcep_name="Payload Mass" dcep_unit="kg" dcep_description="Payload subsystem mass (no total mass provided; total derived from payload fraction)">500</mass_payload>
+		<power_payload dcep_name="Payload Power" dcep_unit="W" dcep_description="Power consumed by the payload subsystem">7500</power_payload>
+		<deltav dcep_name="Required Delta v" dcep_unit="m/s" dcep_description="Interplanetary transfer delta-v budget">5000</deltav>
+		<propulsion_power dcep_name="Available Power" dcep_unit="W" dcep_description="Power available for propulsion system">25000</propulsion_power>
+		<mission_duration dcep_name="Total Mission Duration" dcep_unit="years" dcep_description="Total mission lifetime">10</mission_duration>
+		<propulsion_time_fraction dcep_name="Propulsion Time Fraction" dcep_unit="-" dcep_description="Fraction of mission duration allowed for propulsion burns">0.10</propulsion_time_fraction>
+	</input_case>
+</Satellite_parameters>

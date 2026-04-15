@@ -40,6 +40,13 @@ function [mission_parameters] = read_input_mission_parameter(prefer_xml)
 %   input_path = 'Documentation/Example Files/Input/ESDC_Input_sc4_planetary_high_mass';  % 4300 kg, 5000 m/s, 26000 W, 10 yr, frac=0.10
 %   input_path = 'Documentation/Example Files/Input/ESDC_Input';
 %   input_path = 'Documentation/Example Files/Input/ESDC_Input_all_fields_template_revision_v2';
+%
+%   Example files — Payload mass and power only (no mass_total), one per orbit type:
+%   mass_total is NOT provided; the evolver derives total mass via payload mass fraction scaling.
+%   input_path = 'Documentation/Example Files/Input/ESDC_Input_sc1_no_prop_payload_only';   % sc_type=1,  750 kg payload,  700 W payload,  30 m/s,  2300 W,  3 yr
+%   input_path = 'Documentation/Example Files/Input/ESDC_Input_sc2_leo_payload_only';       % sc_type=2, 1200 kg payload, 6000 W payload, 300 m/s,  8000 W,  5 yr, frac=0.05
+%   input_path = 'Documentation/Example Files/Input/ESDC_Input_sc3_heo_payload_only';       % sc_type=3,  550 kg payload, 5500 W payload, 3000 m/s, 18000 W, 15 yr, frac=0.10
+%   input_path = 'Documentation/Example Files/Input/ESDC_Input_sc4_planetary_payload_only'; % sc_type=4,  500 kg payload, 7500 W payload, 5000 m/s, 25000 W, 10 yr, frac=0.10
 
     disp(['Reading Mission Parameter Input File: ' input_path]);
     

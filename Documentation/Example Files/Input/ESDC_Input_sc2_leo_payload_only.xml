@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Example: LEO / Payload Mass and Power Only (no mass_total)
+     orbit_height=500 km (sc_type=2 via priority chain).  mass_total is NOT
+     provided; the evolver derives total mass from the payload mass fraction scaling.
+     mass_payload=1200 kg with power_payload=6000 W is representative of a
+     medium-class LEO observation platform (~4000 kg class).
+     No thrust_mode set; evolver selects the best-matching technology freely. -->
+<Satellite_parameters dcep_version="20191026" dcep_show="False">
+	<input_case dcep_show="False">
+		<orbit_height dcep_name="Orbit altitude" dcep_unit="km" dcep_description="Orbit altitude above Earth surface. Determines sc_type via priority chain: LEO if altitude &lt;= 2000 km.">500</orbit_height>
+		<mass_payload dcep_name="Payload Mass" dcep_unit="kg" dcep_description="Payload subsystem mass (no total mass provided; total derived from payload fraction)">1200</mass_payload>
+		<power_payload dcep_name="Payload Power" dcep_unit="W" dcep_description="Power consumed by the payload subsystem">6000</power_payload>
+		<deltav dcep_name="Required Delta v" dcep_unit="m/s" dcep_description="Orbit maintenance, collision avoidance and disposal budget">300</deltav>
+		<propulsion_power dcep_name="Available Power" dcep_unit="W" dcep_description="Power available for propulsion system">8000</propulsion_power>
+		<mission_duration dcep_name="Total Mission Duration" dcep_unit="years" dcep_description="Total mission lifetime">5</mission_duration>
+		<propulsion_time_fraction dcep_name="Propulsion Time Fraction" dcep_unit="-" dcep_description="Fraction of mission duration allowed for propulsion burns">0.05</propulsion_time_fraction>
+	</input_case>
+</Satellite_parameters>

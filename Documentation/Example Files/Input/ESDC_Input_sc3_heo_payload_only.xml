@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Example: HEO-GEO / Payload Mass and Power Only (no mass_total)
+     orbit_height=35786 km GEO (sc_type=3 via priority chain).  mass_total is NOT
+     provided; the evolver derives total mass from the payload mass fraction scaling.
+     mass_payload=550 kg with power_payload=5500 W is representative of a
+     GEO communication payload (~1800 kg platform class).
+     Long lifetime station-keeping and end-of-life re-orbit budget. -->
+<Satellite_parameters dcep_version="20191026" dcep_show="False">
+	<input_case dcep_show="False">
+		<orbit_height dcep_name="Orbit altitude" dcep_unit="km" dcep_description="GEO altitude; altitude above 2000 km classified as HEO/GEO (sc_type=3)">35786</orbit_height>
+		<mass_payload dcep_name="Payload Mass" dcep_unit="kg" dcep_description="Payload subsystem mass (no total mass provided; total derived from payload fraction)">550</mass_payload>
+		<power_payload dcep_name="Payload Power" dcep_unit="W" dcep_description="Power consumed by the payload subsystem">5500</power_payload>
+		<deltav dcep_name="Required Delta v" dcep_unit="m/s" dcep_description="GEO station-keeping and end-of-life re-orbit budget">3000</deltav>
+		<propulsion_power dcep_name="Available Power" dcep_unit="W" dcep_description="Power available for propulsion system">18000</propulsion_power>
+		<mission_duration dcep_name="Total Mission Duration" dcep_unit="years" dcep_description="Total mission lifetime">15</mission_duration>
+		<propulsion_time_fraction dcep_name="Propulsion Time Fraction" dcep_unit="-" dcep_description="Fraction of mission duration allowed for propulsion burns">0.10</propulsion_time_fraction>
+	</input_case>
+</Satellite_parameters>
