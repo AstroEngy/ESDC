@@ -53,6 +53,31 @@ function evolution_data = evolver(input, db_data, config,runID)
   end
   fflush(stdout);
 
+  % Check whether all lineages stalled without ever finding a valid solution.
+  % This indicates that every seed was infeasible (e.g. payload constraints
+  % too tight, thrust limits impossible, or all mutations rejected).
+  n_cases_chk = size(generation{end}, 1);
+  n_seeds_chk = size(generation{end}, 2);
+  all_stalled = true;
+  for chk_i = 1:n_cases_chk
+    for chk_j = 1:n_seeds_chk
+      ind = generation{end}(chk_i, chk_j);
+      if ~(isfield(ind, 'convergence_mode') && strcmp(ind.convergence_mode, 'stall') ...
+           && isfield(ind, 'n_success') && ind.n_success == 1)
+        all_stalled = false;
+        break;
+      end
+    end
+    if ~all_stalled; break; end
+  end
+  if all_stalled
+    error('evolver:all_lineages_stalled', ...
+      ['All %d lineages stalled without finding a valid solution.\n' ...
+       'Possible causes: payload/power constraints unsatisfiable, thrust_min too high,\n' ...
+       'or no propulsion technology in the database matches the input requirements.'], ...
+      n_cases_chk * n_seeds_chk);
+  end
+
   % Collapse to best-per-lineage snapshot.
   % During evolution the full generation cell was needed for get_lineage / convergence
   % testing. Now that the loop is done we discard failed mutants to save memory.

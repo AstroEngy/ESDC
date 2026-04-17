@@ -199,7 +199,7 @@ function [known unknown]        = system_with_unknown_totals(known, unknown, mar
     end
     unknown.mass.mass_power = scale_SMAD_parameter(new_power_tot, sc_type, 'power_total','fraction_mass_power')*unknown.mass.mass_total_margin;
     
-    [unknown.mass.mass_total unknown.mass.m_margin unknown.mass.mass_total_margin] = mass_validate(known.mass,unknown.mass);
+    [unknown.mass.mass_total unknown.mass.m_margin unknown.mass.mass_total_margin] = mass_validate(known.mass, unknown.mass, false);  % no warning: total was derived, not user-given
   else
     % go from powers to total power to total mass to masses  
     
@@ -432,7 +432,8 @@ function [p_new]   = sum_powers(p_known, p_unknown)                             
     
 endfunction
 
-function [mass_total m_margin mass_total_margin] = mass_validate(m_known,m_unknown);                              % checks the applicable masses of the system, recalculates the available margin
+function [mass_total m_margin mass_total_margin] = mass_validate(m_known, m_unknown, warn_if_exceeded)  % checks the applicable masses of the system, recalculates the available margin
+  if nargin < 3; warn_if_exceeded = true; end
   
   m_new = 0;
   % add derived system masses
@@ -469,11 +470,13 @@ function [mass_total m_margin mass_total_margin] = mass_validate(m_known,m_unkno
   mass_total_margin = m_tot - m_margin; 
 
   if (m_new > m_tot || m_margin < 0)
-    disp('Warning: Total mass limit exceeded!');
+    if warn_if_exceeded
+      disp('Warning: Total mass limit exceeded!');
+    end
     mass_total = m_new;
-    m_margin =0;
-  else 
-    mass_total  = m_tot;
+    m_margin = 0;
+  else
+    mass_total = m_tot;
   endif
 
 endfunction

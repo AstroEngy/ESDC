@@ -190,7 +190,7 @@ function [generation_new, convergence] = evolve_population(input, db_data, confi
       elseif abs(population(i,j).thrust - parent_individual.thrust) > max(1, abs(parent_individual.thrust))*1e-12
         mutation_changed = true;
       end
-      population(i,j).count_for_convergence = mutation_valid && mutation_changed;
+      population(i,j).count_for_convergence = double(mutation_valid && mutation_changed);
       population(i,j).convergence_mode = 'active';
 
       %refresh the number of the last sucessful lineage member here

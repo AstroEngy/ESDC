@@ -45,11 +45,17 @@ for i = 1:numel(input.Satellite_parameters.input_case)
         % Create a temporary structure for the population member.
         population_member = struct();
 
-        % Mass assignment with fallback.
+        % Mass assignment with fallback to derived estimate when mass_total not given directly.
         if isfield(case_parameters, 'mass_total')
             population_member.mass = case_parameters.mass_total;
+        elseif isfield(case_parameters, 'derived') && isfield(case_parameters.derived, 'unknown') && ...
+               isfield(case_parameters.derived.unknown, 'mass') && isfield(case_parameters.derived.unknown.mass, 'mass_total')
+            population_member.mass = case_parameters.derived.unknown.mass.mass_total;
+        elseif isfield(case_parameters, 'derived') && isfield(case_parameters.derived, 'known') && ...
+               isfield(case_parameters.derived.known, 'mass') && isfield(case_parameters.derived.known.mass, 'mass_total')
+            population_member.mass = case_parameters.derived.known.mass.mass_total;
         else
-            population_member.mass = case_parameters.derived{2}.mass.mass_total;
+            error('make_population: cannot determine mass_total from input or derived data for case %d', i);
         end
 
         % Conditional assignments if parameters are part of the input
@@ -78,10 +84,17 @@ for i = 1:numel(input.Satellite_parameters.input_case)
         population_member.maneuver_duration_max    = get_field_safe(case_parameters, 'maneuver_duration_max');   % [s]
         population_member.propulsion_time_fraction = get_field_safe(case_parameters, 'propulsion_time_fraction'); % [-]
 
-        % Payload constraints — only set when explicitly given by the user.
-        % When empty, payload mass/power are treated as free variables by SMAD_scalings.
-        population_member.required_mass_payload  = get_field_safe(case_parameters, 'mass_payload');   % [kg], [] if not given
-        population_member.required_power_payload = get_field_safe(case_parameters, 'power_payload');  % [W],  [] if not given
+        % Payload constraints — only applied as hard evolver floors when mass_total was
+        % directly given by the user.  When mass_total is absent (payload-only mode),
+        % mass_payload and power_payload were the drivers for the mass estimate; they
+        % must not additionally constrain the evolver or every mutation will be rejected.
+        if isfield(case_parameters, 'mass_total')
+          population_member.required_mass_payload  = get_field_safe(case_parameters, 'mass_payload');   % [kg]
+          population_member.required_power_payload = get_field_safe(case_parameters, 'power_payload');  % [W]
+        else
+          population_member.required_mass_payload  = [];  % free variable: total mass already derived from payload
+          population_member.required_power_payload = [];  % free variable: total mass already derived from payload
+        end
 
       
 
