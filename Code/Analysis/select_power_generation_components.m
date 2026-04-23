@@ -619,35 +619,6 @@ function val = scalar_field_max(entry, field)
   end
 end
 
-% Returns the midpoint (min+max)/2 of a range field, or the scalar value.
-% Also handles {max: X} only (returns X).
-function val = scalar_midpoint(entry, field)
-  val = NaN;
-  if ~isfield(entry, field); return; end
-  v = entry.(field);
-  if isnumeric(v) && isscalar(v)
-    val = v;
-  elseif iscell(v)
-    for _ci = 1:numel(v)
-      tmp.x = v{_ci};
-      candidate = scalar_midpoint(tmp, 'x');
-      if isnumeric(candidate) && isscalar(candidate) && isfinite(candidate)
-        val = candidate; return;
-      end
-    end
-  elseif isstruct(v)
-    if isfield(v, 'nominal')
-      val = v.nominal;
-    elseif isfield(v, 'min') && isfield(v, 'max')
-      val = (v.min + v.max) / 2;
-    elseif isfield(v, 'min')
-      val = v.min;
-    elseif isfield(v, 'max')
-      val = v.max;
-    end
-  end
-end
-
 % Parses the cycle_life DB field which may be a string like ">25000" or a number.
 function cycles = parse_cycle_life(entry)
   cycles = NaN;
@@ -661,13 +632,5 @@ function cycles = parse_cycle_life(entry)
     if ~isempty(num_str)
       cycles = str2double(num_str);
     end
-  end
-end
-
-function s = get_str_field(entry, field, default)
-  if isfield(entry, field) && ischar(entry.(field))
-    s = entry.(field);
-  else
-    s = default;
   end
 end
