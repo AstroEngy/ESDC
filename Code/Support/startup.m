@@ -1,3 +1,33 @@
+% startup — Display banner, license and initial status message
+%
+% PURPOSE:
+%   Clears the console and prints the program name, authorship, MIT license
+%   text and a "Loading Files ..." notice before any computation begins.
+%   Called once at the very start of ESDC() before input files are read.
+%
+% INTENT:
+%   Provides a clear visual separator between successive runs in an
+%   interactive session and ensures the license is always visible.
+%   Has no side-effects beyond console output and closing open figures.
+%
+% Parameters:  none
+% Returns:     none (side-effect: console cleared, figures closed)
+%
+% Usage:
+%   startup()
+%
+% HOW TO TEST:
+%   Call startup() in the Octave/MATLAB console and verify:
+%   - All previous console output is cleared (clc).
+%   - All open figure windows are closed (close all).
+%   - "Evolutionary System Design Converger" and license text appear.
+%   - The function returns without error.
+%
+% SAFEGUARDS:
+%   - No file I/O or external dependencies; this function cannot fail
+%     in normal circumstances.
+%   - If called from a script where closing figures is undesirable,
+%     remove the `close all` call or guard it with a flag.
 function [] = startup()
 clc;                                                  % Clear the Command Line
 close all;                                            % Close any potentially still open figures.

@@ -1,3 +1,53 @@
+% read_input_mission_parameter — Load the spacecraft mission design constraints
+%
+% PURPOSE:
+%   Reads Input/ESDC_Input (YAML or XML) and returns the mission parameters
+%   that define what the spacecraft must do: total mass, delta-v, power,
+%   orbit height, mission duration, payload requirements, thrust_mode etc.
+%   These drive every design decision in the evolver.
+%
+% INTENT:
+%   Separates the "what the spacecraft must do" data from both the solver
+%   configuration and the hardware database.  Users edit only this file
+%   to change their spacecraft design problem.
+%
+%   The input file path is hard-coded here (not passed as argument) so that
+%   ESDC can be invoked without arguments.  To run with a different input
+%   file, edit the `input_path` variable in this function or use one of the
+%   documented example file paths in the comments below.
+%
+% Parameters:
+%   prefer_xml (logical, optional, default false): When true, tries the XML
+%              file first.
+%
+% Returns:
+%   mission_parameters (struct): Parsed input file.
+%       .Satellite_parameters.input_case (cell array): One cell per case.
+%       Each cell contains a struct with fields from the input YAML, e.g.:
+%         .mass_total, .deltav, .propulsion_power, .orbit_height,
+%         .mission_duration, .thrust_mode, .mass_payload, .power_payload,
+%         .sc_type (optional explicit override)
+%
+% Usage:
+%   mission_parameters = read_input_mission_parameter()
+%   mission_parameters = read_input_mission_parameter(true)  % prefer XML
+%
+% HOW TO TEST:
+%   1. Load the default input and verify input_case is a cell array with at
+%      least one entry containing a .mass_total field (or .mass_payload if
+%      in payload-only mode).
+%   2. Change input_path to one of the example files and verify the returned
+%      struct matches the expected sc_type and mass range in the comment.
+%   3. Corrupt Input/ESDC_Input.yaml; confirm the error
+%      "ERROR: No input definition file: ..." is raised.
+%   4. Supply a single input_case in XML and verify it is wrapped in a cell
+%      array (not left as a bare struct) so downstream indexing with {i} works.
+%
+% SAFEGUARDS TO ADD (future work):
+%   - Validate that each input_case contains at least one of mass_total,
+%     mass_payload, or power_total to allow system_completion_estimation
+%     to work.
+%   - Warn when mass_payload > mass_total (infeasible input).
 function [mission_parameters] = read_input_mission_parameter(prefer_xml)
   if nargin < 1; prefer_xml = false; end
 % Select the mission parameter input file to use.

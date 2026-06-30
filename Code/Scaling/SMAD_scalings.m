@@ -1,13 +1,65 @@
-%Space Mission Engineering - The New SMAD
-% Author(s): James Wertz, David Everett, Jeffery Puschell
-% Series: Space Technology Library, Vol. 28
-% Publisher: Microcosm Press, Year: 2011
-% ISBN: 978-1881883159
-
-%Page 422 Tab 14-18 Average Mass by System as a Percentage of Dry Mass for 4 Types of Spacecraft
-
-%Factor - 1 no propulsion , 2  LEO up to 1000 km, 3 - above 1000, 4 - planetary probe
-
+% SMAD_scalings — Estimate spacecraft subsystem masses and powers via statistical fractions
+%
+% Reference:
+%   Space Mission Engineering: The New SMAD, Wertz, Everett & Puschell, 2011
+%   Microcosm Press, ISBN 978-1881883159.
+%   Table 14-18 (page 422): Average mass by subsystem as % of dry mass for 4 spacecraft types.
+%
+% PURPOSE:
+%   Given a spacecraft's total wet mass and sc_type, applies SMAD statistical
+%   mass and power fractions to estimate the mass of each subsystem
+%   (payload, structure, thermal, power, TTC, ADC, propulsion) and the power
+%   of each consumer.  These estimates drive the evolutionary fitness function.
+%
+% INTENT:
+%   Provides a fast, physics-grounded baseline that does not require a
+%   detailed subsystem model.  Every population member is re-sized here after
+%   each mutation so that mass budget consistency is maintained throughout
+%   evolution.  The third output (scaling_quality) is computed on demand
+%   (when called with 3 outputs) to avoid overhead in the inner evolution loop.
+%
+% Spacecraft type codes (factor):
+%   1 — No propulsion (e.g. small LEO with no delta-v)
+%   2 — LEO up to 1000 km
+%   3 — High Earth (>1000 km, GEO)
+%   4 — Planetary probe
+%
+% Parameters:
+%   data (struct): Population member with at least:
+%     .mass       (float): Total wet mass [kg]
+%     .sc_type    (int):   Spacecraft class 1–4 (or fields for determine_sc_type)
+%
+% Returns:
+%   systemmasses  (struct): Subsystem mass breakdown [kg]:
+%     .m_dry_nomargin, .m_margin, .m_dry_margin, .mass_propellant,
+%     .mass_payload, .mass_structmech, .mass_thermal, .mass_power,
+%     .mass_ttc, .mass_adc, .mass_propulsion, .mass_other
+%   systempowers  (struct): Subsystem power breakdown [W]:
+%     .power_total, .power_payload, .power_structmech, .power_thermal,
+%     .power_power, .power_ttc, .power_adc, .propulsion_power
+%   scaling_quality (struct, optional): Statistical confidence of all
+%     applied SMAD fractions (interpolation vs extrapolation, data density).
+%
+% HOW TO TEST:
+%   1. Fractions sum test: verify that
+%      systemmasses.m_dry_margin ≈ sum of all subsystem masses (after reassignment).
+%   2. Mass conservation: systemmasses.m_dry_nomargin + systemmasses.mass_propellant
+%      should equal data.mass.
+%   3. Power consistency: sum of all non-total power fields should ≈ power_total.
+%   4. sc_type sensitivity: run for sc_type 1–4 with same mass and confirm
+%      fractions differ (payload fraction highest for sc_type 2, lowest for 4).
+%   5. scaling_quality test: call with 3 outputs and verify .min_score is
+%      between 0 and 1 and .weakest_parameter is a non-empty string.
+%
+% SAFEGUARDS ALREADY IN PLACE:
+%   - Warning printed when m_margin < 0 (subsystems over-budget).
+%   - systempowers.power_total falls back to SMAD estimate when not provided.
+%
+% SAFEGUARDS TO ADD (future work):
+%   - Return an error or set a flag when mass_propellant < 0
+%     (indicates the dry mass SMAD estimate exceeds the total wet mass, which
+%     would mean m_dry_nomargin > data.mass — physically impossible).
+%   - Assert that all fraction values loaded from CSV are in [0, 1].
 function [systemmasses systempowers scaling_quality] = SMAD_scalings(data)
   
   %disp(data)
@@ -15,16 +67,23 @@ function [systemmasses systempowers scaling_quality] = SMAD_scalings(data)
    systemmasses                 = struct;
    systempowers                 = struct;
    
+   % ---- Classify spacecraft type and determine dry mass --------------------
    sc_type                      = determine_sc_type(data);
    systemmasses.m_dry_nomargin  = determine_m_dry(data);                                 % total mass of system without considering any margin
    
+   % m_margin: statistical design margin fraction of dry mass (from SMAD Table 14-18)
    systemmasses.m_margin        = m_margin(systemmasses.m_dry_nomargin, sc_type);       % obtain typical margin mass to be applied to such a system
+   % m_dry_margin: mass actually available for subsystems after the margin reserve
    systemmasses.m_dry_margin    = systemmasses.m_dry_nomargin - systemmasses.m_margin;  % calculate new maximum mass available when subtracting the margin mass
    
+   % Propellant mass = wet mass − dry mass.  May be negative if SMAD dry fraction
+   % exceeds 1.0 for the given mass — this indicates the input is out of range.
    systemmasses.mass_propellant    = data.mass - systemmasses.m_dry_nomargin;              % calculate the propellant mass by difference of total mass to dry mass
   
   
-   %Scale subsystem masses accordingly
+   % ---- Apply SMAD mass fractions to each subsystem ----------------------
+   % scale_SMAD_parameter reads a CSV file and interpolates the fraction at the
+   % given reference value; the fraction is then multiplied by the reference mass.
    systemmasses.mass_payload       = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_payload")*systemmasses.m_dry_margin;;
    systemmasses.mass_structmech    = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_structmech")*systemmasses.m_dry_margin;
    systemmasses.mass_thermal       = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_thermal")*systemmasses.m_dry_margin;
@@ -34,8 +93,10 @@ function [systemmasses systempowers scaling_quality] = SMAD_scalings(data)
    systemmasses.mass_propulsion    = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_propulsion")*systemmasses.m_dry_margin;
    systemmasses.mass_other         = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_other")*systemmasses.m_dry_margin;
 
-%   
-   %Check for remaining mass difference
+   % ---- Reconcile subsystem sum against m_dry_margin ----------------------
+   % After scaling, re-derive m_dry_margin as the actual sum (fractions may not sum
+   % exactly to 1.0); the residual goes into m_margin.
+   % Check for remaining mass difference
    %checksum = systemmasses.mass_propellant+systemmasses.mass_payload+systemmasses.mass_structmech +systemmasses.mass_thermal+ systemmasses.mass_power+ systemmasses.m_ttc+ systemmasses.m_adc+systemmasses.mass_propulsion+ systemmasses.mass_other;
    systemmasses.m_dry_margin = systemmasses.mass_payload+systemmasses.mass_structmech +systemmasses.mass_thermal+ systemmasses.mass_power+ systemmasses.mass_ttc+ systemmasses.mass_adc+systemmasses.mass_propulsion+ systemmasses.mass_other;
 

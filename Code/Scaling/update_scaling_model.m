@@ -53,6 +53,29 @@
 ## @end deftypefn
 
 function [scaling_model_struct] = update_scaling_model(force_update_flag, prefer_xml)
+% HOW TO TEST (MATLAB/Octave style — supplements the Texinfo docs above):
+%   1. Normal update (hash-based):
+%        update_scaling_model(0)
+%      Verify that "No update required" is printed for both system and
+%      spacecraft sub-functions when no XML has changed.
+%   2. Forced rebuild:
+%        update_scaling_model(1)
+%      Verify that CSV files in Database/Scaling/ have updated timestamps.
+%   3. Corrupt a CSV file and run update_scaling_model(0); verify the
+%      function does NOT regenerate it (hash still matches original XML).
+%      Then manually change a value in the source XML and run again; verify
+%      the CSV IS regenerated.
+%   4. Test the prefer_xml flag: update_scaling_model(0, true) should read
+%      the XML source directly rather than the YAML counterpart.
+%   5. After a successful run, call scale_SMAD_parameter() for a known
+%      spacecraft (e.g. LEO, 1000 kg) and verify the returned fraction is
+%      within the expected SMAD range (e.g. payload fraction 15–35 %).
+%
+% SAFEGUARDS TO ADD (future work):
+%   - Check that at least one CSV is present in Database/Scaling/ after
+%     running and raise an error if not (the DB may have been empty).
+%   - Validate that CSV fractions are in [0, 1] after generation to catch
+%     corrupt or badly formatted source XML.
   if nargin < 2; prefer_xml = false; end
   disp('Database check:');
   

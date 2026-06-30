@@ -1,27 +1,56 @@
 % ESDC: Evolutionary Spacecraft Design Code
-% 
-% This function serves as the main entry point for the ESDC program. It facilitates
-% the generic design of spacecraft using correlations and applies evolutionary optimization
+%
+% PURPOSE:
+%   Top-level entry point for the ESDC tool.  Given mission parameters
+%   (mass, delta-v, power, orbit, mission duration) it uses an evolutionary
+%   algorithm to converge on one or more candidate spacecraft designs,
+%   selecting propulsion technology, sizing all subsystems via SMAD scaling
+%   laws, and matching real hardware from a reference database.
+%
+% INTENT:
+%   Acts as the orchestrator; every major processing stage (input, evolution,
+%   component selection, output) is delegated to a dedicated module.  This
+%   function itself does NOT contain physics — it stitches modules together
+%   and provides error handling and logging.
 %
 % Parameters:
-%   runID (optional): Identifier for the current run of the program. If not provided, defaults to 0.
+%   runID          (optional, default 0): Integer identifier for this run.
+%                  Determines the Output/<runID>/ folder where logs and XML
+%                  results are written.  Use distinct values to keep parallel
+%                  runs from overwriting each other.
+%   force_db_update (optional, default 0): Set to 1 to force regeneration of
+%                  all scaling-law CSV files from the XML databases even when
+%                  no change is detected.  Useful after manual DB edits.
 %
-% Functionality:
-%   1. Initializes the environment and adds necessary paths for the relevant folders.
-%   2. Starts the program and logs the initial status.
-%   3. Updates the scaling database if needed.
-%   4. Processes the input files for the current simulation.
-%   5. Executes the evolutionary algorithm to solve the design problem.
-%   6. Generates the output in XML format.
-%   7. Logs the completion status and total execution time.
-%   8. Handles any exceptions, logs error messages, and terminates the program if an error occurs.
+% Outputs:
+%   None (results written to Output/<runID>/ as XML + log files).
 %
 % Usage:
 %   ESDC(runID)
+%   ESDC(runID, force_db_update)
 %
 % Example:
-%   ESDC(1)  % Runs the ESDC program with runID set to 1, a respective output folder will be created
-%   ESDC()   % Runs the ESDC program with the default runID (0)
+%   ESDC(1)     % Run with output written to Output/1/
+%   ESDC()      % Default run, output to Output/0/
+%   ESDC(2, 1)  % Force DB rebuild then run, output to Output/2/
+%
+% HOW TO TEST:
+%   1. Smoke test:  ESDC()  -- should complete without error and print
+%      "ESDC complete" with timing, and create Output/0/ESDC_tool.log.
+%   2. Reproducibility: set Simulation_parameters.evolver.random_seed to a
+%      fixed integer; two runs with the same seed must produce identical XML.
+%   3. Edge-case inputs: run with the example files in
+%      Documentation/Example Files/Input/ — one for each sc_type (1–4).
+%   4. Force-update test: ESDC(0, 1) — verify Database/Scaling/ CSV files
+%      are regenerated (check file timestamps change).
+%   5. Error path: supply an invalid Input/ESDC_Input.yaml; confirm an error
+%      message is logged to ESDC_tool.log and the exception is re-thrown.
+%
+% SAFEGUARDS TO ADD (future work):
+%   - Validate that Output/<runID>/ is writable before starting the run.
+%   - Check that required input files exist before calling input_processing().
+%   - Warn (not crash) when runID already has existing output so results are
+%     not silently overwritten in batch runs.
 
 
 function ESDC(runID, force_db_update)
@@ -38,7 +67,9 @@ startTime = tic();                               % Reference timer for performan
 
     try
 
-    % Path adding for relevant folders containing code
+    % ---- 1. Environment setup -----------------------------------------------
+    % Add all code subdirectories to Octave/MATLAB search path so that
+    % functions in subdirectories can be called without qualification.
         folders = {'Code/Analysis', 'Code/Evolver', 'Code/Input', 'Code/Output', 'Code/Scaling', 'Code/Support'};
         for i = 1:length(folders)
             if exist(folders{i}, 'dir')
@@ -48,14 +79,19 @@ startTime = tic();                               % Reference timer for performan
             end
         end
     add_paths_for_visualization();          % additional paths for the visualization codes like video and animation creation
-    % Start
+
+    % ---- 2. Startup / logging -----------------------------------------------
     startup();                              % Display startup messages, licenses etc.
     appendToLogFileDCEP('DCEP_STATUS: RUNNING_0%',1,runID)
 
-    %Input
+    % ---- 3. Read all input files --------------------------------------------
+    % Returns: mission_parameters (design constraints), db_data (reference
+    % hardware DB + SMAD tables), config (simulation settings).
     [input db_data config] = input_processing();   %Reads input files for the specific simulaton at hand
 
-    %Update Scaling Data Base (after input so prefer_xml flag is known)
+    % ---- 4. Update scaling database (CSV lookup tables) --------------------
+    % Must happen AFTER input_processing so prefer_xml is known.
+    % Only regenerates when the underlying XML has changed (hash-based).
     prefer_xml = false;
     if isfield(config, 'Simulation_parameters') && isfield(config.Simulation_parameters, 'io') && ...
        isfield(config.Simulation_parameters.io, 'prefer_xml')
@@ -63,7 +99,7 @@ startTime = tic();                               % Reference timer for performan
     end
     update_scaling_model(force_db_update, prefer_xml);     % Checks for changes in the data bases and derives changed scaling laws unless forced by flag
 
-    %Evolve
+    % ---- 5. Evolutionary optimisation ----------------------------------------
     evolutionStartTime = tic();                              % Reference timer for evolution process
 
     % Apply deterministic random seed if configured (for reproducible/debug runs).
@@ -79,11 +115,12 @@ startTime = tic();                               % Reference timer for performan
     evolutionElapsedTime = toc(evolutionStartTime);          % Calculate elapsed time for evolution
     fprintf('Evolution completed in %.2f seconds (%.2f minutes)\n', evolutionElapsedTime, evolutionElapsedTime/60);
 
-
-    %Part Selector
+    % ---- 6. Component matching ----------------------------------------------
+    % Match real hardware from the reference DB to each design candidate.
+    % Results are appended as individual.component_matches.<subsystem>.
     evolution_data = select_components(evolution_data, db_data);
 
-    %Output Selection
+    % ---- 7. XML output generation -------------------------------------------
     output_XML_generation(input, db_data, config, evolution_data,runID);
 
     %Visual Output   - old code needs revision and adaption
@@ -91,8 +128,7 @@ startTime = tic();                               % Reference timer for performan
     %visualization(evolution_data, config);
     %disp('Visual production complete')
 
-
-    %End
+    % ---- 8. Completion ------------------------------------------------------
     disp('ESDC complete')
     totalElapsedTime = toc(startTime);
     fprintf('Total execution time: %.2f seconds (%.2f minutes)\n', totalElapsedTime, totalElapsedTime/60);

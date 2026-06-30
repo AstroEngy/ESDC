@@ -58,6 +58,30 @@
 %TODO PPU scaling for clustering
 %TODO: confidence calcing
 %TODO: how to handle fallback when no candidate for propellant is available
+%
+% HOW TO TEST:
+%   1. Run with a LEO high-thrust case and verify the top-ranked thruster
+%      candidate has thrust >= design_thrust (cluster scaling applied).
+%   2. Run with an EP case (HET) and verify .ppu_candidates is non-empty.
+%   3. Run with sc_type=1 (no propulsion) and verify skip_reason is set
+%      and .thruster_candidates is empty.
+%   4. Inject a propulsion_system name not in the DB and verify the function
+%      returns an empty candidate list rather than crashing.
+%   5. Verify piping_mass_kg = PIPING_FRACTION × (top thruster mass + top tank
+%      mass + propellant mass) to check the post-hoc piping formula.
+%   6. Check that the best thruster candidate satisfies
+%      n_thrusters * e_thrust >= design_thrust for the cluster.
+%
+% SAFEGUARDS ALREADY IN PLACE:
+%   - Skip logic for sc_type=1, missing/NaN fields.
+%   - Fallback to over-budget candidates when no within-budget candidate exists.
+%   - DB existence check before accessing propulsion_system entries.
+%
+% SAFEGUARDS TO ADD (future work):
+%   - Add a warning when no propellant-compatible thruster is found at all
+%     (currently returns an empty struct silently).
+%   - Validate PIPING_FRACTION is in (0, 1); guard against DB edits
+%     introducing values outside that range.
 
 function evolution_data = select_propulsion_components(evolution_data, db_data, verbose)
   % verbose (optional, default false): when true, prints per-individual

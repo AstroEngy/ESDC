@@ -1,7 +1,55 @@
+% input_processing — Load and pre-process all ESDC input data
+%
+% PURPOSE:
+%   Reads the three input sources (simulation config, mission parameters,
+%   hardware database + DOF), then derives any missing mass/power values by
+%   applying SMAD statistical scaling laws and initialises the orbit model.
+%   Returns the three data structures needed by the evolver.
+%
+% INTENT:
+%   Centralises all I/O and pre-processing so the evolver receives complete,
+%   consistent data structs regardless of which subset of parameters the user
+%   provided.  The "adaptive input pre-processing" step makes ESDC robust to
+%   partially-specified inputs — users need only supply the parameters they
+%   know (total mass, or payload mass, or total power) and the rest are
+%   estimated from historical spacecraft statistics (SMAD).
+%
+% Parameters:  none
+% Returns:
+%   mission_parameters   (struct): Input case(s) with mission constraints.
+%       .Satellite_parameters.input_case{i}: per-case struct containing at
+%       least .derived (estimated masses/powers/sc_type) and .orbit (orbit
+%       timing parameters).
+%   database             (struct): Hardware reference data and scaling lookup
+%       tables.  .reference_data holds component catalogues; .DOF holds the
+%       mutation space definition.
+%   simulation_parameters (struct): Solver configuration (see
+%       read_input_simulation_parameter for full field list).
+%
+% Usage:
+%   [input, db_data, config] = input_processing()
+%
+% HOW TO TEST:
+%   1. Call with the default input files and verify that all three returned
+%      structs are non-empty and that input.Satellite_parameters.input_case
+%      contains at least one cell with a .derived.sc_type field (1–4).
+%   2. Provide a minimal input (mass_total only) and verify that all
+%      subsystem mass and power fields are populated in .derived.
+%   3. Provide payload mass only (no mass_total) and confirm mass_total
+%      is estimated via the payload-fraction SMAD path.
+%   4. Provide inconsistent inputs (e.g. mass_total AND mass_payload > mass_total)
+%      and verify a warning or error is raised.
+%   5. Test with orbit_height specified vs omitted and confirm that
+%      .orbit.orbit.height is set to the supplied or default value.
+%
+% SAFEGUARDS TO ADD (future work):
+%   - Validate that derived.mass_total > 0 and is not NaN before returning.
+%   - Check that at least one of mass_total, mass_payload, power_total is
+%     provided in each input case; raise a clear error otherwise.
+%   - Confirm that sc_type is in {1,2,3,4} after determination.
 function [mission_parameters database simulation_parameters]= input_processing()
- %InputReading
-    % Simulation Parameters — read first so prefer_xml flag is available
-    % for all subsequent file reads.
+
+ % ---- Step 1: Read simulation settings first (provides prefer_xml flag) ---
     [simulation_parameters] = read_input_simulation_parameter();
 
     % Extract prefer_xml flag (default false if not set)
@@ -15,38 +63,70 @@ function [mission_parameters database simulation_parameters]= input_processing()
       disp('IO mode: XML preferred (YAML used as fallback)');
     end
 
-    % Mission Parameters
+    % ---- Step 2: Read mission design constraints ----------------------------
     [mission_parameters] =  read_input_mission_parameter(prefer_xml);
-    
-    % Database     
+
+    % ---- Step 3: Read hardware reference database and DOF ------------------
     [database]    =  read_reference_data(prefer_xml);
     database.DOF  =  read_DOF(prefer_xml);
-    
+
     disp(' ')
     disp('Input Reading complete')
     disp(' ')
-    
+
     disp('Adaptive Input Preprocessing')
     disp(' ')
-    
-    % Add derived parameters to input case
-    
-    %TODO add loop for multiple cases
+
+    % ---- Step 4: Derive missing parameters for each input case -------------
+    % system_completion_estimation fills in any subsystem masses and powers
+    % that were not directly provided, using SMAD statistical fractions.
+    % orbit_initialize computes orbit timing from height or sc_type default.
+    %
+    % TODO: extend loop to handle multiple cases in one simulation run.
     input_cases = mission_parameters.Satellite_parameters.input_case;
     for i= 1:size(input_cases,2)
       mission_parameters.Satellite_parameters.input_case{i}(1,1).derived = system_completion_estimation(mission_parameters.Satellite_parameters.input_case{i}(1,1), simulation_parameters);
       mission_parameters.Satellite_parameters.input_case{i}(1,1).orbit = orbit_initialize(mission_parameters.Satellite_parameters.input_case{i}(1,1), simulation_parameters);
     end
-    
-    
-    %disp(mission_parameters.Satellite_parameters)
+
 end
 
+% system_completion_estimation — Estimate missing subsystem masses and powers
+%
+% PURPOSE:
+%   Given whatever subset of mass/power fields the user provided, derives
+%   all remaining values using SMAD statistical fractions for the spacecraft
+%   type.  Supports three input modes:
+%     a) mass_total known  → scale all subsystem masses and powers from it.
+%     b) power_total known → infer mass_total first, then scale masses.
+%     c) neither total known → infer totals from the known partial budgets.
+%
+% INTENT:
+%   Allows the tool to work with any level of design detail.  A user who
+%   knows only payload mass can still produce a complete spacecraft estimate.
+%
+% Parameters:
+%   inputs (struct): one input_case with optional fields: mass_total,
+%          mass_payload, mass_propulsion, power_total, power_payload, etc.
+%   sim    (struct): simulation_parameters, provides margin and sc_type
+%          thresholds.
+%
+% Returns:
+%   derived_parameters (struct): .known, .unknown (mass/power sub-structs),
+%          .sc_type (integer 1–4).
+%
+% HOW TO TEST:
+%   1. Supply only mass_total=1000; verify all subsystem masses sum to ~1000.
+%   2. Supply only mass_payload=200; verify mass_total is estimated and > 200.
+%   3. Supply only power_total=5000; verify mass_total is derived from power.
+%   4. Supply no fields at all; confirm the 'Insufficient knowns' error fires.
 function [derived_parameters]   = system_completion_estimation(inputs, sim)
-  %disp(inputs)
-  %disp(inputs.mass_total) // field accessing example
   derived_parameters = struct;
-  
+
+  % ---- Define the expected mass and power field names ----------------------
+  % These match the field names in the input XML/YAML files.
+  % If a field is present in inputs it is "known"; otherwise it is "unknown"
+  % and will be estimated by SMAD scaling.
   %Available mass fields          %may or may not be defineable in external file
   masses = {
   'mass_total'
@@ -77,6 +157,7 @@ function [derived_parameters]   = system_completion_estimation(inputs, sim)
   known = struct();
   unknown = struct();
   
+  % ---- Classify inputs into known/unknown structs --------------------------
   % Make structures for known and unknown inputs masses
   for i=1:numel(masses)
     if isfield(inputs,cellstr(masses{i}))
@@ -142,6 +223,21 @@ function [derived_parameters]   = system_completion_estimation(inputs, sim)
   derived_parameters.unknown = unknown;
 endfunction
 
+% system_with_unknown_totals — Estimate totals and all subsystems from partial mass/power knowns
+%
+% PURPOSE:
+%   When neither mass_total nor power_total is specified, but some subsystem
+%   masses are known, use inverse-fraction SMAD scaling to back-calculate
+%   the total spacecraft mass from the known subsystems, then forward-scale
+%   all unknowns.
+%
+% Parameters:
+%   known   (struct): .mass and/or .power fields that were explicitly given.
+%   unknown (struct): .mass and .power fields to be estimated.
+%   margin  (float):  Design margin fraction (e.g. 0.3 for 30%).
+%   sc_type (int):    Spacecraft class 1–4 (determines SMAD fraction table).
+%
+% Returns: updated [known, unknown] structs.
 function [known unknown]        = system_with_unknown_totals(known, unknown, margin, sc_type)
   %known processing
 
@@ -266,6 +362,22 @@ function [known unknown]        = system_with_unknown_totals(known, unknown, mar
   % cases for zero known masses and zero known powerset
 endfunction 
 
+% scale_SMAD_parameter_inverse_fraction — Invert a SMAD fraction to recover input variable
+%
+% PURPOSE:
+%   Given a known subsystem value (e.g. known payload mass), and the
+%   statistical correlation  y = fraction(x) * x  (where x = mass_total),
+%   back-calculate x.  Used when only partial budgets are known and the
+%   total must be inferred.
+%
+% Parameters:
+%   y              (float):  Known subsystem value.
+%   sc_type        (int):    Spacecraft class 1–4.
+%   x              (string): Reference parameter name (e.g. 'mass_total').
+%   file_parameter (string): Fraction name (e.g. 'fraction_mass_payload').
+%
+% Returns:
+%   fraction (float): The fraction y/x_derived (dimensionless).
 function [fraction]             = scale_SMAD_parameter_inverse_fraction(y,sc_type,x, file_parameter)
   % assemble filename
   
@@ -291,6 +403,14 @@ endfunction
 
 
 
+% system_with_known_totalpower — Estimate total mass and all subsystems from known total power
+%
+% PURPOSE:
+%   When power_total is explicitly provided but mass_total is not, infer
+%   mass_total using the SMAD power_total → mass_total correlation, then
+%   apply margin and forward-scale all subsystem masses and powers.
+%
+% Parameters / Returns: same pattern as system_with_known_mass_total.
 function [known unknown]        = system_with_known_totalpower(known, unknown, margin, sc_type)               % when only total mass is known, this. % missing case with total
     unknown_parameters = fieldnames(unknown.mass);
     
@@ -345,6 +465,15 @@ function [known unknown]        = system_with_known_totalpower(known, unknown, m
     [known.mass.mass_total known.mass.m_margin known.mass.mass_total_margin] = mass_validate(known.mass,unknown.mass);
 endfunction
 
+% system_with_known_mass_total — Scale all subsystems from a known total mass
+%
+% PURPOSE:
+%   When mass_total is explicitly provided, apply margin, then use SMAD
+%   mass fraction tables to estimate all unknown subsystem masses and powers.
+%   Known subsystems are preserved; power system mass is updated when the
+%   summed power estimate changes.
+%
+% Parameters / Returns: see system_with_unknown_totals.
 function [known unknown]        = system_with_known_mass_total(known, unknown, margin, sc_type)                % when only total mass is known, this. % missing case with total power?
   
     if isfield(unknown,'mass')
@@ -408,6 +537,20 @@ function [known unknown]        = system_with_known_mass_total(known, unknown, m
     end
 endfunction
 
+% sum_powers — Sum all non-total power fields from known and unknown structs
+%
+% PURPOSE:
+%   Adds up every individual subsystem power (excluding the 'power_total'
+%   field itself) across both known and unknown power structs.  Used to
+%   recompute power_total after all subsystem powers have been estimated,
+%   ensuring internal consistency.
+%
+% Parameters:
+%   p_known   (struct): Power fields that were explicitly given.
+%   p_unknown (struct): Power fields that were derived/estimated.
+%
+% Returns:
+%   p_new (float): Sum of all subsystem powers [W], excluding power_total.
 function [p_new]   = sum_powers(p_known, p_unknown)                                              % updates: the total system power input fields of known and unknown.power
   
   % case handling if known or unknown power total
@@ -432,6 +575,29 @@ function [p_new]   = sum_powers(p_known, p_unknown)                             
     
 endfunction
 
+% mass_validate — Reconcile subsystem masses against the total mass budget
+%
+% PURPOSE:
+%   Sums all individual subsystem masses from both known and unknown structs
+%   and compares the result with the declared mass_total.  Updates margin
+%   accordingly.  Warns (optionally) when subsystems exceed the total.
+%
+% Parameters:
+%   m_known           (struct): Mass fields that were explicitly given.
+%   m_unknown         (struct): Mass fields that were estimated.
+%   warn_if_exceeded  (logical, optional, default true): Print a console
+%                     warning when the mass budget is exceeded.
+%
+% Returns:
+%   mass_total        (float): Total system mass [kg].
+%   m_margin          (float): Remaining margin mass [kg] (0 if exceeded).
+%   mass_total_margin (float): Total mass minus margin [kg].
+%
+% HOW TO TEST:
+%   1. Supply masses that sum to exactly mass_total; verify m_margin = 0.
+%   2. Supply masses that sum LESS than mass_total; verify m_margin > 0.
+%   3. Supply masses that exceed mass_total; verify m_margin = 0 and
+%      mass_total is set to the actual sum (not the original budget).
 function [mass_total m_margin mass_total_margin] = mass_validate(m_known, m_unknown, warn_if_exceeded)  % checks the applicable masses of the system, recalculates the available margin
   if nargin < 3; warn_if_exceeded = true; end
   
@@ -482,18 +648,39 @@ function [mass_total m_margin mass_total_margin] = mass_validate(m_known, m_unkn
 endfunction
 
 
+% orbit_initialize — Compute orbital timing parameters for the input case
+%
+% PURPOSE:
+%   Given the mission input, determines the orbit height (from the input
+%   directly or from sc_type defaults) and calls orbit_parameters_Earth()
+%   to compute orbit period, sun/shadow time fractions and other timing
+%   data needed by the power system analysis.
+%
+% Parameters:
+%   mission_inputs (struct): one input_case, may contain .orbit_height [km].
+%   sim            (struct): simulation_parameters with defaults.orbit.*
+%
+% Returns:
+%   mission_parameters (struct): .orbit field containing the orbit timing
+%       struct from orbit_parameters_Earth().
+%
+% HOW TO TEST:
+%   1. Provide orbit_height=500 (LEO); confirm orbit period ≈ 5675 s.
+%   2. Omit orbit_height with sc_type=2 (LEO); confirm default LEO height
+%      is used from sim.Simulation_parameters.defaults.orbit.Low_Earth.
+%   3. Provide orbit_height below orbit_min; confirm orbit_min is used.
 function [mission_parameters] = orbit_initialize(mission_inputs, sim)
   mission_parameters = struct;
-  %disp(mission_inputs)
-  %disp(sim.Simulation_parameters)
   if isfield(mission_inputs,'orbit_height')                                                                  % case for given orbit height
     if (mission_inputs.orbit_height > sim.Simulation_parameters.defaults.orbit_min)                           % compare if min is correct
       height = mission_inputs.orbit_height;
     else
+      % Clamp to minimum allowed orbit height (from simulation defaults)
       height = sim.Simulation_parameters.defaults.orbit_min;
     end
     mission_parameters.orbit =  orbit_parameters_Earth(height);
   else                                                                                                      % case for unknown orbit height, but use default from orbit type (no prop, LEO, GEO, probe)
+    % Select default orbit height based on sc_type classification
     if mission_inputs.derived.sc_type == 1
       height = sim.Simulation_parameters.defaults.orbit.no_propulsion;
     elseif mission_inputs.derived.sc_type == 2
