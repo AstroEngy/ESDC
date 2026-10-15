@@ -1,0 +1,8 @@
+# ESDC YAML Input — sc2 LEO, payload mass only (no mass_total, no power, no deltav)
+# Minimal test fixture: only mass_payload is provided.
+# orbit_height drives sc_type=2 (LEO). Total mass is derived from mass_payload scaling.
+# omitted delta-v: established repository behavior (no deltav field → no propellant consumed).
+Satellite_parameters:
+  input_case:
+    - orbit_height: 500
+      mass_payload: 1200

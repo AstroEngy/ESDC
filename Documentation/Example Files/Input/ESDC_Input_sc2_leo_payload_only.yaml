@@ -1,0 +1,12 @@
+# ESDC YAML Input — sc2 LEO, payload mass + delta-v only, no mass_total
+# Test fixture for payload-only mass initialization.
+# mass_total is NOT provided; the evolver derives it from mass_payload via scaling.
+# This case has both mass_payload and deltav but no mass_total or power_payload.
+Satellite_parameters:
+  input_case:
+    - orbit_height: 500
+      mass_payload: 1200
+      deltav: 300
+      propulsion_power: 8000
+      mission_duration: 5
+      propulsion_time_fraction: 0.05

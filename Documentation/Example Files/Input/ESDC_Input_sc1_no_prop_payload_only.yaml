@@ -1,0 +1,11 @@
+# ESDC YAML Input — sc1 No Propulsion, payload mass + delta-v only, no mass_total
+# Test fixture for payload-only mass initialization.
+# mass_total is NOT provided; the evolver derives it from mass_payload via scaling.
+# sc_type is explicit (1 = No Propulsion).
+Satellite_parameters:
+  input_case:
+    - sc_type: 1
+      mass_payload: 750
+      deltav: 30
+      propulsion_power: 2300
+      mission_duration: 3
