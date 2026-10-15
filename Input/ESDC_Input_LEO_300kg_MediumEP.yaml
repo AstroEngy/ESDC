@@ -1,0 +1,16 @@
+# ESDC Test Case: LEO Electric Propulsion System - 300 kg Medium-Thrust EP
+# Orbit:       Low Earth Orbit (~1000 km)
+# Spacecraft:  300 kg class
+# Propulsion:  Medium-power Electric Propulsion (Arcjet optimal range)
+# Delta-v:     400 m/s
+# Strategy:    Medium thrust, longer burn acceptable - optimal for Arcjet
+# Test Case:   LEO mission with EP tuned for Arcjet
+
+Satellite_parameters:
+  input_case:
+    - mass_total: 300
+      deltav: 400
+      orbit_height: 1000
+      propulsion_power: 3000
+      mission_duration: 5
+      propulsion_time_fraction: 0.15

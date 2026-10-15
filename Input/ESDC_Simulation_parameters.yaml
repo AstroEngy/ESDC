@@ -35,6 +35,13 @@ Simulation_parameters:
     # Set to true to force XML-only reads (e.g. for testing the XML path without
     # renaming or deleting YAML files).  Default: false (YAML preferred).
     prefer_xml: false
+    # input_file_path: Mission parameter input file (relative to ESDC root).
+    # Can be overridden by environment variable ESDC_INPUT_PATH.
+    # Examples:
+    #   'Input/ESDC_Input_LEO_650ms_1500W'
+    #   'Input/ESDC_Input_LEO_300kg_Arcjet'
+    #   'Input/ESDC_Input'
+    input_file_path: 'Input/ESDC_Input_LEO_650ms_1500W'
   evolver:
     fitness_criterion: maximize_mass_margin
     random_seed: 42

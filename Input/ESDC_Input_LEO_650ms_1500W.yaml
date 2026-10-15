@@ -1,0 +1,15 @@
+# ESDC Test Case: LEO Electric Propulsion System - 650 m/s High Delta-v
+# Orbit:       Low Earth Orbit (~1000 km)
+# Spacecraft:  200 kg (same as Scenario 0)
+# Propulsion:  Low-power electric propulsion - 1500 W power
+# Delta-v:     650 m/s (INCREASED from 400 m/s)
+# Strategy:    Higher delta-v requirement, same power - tests propellant mass tradeoff
+# Test Case:   LEO mission with high delta-v, low power constraint
+
+Satellite_parameters:
+  input_case:
+    - mass_total: 200
+      deltav: 650
+      orbit_height: 1000
+      propulsion_power: 1500
+      mission_duration: 5

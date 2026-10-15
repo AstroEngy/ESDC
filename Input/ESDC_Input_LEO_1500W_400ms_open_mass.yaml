@@ -1,0 +1,15 @@
+# ESDC Test Case: LEO Electric Propulsion System - Payload-driven
+# Orbit:       Low Earth Orbit (~1000 km)
+# Propulsion:  Electric propulsion system - 1500 W power
+# Delta-v:     400 m/s (maximum)
+# Mass:        Derived from Payload - system optimizes total mass
+# Test Case:   LEO mission with EP, payload-driven design
+
+Satellite_parameters:
+  input_case:
+    - mass_payload: 50
+      power_payload: 200
+      deltav: 400
+      orbit_height: 1000
+      propulsion_power: 1500
+      mission_duration: 5
