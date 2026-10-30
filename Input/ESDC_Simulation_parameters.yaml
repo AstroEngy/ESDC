@@ -52,6 +52,15 @@ Simulation_parameters:
     n_fails_to_converge: 10
     n_bad_seed_to_converge: 30
     n_verbosity: 10
+  scaling:
+    # system_scaling_mode: controls how full-system mass/power fractions are computed.
+    #   1 = SMAD_flat     : fixed fractions from SMAD Table 14-18 (Wertz 2011, pp.422,424)
+    #   2 = Ehresmann2021 : database polynomial fit, x = total wet mass, 30% margin (paper Sec. 2.2.2)
+    #   3 = refined       : database polynomial fit, x = post-margin dry mass, configurable margin
+    system_scaling_mode: 3
+    # mass_margin_fraction: design margin deducted from dry mass before subsystem distribution.
+    # Default 0.25 (NASA GSFC-STD-1000).  Modes 1 and 2 default to 0.30 when this is absent.
+    mass_margin_fraction: 0.25
   output:
     CLI:
       n_verbosity: 10

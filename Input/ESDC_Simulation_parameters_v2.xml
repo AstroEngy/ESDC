@@ -181,6 +181,42 @@
 					</dcep_info>
 				</n_bad_seed_to_converge>
 		</evolver>
+		<scaling>
+			<dcep_info>
+				<dcep_name>Scaling law configuration</dcep_name>
+				<dcep_description>Controls how full-system mass and power fractions are derived during evolution</dcep_description>
+				<dcep_min_occurrence>0</dcep_min_occurrence>
+				<dcep_no_value>true</dcep_no_value>
+			</dcep_info>
+			<system_scaling_mode>
+				<dcep_info>
+					<dcep_name>System scaling mode</dcep_name>
+					<dcep_unit>-</dcep_unit>
+					<dcep_description>Method for deriving full-system mass/power fractions. 1=SMAD_flat, 2=Ehresmann2021, 3=refined</dcep_description>
+					<dcep_type>float</dcep_type>
+					<dcep_no_value>false</dcep_no_value>
+					<dcep_default>3</dcep_default>
+					<dcep_min_occurrence>0</dcep_min_occurrence>
+					<dcep_max_occurrence>1</dcep_max_occurrence>
+					<dcep_min_inclusive>1</dcep_min_inclusive>
+					<dcep_max_inclusive>3</dcep_max_inclusive>
+				</dcep_info>
+			</system_scaling_mode>
+			<mass_margin_fraction>
+				<dcep_info>
+					<dcep_name>Mass margin fraction</dcep_name>
+					<dcep_unit>-</dcep_unit>
+					<dcep_description>Design margin deducted from dry mass before subsystem distribution. Default 0.25 (NASA GSFC-STD-1000).</dcep_description>
+					<dcep_type>float</dcep_type>
+					<dcep_no_value>false</dcep_no_value>
+					<dcep_default>0.25</dcep_default>
+					<dcep_min_occurrence>0</dcep_min_occurrence>
+					<dcep_max_occurrence>1</dcep_max_occurrence>
+					<dcep_min_inclusive>0</dcep_min_inclusive>
+					<dcep_max_inclusive>0.5</dcep_max_inclusive>
+				</dcep_info>
+			</mass_margin_fraction>
+		</scaling>
 		<output>
 			<dcep_info>
 			<dcep_name>Output definition parameters</dcep_name>

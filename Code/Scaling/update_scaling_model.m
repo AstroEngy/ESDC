@@ -67,7 +67,7 @@ function [scaling_model_struct] = update_scaling_model(force_update_flag, prefer
 %      the CSV IS regenerated.
 %   4. Test the prefer_xml flag: update_scaling_model(0, true) should read
 %      the XML source directly rather than the YAML counterpart.
-%   5. After a successful run, call scale_SMAD_parameter() for a known
+%   5. After a successful run, call interp_spacecraft_param() for a known
 %      spacecraft (e.g. LEO, 1000 kg) and verify the returned fraction is
 %      within the expected SMAD range (e.g. payload fraction 15–35 %).
 %

@@ -67,6 +67,21 @@ number_of_seeds = configuration.Simulation_parameters.evolver.seed_points;
 % Number of degrees of freedom (total across all propulsion types in DOF file).
 number_of_DOF = num_struct_members_full(database_data.DOF, 'DOF');
 
+% Read scaling configuration once — stamped onto every population member so
+% SMAD_scalings can dispatch to the correct derivation mode without globals.
+system_scaling_mode   = 3;    % default: refined
+mass_margin_fraction  = 0.25; % default: NASA GSFC-STD-1000
+if isfield(configuration, 'Simulation_parameters') && ...
+   isfield(configuration.Simulation_parameters, 'scaling')
+  sc = configuration.Simulation_parameters.scaling;
+  if isfield(sc, 'system_scaling_mode') && ~isempty(sc.system_scaling_mode)
+    system_scaling_mode = sc.system_scaling_mode;
+  end
+  if isfield(sc, 'mass_margin_fraction') && ~isempty(sc.mass_margin_fraction)
+    mass_margin_fraction = sc.mass_margin_fraction;
+  end
+end
+
 % Initialise the output population struct array (will be filled in loop).
 initial_population = struct();
 
@@ -115,6 +130,10 @@ for i = 1:numel(input.Satellite_parameters.input_case)
         % so that SMAD_scalings, volume_scalings, and derive_thrust_min_from_time all use the
         % same classification without re-inferring from delta-v alone.
         population_member.sc_type = case_parameters.derived.sc_type;
+
+        % Carry scaling configuration so SMAD_scalings dispatches consistently.
+        population_member.system_scaling_mode  = system_scaling_mode;
+        population_member.mass_margin_fraction = mass_margin_fraction;
 
         % Mission time constraint fields
         population_member.mission_duration         = get_field_safe(case_parameters, 'mission_duration');        % [years]

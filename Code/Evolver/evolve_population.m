@@ -129,7 +129,7 @@ function [generation_new, convergence] = evolve_population(input, db_data, confi
       % Update power system mass to reflect new total power demand.
       sc_type = input.Satellite_parameters.input_case{i}.derived.sc_type;
       m_pow_1 = population(i,j).subsystem_masses.mass_power;
-      population(i,j).subsystem_masses.mass_power = scale_SMAD_parameter(population(i,j).subsystem_powers.power_total, sc_type, "power_total", "fraction_mass_power")*population(i,j).mass;
+      population(i,j).subsystem_masses.mass_power = interp_spacecraft_param(population(i,j).subsystem_powers.power_total, sc_type, "power_total", "fraction_mass_power")*population(i,j).mass;
       d_m_pow = m_pow_1-  population(i,j).subsystem_masses.mass_power;
 
       population(i,j).subsystem_masses.m_margin = population(i,j).subsystem_masses.m_margin-d_m_pow;

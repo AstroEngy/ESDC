@@ -1,33 +1,22 @@
 % SMAD_scalings — Estimate spacecraft subsystem masses and powers via statistical fractions
 %
-% Reference:
-%   Space Mission Engineering: The New SMAD, Wertz, Everett & Puschell, 2011
-%   Microcosm Press, ISBN 978-1881883159.
-%   Table 14-18 (page 422): Average mass by subsystem as % of dry mass for 4 spacecraft types.
+% Three derivation modes are selected by data.system_scaling_mode (set from
+% Simulation_parameters.scaling.system_scaling_mode):
 %
-% PURPOSE:
-%   Given a spacecraft's total wet mass and sc_type, applies SMAD statistical
-%   mass and power fractions to estimate the mass of each subsystem
-%   (payload, structure, thermal, power, TTC, ADC, propulsion) and the power
-%   of each consumer.  These estimates drive the evolutionary fitness function.
-%
-% INTENT:
-%   Provides a fast, physics-grounded baseline that does not require a
-%   detailed subsystem model.  Every population member is re-sized here after
-%   each mutation so that mass budget consistency is maintained throughout
-%   evolution.  The third output (scaling_quality) is computed on demand
-%   (when called with 3 outputs) to avoid overhead in the inner evolution loop.
-%
-% Spacecraft type codes (factor):
-%   1 — No propulsion (e.g. small LEO with no delta-v)
-%   2 — LEO up to 1000 km
-%   3 — High Earth (>1000 km, GEO)
-%   4 — Planetary probe
+%   1 = SMAD_flat     : fixed fractions from SMAD Table 14-18 (Wertz 2011, pp. 422, 424).
+%                       30 % margin (paper value; overridden by data.mass_margin_fraction).
+%   2 = Ehresmann2021 : database polynomial fit (Ehresmann 2021, Sec. 2.2.2).
+%                       x-axis for mass fraction lookup = total wet mass.
+%                       30 % margin (paper value; overridden by data.mass_margin_fraction).
+%   3 = refined       : database polynomial fit, x-axis = post-margin dry mass (default).
+%                       Margin from data.mass_margin_fraction (default 0.25, NASA GSFC-STD-1000).
 %
 % Parameters:
 %   data (struct): Population member with at least:
-%     .mass       (float): Total wet mass [kg]
-%     .sc_type    (int):   Spacecraft class 1–4 (or fields for determine_sc_type)
+%     .mass                   (float): Total wet mass [kg]
+%     .sc_type                (int):   Spacecraft class 1–4
+%     .system_scaling_mode    (int):   1, 2, or 3 (default 3 if absent)
+%     .mass_margin_fraction   (float): Design margin fraction (optional override)
 %
 % Returns:
 %   systemmasses  (struct): Subsystem mass breakdown [kg]:
@@ -37,124 +26,162 @@
 %   systempowers  (struct): Subsystem power breakdown [W]:
 %     .power_total, .power_payload, .power_structmech, .power_thermal,
 %     .power_power, .power_ttc, .power_adc, .propulsion_power
-%   scaling_quality (struct, optional): Statistical confidence of all
-%     applied SMAD fractions (interpolation vs extrapolation, data density).
+%   scaling_quality (struct, optional): Interpolation confidence for mode 2/3;
+%     also populated for mode 1 (informational). Includes .mode field.
 %
 % HOW TO TEST:
-%   1. Fractions sum test: verify that
-%      systemmasses.m_dry_margin ≈ sum of all subsystem masses (after reassignment).
-%   2. Mass conservation: systemmasses.m_dry_nomargin + systemmasses.mass_propellant
-%      should equal data.mass.
-%   3. Power consistency: sum of all non-total power fields should ≈ power_total.
-%   4. sc_type sensitivity: run for sc_type 1–4 with same mass and confirm
-%      fractions differ (payload fraction highest for sc_type 2, lowest for 4).
-%   5. scaling_quality test: call with 3 outputs and verify .min_score is
-%      between 0 and 1 and .weakest_parameter is a non-empty string.
-%
-% SAFEGUARDS ALREADY IN PLACE:
-%   - Warning printed when m_margin < 0 (subsystems over-budget).
-%   - systempowers.power_total falls back to SMAD estimate when not provided.
-%
-% SAFEGUARDS TO ADD (future work):
-%   - Return an error or set a flag when mass_propellant < 0
-%     (indicates the dry mass SMAD estimate exceeds the total wet mass, which
-%     would mean m_dry_nomargin > data.mass — physically impossible).
-%   - Assert that all fraction values loaded from CSV are in [0, 1].
+%   1. Fractions sum test: systemmasses.m_dry_margin ≈ sum of subsystem masses.
+%   2. Mass conservation: m_dry_nomargin + mass_propellant == data.mass.
+%   3. Mode comparison: run sc_type 2, mass 1000 kg for modes 1, 2, 3; verify
+%      fractions differ between modes and match their respective references.
+%   4. Margin override: set data.mass_margin_fraction=0.20; verify m_margin=0.20*m_dry.
+%   5. scaling_quality.mode matches the mode used.
 function [systemmasses systempowers scaling_quality] = SMAD_scalings(data)
-  
-  %disp(data)
 
-   systemmasses                 = struct;
-   systempowers                 = struct;
-   
-   % ---- Classify spacecraft type and determine dry mass --------------------
-   sc_type                      = determine_sc_type(data);
-   systemmasses.m_dry_nomargin  = determine_m_dry(data);                                 % total mass of system without considering any margin
-   
-   % m_margin: statistical design margin fraction of dry mass (from SMAD Table 14-18)
-   systemmasses.m_margin        = m_margin(systemmasses.m_dry_nomargin, sc_type);       % obtain typical margin mass to be applied to such a system
-   % m_dry_margin: mass actually available for subsystems after the margin reserve
-   systemmasses.m_dry_margin    = systemmasses.m_dry_nomargin - systemmasses.m_margin;  % calculate new maximum mass available when subtracting the margin mass
-   
-   % Propellant mass = wet mass − dry mass.  May be negative if SMAD dry fraction
-   % exceeds 1.0 for the given mass — this indicates the input is out of range.
-   systemmasses.mass_propellant    = data.mass - systemmasses.m_dry_nomargin;              % calculate the propellant mass by difference of total mass to dry mass
-  
-  
-   % ---- Apply SMAD mass fractions to each subsystem ----------------------
-   % scale_SMAD_parameter reads a CSV file and interpolates the fraction at the
-   % given reference value; the fraction is then multiplied by the reference mass.
-   systemmasses.mass_payload       = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_payload")*systemmasses.m_dry_margin;;
-   systemmasses.mass_structmech    = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_structmech")*systemmasses.m_dry_margin;
-   systemmasses.mass_thermal       = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_thermal")*systemmasses.m_dry_margin;
-   systemmasses.mass_power         = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_power")*systemmasses.m_dry_margin;  
-   systemmasses.mass_ttc           = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_TTC")*systemmasses.m_dry_margin;
-   systemmasses.mass_adc           = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_ADC")*systemmasses.m_dry_margin;
-   systemmasses.mass_propulsion    = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_propulsion")*systemmasses.m_dry_margin;
-   systemmasses.mass_other         = scale_SMAD_parameter(systemmasses.m_dry_margin, sc_type, "mass_total", "fraction_mass_other")*systemmasses.m_dry_margin;
+  systemmasses = struct;
+  systempowers = struct;
 
-   % ---- Reconcile subsystem sum against m_dry_margin ----------------------
-   % After scaling, re-derive m_dry_margin as the actual sum (fractions may not sum
-   % exactly to 1.0); the residual goes into m_margin.
-   % Check for remaining mass difference
-   %checksum = systemmasses.mass_propellant+systemmasses.mass_payload+systemmasses.mass_structmech +systemmasses.mass_thermal+ systemmasses.mass_power+ systemmasses.m_ttc+ systemmasses.m_adc+systemmasses.mass_propulsion+ systemmasses.mass_other;
-   systemmasses.m_dry_margin = systemmasses.mass_payload+systemmasses.mass_structmech +systemmasses.mass_thermal+ systemmasses.mass_power+ systemmasses.mass_ttc+ systemmasses.mass_adc+systemmasses.mass_propulsion+ systemmasses.mass_other;
+  % ---- Scaling mode and margin (set by make_population from sim params) ------
+  % Mode: 1=SMAD_flat, 2=Ehresmann2021, 3=refined (default)
+  mode = 3;
+  if isfield(data, 'system_scaling_mode') && ~isempty(data.system_scaling_mode)
+    mode = data.system_scaling_mode;
+  end
 
-   %Add discrepancy to margin
+  % Margin: use configured value; fall back to mode-appropriate paper default.
+  if isfield(data, 'mass_margin_fraction') && ~isempty(data.mass_margin_fraction) ...
+      && ~isnan(data.mass_margin_fraction)
+    margin_frac = data.mass_margin_fraction;
+  elseif mode <= 2
+    margin_frac = 0.30;  % Ehresmann 2021, Sec. 2.2
+  else
+    margin_frac = 0.25;  % NASA GSFC-STD-1000
+  end
 
-   systemmasses.m_margin= systemmasses.m_dry_nomargin -systemmasses.m_dry_margin;
+  % ---- Common: spacecraft type, dry mass, propellant -----------------------
+  sc_type = determine_sc_type(data);
+  systemmasses.m_dry_nomargin  = determine_m_dry(data);
+  systemmasses.mass_propellant = data.mass - systemmasses.m_dry_nomargin;
 
-   
-   if systemmasses.m_margin<0
-      disp('No system margin left');
-   end
-   if isfield(data,'power_total')
+  systemmasses.m_margin     = margin_frac * systemmasses.m_dry_nomargin;
+  systemmasses.m_dry_margin = systemmasses.m_dry_nomargin - systemmasses.m_margin;
+
+  if isfield(data, 'power_total')
     systempowers.power_total = data.power_total;
-   else
+  else
     systempowers.power_total = p_tot_average(systemmasses.m_dry_nomargin, sc_type);
-   end
-   
-   systempowers.power_payload       = scale_SMAD_parameter(systempowers.power_total, sc_type, "power_total", "fraction_power_payload")*systempowers.power_total;
-   systempowers.power_structmech    = scale_SMAD_parameter(systempowers.power_total, sc_type, "power_total", "fraction_power_structmech")*systempowers.power_total;
-   systempowers.power_thermal       = scale_SMAD_parameter(systempowers.power_total, sc_type, "power_total", "fraction_power_thermal")*systempowers.power_total;
-   systempowers.power_power         = scale_SMAD_parameter(systempowers.power_total, sc_type, "power_total", "fraction_power_power")*systempowers.power_total;  
-   systempowers.power_ttc           = scale_SMAD_parameter(systempowers.power_total, sc_type, "power_total", "fraction_power_TTC")*systempowers.power_total;
-   systempowers.power_adc           = scale_SMAD_parameter(systempowers.power_total, sc_type, "power_total", "fraction_power_ADC")*systempowers.power_total;
-   systempowers.propulsion_power    = scale_SMAD_parameter(systempowers.power_total, sc_type, "power_total", "fraction_propulsion_power")*systempowers.power_total;
-   
-   if nargout > 2
-     scaling_quality = compute_scaling_quality(systemmasses.m_dry_margin, systempowers.power_total, sc_type);
-   end
-   
+  end
+
+  % ---- Derive subsystem fractions by mode ----------------------------------
+  if mode == 1
+    % SMAD flat: fixed fractions from Wertz 2011 Table 14-18, pp. 422, 424
+    [systemmasses, systempowers] = apply_smad_flat(systemmasses, systempowers, sc_type);
+
+  elseif mode == 2
+    % Ehresmann 2021 (Sec. 2.2.2): DB polynomial fit, x = total wet mass
+    [systemmasses, systempowers] = apply_db_polynomial(systemmasses, systempowers, sc_type, data.mass);
+
+  else
+    % mode 3 refined (current): DB polynomial fit, x = post-margin dry mass
+    [systemmasses, systempowers] = apply_db_polynomial(systemmasses, systempowers, sc_type, systemmasses.m_dry_margin);
+  end
+
+  % ---- Reconcile: re-derive m_dry_margin as subsystem sum ------------------
+  systemmasses.m_dry_margin = systemmasses.mass_payload + systemmasses.mass_structmech + ...
+    systemmasses.mass_thermal + systemmasses.mass_power + systemmasses.mass_ttc + ...
+    systemmasses.mass_adc + systemmasses.mass_propulsion + systemmasses.mass_other;
+  systemmasses.m_margin = systemmasses.m_dry_nomargin - systemmasses.m_dry_margin;
+
+  if systemmasses.m_margin < 0
+    disp('No system margin left');
+  end
+
+  if nargout > 2
+    scaling_quality = compute_scaling_quality(systemmasses.m_dry_margin, systempowers.power_total, sc_type);
+    scaling_quality.mode = mode;
+  end
+
 endfunction
 
+
+% =========================================================================
+% MODE 1: SMAD flat fractions (Wertz 2011, Table 14-18, pp. 422, 424)
+% =========================================================================
+% Columns correspond to sc_type: 1=NoProp, 2=LEO, 3=HEO, 4=Probe.
+% OBC and Misc from Table 2 are merged into mass_other (no separate OBC field).
+% Structural power fraction for NoProp corrected 0.20→0.02 (OCR artefact in paper).
+function [sm, sp] = apply_smad_flat(sm, sp, sc_type)
+  % rows: payload, structmech, thermal, power, ttc, adc, propulsion, other(OBC+misc)
+  mf = [0.41 0.31 0.32 0.15;
+        0.20 0.27 0.24 0.25;
+        0.02 0.02 0.04 0.06;
+        0.19 0.21 0.17 0.21;
+        0.02 0.02 0.04 0.07;
+        0.08 0.06 0.06 0.06;
+        0.00 0.03 0.07 0.13;
+        0.08 0.08 0.06 0.07];  % OBC(0.05/0.05/0.03/0.04) + misc(0.03)
+
+  sm.mass_payload    = mf(1, sc_type) * sm.m_dry_margin;
+  sm.mass_structmech = mf(2, sc_type) * sm.m_dry_margin;
+  sm.mass_thermal    = mf(3, sc_type) * sm.m_dry_margin;
+  sm.mass_power      = mf(4, sc_type) * sm.m_dry_margin;
+  sm.mass_ttc        = mf(5, sc_type) * sm.m_dry_margin;
+  sm.mass_adc        = mf(6, sc_type) * sm.m_dry_margin;
+  sm.mass_propulsion = mf(7, sc_type) * sm.m_dry_margin;
+  sm.mass_other      = mf(8, sc_type) * sm.m_dry_margin;
+
+  % rows: payload, structmech, thermal, power, ttc, adc, propulsion
+  % OBC power is not separately tracked; consistent with modes 2 & 3.
+  pf = [0.43 0.46 0.35 0.22;
+        0.02 0.01 0.00 0.01;
+        0.05 0.10 0.14 0.15;
+        0.10 0.09 0.07 0.10;
+        0.11 0.12 0.16 0.18;
+        0.18 0.10 0.16 0.12;
+        0.00 0.00 0.02 0.11];
+
+  sp.power_payload    = pf(1, sc_type) * sp.power_total;
+  sp.power_structmech = pf(2, sc_type) * sp.power_total;
+  sp.power_thermal    = pf(3, sc_type) * sp.power_total;
+  sp.power_power      = pf(4, sc_type) * sp.power_total;
+  sp.power_ttc        = pf(5, sc_type) * sp.power_total;
+  sp.power_adc        = pf(6, sc_type) * sp.power_total;
+  sp.propulsion_power = pf(7, sc_type) * sp.power_total;
+endfunction
+
+
+% =========================================================================
+% MODES 2 & 3: polynomial interpolation from spacecraft reference database
+% =========================================================================
+% x_mass: lookup reference (mode 2 = total wet mass; mode 3 = post-margin dry mass)
+function [sm, sp] = apply_db_polynomial(sm, sp, sc_type, x_mass)
+  sm.mass_payload    = interp_spacecraft_param(x_mass, sc_type, 'mass_total', 'fraction_mass_payload')    * sm.m_dry_margin;
+  sm.mass_structmech = interp_spacecraft_param(x_mass, sc_type, 'mass_total', 'fraction_mass_structmech') * sm.m_dry_margin;
+  sm.mass_thermal    = interp_spacecraft_param(x_mass, sc_type, 'mass_total', 'fraction_mass_thermal')    * sm.m_dry_margin;
+  sm.mass_power      = interp_spacecraft_param(x_mass, sc_type, 'mass_total', 'fraction_mass_power')      * sm.m_dry_margin;
+  sm.mass_ttc        = interp_spacecraft_param(x_mass, sc_type, 'mass_total', 'fraction_mass_TTC')        * sm.m_dry_margin;
+  sm.mass_adc        = interp_spacecraft_param(x_mass, sc_type, 'mass_total', 'fraction_mass_ADC')        * sm.m_dry_margin;
+  sm.mass_propulsion = interp_spacecraft_param(x_mass, sc_type, 'mass_total', 'fraction_mass_propulsion') * sm.m_dry_margin;
+  sm.mass_other      = interp_spacecraft_param(x_mass, sc_type, 'mass_total', 'fraction_mass_other')      * sm.m_dry_margin;
+
+  sp.power_payload    = interp_spacecraft_param(sp.power_total, sc_type, 'power_total', 'fraction_power_payload')    * sp.power_total;
+  sp.power_structmech = interp_spacecraft_param(sp.power_total, sc_type, 'power_total', 'fraction_power_structmech') * sp.power_total;
+  sp.power_thermal    = interp_spacecraft_param(sp.power_total, sc_type, 'power_total', 'fraction_power_thermal')    * sp.power_total;
+  sp.power_power      = interp_spacecraft_param(sp.power_total, sc_type, 'power_total', 'fraction_power_power')      * sp.power_total;
+  sp.power_ttc        = interp_spacecraft_param(sp.power_total, sc_type, 'power_total', 'fraction_power_TTC')        * sp.power_total;
+  sp.power_adc        = interp_spacecraft_param(sp.power_total, sc_type, 'power_total', 'fraction_power_ADC')        * sp.power_total;
+  sp.propulsion_power = interp_spacecraft_param(sp.power_total, sc_type, 'power_total', 'fraction_propulsion_power') * sp.power_total;
+endfunction
 
 
 % =========================================================================
 % SCALING CONFIDENCE COLLECTOR
 % =========================================================================
-% Evaluates the statistical confidence of all SMAD mass- and power-fraction
-% scalings by calling scaling_confidence for each parameter.
+% Evaluates the statistical confidence of the DB polynomial interpolations.
+% Always uses m_dry_margin as the mass reference (informational for mode 1).
 %
-% The aggregate score uses the minimum (worst-case) convention: if even one
-% parameter extrapolates or uses sparse data, the overall assessment
-% reflects that weakest link.
-%
-% x_mass   [kg]  m_dry_margin — input for all 8 mass-fraction scalings
-% x_power  [W]   power_total  — input for all 7 power-fraction scalings
-% sc_type  int   spacecraft type 1–4 (selects the correct CSV database)
-%
-% Returns scaling_quality struct:
-%   .mass.(param)  — per-parameter conf struct (score/regime/label/
-%                    gap_fraction/n_source_points) for each mass parameter
-%   .power.(param) — same, for each power parameter
-%   .mass_score    — minimum score over all 8 mass parameters
-%   .power_score   — minimum score over all 7 power parameters
-%   .total_score   — minimum of mass_score and power_score (worst case)
-%   .total_regime  — 'extrapolation' when any single parameter is outside
-%                    the source data range; 'interpolation' otherwise
-%   .total_label   — 'high' (0.70 and above), 'medium' (0.40 to 0.70),
-%                    'low' (below 0.40)  [green / yellow / red]
+% Returns scaling_quality struct with per-parameter confidence scores and an
+% aggregate worst-case total_score / total_regime / total_label.
 
 function sq = compute_scaling_quality(x_mass, x_power, sc_type)
   mass_csv_params = {'fraction_mass_payload',    'fraction_mass_structmech', ...
@@ -183,14 +210,14 @@ function sq = compute_scaling_quality(x_mass, x_power, sc_type)
   any_extrap   = false;
 
   for k = 1:numel(mass_keys)
-    [~, conf] = scale_SMAD_parameter(x_mass, sc_type, 'mass_total', mass_csv_params{k});
+    [~, conf] = interp_spacecraft_param(x_mass, sc_type, 'mass_total', mass_csv_params{k});
     sq.mass.(mass_keys{k}) = conf;
     mass_scores(k) = conf.score;
     if strcmp(conf.regime, 'extrapolation'); any_extrap = true; end
   end
 
   for k = 1:numel(power_keys)
-    [~, conf] = scale_SMAD_parameter(x_power, sc_type, 'power_total', power_csv_params{k});
+    [~, conf] = interp_spacecraft_param(x_power, sc_type, 'power_total', power_csv_params{k});
     sq.power.(power_keys{k}) = conf;
     power_scores(k) = conf.score;
     if strcmp(conf.regime, 'extrapolation'); any_extrap = true; end
@@ -212,38 +239,25 @@ function sq = compute_scaling_quality(x_mass, x_power, sc_type)
 end
 
 function [m_dry] = determine_m_dry(data)
-    % Support both 'dv' and 'deltav' field names (make_population stores 'deltav')
-    if isfield(data, 'dv')
-      dv = data.dv;
-    elseif isfield(data, 'deltav')
-      dv = data.deltav;
-    else
-      dv = NaN;
-    end
-    if ~isnan(dv) && isfield(data,'c_e') && dv > 0 && data.c_e > 0
-      m_dry = exp(-dv/data.c_e)*data.mass;
-    elseif isfield(data,'mass_propellant')
-      m_dry = data.mass - data.mass_propellant;
-    else
-      m_dry = data.mass;
-    endif
+  if isfield(data, 'dv')
+    dv = data.dv;
+  elseif isfield(data, 'deltav')
+    dv = data.deltav;
+  else
+    dv = NaN;
+  end
+  if ~isnan(dv) && isfield(data, 'c_e') && dv > 0 && data.c_e > 0
+    m_dry = exp(-dv / data.c_e) * data.mass;
+  elseif isfield(data, 'mass_propellant')
+    m_dry = data.mass - data.mass_propellant;
+  else
+    m_dry = data.mass;
+  endif
 endfunction
 
-
-
-function m = m_margin(m_dry, sc_type)       %TODO: config parameter
-  %Mass budget margin
-  factor=[.25 .25 .25 .25];         % https://standards.nasa.gov/standard/gsfc/gsfc-std-1000 
-  m = m_dry*(factor(sc_type));   
-end
-
-%Power Scaling
-%Page 423 Tab 14-20 Average Mass by System as a Percentage of Dry Mass for 4 Types of Spacecraft
-
-%Factor - 1 no propulsion , 2  LEO up to 1000 km, 3 - above 1000, 4 - planetary probe
-
 function P = p_tot_average(mass_dry, sc_type)
-  power_factor=[299 794 691 749];
-  mass_factor = mass_dry./[1497 2344 1258 888];
-  P= mass_factor(sc_type)^(2/3)*power_factor(sc_type); % continue here with better data from 966 new SMAD
+  % Reference: Wertz 2011 Table 14-20 average power vs dry mass per sc_type.
+  power_factor = [299 794 691 749];
+  mass_factor  = mass_dry ./ [1497 2344 1258 888];
+  P = mass_factor(sc_type)^(2/3) * power_factor(sc_type);
 end

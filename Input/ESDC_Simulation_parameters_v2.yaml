@@ -154,6 +154,37 @@ Simulation_parameters:
         dcep_min_occurrence: 1
         dcep_max_occurrence: 1
         dcep_min_inclusive: 0
+  scaling:
+    dcep_info:
+      dcep_name: Scaling law configuration
+      dcep_description: Controls how full-system mass and power fractions are derived during evolution
+      dcep_min_occurrence: 0
+      dcep_no_value: true
+    system_scaling_mode:
+      dcep_info:
+        dcep_name: System scaling mode
+        dcep_unit: "-"
+        dcep_description: "Method for deriving full-system mass/power fractions. 1=SMAD_flat (Wertz 2011 Table 14-18), 2=Ehresmann2021 (DB polynomial, x=wet mass, 30% margin), 3=refined (DB polynomial, x=post-margin dry mass, configurable margin)."
+        dcep_type: float
+        dcep_no_value: false
+        dcep_default: 3
+        dcep_min_occurrence: 0
+        dcep_max_occurrence: 1
+        dcep_min_inclusive: 1
+        dcep_max_inclusive: 3
+        dcep_allowed_values: [1, 2, 3]
+    mass_margin_fraction:
+      dcep_info:
+        dcep_name: Mass margin fraction
+        dcep_unit: "-"
+        dcep_description: "Design margin deducted from dry mass before subsystem distribution. Default 0.25 (NASA GSFC-STD-1000). Modes 1 and 2 apply 0.30 if this field is absent."
+        dcep_type: float
+        dcep_no_value: false
+        dcep_default: 0.25
+        dcep_min_occurrence: 0
+        dcep_max_occurrence: 1
+        dcep_min_inclusive: 0
+        dcep_max_inclusive: 0.5
   output:
     dcep_info:
       dcep_name: Output definition parameters

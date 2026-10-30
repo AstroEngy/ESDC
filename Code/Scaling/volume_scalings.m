@@ -50,7 +50,7 @@ end
 
 
 % -------------------------------------------------------------------------
-% safe_scale — wrapper around scale_SMAD_parameter that returns NaN when the
+% safe_scale — wrapper around interp_spacecraft_param that returns NaN when the
 % required CSV is missing rather than producing an error.
 % -------------------------------------------------------------------------
 function y = safe_scale(mass, sc_type, param_a, param_b)
@@ -58,7 +58,7 @@ function y = safe_scale(mass, sc_type, param_a, param_b)
   filename = strcat('Database/Scaling/scaling_spacecraft_', char(sc_name{sc_type}), ...
                     '_parameter_', param_a, '_to_', param_b, '.csv');
   if exist(filename, 'file')
-    y = scale_SMAD_parameter(mass, sc_type, param_a, param_b);
+    y = interp_spacecraft_param(mass, sc_type, param_a, param_b);
     if isnan(y) || y < 0
       y = NaN;
     end

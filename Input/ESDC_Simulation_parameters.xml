@@ -53,6 +53,12 @@
 		<n_bad_seed_to_converge>20</n_bad_seed_to_converge>
 		<n_verbosity>10</n_verbosity>
 	</evolver> 
+	<scaling>
+		<!-- system_scaling_mode: 1=SMAD_flat (Wertz 2011 Table 14-18), 2=Ehresmann2021 (DB polynomial, wet mass, 30% margin), 3=refined (DB polynomial, post-margin dry mass, configurable margin) -->
+		<system_scaling_mode>3</system_scaling_mode>
+		<!-- mass_margin_fraction: design margin deducted from dry mass before subsystem distribution. Default 0.25 (NASA GSFC-STD-1000). Modes 1 and 2 default to 0.30 when absent. -->
+		<mass_margin_fraction>0.25</mass_margin_fraction>
+	</scaling>
 	<output>
 		<CLI>
 			<n_verbosity>10</n_verbosity>
