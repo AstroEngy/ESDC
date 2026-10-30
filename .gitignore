@@ -1,11 +1,28 @@
+# Output and Generated Data
 /Output
+Database/Scaling/
+
+# Database and Reference Files
 Database/*_hash
 *.csv
+
+# Generated Files
 *.pdf
 octave-workspace
+
+# Editor and IDE
+.vscode/
 git_ESDC.code-workspace
+
+# OS and Temp Files
 Thumbs.db
 Thumbs.db:encryptable
 Thumbs.db_encryptable
-.vscode/
+
+# Git Merge Conflicts
 *(conflicted copy*
+
+# External and Documentation (non-essential)
+Documentation/Claude Sonnet Derived Design/
+external literature/
+phd_completion_plan/
