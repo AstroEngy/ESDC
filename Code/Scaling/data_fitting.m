@@ -1,4 +1,4 @@
-function [data_fit] = data_fitting(data) % THIS WILL BE REPLACED BY THE NEW SCALING LAW FITTING PROCEDURE
+function [data_fit, metrics] = data_fitting(data) % THIS WILL BE REPLACED BY THE NEW SCALING LAW FITTING PROCEDURE
 
   
       threshold = 0.95;  % max 1-> perfect fit %TODO Simulation parameter
@@ -94,6 +94,39 @@ function [data_fit] = data_fitting(data) % THIS WILL BE REPLACED BY THE NEW SCAL
 
   data_fit(1,:) = y_fit;
   data_fit(2,:) = x_fit;
-  
-  
+
+  % Fit-quality metrics — training fit of the polynomial against the original observations.
+  if nargout > 1
+    n        = size(data, 2);
+    y_obs    = data(1, :);
+    x_obs    = data(2, :);
+    y_pred   = polyval(itp_func_coeffs, x_obs);
+    residuals = y_obs - y_pred;
+    SS_res   = sum(residuals .^ 2);
+    SS_tot   = sum((y_obs - mean(y_obs)) .^ 2);
+    df       = n - (result + 1);
+
+    metrics.poly_degree        = result;
+    metrics.poly_coeffs        = itp_func_coeffs;
+    metrics.n_observations     = n;
+    metrics.df_residual        = df;
+    metrics.ss_residuals       = SS_res;
+    metrics.ss_total           = SS_tot;
+    metrics.evaluation_basis   = 'training_fit_only';
+
+    if df > 0
+      metrics.rmse = sqrt(SS_res / df);
+    else
+      metrics.rmse = NaN;
+    end
+
+    if SS_tot > 0
+      metrics.r_squared        = 1 - SS_res / SS_tot;
+      metrics.r_squared_status = 'computed';
+    else
+      metrics.r_squared        = NaN;
+      metrics.r_squared_status = 'undefined_constant_output';
+    end
+  end
+
 endfunction

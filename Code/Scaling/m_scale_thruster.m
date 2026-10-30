@@ -1,41 +1,26 @@
 function [m_thruster] = m_scale_thruster(P_thruster, propulsion_type, propellant, db_data) 
-% Generates thruster mass estimations for set propulsion types, with predetermined propellants and total supplied power from data base2dec
+% Estimate thruster mass from jet power using the scaling law database.
+% Loads from Database/Scaling/*.yaml; generates from DB if YAML is absent.
   if nargin < 4
     db_data = [];
   end
 
-% Generate appropriate filename
-  %filename = strcat("Database/Scaling/scaling_thruster_mass_to_power_",propulsion_type,"_propellant_",propellant, ".csv");
-  filename = strcat("Database/Scaling/scaling_propulsion_system_",propulsion_type, "_thruster_with_propellant_",propellant,"_mass_to_power_jet.csv");
-  %disp(filename)
-  
-  if exist(filename)
-    data = dlmread(filename,",");
-%    if size(data,2)==1                  %linear scaling when only single data point available
-%      data = [data(:,1), 2.*data(:,1)];
-%    end
-  data(1:2,:) = [data(2,:);data(1,:)];
-  data(3:4,:) = [data(4,:);data(3,:)];
-  %data = [data(2,:);data(1,:)];
-    % Interpolate for known data, extrapolate beyond.
-    m_thruster = scaling_linear(P_thruster,data);
-  else % regenerate missing data , bs case  
-      % calculate jet power?   % make if exists condition here?
-      %[data] = read_reference_data(); % here bug looop 
-      
-      create_new_correlation_file_mass_to_power_jet(filename, propulsion_type, propellant, db_data);
-      data = dlmread(filename,",");
-      data(1:2,:) = [data(2,:);data(1,:)];
-      data(3:4,:) = [data(4,:);data(3,:)];
-      %update_generic_component_scaling_a_to_b(data, "propulsion_system", propulsion_type, "thruster", "mass", "power_jet", "propellant"); % why this?
-      
+  safe_prop = sanitize_identifier(propellant);
+  stem = strcat('Database/Scaling/scaling_propulsion_system_', propulsion_type, ...
+                '_thruster_with_propellant_', safe_prop, '_mass_to_power_jet');
 
-      %data = [data(2,:);data(1,:)];
-    % Interpolate for known data, extrapolate beyond.
-      m_thruster = scaling_linear(P_thruster,data);
-      
-      %m_thruster= m_scale_thruster(P_thruster, propulsion_type, propellant);
-     
+  if ~exist([stem '.yaml'], 'file')
+    % Generate YAML from the reference database
+    csv_path = [stem '.csv'];  % write_selected_data_to_file still accepts .csv stem
+    create_new_correlation_file_mass_to_power_jet(csv_path, propulsion_type, propellant, db_data);
+    scaling_law_cache('clear');
+  end
+
+  if exist([stem '.yaml'], 'file')
+    law       = scaling_law_load(stem);
+    m_thruster = scaling_law_evaluate(law, P_thruster, 'invert', true);
+  else
+    m_thruster = 0;
   end
 end
 

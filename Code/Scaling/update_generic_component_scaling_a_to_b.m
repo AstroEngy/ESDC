@@ -180,12 +180,16 @@ add_dim=char(varargin);  % Extract optional additional dimension field name
           endif
         end
         
-          % Generate filename including subdivision identifier
-          filename = strcat(path,"scaling_",system_type,"_",technology_type,"_",component_type,"_with_",add_dim,"_",char(distinct_cases(j)),"_",field_x,"_to_",field_y,".csv");
+          % Sanitize the dimension value (e.g. propellant name) for use in filenames.
+          % The display name is preserved in the YAML via write_selected_data_to_file metadata.
+          safe_val = sanitize_identifier(char(distinct_cases(j)));
+          filename = strcat(path,"scaling_",system_type,"_",technology_type,"_",component_type,"_with_",add_dim,"_",safe_val,"_",field_x,"_to_",field_y,".csv");
 
         % Only write file if valid data was collected
         if not( sum(eq(size(y),[0 0]))+sum(eq(size(x),[0 0])) || iscell(y) || iscell(x) || isstruct(y) || isstruct(x))
-          write_selected_data_to_file(x,y,filename,0);
+          meta = struct();
+          meta.propellant_display = char(distinct_cases(j));
+          write_selected_data_to_file(x,y,filename,0,[],meta);
          endif
       endfor
 

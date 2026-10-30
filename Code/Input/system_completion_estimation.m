@@ -398,19 +398,21 @@ endfunction
 % Inverse fraction look-up: given a known subsystem value y, return the
 % fraction y/x where x is the total that would predict y via the CSV scaling.
 function [fraction] = interp_spacecraft_param_inv(y, sc_type, x, file_parameter)
+  % Inverse fraction look-up via the scaling law API.
+  % Given a known subsystem value y, returns the fraction y/x_total where x_total
+  % is the total mass/power implied by y under the stored scaling law.
   orbits = {'No Propulsion', 'Low Earth', 'High Earth', 'Planetary'};
-  filename = strcat('Database/Scaling/scaling_spacecraft_', orbits{sc_type}, ...
-                    '_parameter_', x, '_to_', file_parameter, '.csv');
-  if exist(filename)
-    data = dlmread(filename, ',');
-  else
-    disp(filename);
-    error(strcat('ERROR: File not found: ', filename));
+  stem = strcat('Database/Scaling/scaling_spacecraft_', orbits{sc_type}, ...
+                '_parameter_', x, '_to_', file_parameter);
+  if ~exist([stem '.yaml'], 'file') && ~exist([stem '.csv'], 'file')
+    disp(stem);
+    error(strcat('ERROR: Scaling law file not found: ', stem));
   end
 
-  frac_vals    = data(3,:);
-  x_vals       = data(4,:);
-  non_frac_vals = frac_vals .* x_vals;        % actual subsystem values at each data point
+  law = scaling_law_load(stem);
+  frac_vals     = law.model.fit.y;          % dense fraction values
+  x_vals        = law.model.fit.x;          % dense total-mass/power values
+  non_frac_vals = frac_vals .* x_vals;      % implied subsystem values at each grid point
 
   x_derived = interp1(non_frac_vals, x_vals, y, 'linear', 'extrap');
   fraction  = y / x_derived;

@@ -78,12 +78,12 @@ function [scaling_model_struct] = update_scaling_model(force_update_flag, prefer
 %     corrupt or badly formatted source XML.
   if nargin < 2; prefer_xml = false; end
   disp('Database check:');
-  
-  % System/component scaling: generates CSV lookup tables from component database
-  update_system_scaling(force_update_flag, prefer_xml);
-  
-  % Spacecraft scaling: generates CSV lookup tables from spacecraft database
-  update_SC_scaling(force_update_flag, prefer_xml);
+
+  % Increment this string whenever generation code or schema changes affect output.
+  GENERATOR_VERSION = '2';  % v1: CSV+YAML; v2: YAML-only, fit metrics, identifier sanitisation
+
+  update_system_scaling(force_update_flag, prefer_xml, GENERATOR_VERSION);
+  update_SC_scaling(force_update_flag, prefer_xml, GENERATOR_VERSION);
 
 end
 
@@ -127,54 +127,40 @@ end
 ## @seealso{update_generic_spacecraft_scaling_model, read_reference_spacecraft_data}
 ## @end deftypefn
 
-function[] = update_SC_scaling(force_update, prefer_xml)
+function[] = update_SC_scaling(force_update, prefer_xml, generator_version)
     if nargin < 2; prefer_xml = false; end
+    if nargin < 3; generator_version = ''; end
 
     make_update = 0;
-    
-    % Check if hash file exists for change detection
-    if exist("Database/ESDC_Reference_Data_Spacecrafts_hash");
-    hash_file = fopen('Database/ESDC_Reference_Data_Spacecrafts_hash', "r");
-    hash_val = fgetl(hash_file);
-    fclose(hash_file);
-    
-    % Compute current database hash and compare
-    current_hash = hash('md5', fileread('Database/ESDC_Reference_Data_Spacecrafts.xml'));
-      if (hash_val == current_hash)
-      disp('No updates to spacecraft database detected.');
+    xml_file    = 'Database/ESDC_Reference_Data_Spacecrafts.xml';
+    hash_file_path = 'Database/ESDC_Reference_Data_Spacecrafts_hash';
+    current_hash = hash('md5', [fileread(xml_file), generator_version]);
+
+    if exist(hash_file_path, 'file')
+      fh = fopen(hash_file_path, 'r'); stored_hash = fgetl(fh); fclose(fh);
+      if strcmp(stored_hash, current_hash)
+        disp('No updates to spacecraft database detected.');
       else
-      disp('Updates to spacecraft database detected.');
-        % Load spacecraft data and regenerate scaling laws
+        disp('Updates to spacecraft database detected.');
         [data] = read_reference_spacecraft_data(prefer_xml);
-        
-        % Update hash file with new database state
-        hash_file= fopen('Database/ESDC_Reference_Data_Spacecrafts_hash', "w");
-        fprintf(hash_file, hash('md5', fileread('Database/ESDC_Reference_Data_Spacecrafts.xml')));
-        fclose(hash_file);
-        
         update_generic_spacecraft_scaling_model(data);
-        disp('Updates to S/C db complete.');
+        fh = fopen(hash_file_path, 'w'); fprintf(fh, current_hash); fclose(fh);
+        scaling_law_cache('clear');
+        disp('Spacecraft scaling update complete; cache invalidated.');
       end
     else
-      % No hash file exists - first run, create it
-      disp('No spacecraft database hash file found');
-      disp('Creating hash file');
-      hash_file= fopen('Database/ESDC_Reference_Data_Spacecrafts_hash', "a");
-      disp('Write hash');
-      fprintf(hash_file, hash('md5', fileread('Database/ESDC_Reference_Data_Spacecrafts.xml')));
-      fclose(hash_file);
+      disp('No spacecraft database hash file found; creating.');
       make_update = 1;
     end
-    
-    % Force update overrides hash-based detection
-    if (force_update)
-      disp('Forcing Spacecraft Database Update');
-    end
-    
-    % Perform update if needed (first run or forced)
-    if (make_update | force_update)
-      [data] = read_reference_spacecraft_data();
+
+    if force_update; disp('Forcing Spacecraft Database Update'); end
+
+    if make_update || force_update
+      [data] = read_reference_spacecraft_data(prefer_xml);
       update_generic_spacecraft_scaling_model(data);
+      fh = fopen(hash_file_path, 'w'); fprintf(fh, current_hash); fclose(fh);
+      scaling_law_cache('clear');
+      disp('Spacecraft scaling complete; cache invalidated.');
     end
 end
 
@@ -343,46 +329,39 @@ end
 
 
 
-function [] = update_system_scaling(force_update, prefer_xml)
+function [] = update_system_scaling(force_update, prefer_xml, generator_version)
   if nargin < 2; prefer_xml = false; end
+  if nargin < 3; generator_version = ''; end
   make_update = 0;
 
-  % Check if hash file exists for change detection
-  if exist("Database/ESDC_Reference_Data_Systems_hash")
-    hash_file = fopen('Database/ESDC_Reference_Data_Systems_hash', "r");
-    hash_val = fgetl(hash_file);
-    fclose(hash_file);
+  xml_file   = 'Database/ESDC_Reference_Data_Systems.xml';
+  hash_path  = 'Database/ESDC_Reference_Data_Systems_hash';
+  current_hash = hash('md5', [fileread(xml_file), generator_version]);
 
-    % Compute current database hash and compare
-    current_hash = hash('md5', fileread('Database/ESDC_Reference_Data_Systems.xml'));
-    if (hash_val == current_hash)
+  if exist(hash_path, 'file')
+    fh = fopen(hash_path, 'r'); stored_hash = fgetl(fh); fclose(fh);
+    if strcmp(stored_hash, current_hash)
       disp('No updates to database detected.');
     else
       disp('Updates to database detected.');
       make_update = 1;
     end
   else
-    % No hash file exists - first run
     disp('No database hash file found');
     make_update = 1;
   end
 
-  % Force update overrides hash-based detection
   if force_update
     disp('Forcing Component Database Update');
   end
 
-  % Perform update if needed (first run or forced)
-  % Hash file is only written after a successful update
-  if (make_update | force_update)
+  if make_update || force_update
     [data] = read_reference_data(prefer_xml);
     update_generic_component_scaling_model(data);
-    % Update succeeded - now persist the new hash
     disp('Writing database hash file');
-    hash_file = fopen('Database/ESDC_Reference_Data_Systems_hash', "w");
-    fprintf(hash_file, hash('md5', fileread('Database/ESDC_Reference_Data_Systems.xml')));
-    fclose(hash_file);
-    disp('Updates complete.');
+    fh = fopen(hash_path, 'w'); fprintf(fh, current_hash); fclose(fh);
+    scaling_law_cache('clear');
+    disp('Component scaling update complete; cache invalidated.');
   end
 end
 

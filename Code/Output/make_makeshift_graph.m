@@ -1,10 +1,13 @@
 function [] = make_makeshift_graph(filename_old, data, data_fit)
-  
-
-  filename = strrep(filename_old, '.csv', '.png');
+  % Derive PNG path from whatever extension the source file has
+  filename = regexprep(filename_old, '\.(csv|yaml)$', '.png');
+  if strcmp(filename, filename_old)  % no known extension — append .png
+    filename = [filename_old '.png'];
+  end
   filename = strrep(filename, 'Database/Scaling/', 'Output/');
   
-  title =filename_old(8:end-4);
+  title = regexprep(filename_old, '\.(csv|yaml)$', '');
+  title = title(8:end);  % strip leading 'scaling'
   
   if strfind(filename_old,'spacecraft')     % graphs only for SC currently, TODO add case handling of comps?
     str_underscores   = strfind(filename_old,'_');       % have to count backwards, because incosistent orbit type _ number

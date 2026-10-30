@@ -71,131 +71,215 @@
 ## @seealso{sort_data_to_x, data_fitting, make_makeshift_graph, dlmwrite}
 ## @end deftypefn
 
-function [] = write_selected_data_to_file(x,y,filename, padbit, debug_mode)
+% write_selected_data_to_file  Fit data and write a YAML scaling law file.
+%
+% write_selected_data_to_file(x, y, filename, padbit)
+% write_selected_data_to_file(x, y, filename, padbit, debug_mode)
+% write_selected_data_to_file(x, y, filename, padbit, debug_mode, metadata)
+%
+% Fits a polynomial to (x, y), evaluates it on a dense grid, and writes
+% the result as a YAML scaling law file.  No CSV is written.
+%
+% filename  — path used to derive the YAML stem; conventionally ends in
+%             '.csv' (legacy) or '.yaml'; the YAML is written at stem+'.yaml'.
+% metadata  — optional struct with extra classification fields:
+%               .propellant_display — original chemical name (may contain '/')
+%               .orbit_type, .system, .technology, .component, ...
+function [] = write_selected_data_to_file(x, y, filename, padbit, debug_mode, metadata)
+    if nargin < 5; debug_mode = 0; end
+    if nargin < 6; metadata   = struct(); end
 
-    % Handle optional debug_mode parameter (default: off)
-    if nargin < 5
-        debug_mode = 0;
-    end
+    [data] = sort_data_to_x(x, y, padbit);
 
-    % Sort data according to x-values and apply optional zero-padding
-    [data] = sort_data_to_x(x,y,padbit);
-
-    % Handle single data point case: duplicate with doubled values to enable fitting
-    % This creates a minimal linear scaling relationship from the single point
-    if size(data,2)==1
+    if size(data, 2) == 1
       data = [data(:,1), 2.*data(:,1)];
     end
 
-    % Perform polynomial curve fitting to the sorted data
-    % Automatically selects optimal polynomial degree (1st to 3rd order)
-    [data_fit] = data_fitting(data);
+    % Polynomial curve fitting — also returns fit quality metrics
+    [data_fit, fit_metrics] = data_fitting(data);
 
-    % ===== DEBUG OUTPUT (if enabled) =====
-    if debug_mode
-        disp('=== DEBUG: write_selected_data_to_file ===');
-        disp(['Filename: ', filename]);
-        disp(['data size: ', num2str(size(data))]);
-        disp(['data class: ', class(data)]);
-        disp(['data_fit size: ', num2str(size(data_fit))]);
-        disp(['data_fit class: ', class(data_fit)]);
-    end
-    
-    % Write processed data to CSV file in two blocks:
-    % Block 1: Raw sorted data (2 rows: y-values, x-values)
-    % Block 2: Fitted curve with 100 interpolated points (appended)
-    
-    % Validate data before writing to avoid dlmwrite errors
+    % Validate
     if isempty(data) || any(~isfinite(data(:)))
-        if debug_mode
-            disp('ERROR: data is empty or contains NaN/Inf');
-            disp(data);
-        end
         error('write_selected_data_to_file: data contains empty, NaN, or Inf values');
     end
-    
-    if isempty(data_fit) || any(~isfinite(data_fit(:)))
-        warning('write_selected_data_to_file: data_fit contains invalid values, skipping file write');
-        disp(strcat(filename, " skipped due to invalid fit data"));
-        if debug_mode
-            disp('data_fit contains:');
-            disp(data_fit);
-        end
+    if isempty(data_fit) || any(~isfinite(data_fit(:))) || ndims(data_fit) ~= 2 || size(data_fit,1) ~= 2
+        warning('write_selected_data_to_file:bad_fit', '%s skipped: invalid fit data', filename);
         return;
     end
-    
-    % Ensure data_fit is a valid 2D matrix
-    if ndims(data_fit) ~= 2 || size(data_fit,1) ~= 2
-        warning('write_selected_data_to_file: data_fit has unexpected dimensions');
-        disp(strcat(filename, " skipped due to invalid fit dimensions"));
-        if debug_mode
-            disp(['Expected: 2xN, Got: ', num2str(size(data_fit))]);
-        end
-        return;
-    end
-    
-    % Additional validation: check filename is string and valid
     if ~ischar(filename) && ~isstring(filename)
-        error('write_selected_data_to_file: filename is not a string');
+        error('write_selected_data_to_file: filename must be a string');
     end
-    
-    % Extract directory from filename and ensure it exists
-    [file_dir, ~, ~] = fileparts(filename);
+
+    % Derive YAML output path from the (possibly .csv) filename
+    [file_dir, stem_name, ~] = fileparts(filename);
     if ~isempty(file_dir) && ~exist(file_dir, 'dir')
-        if debug_mode
-            disp(['Creating directory: ', file_dir]);
-        end
         mkdir(file_dir);
     end
-    
-    % Debug: Show actual data content
-    if debug_mode
-        disp('Data matrix content:');
-        disp(data);
-        disp('Data_fit first 5 columns:');
-        disp(data_fit(:,1:min(5,size(data_fit,2))));
-        disp('About to write data matrix:');
-        disp(['  First write: data (', num2str(size(data)), ')']);
-    end
-    
-    % Write using default delimiter (comma) - simplest form
-    try
-        dlmwrite(filename, data);
-        if debug_mode
-            disp('  First write successful');
-        end
-    catch err
-        if debug_mode
-            disp('ERROR in first dlmwrite:');
-            disp(err.message);
-            disp(['Error identifier: ', err.identifier]);
-        end
-        rethrow(err);
-    end
-    
-    if debug_mode
-        disp(['  Second write: data_fit (', num2str(size(data_fit)), ')']);
-    end
-    try
-        dlmwrite(filename, data_fit, '-append');
-        if debug_mode
-            disp('  Second write successful');
-        end
-    catch err
-        if debug_mode
-            disp('ERROR in second dlmwrite:');
-            disp(err.message);
-            disp(['Error identifier: ', err.identifier]);
-        end
-        rethrow(err);
-    end
+    yaml_path = fullfile(file_dir, [stem_name '.yaml']);
 
-    % Generate visualization graph showing both raw data points and fitted curve
+    % Build law struct
+    law = build_law_struct(stem_name, data, data_fit, fit_metrics, metadata);
+
+    % Write YAML (atomic, via temp file)
+    scaling_law_write_yaml(yaml_path, law);
+
+    % Visualization (still uses the conventional filename for the PNG)
     make_makeshift_graph(filename, data, data_fit);
 
-    % Display confirmation message to console
-    disp(strcat(filename, " updated"));
+    disp([yaml_path ' updated']);
+end
 
+% -------------------------------------------------------------------------
+function law = build_law_struct(stem, data, data_fit, fit_metrics, metadata)
+  [category, orbit, sys, tech, comp, prop_safe, fx, fy] = parse_stem_local(stem);
+
+  % Prefer caller-supplied classification over stem-parsed values
+  if isfield(metadata, 'orbit_type'); orbit = metadata.orbit_type; end
+  if isfield(metadata, 'system');     sys   = metadata.system;     end
+  if isfield(metadata, 'technology'); tech  = metadata.technology; end
+  if isfield(metadata, 'component');  comp  = metadata.component;  end
+
+  law_id = regexprep(strrep(stem, ' ', '_'), '[()]', '_');
+  law_id = regexprep(law_id, '__+', '_');
+
+  law.schema_version          = 1;
+  law.id                      = law_id;
+  law.title                   = strrep(stem, '_', ' ');
+  law.lifecycle.status        = lifecycle_from_cat(category);
+  law.classification.category = category;
+  if ~isempty(orbit); law.classification.orbit_type = orbit; end
+  if ~isempty(sys);   law.classification.system     = sys;   end
+  if ~isempty(tech);  law.classification.technology = tech;  end
+  if ~isempty(comp);  law.classification.component  = comp;  end
+  % Propellant: keep display name if provided, safe ID otherwise
+  if isfield(metadata, 'propellant_display')
+    law.classification.propellant_display = metadata.propellant_display;
+  elseif ~isempty(prop_safe)
+    law.classification.propellant = prop_safe;
+  end
+
+  law.input.quantity          = fx;
+  law.input.unit              = unit_for(fx);
+  law.output.quantity         = fy;
+  law.output.unit             = unit_for(fy);
+
+  law.model.kind              = 'interpolation';
+  law.model.method            = 'linear_on_polynomial_fit';
+  law.model.samples.n         = size(data, 2);
+  law.model.samples.provenance = 'database';
+  law.model.samples.input     = data(2,:);
+  law.model.samples.output    = data(1,:);
+  law.model.fit.n             = size(data_fit, 2);
+  law.model.fit.x             = data_fit(2,:);
+  law.model.fit.y             = data_fit(1,:);
+  if isstruct(fit_metrics) && isfield(fit_metrics, 'poly_degree')
+    law.model.poly_degree = fit_metrics.poly_degree;
+  end
+
+  law.domains.numerical.min   = min(data_fit(2,:));
+  law.domains.numerical.max   = max(data_fit(2,:));
+  law.domains.hardware_supported.status = 'unknown';
+  law.domains.hardware_supported.notes  = 'Hardware validation not assessed.';
+
+  law.evaluation.out_of_domain            = 'extrapolate';
+  law.evaluation.outside_hardware_support = 'warn';
+
+  if isstruct(fit_metrics) && isfield(fit_metrics, 'r_squared')
+    fm.status             = 'computed';
+    fm.evaluation_basis   = fit_metrics.evaluation_basis;
+    fm.poly_degree        = fit_metrics.poly_degree;
+    fm.n_observations     = fit_metrics.n_observations;
+    fm.df_residual        = fit_metrics.df_residual;
+    fm.rmse               = fit_metrics.rmse;
+    fm.r_squared          = fit_metrics.r_squared;
+    fm.r_squared_status   = fit_metrics.r_squared_status;
+    law.quality.fit_metrics = fm;
+  else
+    law.quality.fit_metrics.status = 'not_available';
+  end
+
+  law.provenance.generated_by = 'write_selected_data_to_file + data_fitting';
+  law.provenance.generator_version = '2';
+end
+
+function [cat, orbit, sys, tech, comp, prop, fx, fy] = parse_stem_local(stem)
+  cat = 'unknown'; orbit = ''; sys = ''; tech = ''; comp = ''; prop = ''; fx = 'unknown'; fy = 'unknown';
+  if length(stem) < 9 || ~strcmp(stem(1:8), 'scaling_'); return; end
+  rest = stem(9:end);
+
+  if strncmp(rest, 'spacecraft_', 11)
+    cat  = 'spacecraft_system';
+    rest = rest(12:end);
+    pidx = strfind(rest, '_parameter_');
+    if isempty(pidx); return; end
+    orbit = rest(1:pidx(1)-1);
+    [fx, fy] = to_split(rest(pidx(1)+11:end));
+    return;
+  end
+
+  known = {'attitude_control','communication','energy_storage','power_generation', ...
+           'propulsion_system','structure','thermal'};
+  for k = 1:numel(known)
+    if strncmp(rest, [known{k} '_'], length(known{k})+1)
+      sys  = known{k}; cat = sys;
+      rest = rest(length(known{k})+2:end);
+      break;
+    end
+  end
+
+  widx = strfind(rest, '_with_propellant_');
+  if ~isempty(widx)
+    prefix = rest(1:widx(1)-1);
+    tail   = rest(widx(1)+17:end);
+    [tech, comp] = first_split(prefix);
+    midx = strfind(tail, '_mass_to_');
+    if ~isempty(midx)
+      prop = tail(1:midx(1)-1);
+      [fx, fy] = to_split(tail(midx(1)+1:end));
+    end
+    return;
+  end
+  midx = strfind(rest, '_mass_to_');
+  if ~isempty(midx)
+    [tech, comp] = first_split(rest(1:midx(1)-1));
+    [fx, fy] = to_split(rest(midx(1)+1:end));
+    return;
+  end
+  [fx, fy] = to_split(rest);
+end
+
+function [a, b] = first_split(s)
+  i = strfind(s, '_');
+  if isempty(i); a = s; b = ''; else; a = s(1:i(1)-1); b = s(i(1)+1:end); end
+end
+
+function [fx, fy] = to_split(tail)
+  i = strfind(tail, '_to_');
+  if isempty(i); fx = tail; fy = 'unknown'; else; fx = tail(1:i(1)-1); fy = tail(i(1)+4:end); end
+end
+
+function s = lifecycle_from_cat(cat)
+  if any(strcmp(cat, {'spacecraft_system','propulsion_system','power_generation'}))
+    s = 'active';
+  else
+    s = 'inactive';
+  end
+end
+
+function unit = unit_for(fname)
+  m.mass='kg'; m.mass_total='kg'; m.mass_payload='kg'; m.mass_total_dry='kg'; m.mass_propellant='kg';
+  m.power_total='W'; m.power='W'; m.power_jet='W'; m.power_nom='W'; m.power_max='W'; m.power_nominal='W';
+  m.thrust='N'; m.c_e='m/s'; m.volume='m3'; m.volume_box='m3';
+  m.size_x='m'; m.size_y='m'; m.size_h='m';
+  m.efficiency='dimensionless'; m.TRL='dimensionless';
+  m.massflow='kg/s'; m.isp='s'; m.area='m2'; m.pressure='Pa';
+  if length(fname) > 9 && strcmp(fname(1:9), 'fraction_')
+    unit = 'dimensionless';
+  elseif isfield(m, fname)
+    unit = m.(fname);
+  else
+    unit = 'unknown';
+  end
 end
 
 

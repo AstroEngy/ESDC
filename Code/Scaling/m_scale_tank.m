@@ -82,21 +82,16 @@ function m_tank = m_scale_tank(m_prop, propellant, db_data)
     warning('m_scale_tank: fewer than 2 suitable entries for "%s"; using generic CSV with all entries.', propellant);
   end
 
-  % 3. Generate CSV from DB if it does not yet exist
-  if ~exist(filename, 'file')
+  % 3. Generate YAML from DB if it does not yet exist
+  stem = filename(1:end-4);  % strip .csv
+  if ~exist([stem '.yaml'], 'file')
     create_tank_scaling_csv(filename, vessels, aliases, n_spec);
+    scaling_law_cache('clear');
   end
 
-  % 4. Load the fitted scaling law and interpolate
-  data = dlmread(filename, ',');
-  % CSV layout (same as thruster CSVs):
-  %   row 1: raw y (mass),  row 2: raw x (volume)
-  %   row 3: fit y (mass),  row 4: fit x (volume)
-  % scaling_linear expects data(3,:)=y, data(4,:)=x
-  data(1:2, :) = [data(2,:); data(1,:)];
-  data(3:4, :) = [data(4,:); data(3,:)];
-
-  m_tank = scaling_linear(V_prop, data);
+  % 4. Load and evaluate (YAML only)
+  law    = scaling_law_load(stem);
+  m_tank = scaling_law_evaluate(law, V_prop, 'invert', true);
 
 end
 
