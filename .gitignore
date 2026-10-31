@@ -12,6 +12,7 @@ octave-workspace
 
 # Editor and IDE
 .vscode/
+.github/
 git_ESDC.code-workspace
 
 # OS and Temp Files
