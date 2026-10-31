@@ -42,7 +42,7 @@
 ##   - Raw data sorted by x-values (2 rows: y-values, x-values)
 ##   - Fitted curve data with 100 interpolated points (2 rows: y-fit, x-fit)
 ## @item Displays confirmation message to console showing updated filename
-## @item Generates a visualization graph via make_makeshift_graph()
+## @item Generates a visualization graph via plot_scaling_law()
 ## @end itemize
 ##
 ## @strong{Assumptions and Special Cases:}
@@ -68,7 +68,7 @@
 ## write_selected_data_to_file(x, y, 'scaling_data.csv', 0);
 ## @end example
 ##
-## @seealso{sort_data_to_x, data_fitting, make_makeshift_graph, dlmwrite}
+## @seealso{sort_data_to_x, data_fitting, plot_scaling_law}
 ## @end deftypefn
 
 % write_selected_data_to_file  Fit data and write a YAML scaling law file.
@@ -123,8 +123,15 @@ function [] = write_selected_data_to_file(x, y, filename, padbit, debug_mode, me
     % Write YAML (atomic, via temp file)
     scaling_law_write_yaml(yaml_path, law);
 
-    % Visualization (still uses the conventional filename for the PNG)
-    make_makeshift_graph(filename, data, data_fit);
+    % Visualization — all scaling laws receive a plot; export is best-effort
+    try
+      plot_opts = struct('output_dir', 'Output/Scaling', 'visible', false);
+      fig = plot_scaling_law(law, plot_opts);
+      close(fig);  % must close; unclosed figures accumulate and crash Magick
+    catch ex
+      warning('write_selected_data_to_file:plot_failed', ...
+        'Visualization not generated for %s: %s', yaml_path, ex.message);
+    end
 
     disp([yaml_path ' updated']);
 end
@@ -175,6 +182,9 @@ function law = build_law_struct(stem, data, data_fit, fit_metrics, metadata)
   if isstruct(fit_metrics) && isfield(fit_metrics, 'poly_degree')
     law.model.poly_degree = fit_metrics.poly_degree;
   end
+  if isstruct(fit_metrics) && isfield(fit_metrics, 'poly_coeffs')
+    law.model.poly_coeffs = fit_metrics.poly_coeffs;
+  end
 
   law.domains.numerical.min   = min(data_fit(2,:));
   law.domains.numerical.max   = max(data_fit(2,:));
@@ -193,6 +203,7 @@ function law = build_law_struct(stem, data, data_fit, fit_metrics, metadata)
     fm.rmse               = fit_metrics.rmse;
     fm.r_squared          = fit_metrics.r_squared;
     fm.r_squared_status   = fit_metrics.r_squared_status;
+    if isfield(fit_metrics, 'poly_coeffs'); fm.poly_coeffs = fit_metrics.poly_coeffs; end
     law.quality.fit_metrics = fm;
   else
     law.quality.fit_metrics.status = 'not_available';

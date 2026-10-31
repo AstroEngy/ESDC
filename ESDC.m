@@ -70,7 +70,8 @@ startTime = tic();                               % Reference timer for performan
     % ---- 1. Environment setup -----------------------------------------------
     % Add all code subdirectories to Octave/MATLAB search path so that
     % functions in subdirectories can be called without qualification.
-        folders = {'Code/Analysis', 'Code/Evolver', 'Code/Input', 'Code/Output', 'Code/Scaling', 'Code/Support'};
+        folders = {'Code/Analysis', 'Code/Evolver', 'Code/Input', 'Code/Output', ...
+                   'Code/Output/Plotting', 'Code/Scaling', 'Code/Support'};
         for i = 1:length(folders)
             if exist(folders{i}, 'dir')
                 addpath(folders{i});
@@ -122,6 +123,17 @@ startTime = tic();                               % Reference timer for performan
 
     % ---- 7. XML output generation -------------------------------------------
     output_XML_generation(input, db_data, config, evolution_data,runID);
+
+    % TODO(plotting): Post-evolution visualization hook.
+    % When per-generation objective statistics are available, call:
+    %   plot_optimization_history(gen_stats, struct('export',true,'visible',false));
+    % Required data: generation index, best objective, median objective,
+    % population spread (e.g., IQR of mu_EP), and lineage convergence counts.
+    % For subsystem breakdown of the best candidates, call:
+    %   best = evolution_data{end};
+    %   for i = 1:size(best,1)
+    %     plot_subsystem_breakdown(best(i,1).result_sweep, struct('export',true));
+    %   end
 
     %Visual Output   - old code needs revision and adaption
     %disp('Visual production ')

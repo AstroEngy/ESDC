@@ -1,41 +1,36 @@
-function [] = makePlotFullSystemComparison(input, data, analysis,config, case_type)
-disp(' ')
-disp(' Output production: Full System Comparison Graph')
-disp(' ')
-plotLegend = [];
+function [] = makePlotFullSystemComparison(input, data, analysis, config, case_type)
+% EP system mass fraction vs exhaust velocity — migrated to shared plotting framework.
+st = plot_style();
 
-    if config.ConsiderMargins == 1
-        analysis = plot_margins(analysis, config);
-    end
+if config.ConsiderMargins == 1
+  analysis = plot_margins(analysis, config);
+end
 
-    fig_handle = figure('Name',strcat('Full Case Comparison ', case_type));
-    hold on;
-    for i=1:size(analysis,2)
-        plot(analysis(i).c_e,analysis(i).result.mu_EP,'color',rand(1,3),'LineWidth',1.5 );
-        plotLegend=[plotLegend cellstr(analysis(i).description)];
-    end
-    
-    plotLegend =[ plotLegend 'Minima'];
-    plotLegend =[ plotLegend 'Current Design'];
-    
-        if config.ConsiderMargins == 1
-            plotLegend=[ plotLegend strcat(num2str(config.margin), ' % Margin')];
-        end
+n = size(analysis, 2);
+sweeps(n) = struct('x', [], 'y', [], 'label', '', 'markers', []);
+for i = 1:n
+  mk(1) = struct('x', analysis(i).result.mu_EP_min_c_e, ...
+                 'y', analysis(i).result.mu_EP_min, 'style', 'dr');
+  mk(2) = struct('x', input(i).c_e, 'y', data.reference(i).mu_EP, 'style', 'xr');
+  sweeps(i) = struct('x', analysis(i).c_e, 'y', analysis(i).result.mu_EP, ...
+                     'label', analysis(i).description, 'markers', mk);
+end
+if config.ConsiderMargins == 1
+  for i = 1:n
+    sweeps(end+1) = struct('x', analysis(i).mu_min_margin_c_e, ...
+      'y', analysis(i).mu_min_margin, ...
+      'label', [num2str(config.margin) '% margin'], 'markers', []);
+  end
+end
 
-    for i=1:size(analysis,2)
-        plot(analysis(i).result.mu_EP_min_c_e,analysis(i).result.mu_EP_min,'dr');
-        plot(input(i).c_e,data.reference(i).mu_EP,'xr');
-            if config.ConsiderMargins == 1
-               plot(analysis(i).mu_min_margin_c_e, analysis(i).mu_min_margin, '--k','LineWidth',1.5);
-            end
-    end
-    
-    lgd = legend('Location','northeast',plotLegend);
-
-    xlabel('c_e / m/s');
-    ylabel('\mu_{EPropSys} / -');
-    ylim([0 1]);
-    
-    saveas(fig_handle,strcat('Output/','ESDC Full Concept Comparison ', case_type,'.png'),'png');
-    disp(strcat('Output complete: Full Concept Comparison Plot'));
+opts.xlabel_str  = 'Effective exhaust velocity [m/s]';
+opts.ylabel_str  = 'EP system mass fraction [-]';
+opts.ylim        = [0, 1];
+opts.style       = st;
+opts.export      = true;
+opts.visible     = false;
+opts.output_file = fullfile('Output', ['ESDC_EP_mass_fraction_' case_type]);
+opts.layout      = 'double';
+plot_parameter_sweep(sweeps, opts);
+disp(['Output complete: EP mass fraction comparison -- ' case_type]);
 end

@@ -160,4 +160,14 @@ function evolution_data = evolver(input, db_data, config,runID)
   else
     evolution_data = {best_gen};                                                % default: only the best snapshot (one cell entry)
   end
+
+  % TODO(plotting): Add optimization-history visualization here once
+  % per-generation objective statistics are recorded in a dedicated struct.
+  % Required data (currently not tracked):
+  %   gen_stats.generation      — integer vector (1 : n_gen)
+  %   gen_stats.best_objective  — best mu_EP per generation per lineage
+  %   gen_stats.median_objective — median mu_EP across the population
+  %   gen_stats.spread          — population IQR of mu_EP per generation
+  % Suggested call (after data is available):
+  %   plot_optimization_history(gen_stats, struct('export',true,'visible',false));
 end
